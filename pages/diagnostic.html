@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Diagnóstico - Código para Todos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span class="logo-text">Código para Todos</span>
+            </div>
+            <div class="nav-info">
+                <span class="user-name">¡Hola, <span id="userName">Estudiante</span>!</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="diagnostic-container">
+        <!-- Welcome Screen -->
+        <div class="screen active" id="welcomeScreen">
+            <div class="welcome-content">
+                <div class="welcome-header">
+                    <div class="welcome-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h1>Examen Diagnóstico Inteligente</h1>
+                    <p class="welcome-subtitle">Vamos a conocerte mejor para personalizar tu experiencia de aprendizaje</p>
+                </div>
+
+                <div class="welcome-features">
+                    <div class="feature-item">
+                        <i class="fas fa-adaptive-icon"></i>
+                        <h3>Adaptativo</h3>
+                        <p>Se ajusta a tu nivel en tiempo real</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Flexible</h3>
+                        <p>Toma el tiempo que necesites</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-target"></i>
+                        <h3>Personalizado</h3>
+                        <p>Contenido diseñado para ti</p>
+                    </div>
+                </div>
+
+                <div class="welcome-info">
+                    <div class="info-card">
+                        <h4>¿Cómo funciona?</h4>
+                        <ul>
+                            <li>Responde preguntas sobre tus conocimientos</li>
+                            <li>El sistema se adapta a tus respuestas</li>
+                            <li>Recibe contenido personalizado para tu nivel</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-large" id="startExam">
+                    <i class="fas fa-play"></i>
+                    Comenzar Diagnóstico
+                </button>
+            </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div class="screen" id="questionScreen">
+            <div class="question-container">
+                <!-- Progress Header -->
+                <div class="progress-header">
+                    <div class="progress-info">
+                        <span class="progress-text">Pregunta <span id="currentQuestion">1</span></span>
+                        <span class="ai-status" id="aiStatus">
+                            <i class="fas fa-brain pulse"></i>
+                            Analizando tu nivel...
+                        </span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- Question Content -->
+                <div class="question-content">
+                    <div class="question-header">
+                        <h2 class="question-title" id="questionTitle">¿Cuál es tu experiencia previa en programación?</h2>
+                        <p class="question-description" id="questionDescription">Esta información nos ayuda a personalizar tu experiencia</p>
+                    </div>
+
+                    <!-- Multiple Choice Questions -->
+                    <div class="question-type" id="multipleChoice">
+                        <div class="options-container" id="optionsContainer">
+                            <div class="option" data-value="none">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Nunca he programado</h4>
+                                        <p>Soy completamente nuevo en programación</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option" data-value="little">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Muy poco</h4>
+                                        <p>He visto algunos videos o tutoriales</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option" data-value="some">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-tree"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Algo de experiencia</h4>
+                                        <p>He escrito algunos programas básicos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option" data-value="moderate">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-forest"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Experiencia moderada</h4>
+                                        <p>Conozco varios lenguajes y conceptos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Editor Questions -->
+                    <div class="question-type" id="codeEditor" style="display: none;">
+                        <div class="code-question-content">
+                            <div class="code-instructions" id="codeInstructions">
+                                <h4>Completa el siguiente código</h4>
+                                <p>Escribe el código que falta para que el programa funcione correctamente</p>
+                            </div>
+                            
+                            <div class="code-editor-container">
+                                <div class="editor-header">
+                                    <div class="editor-tabs">
+                                        <div class="tab active">
+                                            <i class="fab fa-java"></i>
+                                            <span>MiPrograma.java</span>
+                                        </div>
+                                    </div>
+                                    <div class="editor-actions">
+                                        <button class="btn-secondary btn-small" id="resetCode">
+                                            <i class="fas fa-undo"></i>
+                                            Resetear
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-editor" id="codeEditorContent">
+                                    <div class="line-numbers" id="lineNumbers">
+                                        <span>1</span>
+                                        <span>2</span>
+                                        <span>3</span>
+                                        <span>4</span>
+                                        <span>5</span>
+                                    </div>
+                                    <textarea class="code-input" id="codeInput" placeholder="// Escribe tu código aquí..." spellcheck="false"></textarea>
+                                </div>
+                                
+                                <div class="code-feedback" id="codeFeedback">
+                                    <div class="feedback-item success" style="display: none;">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Sintaxis correcta</span>
+                                    </div>
+                                    <div class="feedback-item error" style="display: none;">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <span id="errorMessage">Error en la línea 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="question-navigation">
+                    <button class="btn-secondary" id="prevBtn" style="opacity: 0.5; pointer-events: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        Anterior
+                    </button>
+                    <button class="btn-primary" id="nextBtn" disabled>
+                        Siguiente
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Processing Screen -->
+        <div class="screen" id="processingScreen">
+            <div class="processing-content">
+                <div class="processing-animation">
+                    <div class="brain-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="processing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                
+                <h2>Analizando tus respuestas</h2>
+                <p class="processing-text" id="processingText">Nuestra IA está procesando tu perfil de aprendizaje...</p>
+                
+                <div class="processing-steps">
+                    <div class="step completed">
+                        <i class="fas fa-check"></i>
+                        <span>Respuestas recopiladas</span>
+                    </div>
+                    <div class="step processing">
+                        <i class="fas fa-cog fa-spin"></i>
+                        <span>Analizando patrones</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Generando recomendaciones</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-rocket"></i>
+                        <span>Preparando contenido</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="screen" id="resultsScreen">
+            <div class="results-content">
+                <div class="results-header">
+                    <div class="results-celebration">
+                        <div class="celebration-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h1>¡Diagnóstico Completado!</h1>
+                        <p class="celebration-text">Hemos creado tu perfil de aprendizaje personalizado</p>
+                    </div>
+                </div>
+
+                <div class="results-main">
+                    <div class="level-card">
+                        <div class="level-badge">
+                            <div class="badge-icon" id="levelIcon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="badge-text">
+                                <h3>Tu Nivel</h3>
+                                <h2 id="userLevel">Principiante</h2>
+                                <p id="levelDescription">Perfecto para comenzar desde los fundamentos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <div class="card-header">
+                                <i class="fas fa-star"></i>
+                                <h4>Fortalezas</h4>
+                            </div>
+                            <div class="card-content">
+                                <ul id="strengthsList">
+                                    <li>Motivación para aprender</li>
+                                    <li>Pensamiento lógico</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="card-header">
+                                <i class="fas fa-target"></i>
+                                <h4>Áreas de Enfoque</h4>
+                            </div>
+                            <div class="card-content">
+                                <ul id="focusAreasList">
+                                    <li>Sintaxis básica de Java</li>
+                                    <li>Conceptos fundamentales</li>
+                                    <li>Práctica con ejercicios</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="card-header">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <h4>Tu Ruta de Aprendizaje</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="learning-path">
+                                    <div class="path-step active">
+                                        <span class="step-number">1</span>
+                                        <span class="step-text">Introducción a Java</span>
+                                    </div>
+                                    <div class="path-step">
+                                        <span class="step-number">2</span>
+                                        <span class="step-text">Variables y Tipos</span>
+                                    </div>
+                                    <div class="path-step">
+                                        <span class="step-number">3</span>
+                                        <span class="step-text">Estructuras de Control</span>
+                                    </div>
+                                    <div class="path-step">
+                                        <span class="step-number">4</span>
+                                        <span class="step-text">Ejercicios Prácticos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-card stats-card">
+                            <div class="card-header">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Estadísticas</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="questionsAnswered">12</span>
+                                        <span class="stat-label">Preguntas</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="timeSpent">8m</span>
+                                        <span class="stat-label">Tiempo</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number" id="accuracyRate">75%</span>
+                                        <span class="stat-label">Precisión</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn-primary btn-large" id="startLearning">
+                        <i class="fas fa-rocket"></i>
+                        ¡Comenzar mi Aprendizaje!
+                    </button>
+                    <button class="btn-secondary" id="retakeExam">
+                        <i class="fas fa-redo"></i>
+                        Repetir Diagnóstico
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Cargando siguiente pregunta...</p>
+        </div>
+    </div>
+
+    <style>
+        /* CSS se copiará aquí */
+        /* Reset y Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #4A90E2;
+    --primary-green: #7ED321;
+    --accent-pink: #FF6B9D;
+    --accent-yellow: #F5A623;
+    --neutral-light: #F8F9FA;
+    --neutral-dark: #2C3E50;
+    --success: #27AE60;
+    --warning: #F39C12;
+    --error: #E74C3C;
+    --text-dark: #2C3E50;
+    --text-light: #7F8C8D;
+    --white: #FFFFFF;
+    --border: #E1E8ED;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    --code-bg: #1e1e1e;
+    --code-text: #d4d4d4;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.nav-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-name {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Main Container */
+.diagnostic-container {
+    padding-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Welcome Screen */
+.welcome-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.welcome-header {
+    margin-bottom: 3rem;
+}
+
+.welcome-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 3rem;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.welcome-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.welcome-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.welcome-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.feature-item {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.feature-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.welcome-info {
+    margin-bottom: 3rem;
+}
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.info-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.info-card ul {
+    list-style: none;
+}
+
+.info-card li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+    position: relative;
+    padding-left: 2rem;
+}
+
+.info-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: bold;
+}
+
+/* Question Screen */
+.question-container {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.progress-header {
+    background: var(--neutral-light);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.progress-text {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.ai-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.ai-status i {
+    animation: pulse 1.5s infinite;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+/* Question Content */
+.question-content {
+    padding: 3rem 2rem;
+}
+
+.question-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.question-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    line-height: 1.3;
+}
+
+.question-description {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* Multiple Choice Options */
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.option {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.option:hover {
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.option.selected {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.option.selected::after {
+    content: "✓";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 24px;
+    height: 24px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.option-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.option-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--neutral-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+.option-text h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--text-dark);
+}
+
+.option-text p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Code Editor */
+.code-question-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.code-instructions {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.code-instructions h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.code-instructions p {
+    color: var(--text-light);
+}
+
+.code-editor-container {
+    background: var(--code-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.editor-header {
+    background: #2d2d2d;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tab {
+    background: #3c3c3c;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--code-text);
+    font-size: 0.9rem;
+}
+
+.tab.active {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.code-editor {
+    display: flex;
+    min-height: 250px;
+}
+
+.line-numbers {
+    background: #252525;
+    padding: 1rem 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #6a6a6a;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 50px;
+    user-select: none;
+}
+
+.line-numbers span {
+    line-height: 1.8;
+    padding-right: 0.5rem;
+}
+
+.code-input {
+    flex: 1;
+    background: var(--code-bg);
+    border: none;
+    padding: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--code-text);
+    line-height: 1.8;
+    resize: none;
+    outline: none;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: auto;
+}
+
+.code-input::placeholder {
+    color: #6a6a6a;
+}
+
+.code-feedback {
+    background: #2d2d2d;
+    padding: 0.8rem 1rem;
+    border-top: 1px solid #3c3c3c;
+}
+
+.feedback-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.feedback-item.success {
+    color: var(--success);
+}
+
+.feedback-item.error {
+    color: var(--error);
+}
+
+/* Navigation */
+.question-navigation {
+    background: var(--neutral-light);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-large, .btn-small {
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    color: white;
+    padding: 0.8rem 1.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--border);
+    padding: 0.8rem 1.5rem;
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.btn-large {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Processing Screen */
+.processing-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.processing-animation {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.brain-icon {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 4rem;
+    color: white;
+    animation: processingPulse 2s infinite;
+}
+
+@keyframes processingPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(74, 144, 226, 0); }
+}
+
+.processing-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.processing-dots span {
+    width: 12px;
+    height: 12px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    animation: processingDots 1.5s infinite;
+}
+
+.processing-dots span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.processing-dots span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes processingDots {
+    0%, 60%, 100% { transform: scale(1); opacity: 0.7; }
+    30% { transform: scale(1.3); opacity: 1; }
+}
+
+.processing-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.processing-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.processing-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.step.completed {
+    opacity: 1;
+    background: rgba(39, 174, 96, 0.05);
+    border-left: 4px solid var(--success);
+}
+
+.step.processing {
+    opacity: 1;
+    background: rgba(74, 144, 226, 0.05);
+    border-left: 4px solid var(--primary-blue);
+}
+
+.step i {
+    width: 24px;
+    font-size: 1.2rem;
+}
+
+.step.completed i {
+    color: var(--success);
+}
+
+.step.processing i {
+    color: var(--primary-blue);
+}
+
+.step span {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Results Screen */
+.results-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.results-celebration {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.results-celebration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+}
+
+.celebration-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-yellow), var(--warning));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2.5rem;
+    color: white;
+    animation: celebrate 2s infinite;
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(5deg); }
+}
+
+.results-celebration h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.celebration-text {
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+/* Level Card */
+.level-card {
+    margin-bottom: 3rem;
+}
+
+.level-badge {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.badge-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.badge-text h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.badge-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.badge-text p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.result-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-header {
+    background: var(--neutral-light);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-header i {
+    color: var(--primary-blue);
+    font-size: 1.3rem;
+}
+
+.card-header h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content ul {
+    list-style: none;
+}
+
+.card-content li {
+    padding: 0.5rem 0;
+    color: var(--text-dark);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.card-content li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+/* Learning Path */
+.learning-path {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.path-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background: var(--neutral-light);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.path-step.active {
+    background: rgba(74, 144, 226, 0.1);
+    border-left: 4px solid var(--primary-blue);
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background: var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.path-step.active .step-number {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.step-text {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Stats Card */
+.stats-card .card-content {
+    padding: 1rem 1.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: var(--neutral-light);
+    border-radius: 8px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Results Actions */
+.results-actions {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.loading-spinner {
+    text-align: center;
+    color: white;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .diagnostic-container {
+        padding: 80px 1rem 2rem;
+    }
+    
+    .screen {
+        padding: 1rem;
+    }
+    
+    .welcome-features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .feature-item {
+        padding: 1.5rem;
+    }
+    
+    .question-content {
+        padding: 2rem 1rem;
+    }
+    
+    .question-title {
+        font-size: 1.5rem;
+    }
+    
+    .question-navigation {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .question-navigation .btn-secondary {
+        order: 2;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .level-badge {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .badge-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .code-editor {
+        flex-direction: column;
+    }
+    
+    .line-numbers {
+        flex-direction: row;
+        padding: 0.5rem 1rem;
+        min-width: auto;
+        min-height: auto;
+    }
+    
+    .code-input {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-content h1 {
+        font-size: 2rem;
+    }
+    
+    .question-title {
+        font-size: 1.3rem;
+    }
+    
+    .processing-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .results-celebration h1 {
+        font-size: 2rem;
+    }
+    
+    .badge-text h2 {
+        font-size: 2rem;
+    }
+    
+    .nav-container {
+        padding: 1rem;
+    }
+    
+    .user-name {
+        display: none;
+    }
+}
+
+/* Accessibility */
+.option:focus,
+.btn-primary:focus,
+.btn-secondary:focus,
+.code-input:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .question-navigation,
+    .results-actions {
+        display: none;
+    }
+    
+    .screen {
+        padding: 0;
+    }
+    
+    body {
+        background: white;
+    }
+}
+    </style>
+
+    <script>
+        /* JavaScript se copiará aquí */
+    </script>
+</body>
+</html>

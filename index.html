@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Código para Todos - Aprende Java de forma inteligente</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
+        </div>
+        <div class="nav-links">
+          <a href="#features" class="nav-link">Características</a>
+          <a href="#about" class="nav-link">Acerca de</a>
+          <button class="btn-login">Iniciar Sesión</button>
+        </div>
+        <div class="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <div class="code-pattern"></div>
+        <div class="floating-elements">
+          <div class="floating-element" data-speed="2">{ }</div>
+          <div class="floating-element" data-speed="3">&lt;/&gt;</div>
+          <div class="floating-element" data-speed="1">int x = 0;</div>
+          <div class="floating-element" data-speed="4">if(true)</div>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            Aprende Java de forma
+            <span class="gradient-text">inteligente</span>
+          </h1>
+          <p class="hero-subtitle">
+            Tu mentor personal de programación con IA que se adapta a como tú
+            aprendes
+          </p>
+          <div class="hero-buttons">
+            <button class="btn-primary" id="startJourney">
+              <i class="fas fa-rocket"></i>
+              ¡Empezar mi aventura!
+            </button>
+            <button class="btn-secondary">
+              <i class="fas fa-play"></i>
+              Ver demo
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="code-editor-mockup">
+            <div class="editor-header">
+              <div class="editor-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="editor-title">MiPrimerPrograma.java</span>
+            </div>
+            <div class="editor-content">
+              <div class="code-line">
+                <span class="line-number">1</span>
+                <span class="code"
+                  >public class
+                  <span class="highlight">MiPrograma</span> {</span
+                >
+              </div>
+              <div class="code-line">
+                <span class="line-number">2</span>
+                <span class="code">
+                  public static void main(String[] args) {</span
+                >
+              </div>
+              <div class="code-line typing-line">
+                <span class="line-number">3</span>
+                <span class="code">
+                  System.out.println("<span class="string">¡Hola mundo!</span
+                  >");</span
+                >
+                <span class="cursor">|</span>
+              </div>
+              <div class="code-line">
+                <span class="line-number">4</span>
+                <span class="code"> }</span>
+              </div>
+              <div class="code-line">
+                <span class="line-number">5</span>
+                <span class="code">}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-target="95">0</div>
+            <div class="stat-label">% mejora comprensión</div>
+            <div class="stat-description">
+              Los estudiantes entienden mejor los conceptos
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="80">0</div>
+            <div class="stat-label">% supera dificultades</div>
+            <div class="stat-description">
+              Temas que antes eran difíciles ahora son fáciles
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="71">0</div>
+            <div class="stat-label">% uso frecuente</div>
+            <div class="stat-description">Los estudiantes regresan por más</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">¿Por qué elegir Código para Todos?</h2>
+          <p class="section-subtitle">
+            Herramientas diseñadas para acelerar tu aprendizaje
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up" data-delay="0">
+            <div class="feature-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="feature-title">Diagnóstico Inteligente</h3>
+            <p class="feature-description">
+              Descubre tu nivel en minutos con nuestro examen adaptativo
+            </p>
+            <div class="feature-highlight">Personalizado para ti</div>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-delay="100">
+            <div class="feature-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="feature-title">IDE Todo-en-Uno</h3>
+            <p class="feature-description">
+              Programa sin instalar nada, con asistente de IA incluido
+            </p>
+            <div class="feature-highlight">Sin configuración</div>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-delay="200">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="feature-title">Competencias Live</h3>
+            <p class="feature-description">
+              Reta a tus compañeros en desafíos de programación en tiempo real
+            </p>
+            <div class="feature-highlight">Súper divertido</div>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-delay="300">
+            <div class="feature-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3 class="feature-title">Progreso Gamificado</h3>
+            <p class="feature-description">
+              Colecciona logros mientras aprendes y personaliza tu perfil
+            </p>
+            <div class="feature-highlight">Súper motivante</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">¿List@ para ser un ninja del código?</h2>
+          <p class="cta-subtitle">
+            Únete a miles de estudiantes que ya están dominando Java
+          </p>
+          <div class="cta-buttons">
+            <button class="btn-cta student" id="studentBtn">
+              <i class="fas fa-graduation-cap"></i>
+              <span>Soy Estudiante</span>
+              <div class="btn-subtitle">Empezar a aprender</div>
+            </button>
+            <button class="btn-cta teacher" id="teacherBtn">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <span>Soy Profesor</span>
+              <div class="btn-subtitle">Gestionar grupos</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <span class="logo-text">Código para Todos</span>
+            </div>
+            <p class="footer-description">
+              Democratizando la educación en programación
+            </p>
+            <div class="footer-company">
+              <span>Desarrollado por <strong>EduTec360°</strong></span>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Plataforma</h4>
+            <ul class="footer-links">
+              <li><a href="#">Características</a></li>
+              <li><a href="#">Cursos</a></li>
+              <li><a href="#">Competencias</a></li>
+              <li><a href="#">Precios</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Soporte</h4>
+            <ul class="footer-links">
+              <li><a href="#">Centro de ayuda</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">Documentación</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Legal</h4>
+            <ul class="footer-links">
+              <li><a href="#">Términos de uso</a></li>
+              <li><a href="#">Privacidad</a></li>
+              <li><a href="#">Cookies</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-copyright">
+            <p>&copy; 2025 EduTec360°. Todos los derechos reservados.</p>
+          </div>
+          <div class="footer-social">
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      /* CSS se copiará aquí */
+      /* Reset y Variables */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --neutral-light: #f8f9fa;
+        --neutral-dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --white: #ffffff;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--text-dark);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover {
+        color: var(--primary-blue);
+      }
+
+      .btn-login {
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: var(--border-radius);
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .mobile-menu {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        overflow: hidden;
+      }
+
+      .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .code-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            circle at 20% 80%,
+            rgba(74, 144, 226, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(126, 211, 33, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(255, 107, 157, 0.05) 0%,
+            transparent 50%
+          );
+      }
+
+      .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .floating-element {
+        position: absolute;
+        color: rgba(44, 62, 80, 0.1);
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        pointer-events: none;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-element:nth-child(1) {
+        top: 10%;
+        left: 10%;
+        font-size: 2rem;
+        animation-delay: 0s;
+      }
+
+      .floating-element:nth-child(2) {
+        top: 20%;
+        right: 20%;
+        font-size: 1.5rem;
+        animation-delay: 2s;
+      }
+
+      .floating-element:nth-child(3) {
+        bottom: 30%;
+        left: 15%;
+        font-size: 1rem;
+        animation-delay: 4s;
+      }
+
+      .floating-element:nth-child(4) {
+        bottom: 20%;
+        right: 10%;
+        font-size: 1.2rem;
+        animation-delay: 1s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        color: var(--text-light);
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 1rem 2rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+      }
+
+      .btn-secondary:hover {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      /* Code Editor Mockup */
+      .code-editor-mockup {
+        background: #1e1e1e;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        max-width: 500px;
+      }
+
+      .editor-header {
+        background: #2d2d2d;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .editor-dots {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .dot.red {
+        background: #ff5f57;
+      }
+      .dot.yellow {
+        background: #ffbd2e;
+      }
+      .dot.green {
+        background: #28ca42;
+      }
+
+      .editor-title {
+        color: #cccccc;
+        font-size: 0.9rem;
+      }
+
+      .editor-content {
+        padding: 1.5rem;
+        background: #1e1e1e;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+      }
+
+      .code-line {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .line-number {
+        color: #6a6a6a;
+        width: 30px;
+        text-align: right;
+        margin-right: 1rem;
+      }
+
+      .code {
+        color: #cccccc;
+      }
+
+      .highlight {
+        color: var(--accent-yellow);
+      }
+
+      .string {
+        color: var(--primary-green);
+      }
+
+      .cursor {
+        color: white;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Stats Section */
+      .stats-section {
+        padding: 4rem 0;
+        background: white;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        text-align: center;
+      }
+
+      .stat-item {
+        padding: 2rem;
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-description {
+        color: var(--text-light);
+        line-height: 1.5;
+      }
+
+      /* Features Section */
+      .features {
+        padding: 6rem 0;
+        background: var(--neutral-light);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-dark);
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .feature-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .feature-card:nth-child(2) .feature-icon {
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--accent-yellow)
+        );
+      }
+
+      .feature-card:nth-child(3) .feature-icon {
+        background: linear-gradient(
+          135deg,
+          var(--accent-pink),
+          var(--accent-yellow)
+        );
+      }
+
+      .feature-card:nth-child(4) .feature-icon {
+        background: linear-gradient(
+          135deg,
+          var(--accent-yellow),
+          var(--primary-blue)
+        );
+      }
+
+      .feature-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-dark);
+      }
+
+      .feature-description {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .feature-highlight {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 6rem 0;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .cta-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .cta-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .btn-cta {
+        background: white;
+        border: none;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+        min-width: 200px;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-cta:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn-cta i {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .btn-cta.student i {
+        color: var(--primary-blue);
+      }
+
+      .btn-cta.teacher i {
+        color: var(--primary-green);
+      }
+
+      .btn-cta span {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .btn-subtitle {
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--text-dark);
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-description {
+        color: #bdc3c7;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .footer-company {
+        color: #bdc3c7;
+        font-size: 0.9rem;
+      }
+
+      .footer-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-links a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--primary-blue);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #34495e;
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-copyright {
+        color: #bdc3c7;
+        font-size: 0.9rem;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        background: #34495e;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-link:hover {
+        background: var(--primary-blue);
+        transform: translateY(-2px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .cta-title {
+          font-size: 2rem;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        .feature-card {
+          padding: 2rem;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+
+    <script>
+      /* JavaScript se copiará aquí */
+      // DOM Elements
+      const startJourneyBtn = document.getElementById("startJourney");
+      const studentBtn = document.getElementById("studentBtn");
+      const teacherBtn = document.getElementById("teacherBtn");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const navLinks = document.querySelector(".nav-links");
+
+      // Counter Animation for Stats
+      function animateCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+
+        counters.forEach((counter) => {
+          const target = parseInt(counter.getAttribute("data-target"));
+          const increment = target / 200;
+          let current = 0;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              counter.textContent = target + "%";
+              clearInterval(timer);
+            } else {
+              counter.textContent = Math.ceil(current) + "%";
+            }
+          }, 10);
+        });
+      }
+
+      // Intersection Observer for Stats Animation
+      const statsSection = document.querySelector(".stats-section");
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              statsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      if (statsSection) {
+        statsObserver.observe(statsSection);
+      }
+
+      // Typing Animation for Code Editor
+      function typeCode() {
+        const typingLine = document.querySelector(".typing-line .code");
+        const cursor = document.querySelector(".cursor");
+        const text = 'System.out.println("¡Hola mundo!");';
+        let i = 0;
+
+        // Clear initial content and show just the beginning
+        typingLine.innerHTML = "        ";
+
+        const typeTimer = setInterval(() => {
+          if (i < text.length) {
+            typingLine.innerHTML = "        " + text.substring(0, i + 1);
+            i++;
+          } else {
+            clearInterval(typeTimer);
+            // Remove cursor after typing is complete
+            setTimeout(() => {
+              cursor.style.display = "none";
+            }, 2000);
+          }
+        }, 100);
+      }
+
+      // Start typing animation when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(typeCode, 2000);
+      });
+
+      // Smooth Scrolling for Navigation Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Mobile Menu Toggle
+      if (mobileMenu && navLinks) {
+        mobileMenu.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+
+          // Change hamburger to X
+          const icon = mobileMenu.querySelector("i");
+          if (navLinks.classList.contains("active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
+        });
+      }
+
+      // Floating Elements Animation
+      function animateFloatingElements() {
+        const elements = document.querySelectorAll(".floating-element");
+
+        elements.forEach((element, index) => {
+          // Random position within viewport
+          const x = Math.random() * (window.innerWidth - 200);
+          const y = Math.random() * (window.innerHeight - 100);
+
+          element.style.left = x + "px";
+          element.style.top = y + "px";
+
+          // Add random animation delay
+          element.style.animationDelay = Math.random() * 4 + "s";
+        });
+      }
+
+      // Initialize floating elements
+      document.addEventListener("DOMContentLoaded", animateFloatingElements);
+
+      // Parallax Effect for Floating Elements
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const elements = document.querySelectorAll(".floating-element");
+
+        elements.forEach((element, index) => {
+          const speed = element.getAttribute("data-speed") || 1;
+          const yPos = -(scrolled * speed * 0.1);
+          element.style.transform = `translateY(${yPos}px)`;
+        });
+      });
+
+      // Navbar Background on Scroll
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.style.background = "rgba(255, 255, 255, 0.98)";
+          navbar.style.boxShadow = "0 2px 20px rgba(0,0,0,0.1)";
+        } else {
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+          navbar.style.boxShadow = "none";
+        }
+      });
+
+      // Feature Cards Hover Effect
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-8px) scale(1.02)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0) scale(1)";
+        });
+      });
+
+      // Button Click Handlers
+      if (startJourneyBtn) {
+        startJourneyBtn.addEventListener("click", () => {
+          // Add click animation
+          startJourneyBtn.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            startJourneyBtn.style.transform = "scale(1)";
+          }, 150);
+
+          // Show modal or redirect
+          showRoleSelectionModal();
+        });
+      }
+
+      if (studentBtn) {
+        studentBtn.addEventListener("click", () => {
+          console.log("Redirecting to student registration...");
+          // Here you would redirect to student signup/login
+          alert("¡Genial! Te llevaremos al registro de estudiantes 🎓");
+        });
+      }
+
+      if (teacherBtn) {
+        teacherBtn.addEventListener("click", () => {
+          console.log("Redirecting to teacher registration...");
+          // Here you would redirect to teacher signup/login
+          alert("¡Excelente! Te llevaremos al panel de profesores 👩‍🏫");
+        });
+      }
+
+      // Role Selection Modal
+      function showRoleSelectionModal() {
+        // Create modal if it doesn't exist
+        if (!document.querySelector(".role-modal")) {
+          const modal = document.createElement("div");
+          modal.className = "role-modal";
+          modal.innerHTML = `
+            <div class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>¿Cuál es tu rol?</h3>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Selecciona tu perfil para personalizar tu experiencia</p>
+                        <div class="role-options">
+                            <button class="role-option student">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Estudiante</span>
+                                <small>Quiero aprender Java</small>
+                            </button>
+                            <button class="role-option teacher">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <span>Profesor</span>
+                                <small>Quiero gestionar grupos</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+          // Add modal styles
+          const modalStyles = `
+            .role-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10000;
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+            }
+            
+            .role-modal.active {
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .modal-overlay {
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+            
+            .modal-content {
+                background: white;
+                border-radius: 12px;
+                max-width: 500px;
+                width: 100%;
+                max-height: 90vh;
+                overflow-y: auto;
+                transform: scale(0.8);
+                transition: all 0.3s ease;
+            }
+            
+            .role-modal.active .modal-content {
+                transform: scale(1);
+            }
+            
+            .modal-header {
+                padding: 2rem 2rem 1rem;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .modal-header h3 {
+                margin: 0;
+                color: var(--text-dark);
+            }
+            
+            .modal-close {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--text-light);
+                padding: 0;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal-body {
+                padding: 2rem;
+            }
+            
+            .modal-body p {
+                text-align: center;
+                color: var(--text-light);
+                margin-bottom: 2rem;
+            }
+            
+            .role-options {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            
+            .role-option {
+                background: white;
+                border: 2px solid #eee;
+                border-radius: 12px;
+                padding: 2rem 1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .role-option:hover {
+                border-color: var(--primary-blue);
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-hover);
+            }
+            
+            .role-option i {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .role-option.student i {
+                color: var(--primary-blue);
+            }
+            
+            .role-option.teacher i {
+                color: var(--primary-green);
+            }
+            
+            .role-option span {
+                font-weight: 600;
+                color: var(--text-dark);
+            }
+            
+            .role-option small {
+                color: var(--text-light);
+                font-size: 0.9rem;
+            }
+            
+            @media (max-width: 480px) {
+                .role-options {
+                    grid-template-columns: 1fr;
+                }
+                
+                .modal-body {
+                    padding: 1.5rem;
+                }
+                
+                .modal-header {
+                    padding: 1.5rem 1.5rem 1rem;
+                }
+            }
+        `;
+
+          // Add styles to head
+          const styleSheet = document.createElement("style");
+          styleSheet.textContent = modalStyles;
+          document.head.appendChild(styleSheet);
+
+          document.body.appendChild(modal);
+
+          // Add event listeners
+          modal.querySelector(".modal-close").addEventListener("click", () => {
+            closeModal();
+          });
+
+          modal
+            .querySelector(".modal-overlay")
+            .addEventListener("click", (e) => {
+              if (e.target === modal.querySelector(".modal-overlay")) {
+                closeModal();
+              }
+            });
+
+          modal
+            .querySelector(".role-option.student")
+            .addEventListener("click", () => {
+              closeModal();
+              setTimeout(() => {
+                alert("¡Genial! Te llevaremos al registro de estudiantes 🎓");
+              }, 300);
+            });
+
+          modal
+            .querySelector(".role-option.teacher")
+            .addEventListener("click", () => {
+              closeModal();
+              setTimeout(() => {
+                alert("¡Excelente! Te llevaremos al panel de profesores 👩‍🏫");
+              }, 300);
+            });
+        }
+
+        // Show modal
+        const modal = document.querySelector(".role-modal");
+        setTimeout(() => {
+          modal.classList.add("active");
+        }, 10);
+      }
+
+      function closeModal() {
+        const modal = document.querySelector(".role-modal");
+        if (modal) {
+          modal.classList.remove("active");
+        }
+      }
+
+      // Escape key to close modal
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // Add some Easter Eggs
+      let clickCount = 0;
+      document.querySelector(".logo-icon").addEventListener("click", () => {
+        clickCount++;
+        if (clickCount === 5) {
+          alert(
+            "🎉 ¡Has encontrado un Easter Egg! Eres un verdadero explorador del código 🕵️‍♂️"
+          );
+          clickCount = 0;
+        }
+      });
+
+      // Performance optimization: Debounce scroll events
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Apply debounce to scroll events
+      const debouncedScroll = debounce(() => {
+        // Any expensive scroll operations go here
+      }, 10);
+
+      window.addEventListener("scroll", debouncedScroll);
+
+      // Console welcome message
+      console.log(`
+🎯 ¡Bienvenido a Código para Todos!
+💻 Desarrollado por EduTec360°
+🚀 ¿Listo para aprender Java?
+
+Pst... hay algunos Easter Eggs escondidos 🥚
+`);
+
+      // Add loading animation
+      window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+
+        // Add a subtle animation to elements when page loads
+        const elements = document.querySelectorAll(".feature-card, .stat-item");
+        elements.forEach((el, index) => {
+          setTimeout(() => {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          }, index * 100);
+        });
+      });
+
+      // Initialize everything when DOM is ready
+      document.addEventListener("DOMContentLoaded", () => {
+        // Set initial opacity for animation
+        const elements = document.querySelectorAll(".feature-card, .stat-item");
+        elements.forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "all 0.6s ease";
+        });
+
+        console.log("🎉 Código para Todos cargado exitosamente!");
+      });
+    </script>
+  </body>
+</html>
