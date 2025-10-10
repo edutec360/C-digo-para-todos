@@ -1,0 +1,2648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Competencia | Código para Todos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS será copiado aquí */
+        /* Variables CSS */
+:root {
+    --primary-blue: #4A90E2;
+    --primary-green: #7ED321;
+    --accent-pink: #FF6B9D;
+    --accent-yellow: #F5A623;
+    --java-color: #ED8B00;
+    --success: #27AE60;
+    --warning: #F39C12;
+    --error: #E74C3C;
+    --neutral-light: #F8F9FA;
+    --neutral-dark: #2C3E50;
+    --text-primary: #2C3E50;
+    --text-secondary: #6C757D;
+    --border-light: #E9ECEF;
+    --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+    --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+    --transition: all 0.3s ease;
+    --border-radius: 12px;
+}
+
+/* Reset y Estilos Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: white;
+    box-shadow: var(--shadow-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nav-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--border-light);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.nav-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-light);
+}
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.nav-profile:hover {
+    background: var(--neutral-light);
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.profile-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.profile-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Main Content */
+.create-competition-main {
+    margin-top: 70px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Progress Steps */
+.progress-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--border-light);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.step.active .step-number,
+.step.completed .step-number {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.step.completed .step-number {
+    background: var(--success);
+}
+
+.step-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.step.active .step-label,
+.step.completed .step-label {
+    color: var(--text-primary);
+}
+
+.step-line {
+    width: 80px;
+    height: 2px;
+    background: var(--border-light);
+    margin: 0 20px;
+    transition: var(--transition);
+}
+
+.step.active + .step-line,
+.step.completed + .step-line {
+    background: var(--primary-blue);
+}
+
+/* Form Section */
+.form-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: var(--shadow-light);
+}
+
+.competition-form {
+    position: relative;
+}
+
+.form-step {
+    display: none;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.step-header h2 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.step-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.form-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Form Controls */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.form-group label i {
+    color: var(--primary-blue);
+    width: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px 16px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+/* Configuration Cards */
+.config-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.config-card {
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    background: white;
+    transition: var(--transition);
+}
+
+.config-card:hover {
+    border-color: var(--primary-blue);
+    box-shadow: var(--shadow-light);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.card-header i {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+/* Duration Options */
+.duration-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.duration-option {
+    cursor: pointer;
+}
+
+.duration-option input {
+    display: none;
+}
+
+.option-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    transition: var(--transition);
+    background: white;
+}
+
+.duration-option input:checked + .option-content {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.duration-time {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.duration-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Questions Slider */
+.questions-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.questions-slider label {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.questions-slider input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border-light);
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.questions-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    cursor: pointer;
+}
+
+.questions-slider input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    cursor: pointer;
+    border: none;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: -8px;
+}
+
+.current-value {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+/* Difficulty Grid */
+.difficulty-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.difficulty-option {
+    cursor: pointer;
+}
+
+.difficulty-option input {
+    display: none;
+}
+
+.difficulty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    transition: var(--transition);
+    background: white;
+}
+
+.difficulty-option input:checked + .difficulty-content {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.difficulty-content i {
+    font-size: 1.5rem;
+}
+
+.difficulty-content.beginner i {
+    color: var(--primary-green);
+}
+
+.difficulty-content.intermediate i {
+    color: var(--primary-blue);
+}
+
+.difficulty-content.advanced i {
+    color: var(--accent-yellow);
+}
+
+.difficulty-content.mixed i {
+    color: var(--accent-pink);
+}
+
+.difficulty-content span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Scoring Options */
+.scoring-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.scoring-modifiers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modifier-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.modifier-option:hover {
+    background: var(--neutral-light);
+}
+
+.modifier-option input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-light);
+    border-radius: 4px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.modifier-option input:checked + .checkmark {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.modifier-option input:checked + .checkmark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 10px;
+}
+
+/* Timing Section */
+.timing-section {
+    margin-bottom: 30px;
+}
+
+.timing-section h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.timing-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.timing-option {
+    cursor: pointer;
+}
+
+.timing-option input {
+    display: none;
+}
+
+.timing-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    background: white;
+}
+
+.timing-option input:checked + .timing-content {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.timing-content i {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    width: 30px;
+    text-align: center;
+}
+
+.timing-info {
+    flex: 1;
+}
+
+.timing-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.timing-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.scheduled-details {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--neutral-light);
+    border-radius: var(--border-radius);
+}
+
+/* Invitation Section */
+.invitation-section {
+    margin-bottom: 30px;
+}
+
+.invitation-section h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.invitation-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.invitation-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.invitation-option:hover {
+    background: var(--neutral-light);
+}
+
+.invitation-text {
+    flex: 1;
+}
+
+.invitation-text strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.invitation-text small {
+    color: var(--text-secondary);
+}
+
+/* Participants Preview */
+.participants-preview {
+    margin-bottom: 30px;
+}
+
+.participants-preview h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.group-preview {
+    border: 2px dashed var(--border-light);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    background: var(--neutral-light);
+}
+
+.preview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-secondary);
+}
+
+.preview-placeholder i {
+    font-size: 2rem;
+}
+
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.student-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+}
+
+.student-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.student-name {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Review Section */
+.review-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.review-card {
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    background: white;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.review-header i {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+}
+
+.review-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.review-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.review-value {
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+/* Competition Code Card */
+.competition-code-card {
+    grid-column: 1 / -1;
+    border: 2px solid var(--primary-blue);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    background: rgba(74, 144, 226, 0.05);
+    text-align: center;
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.code-header i {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+}
+
+.code-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.generated-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.code-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid var(--primary-blue);
+}
+
+.copy-code-btn {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-code-btn:hover {
+    background: #3a7bd5;
+    transform: translateY(-2px);
+}
+
+/* Navigation Buttons */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-light);
+}
+
+.nav-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.nav-btn.secondary {
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+}
+
+.nav-btn.secondary:hover {
+    background: var(--border-light);
+    color: var(--text-primary);
+}
+
+.nav-btn.primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.nav-btn.primary:hover {
+    background: #3a7bd5;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.nav-btn.success {
+    background: var(--success);
+    color: white;
+}
+
+.nav-btn.success:hover {
+    background: #219a52;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Success Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    transform: translateY(-20px);
+    transition: var(--transition);
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0);
+}
+
+.modal-content {
+    padding: 40px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.success-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.modal-content h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.competition-details {
+    background: var(--neutral-light);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.detail-value.code {
+    font-family: 'Courier New', monospace;
+    background: var(--primary-blue);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.detail-value.status {
+    color: var(--warning);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.action-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.action-btn.secondary {
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+}
+
+.action-btn.secondary:hover {
+    background: var(--border-light);
+    color: var(--text-primary);
+}
+
+.action-btn.primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.action-btn.primary:hover {
+    background: #3a7bd5;
+    transform: translateY(-2px);
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    background: white;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: var(--shadow-medium);
+    border-left: 4px solid var(--success);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 3000;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    color: var(--success);
+    font-size: 1.2rem;
+}
+
+.toast-message {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.toast-close:hover {
+    color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .create-competition-main {
+        padding: 20px;
+    }
+    
+    .config-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .review-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .create-competition-main {
+        padding: 15px;
+    }
+    
+    .progress-section,
+    .form-section {
+        padding: 20px;
+    }
+    
+    .progress-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .step {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .step-line {
+        width: 2px;
+        height: 30px;
+        margin: 10px 0;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .config-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .duration-options,
+    .difficulty-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timing-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .modal-content {
+        padding: 30px 20px;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Estados de focus para accesibilidad */
+.step:focus,
+.duration-option:focus,
+.difficulty-option:focus,
+.timing-option:focus,
+.invitation-option:focus {
+    outline: 3px solid rgba(74, 144, 226, 0.3);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Estados de hover mejorados */
+.config-card:hover {
+    transform: translateY(-2px);
+}
+
+.review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.step:hover .step-number {
+    transform: scale(1.1);
+}
+
+/* Utilidades */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.hidden { display: none !important; }
+.visible { display: block !important; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="back-btn" id="backToDashboard">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Volver al Dashboard</span>
+                </button>
+                <div class="nav-divider"></div>
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Código para Todos</span>
+                </div>
+                <span class="nav-subtitle">Crear Competencia</span>
+            </div>
+            
+            <div class="nav-profile">
+                <div class="profile-info">
+                    <span class="profile-name">Dr. Fernando Castillo</span>
+                    <span class="profile-role">Docente</span>
+                </div>
+                <div class="profile-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Fernando+Castillo&background=4A90E2&color=fff&size=40" alt="Dr. Fernando Castillo">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="create-competition-main">
+        <!-- Progress Steps -->
+        <section class="progress-section">
+            <div class="progress-container">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Información Básica</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Configuración</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Participantes</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Revisión</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Container -->
+        <section class="form-section">
+            <form id="competitionForm" class="competition-form">
+                
+                <!-- Step 1: Basic Information -->
+                <div class="form-step active" id="step1">
+                    <div class="step-header">
+                        <h2>Información Básica</h2>
+                        <p>Define el nombre, tipo y tema de la competencia</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="competitionName">
+                                    <i class="fas fa-trophy"></i>
+                                    Nombre de la Competencia
+                                </label>
+                                <input type="text" id="competitionName" placeholder="ej. Lógica Básica Java" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="competitionType">
+                                    <i class="fas fa-gamepad"></i>
+                                    Tipo de Competencia
+                                </label>
+                                <select id="competitionType" required>
+                                    <option value="">Seleccionar tipo</option>
+                                    <option value="speed">Velocidad - Responder rápido (bonus por tiempo)</option>
+                                    <option value="precision">Precisión - Respuestas correctas (penalización por errores)</option>
+                                    <option value="knowledge">Conocimiento - Preguntas complejas (sin limite de tiempo)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="targetGroup">
+                                    <i class="fas fa-users"></i>
+                                    Grupo Objetivo
+                                </label>
+                                <select id="targetGroup" required>
+                                    <option value="">Seleccionar grupo</option>
+                                    <option value="java-itesm">Programación Java - ITESM (32 estudiantes)</option>
+                                    <option value="web-unam">Fundamentos Web - UNAM (28 estudiantes)</option>
+                                    <option value="oop-itesm">POO Avanzado - ITESM (15 estudiantes)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="competitionTopic">
+                                    <i class="fas fa-book"></i>
+                                    Tema de la Competencia
+                                </label>
+                                <select id="competitionTopic" required disabled>
+                                    <option value="">Primero selecciona un grupo</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="competitionDescription">
+                                <i class="fas fa-align-left"></i>
+                                Descripción (Opcional)
+                            </label>
+                            <textarea id="competitionDescription" placeholder="Describe el objetivo y temática de la competencia"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Configuration -->
+                <div class="form-step" id="step2">
+                    <div class="step-header">
+                        <h2>Configuración</h2>
+                        <p>Ajusta la duración, dificultad y sistema de puntuación</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="config-cards">
+                            <div class="config-card">
+                                <div class="card-header">
+                                    <i class="fas fa-clock"></i>
+                                    <h3>Duración</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="duration-options">
+                                        <label class="duration-option">
+                                            <input type="radio" name="duration" value="5" required>
+                                            <span class="option-content">
+                                                <span class="duration-time">5 min</span>
+                                                <span class="duration-desc">Rápida</span>
+                                            </span>
+                                        </label>
+                                        <label class="duration-option">
+                                            <input type="radio" name="duration" value="10" required>
+                                            <span class="option-content">
+                                                <span class="duration-time">10 min</span>
+                                                <span class="duration-desc">Estándar</span>
+                                            </span>
+                                        </label>
+                                        <label class="duration-option">
+                                            <input type="radio" name="duration" value="15" required>
+                                            <span class="option-content">
+                                                <span class="duration-time">15 min</span>
+                                                <span class="duration-desc">Extendida</span>
+                                            </span>
+                                        </label>
+                                        <label class="duration-option">
+                                            <input type="radio" name="duration" value="30" required>
+                                            <span class="option-content">
+                                                <span class="duration-time">30 min</span>
+                                                <span class="duration-desc">Completa</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="config-card">
+                                <div class="card-header">
+                                    <i class="fas fa-question-circle"></i>
+                                    <h3>Preguntas</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="questions-slider">
+                                        <label for="questionCount">Número de preguntas</label>
+                                        <input type="range" id="questionCount" min="5" max="20" value="10" step="5">
+                                        <div class="slider-labels">
+                                            <span>5</span>
+                                            <span>10</span>
+                                            <span>15</span>
+                                            <span>20</span>
+                                        </div>
+                                        <div class="current-value">
+                                            <span id="questionCountValue">10</span> preguntas
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="config-card">
+                                <div class="card-header">
+                                    <i class="fas fa-signal"></i>
+                                    <h3>Dificultad</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="difficulty-grid">
+                                        <label class="difficulty-option">
+                                            <input type="radio" name="difficulty" value="beginner" required>
+                                            <span class="difficulty-content beginner">
+                                                <i class="fas fa-seedling"></i>
+                                                <span>Principiante</span>
+                                            </span>
+                                        </label>
+                                        <label class="difficulty-option">
+                                            <input type="radio" name="difficulty" value="intermediate" required>
+                                            <span class="difficulty-content intermediate">
+                                                <i class="fas fa-star"></i>
+                                                <span>Intermedio</span>
+                                            </span>
+                                        </label>
+                                        <label class="difficulty-option">
+                                            <input type="radio" name="difficulty" value="advanced" required>
+                                            <span class="difficulty-content advanced">
+                                                <i class="fas fa-crown"></i>
+                                                <span>Avanzado</span>
+                                            </span>
+                                        </label>
+                                        <label class="difficulty-option">
+                                            <input type="radio" name="difficulty" value="mixed" required>
+                                            <span class="difficulty-content mixed">
+                                                <i class="fas fa-random"></i>
+                                                <span>Mixto</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="config-card">
+                                <div class="card-header">
+                                    <i class="fas fa-star"></i>
+                                    <h3>Puntuación</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="scoring-options">
+                                        <div class="form-group">
+                                            <label for="pointsPerQuestion">Puntos por respuesta correcta</label>
+                                            <select id="pointsPerQuestion">
+                                                <option value="10">10 puntos</option>
+                                                <option value="15" selected>15 puntos</option>
+                                                <option value="20">20 puntos</option>
+                                            </select>
+                                        </div>
+                                        <div class="scoring-modifiers">
+                                            <label class="modifier-option">
+                                                <input type="checkbox" id="timeBonus" checked>
+                                                <span class="checkmark"></span>
+                                                <span>Bonus por velocidad (+5 puntos)</span>
+                                            </label>
+                                            <label class="modifier-option">
+                                                <input type="checkbox" id="streakBonus">
+                                                <span class="checkmark"></span>
+                                                <span>Bonus por racha (+2 puntos por respuesta consecutiva)</span>
+                                            </label>
+                                            <label class="modifier-option">
+                                                <input type="checkbox" id="penaltyWrong">
+                                                <span class="checkmark"></span>
+                                                <span>Penalización por error (-5 puntos)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Participants -->
+                <div class="form-step" id="step3">
+                    <div class="step-header">
+                        <h2>Participantes</h2>
+                        <p>Configura cuándo iniciar y cómo invitar a los estudiantes</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="timing-section">
+                            <h3>Programación</h3>
+                            <div class="timing-options">
+                                <label class="timing-option">
+                                    <input type="radio" name="timing" value="now" checked>
+                                    <span class="timing-content">
+                                        <i class="fas fa-play"></i>
+                                        <div class="timing-info">
+                                            <span class="timing-title">Iniciar Ahora</span>
+                                            <span class="timing-desc">Los estudiantes podrán unirse inmediatamente</span>
+                                        </div>
+                                    </span>
+                                </label>
+                                <label class="timing-option">
+                                    <input type="radio" name="timing" value="scheduled">
+                                    <span class="timing-content">
+                                        <i class="fas fa-calendar"></i>
+                                        <div class="timing-info">
+                                            <span class="timing-title">Programar</span>
+                                            <span class="timing-desc">Establecer fecha y hora específica</span>
+                                        </div>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="scheduled-details" id="scheduledDetails" style="display: none;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="scheduledDate">Fecha</label>
+                                        <input type="date" id="scheduledDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="scheduledTime">Hora</label>
+                                        <input type="time" id="scheduledTime">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="invitation-section">
+                            <h3>Invitaciones</h3>
+                            <div class="invitation-options">
+                                <label class="invitation-option">
+                                    <input type="checkbox" id="autoInvite" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="invitation-text">
+                                        <strong>Invitar automáticamente a todo el grupo</strong>
+                                        <small>Se enviará notificación a todos los estudiantes del grupo seleccionado</small>
+                                    </span>
+                                </label>
+                                <label class="invitation-option">
+                                    <input type="checkbox" id="shareCode">
+                                    <span class="checkmark"></span>
+                                    <span class="invitation-text">
+                                        <strong>Compartir código de acceso</strong>
+                                        <small>Los estudiantes podrán unirse manualmente con el código</small>
+                                    </span>
+                                </label>
+                                <label class="invitation-option">
+                                    <input type="checkbox" id="emailInvite">
+                                    <span class="checkmark"></span>
+                                    <span class="invitation-text">
+                                        <strong>Enviar invitación por email</strong>
+                                        <small>Se enviará un correo con los detalles de la competencia</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="participants-preview">
+                            <h3>Vista Previa de Participantes</h3>
+                            <div class="group-preview" id="groupPreview">
+                                <div class="preview-placeholder">
+                                    <i class="fas fa-users"></i>
+                                    <span>Selecciona un grupo en el paso anterior para ver los participantes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Review -->
+                <div class="form-step" id="step4">
+                    <div class="step-header">
+                        <h2>Revisión Final</h2>
+                        <p>Revisa todos los detalles antes de crear la competencia</p>
+                    </div>
+                    
+                    <div class="form-content">
+                        <div class="review-container">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <i class="fas fa-info-circle"></i>
+                                    <h3>Información Básica</h3>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-item">
+                                        <span class="review-label">Nombre:</span>
+                                        <span class="review-value" id="reviewName">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Tipo:</span>
+                                        <span class="review-value" id="reviewType">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Grupo:</span>
+                                        <span class="review-value" id="reviewGroup">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Tema:</span>
+                                        <span class="review-value" id="reviewTopic">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <i class="fas fa-cog"></i>
+                                    <h3>Configuración</h3>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-item">
+                                        <span class="review-label">Duración:</span>
+                                        <span class="review-value" id="reviewDuration">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Preguntas:</span>
+                                        <span class="review-value" id="reviewQuestions">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Dificultad:</span>
+                                        <span class="review-value" id="reviewDifficulty">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Puntos por respuesta:</span>
+                                        <span class="review-value" id="reviewPoints">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <i class="fas fa-users"></i>
+                                    <h3>Participantes y Programación</h3>
+                                </div>
+                                <div class="review-content">
+                                    <div class="review-item">
+                                        <span class="review-label">Inicio:</span>
+                                        <span class="review-value" id="reviewTiming">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Invitaciones:</span>
+                                        <span class="review-value" id="reviewInvitations">-</span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Participantes esperados:</span>
+                                        <span class="review-value" id="reviewParticipants">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="competition-code-card">
+                                <div class="code-header">
+                                    <i class="fas fa-key"></i>
+                                    <h3>Código de Competencia</h3>
+                                </div>
+                                <div class="code-content">
+                                    <div class="generated-code">
+                                        <span class="code-value" id="generatedCode">COMP2025</span>
+                                        <button type="button" class="copy-code-btn" id="copyCodeBtn">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                    <small>Los estudiantes usarán este código para unirse a la competencia</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" class="nav-btn secondary" id="prevBtn" style="display: none;">
+                        <i class="fas fa-chevron-left"></i>
+                        Anterior
+                    </button>
+                    <button type="button" class="nav-btn primary" id="nextBtn">
+                        Siguiente
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button type="submit" class="nav-btn success" id="createBtn" style="display: none;">
+                        <i class="fas fa-trophy"></i>
+                        Crear Competencia
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-content">
+                <div class="success-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2>¡Competencia Creada Exitosamente!</h2>
+                <p>Tu competencia "<span id="modalCompetitionName">Lógica Básica Java</span>" ha sido creada.</p>
+                
+                <div class="competition-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Código de acceso:</span>
+                        <span class="detail-value code" id="modalCompetitionCode">COMP2025</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Participantes invitados:</span>
+                        <span class="detail-value" id="modalParticipantCount">32 estudiantes</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Estado:</span>
+                        <span class="detail-value status" id="modalStatus">Esperando participantes</span>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="action-btn secondary" id="viewCompetitionsBtn">
+                        Ver Mis Competencias
+                    </button>
+                    <button class="action-btn primary" id="monitorCompetitionBtn">
+                        Monitorear en Vivo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-content">
+            <i class="toast-icon fas fa-check-circle"></i>
+            <span class="toast-message">Acción completada exitosamente</span>
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script>
+        /* JavaScript será copiado aquí */
+        // Variables globales para crear competencia
+let currentStep = 1;
+let totalSteps = 4;
+let competitionData = {
+    name: '',
+    type: '',
+    group: '',
+    topic: '',
+    description: '',
+    duration: '',
+    questions: 10,
+    difficulty: '',
+    pointsPerQuestion: 15,
+    timeBonus: true,
+    streakBonus: false,
+    penaltyWrong: false,
+    timing: 'now',
+    scheduledDate: '',
+    scheduledTime: '',
+    autoInvite: true,
+    shareCode: false,
+    emailInvite: false,
+    code: ''
+};
+
+// Datos de grupos y temas
+const groupsData = {
+    'java-itesm': {
+        name: 'Programación Java - ITESM',
+        students: 32,
+        topics: ['Variables', 'if/else', 'Ciclos For', 'Arrays', 'Métodos', 'POO Básico']
+    },
+    'web-unam': {
+        name: 'Fundamentos Web - UNAM',
+        students: 28,
+        topics: ['HTML', 'CSS', 'JavaScript', 'DOM', 'APIs']
+    },
+    'oop-itesm': {
+        name: 'POO Avanzado - ITESM',
+        students: 15,
+        topics: ['Clases', 'Herencia', 'Polimorfismo', 'Interfaces', 'Patrones']
+    }
+};
+
+// Estudiantes mock para preview
+const studentsData = {
+    'java-itesm': [
+        'Carlos Ruiz', 'Ana García', 'María López', 'Diego Morales', 'Sofía Martínez',
+        'Luis Hernández', 'Roberto Silva', 'Carmen Vega', 'Patricia Ramos', 'Miguel Torres'
+    ],
+    'web-unam': [
+        'Juan Pérez', 'Laura Díaz', 'José Mendoza', 'Isabel Vargas', 'Eduardo Luna',
+        'Gabriela Soto', 'Ricardo Moreno', 'Valentina Castro', 'Andrés Ruiz', 'Natalia Vega'
+    ],
+    'oop-itesm': [
+        'Fernando López', 'Carolina Jiménez', 'Pablo Herrera', 'Alejandra Flores', 'Sergio Ramírez'
+    ]
+};
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    initializeCreateCompetition();
+    setupEventListeners();
+    generateCompetitionCode();
+    console.log('🏆 Creador de competencias inicializado');
+});
+
+function initializeCreateCompetition() {
+    updateStepIndicators();
+    setupFormValidation();
+    initializeSliders();
+    console.log('⚙️ Formulario de competencia configurado');
+}
+
+function setupEventListeners() {
+    // Back button
+    const backBtn = document.getElementById('backToDashboard');
+    if (backBtn) {
+        backBtn.addEventListener('click', handleBackToDashboard);
+    }
+
+    // Navigation buttons
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const createBtn = document.getElementById('createBtn');
+
+    if (nextBtn) nextBtn.addEventListener('click', handleNextStep);
+    if (prevBtn) prevBtn.addEventListener('click', handlePrevStep);
+    if (createBtn) createBtn.addEventListener('click', handleCreateCompetition);
+
+    // Form inputs
+    setupFormListeners();
+    setupStepSpecificListeners();
+}
+
+function setupFormListeners() {
+    // Target group change
+    const groupSelect = document.getElementById('targetGroup');
+    if (groupSelect) {
+        groupSelect.addEventListener('change', handleGroupChange);
+    }
+
+    // Question count slider
+    const questionSlider = document.getElementById('questionCount');
+    if (questionSlider) {
+        questionSlider.addEventListener('input', updateQuestionCount);
+    }
+
+    // Timing options
+    const timingOptions = document.querySelectorAll('input[name="timing"]');
+    timingOptions.forEach(option => {
+        option.addEventListener('change', handleTimingChange);
+    });
+
+    // Copy code button
+    const copyBtn = document.getElementById('copyCodeBtn');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', copyCompetitionCode);
+    }
+
+    // Modal buttons
+    const viewCompetitionsBtn = document.getElementById('viewCompetitionsBtn');
+    const monitorBtn = document.getElementById('monitorCompetitionBtn');
+    
+    if (viewCompetitionsBtn) {
+        viewCompetitionsBtn.addEventListener('click', handleViewCompetitions);
+    }
+    if (monitorBtn) {
+        monitorBtn.addEventListener('click', handleMonitorCompetition);
+    }
+
+    // Form inputs for real-time updates
+    document.querySelectorAll('input, select, textarea').forEach(input => {
+        input.addEventListener('change', updateCompetitionData);
+        input.addEventListener('input', updateCompetitionData);
+    });
+}
+
+function setupStepSpecificListeners() {
+    // Step indicators clickable
+    document.querySelectorAll('.step').forEach(step => {
+        step.addEventListener('click', handleStepClick);
+    });
+}
+
+function handleBackToDashboard() {
+    showNotification('Regresando al dashboard...', 'info');
+    console.log('🔙 Volviendo al dashboard docente');
+    
+    // Simular navegación
+    setTimeout(() => {
+        console.log('Navegando a: teacher-dashboard.html');
+        showNotification('Navegación completada', 'success');
+    }, 500);
+}
+
+function handleNextStep() {
+    if (validateCurrentStep()) {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateStep();
+            updateReviewData();
+        }
+    }
+}
+
+function handlePrevStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        updateStep();
+    }
+}
+
+function handleStepClick(event) {
+    const stepNumber = parseInt(event.currentTarget.dataset.step);
+    
+    // Solo permitir navegar a pasos anteriores o al siguiente si es válido
+    if (stepNumber < currentStep || (stepNumber === currentStep + 1 && validateCurrentStep())) {
+        currentStep = stepNumber;
+        updateStep();
+        updateReviewData();
+    }
+}
+
+function updateStep() {
+    // Ocultar todos los pasos
+    document.querySelectorAll('.form-step').forEach(step => {
+        step.classList.remove('active');
+    });
+
+    // Mostrar paso actual
+    const currentStepEl = document.getElementById(`step${currentStep}`);
+    if (currentStepEl) {
+        currentStepEl.classList.add('active');
+    }
+
+    // Actualizar indicadores
+    updateStepIndicators();
+    
+    // Actualizar botones de navegación
+    updateNavigationButtons();
+    
+    console.log(`📍 Paso ${currentStep} de ${totalSteps}`);
+}
+
+function updateStepIndicators() {
+    document.querySelectorAll('.step').forEach((step, index) => {
+        const stepNumber = index + 1;
+        step.classList.remove('active', 'completed');
+        
+        if (stepNumber === currentStep) {
+            step.classList.add('active');
+        } else if (stepNumber < currentStep) {
+            step.classList.add('completed');
+        }
+    });
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const createBtn = document.getElementById('createBtn');
+
+    // Botón anterior
+    if (prevBtn) {
+        prevBtn.style.display = currentStep > 1 ? 'flex' : 'none';
+    }
+
+    // Botón siguiente/crear
+    if (currentStep === totalSteps) {
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (createBtn) createBtn.style.display = 'flex';
+    } else {
+        if (nextBtn) nextBtn.style.display = 'flex';
+        if (createBtn) createBtn.style.display = 'none';
+    }
+}
+
+function validateCurrentStep() {
+    switch (currentStep) {
+        case 1:
+            return validateStep1();
+        case 2:
+            return validateStep2();
+        case 3:
+            return validateStep3();
+        case 4:
+            return true; // Review step
+        default:
+            return false;
+    }
+}
+
+function validateStep1() {
+    const name = document.getElementById('competitionName').value.trim();
+    const type = document.getElementById('competitionType').value;
+    const group = document.getElementById('targetGroup').value;
+    const topic = document.getElementById('competitionTopic').value;
+
+    if (!name) {
+        showNotification('El nombre de la competencia es requerido', 'error');
+        return false;
+    }
+
+    if (!type) {
+        showNotification('Selecciona un tipo de competencia', 'error');
+        return false;
+    }
+
+    if (!group) {
+        showNotification('Selecciona un grupo objetivo', 'error');
+        return false;
+    }
+
+    if (!topic) {
+        showNotification('Selecciona un tema para la competencia', 'error');
+        return false;
+    }
+
+    return true;
+}
+
+function validateStep2() {
+    const duration = document.querySelector('input[name="duration"]:checked');
+    const difficulty = document.querySelector('input[name="difficulty"]:checked');
+
+    if (!duration) {
+        showNotification('Selecciona una duración para la competencia', 'error');
+        return false;
+    }
+
+    if (!difficulty) {
+        showNotification('Selecciona el nivel de dificultad', 'error');
+        return false;
+    }
+
+    return true;
+}
+
+function validateStep3() {
+    const timing = document.querySelector('input[name="timing"]:checked');
+    
+    if (!timing) {
+        showNotification('Selecciona cuándo iniciar la competencia', 'error');
+        return false;
+    }
+
+    if (timing.value === 'scheduled') {
+        const date = document.getElementById('scheduledDate').value;
+        const time = document.getElementById('scheduledTime').value;
+        
+        if (!date || !time) {
+            showNotification('Especifica fecha y hora para la competencia programada', 'error');
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function handleGroupChange(event) {
+    const selectedGroup = event.target.value;
+    const topicSelect = document.getElementById('competitionTopic');
+    
+    if (selectedGroup && topicSelect) {
+        // Habilitar y popular el select de temas
+        topicSelect.disabled = false;
+        topicSelect.innerHTML = '<option value="">Seleccionar tema</option>';
+        
+        const topics = groupsData[selectedGroup].topics;
+        topics.forEach(topic => {
+            const option = document.createElement('option');
+            option.value = topic.toLowerCase().replace(/\s+/g, '-');
+            option.textContent = topic;
+            topicSelect.appendChild(option);
+        });
+
+        // Actualizar preview de participantes
+        updateParticipantsPreview(selectedGroup);
+        
+        showNotification(`Grupo seleccionado: ${groupsData[selectedGroup].name}`, 'success');
+    } else {
+        topicSelect.disabled = true;
+        topicSelect.innerHTML = '<option value="">Primero selecciona un grupo</option>';
+        
+        // Limpiar preview
+        const preview = document.getElementById('groupPreview');
+        if (preview) {
+            preview.innerHTML = `
+                <div class="preview-placeholder">
+                    <i class="fas fa-users"></i>
+                    <span>Selecciona un grupo en el paso anterior para ver los participantes</span>
+                </div>
+            `;
+        }
+    }
+}
+
+function updateParticipantsPreview(groupId) {
+    const preview = document.getElementById('groupPreview');
+    if (!preview || !groupsData[groupId]) return;
+
+    const group = groupsData[groupId];
+    const students = studentsData[groupId] || [];
+    
+    preview.innerHTML = `
+        <div class="group-info">
+            <h4>${group.name}</h4>
+            <p>${group.students} estudiantes disponibles</p>
+        </div>
+        <div class="students-grid">
+            ${students.slice(0, 8).map(student => `
+                <div class="student-preview">
+                    <div class="student-avatar">${student.split(' ').map(n => n[0]).join('')}</div>
+                    <span class="student-name">${student}</span>
+                </div>
+            `).join('')}
+            ${students.length > 8 ? `
+                <div class="student-preview more">
+                    <div class="student-avatar">+${students.length - 8}</div>
+                    <span class="student-name">más estudiantes</span>
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+function updateQuestionCount(event) {
+    const value = event.target.value;
+    const display = document.getElementById('questionCountValue');
+    
+    if (display) {
+        display.textContent = value;
+    }
+    
+    competitionData.questions = parseInt(value);
+}
+
+function handleTimingChange(event) {
+    const scheduledDetails = document.getElementById('scheduledDetails');
+    
+    if (event.target.value === 'scheduled') {
+        scheduledDetails.style.display = 'block';
+        
+        // Establecer fecha mínima (hoy)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('scheduledDate').min = today;
+    } else {
+        scheduledDetails.style.display = 'none';
+    }
+}
+
+function updateCompetitionData() {
+    // Actualizar datos en tiempo real
+    competitionData.name = document.getElementById('competitionName')?.value || '';
+    competitionData.type = document.getElementById('competitionType')?.value || '';
+    competitionData.group = document.getElementById('targetGroup')?.value || '';
+    competitionData.topic = document.getElementById('competitionTopic')?.value || '';
+    competitionData.description = document.getElementById('competitionDescription')?.value || '';
+    
+    const duration = document.querySelector('input[name="duration"]:checked');
+    if (duration) competitionData.duration = duration.value;
+    
+    const difficulty = document.querySelector('input[name="difficulty"]:checked');
+    if (difficulty) competitionData.difficulty = difficulty.value;
+    
+    const timing = document.querySelector('input[name="timing"]:checked');
+    if (timing) competitionData.timing = timing.value;
+    
+    competitionData.pointsPerQuestion = document.getElementById('pointsPerQuestion')?.value || 15;
+    competitionData.timeBonus = document.getElementById('timeBonus')?.checked || false;
+    competitionData.streakBonus = document.getElementById('streakBonus')?.checked || false;
+    competitionData.penaltyWrong = document.getElementById('penaltyWrong')?.checked || false;
+    competitionData.autoInvite = document.getElementById('autoInvite')?.checked || false;
+    competitionData.shareCode = document.getElementById('shareCode')?.checked || false;
+    competitionData.emailInvite = document.getElementById('emailInvite')?.checked || false;
+    
+    if (competitionData.timing === 'scheduled') {
+        competitionData.scheduledDate = document.getElementById('scheduledDate')?.value || '';
+        competitionData.scheduledTime = document.getElementById('scheduledTime')?.value || '';
+    }
+}
+
+function updateReviewData() {
+    if (currentStep !== 4) return;
+
+    // Información básica
+    document.getElementById('reviewName').textContent = competitionData.name || '-';
+    
+    const typeMap = {
+        'speed': 'Velocidad',
+        'precision': 'Precisión',
+        'knowledge': 'Conocimiento'
+    };
+    document.getElementById('reviewType').textContent = typeMap[competitionData.type] || '-';
+    
+    const groupName = competitionData.group ? groupsData[competitionData.group]?.name : '-';
+    document.getElementById('reviewGroup').textContent = groupName;
+    
+    const topicName = competitionData.topic ? 
+        competitionData.topic.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : '-';
+    document.getElementById('reviewTopic').textContent = topicName;
+
+    // Configuración
+    document.getElementById('reviewDuration').textContent = 
+        competitionData.duration ? `${competitionData.duration} minutos` : '-';
+    document.getElementById('reviewQuestions').textContent = 
+        `${competitionData.questions} preguntas`;
+    
+    const difficultyMap = {
+        'beginner': 'Principiante',
+        'intermediate': 'Intermedio',
+        'advanced': 'Avanzado',
+        'mixed': 'Mixto'
+    };
+    document.getElementById('reviewDifficulty').textContent = 
+        difficultyMap[competitionData.difficulty] || '-';
+    
+    document.getElementById('reviewPoints').textContent = 
+        `${competitionData.pointsPerQuestion} puntos`;
+
+    // Participantes y programación
+    const timingText = competitionData.timing === 'now' ? 'Inmediatamente' : 
+        `${competitionData.scheduledDate} ${competitionData.scheduledTime}`;
+    document.getElementById('reviewTiming').textContent = timingText;
+    
+    const invitations = [];
+    if (competitionData.autoInvite) invitations.push('Auto-invitar');
+    if (competitionData.shareCode) invitations.push('Código');
+    if (competitionData.emailInvite) invitations.push('Email');
+    document.getElementById('reviewInvitations').textContent = 
+        invitations.length > 0 ? invitations.join(', ') : 'Ninguna';
+    
+    const participantCount = competitionData.group ? 
+        groupsData[competitionData.group]?.students : 0;
+    document.getElementById('reviewParticipants').textContent = 
+        `${participantCount} estudiantes`;
+}
+
+function generateCompetitionCode() {
+    const prefixes = ['COMP', 'JAVA', 'WEB', 'CODE', 'QUIZ'];
+    const currentYear = new Date().getFullYear();
+    const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+    const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+    
+    competitionData.code = `${randomPrefix}${randomNum}`;
+    
+    // Actualizar en la interfaz
+    const codeElements = document.querySelectorAll('#generatedCode, #modalCompetitionCode');
+    codeElements.forEach(el => {
+        if (el) el.textContent = competitionData.code;
+    });
+}
+
+function copyCompetitionCode() {
+    const code = competitionData.code;
+    
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+            showNotification(`Código ${code} copiado al portapapeles`, 'success');
+            
+            // Cambiar icono temporalmente
+            const btn = document.getElementById('copyCodeBtn');
+            if (btn) {
+                const icon = btn.querySelector('i');
+                icon.className = 'fas fa-check';
+                setTimeout(() => {
+                    icon.className = 'fas fa-copy';
+                }, 1000);
+            }
+        });
+    } else {
+        // Fallback para navegadores sin soporte
+        showNotification('Código: ' + code, 'info');
+    }
+    
+    console.log('📋 Código copiado:', code);
+}
+
+function handleCreateCompetition(event) {
+    event.preventDefault();
+    
+    if (!validateCurrentStep()) {
+        return;
+    }
+
+    // Actualizar datos finales
+    updateCompetitionData();
+    
+    showNotification('Creando competencia...', 'info');
+    console.log('🏆 Creando competencia:', competitionData);
+    
+    // Simular proceso de creación
+    setTimeout(() => {
+        showSuccessModal();
+        console.log('✅ Competencia creada exitosamente');
+    }, 2000);
+}
+
+function showSuccessModal() {
+    const modal = document.getElementById('successModal');
+    
+    // Actualizar datos del modal
+    document.getElementById('modalCompetitionName').textContent = competitionData.name;
+    document.getElementById('modalCompetitionCode').textContent = competitionData.code;
+    
+    const participantCount = competitionData.group ? 
+        groupsData[competitionData.group]?.students : 0;
+    document.getElementById('modalParticipantCount').textContent = `${participantCount} estudiantes`;
+    
+    const status = competitionData.timing === 'now' ? 'Esperando participantes' : 'Programada';
+    document.getElementById('modalStatus').textContent = status;
+    
+    // Mostrar modal
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    showNotification('¡Competencia creada exitosamente!', 'success');
+}
+
+function handleViewCompetitions() {
+    showNotification('Navegando a mis competencias...', 'info');
+    console.log('📋 Ver todas las competencias');
+    
+    // Cerrar modal
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    setTimeout(() => {
+        console.log('Redirigiendo a: my-competitions.html');
+    }, 500);
+}
+
+function handleMonitorCompetition() {
+    showNotification('Abriendo monitor en vivo...', 'info');
+    console.log('📺 Monitorear competencia en vivo');
+    
+    // Cerrar modal
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    setTimeout(() => {
+        console.log(`Redirigiendo a: live-competition.html?code=${competitionData.code}&mode=monitor`);
+    }, 500);
+}
+
+function initializeSliders() {
+    // Inicializar el slider de preguntas
+    const slider = document.getElementById('questionCount');
+    if (slider) {
+        updateQuestionCount({ target: slider });
+    }
+}
+
+function setupFormValidation() {
+    // Validación en tiempo real
+    document.querySelectorAll('input[required], select[required]').forEach(input => {
+        input.addEventListener('blur', validateField);
+        input.addEventListener('input', clearFieldError);
+    });
+}
+
+function validateField(event) {
+    const field = event.target;
+    const value = field.value.trim();
+    
+    if (field.hasAttribute('required') && !value) {
+        showFieldError(field, 'Este campo es requerido');
+        return false;
+    }
+    
+    clearFieldError(field);
+    return true;
+}
+
+function showFieldError(field, message) {
+    field.style.borderColor = 'var(--error)';
+    field.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.1)';
+    
+    // Remover error anterior si existe
+    const existingError = field.parentNode.querySelector('.field-error');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Agregar mensaje de error
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'field-error';
+    errorDiv.style.color = 'var(--error)';
+    errorDiv.style.fontSize = '0.8rem';
+    errorDiv.style.marginTop = '4px';
+    errorDiv.textContent = message;
+    
+    field.parentNode.appendChild(errorDiv);
+}
+
+function clearFieldError(field) {
+    field.style.borderColor = '';
+    field.style.boxShadow = '';
+    
+    const errorDiv = field.parentNode.querySelector('.field-error');
+    if (errorDiv) {
+        errorDiv.remove();
+    }
+}
+
+// Sistema de Notificaciones
+function showNotification(message, type = 'success') {
+    const toast = document.getElementById('toastNotification');
+    const toastMessage = toast.querySelector('.toast-message');
+    const toastIcon = toast.querySelector('.toast-icon');
+    
+    toastMessage.textContent = message;
+    
+    // Configurar icono según el tipo
+    toastIcon.className = 'toast-icon fas';
+    toast.style.borderLeftColor = '';
+    
+    switch (type) {
+        case 'success':
+            toastIcon.classList.add('fa-check-circle');
+            toast.style.borderLeftColor = 'var(--success)';
+            break;
+        case 'error':
+            toastIcon.classList.add('fa-exclamation-circle');
+            toast.style.borderLeftColor = 'var(--error)';
+            break;
+        case 'warning':
+            toastIcon.classList.add('fa-exclamation-triangle');
+            toast.style.borderLeftColor = 'var(--warning)';
+            break;
+        case 'info':
+            toastIcon.classList.add('fa-info-circle');
+            toast.style.borderLeftColor = 'var(--primary-blue)';
+            break;
+    }
+    
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+    
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.onclick = () => {
+        toast.classList.remove('show');
+    };
+}
+
+// Manejo de eventos de teclado
+document.addEventListener('keydown', function(event) {
+    // Navegación con Enter y flechas
+    if (event.key === 'Enter' && !event.ctrlKey) {
+        const activeElement = document.activeElement;
+        
+        // Si estamos en un input, simular click en siguiente
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'SELECT') {
+            event.preventDefault();
+            const nextBtn = document.getElementById('nextBtn');
+            const createBtn = document.getElementById('createBtn');
+            
+            if (currentStep === totalSteps && createBtn && createBtn.style.display !== 'none') {
+                createBtn.click();
+            } else if (nextBtn && nextBtn.style.display !== 'none') {
+                nextBtn.click();
+            }
+        }
+    }
+    
+    // Navegación con flechas
+    if (event.ctrlKey) {
+        if (event.key === 'ArrowRight' && currentStep < totalSteps) {
+            event.preventDefault();
+            handleNextStep();
+        } else if (event.key === 'ArrowLeft' && currentStep > 1) {
+            event.preventDefault();
+            handlePrevStep();
+        }
+    }
+    
+    // Cerrar modal con ESC
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('successModal');
+        if (modal && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+// Funciones de utilidad
+function getCompetitionSummary() {
+    const group = competitionData.group ? groupsData[competitionData.group] : null;
+    
+    return {
+        ...competitionData,
+        groupName: group?.name || '',
+        participantCount: group?.students || 0,
+        estimatedDuration: parseInt(competitionData.duration) + 5, // +5 min para instrucciones
+        totalPoints: competitionData.questions * competitionData.pointsPerQuestion,
+        features: {
+            timeBonus: competitionData.timeBonus,
+            streakBonus: competitionData.streakBonus,
+            penaltyWrong: competitionData.penaltyWrong
+        }
+    };
+}
+
+function resetForm() {
+    currentStep = 1;
+    competitionData = {
+        name: '',
+        type: '',
+        group: '',
+        topic: '',
+        description: '',
+        duration: '',
+        questions: 10,
+        difficulty: '',
+        pointsPerQuestion: 15,
+        timeBonus: true,
+        streakBonus: false,
+        penaltyWrong: false,
+        timing: 'now',
+        scheduledDate: '',
+        scheduledTime: '',
+        autoInvite: true,
+        shareCode: false,
+        emailInvite: false,
+        code: ''
+    };
+    
+    document.getElementById('competitionForm').reset();
+    generateCompetitionCode();
+    updateStep();
+    
+    console.log('🔄 Formulario reiniciado');
+}
+
+// Exportar funciones para uso global
+window.CreateCompetition = {
+    competitionData,
+    groupsData,
+    showNotification,
+    generateCompetitionCode,
+    getCompetitionSummary,
+    resetForm,
+    handleBackToDashboard
+};
+
+console.log('🏆 Creador de Competencias cargado completamente');
+console.log('👨‍🏫 Dr. Fernando Castillo - Crear nueva competencia');
+console.log('📊 Grupos disponibles:', Object.keys(groupsData).length);
+    </script>
+</body>
+</html>

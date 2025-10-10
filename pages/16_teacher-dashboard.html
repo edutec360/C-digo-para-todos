@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Docente - Código para Todos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* CSS será copiado aquí */
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --java-color: #ed8b00;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --neutral-light: #f8f9fa;
+        --neutral-dark: #2c3e50;
+        --text-primary: #2c3e50;
+        --text-secondary: #6c757d;
+        --border-light: #e9ecef;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+        --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.12);
+        --transition: all 0.3s ease;
+        --border-radius: 12px;
+      }
+
+      /* Reset y Estilos Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        background: white;
+        box-shadow: var(--shadow-light);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 70px;
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 30px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .logo i {
+        font-size: 1.5rem;
+      }
+
+      .nav-subtitle {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        padding-left: 20px;
+        border-left: 2px solid var(--border-light);
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .nav-profile {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 12px;
+        transition: var(--transition);
+      }
+
+      .nav-profile:hover {
+        background: var(--neutral-light);
+      }
+
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .profile-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+      }
+
+      .profile-role {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .profile-avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .dropdown-icon {
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+      }
+
+      /* Main Content */
+      .dashboard-main {
+        margin-top: 70px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Welcome Section */
+      .welcome-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .welcome-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .welcome-text h1 {
+        font-size: 2rem;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .welcome-text p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .welcome-stats {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .stat-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: var(--neutral-light);
+        padding: 20px;
+        border-radius: 12px;
+        min-width: 160px;
+        transition: var(--transition);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: white;
+      }
+
+      .stat-icon.students {
+        background: var(--primary-blue);
+      }
+
+      .stat-icon.groups {
+        background: var(--primary-green);
+      }
+
+      .stat-icon.activities {
+        background: var(--accent-yellow);
+      }
+
+      .stat-icon.risk {
+        background: var(--error);
+      }
+
+      .stat-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Groups Section */
+      .groups-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .header-content h2 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .header-content p {
+        color: var(--text-secondary);
+      }
+
+      .create-group-btn {
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .create-group-btn:hover {
+        background: #3a7bd5;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .groups-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 25px;
+      }
+
+      /* Group Cards */
+      .group-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        border: 2px solid var(--border-light);
+        transition: var(--transition);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .group-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-medium);
+        border-color: var(--primary-blue);
+      }
+
+      .group-card.active {
+        border-color: var(--primary-green);
+      }
+
+      .group-card.moderate {
+        border-color: var(--warning);
+      }
+
+      .group-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .group-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: white;
+      }
+
+      .group-icon.java {
+        background: var(--java-color);
+      }
+
+      .group-icon.web {
+        background: var(--primary-blue);
+      }
+
+      .group-icon.oop {
+        background: var(--accent-pink);
+      }
+
+      .group-status {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+      }
+
+      .status-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .status-badge.active {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .status-badge.moderate {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .last-activity {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .group-info h3 {
+        font-size: 1.3rem;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .group-info p {
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .group-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .stat-item i {
+        color: var(--primary-blue);
+      }
+
+      .progress-section {
+        margin-bottom: 15px;
+      }
+
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .progress-header span:first-child {
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .progress-percentage {
+        font-weight: 600;
+        color: var(--primary-blue);
+      }
+
+      .progress-bar {
+        height: 8px;
+        background: var(--border-light);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 4px;
+        transition: var(--transition);
+      }
+
+      .group-alerts {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .alert-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        border-radius: 8px;
+      }
+
+      .alert-item.risk {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+      }
+
+      .alert-item.warning {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .alert-item.success {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .alert-item.pending {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      .group-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: auto;
+      }
+
+      .action-btn {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .action-btn.secondary {
+        background: var(--neutral-light);
+        color: var(--text-secondary);
+      }
+
+      .action-btn.secondary:hover {
+        background: var(--border-light);
+        color: var(--text-primary);
+      }
+
+      .action-btn.primary {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .action-btn.primary:hover {
+        background: #3a7bd5;
+        transform: translateY(-1px);
+      }
+
+      /* Quick Actions Section */
+      .quick-actions-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .action-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 12px;
+        border: 2px solid var(--border-light);
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .action-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+        border-color: var(--primary-blue);
+      }
+
+      .action-card .action-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: white;
+      }
+
+      .action-icon.competition {
+        background: var(--accent-yellow);
+      }
+
+      .action-icon.analytics {
+        background: var(--primary-green);
+      }
+
+      .action-icon.export {
+        background: var(--accent-pink);
+      }
+
+      .action-icon.settings {
+        background: var(--text-secondary);
+      }
+
+      .action-content {
+        flex: 1;
+      }
+
+      .action-content h4 {
+        font-size: 1rem;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .action-content p {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .action-button {
+        width: 35px;
+        height: 35px;
+        border: none;
+        border-radius: 8px;
+        background: var(--neutral-light);
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .action-button:hover {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      /* Recent Activity Section */
+      .recent-activity-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .view-all-link {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .view-all-link:hover {
+        text-decoration: underline;
+      }
+
+      .activity-feed {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 18px;
+        border-radius: 12px;
+        border: 1px solid var(--border-light);
+        transition: var(--transition);
+      }
+
+      .activity-item:hover {
+        background: var(--neutral-light);
+        transform: translateX(5px);
+      }
+
+      .activity-item .activity-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: white;
+      }
+
+      .activity-icon.java {
+        background: var(--java-color);
+      }
+
+      .activity-icon.web {
+        background: var(--primary-blue);
+      }
+
+      .activity-icon.competition {
+        background: var(--accent-yellow);
+      }
+
+      .activity-content {
+        flex: 1;
+      }
+
+      .activity-content h4 {
+        font-size: 1rem;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .activity-content p {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+      }
+
+      .activity-time {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-style: italic;
+      }
+
+      .activity-rating .stars {
+        display: flex;
+        gap: 2px;
+      }
+
+      .activity-rating .stars i {
+        font-size: 0.9rem;
+        color: var(--border-light);
+      }
+
+      .activity-rating .stars i.filled {
+        color: var(--accent-yellow);
+      }
+
+      .activity-status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .activity-status.pending {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .activity-status.scheduled {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
+        background: white;
+        border-radius: var(--border-radius);
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: translateY(-20px);
+        transition: var(--transition);
+      }
+
+      .modal-overlay.active .modal {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 30px;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .modal-header h3 {
+        font-size: 1.3rem;
+        color: var(--text-primary);
+      }
+
+      .close-modal {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .close-modal:hover {
+        color: var(--text-primary);
+      }
+
+      .modal-body {
+        padding: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid var(--border-light);
+        border-radius: 8px;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 30px;
+      }
+
+      .btn-secondary,
+      .btn-primary {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-secondary {
+        background: var(--neutral-light);
+        color: var(--text-secondary);
+      }
+
+      .btn-secondary:hover {
+        background: var(--border-light);
+        color: var(--text-primary);
+      }
+
+      .btn-primary {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #3a7bd5;
+        transform: translateY(-1px);
+      }
+
+      /* Toast Notification */
+      .toast-notification {
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        background: white;
+        border-radius: 12px;
+        padding: 15px 20px;
+        box-shadow: var(--shadow-medium);
+        border-left: 4px solid var(--success);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 3000;
+        transform: translateX(400px);
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .toast-notification.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .toast-icon {
+        color: var(--success);
+        font-size: 1.2rem;
+      }
+
+      .toast-message {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .toast-close {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+      .toast-close:hover {
+        color: var(--text-primary);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .dashboard-main {
+          padding: 20px;
+        }
+
+        .welcome-header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .welcome-stats {
+          justify-content: center;
+        }
+
+        .groups-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          padding: 0 15px;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .dashboard-main {
+          padding: 15px;
+          gap: 20px;
+        }
+
+        .welcome-section,
+        .groups-section,
+        .quick-actions-section,
+        .recent-activity-section {
+          padding: 20px;
+        }
+
+        .welcome-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stat-card {
+          min-width: unset;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+
+        .groups-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .actions-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .group-actions {
+          flex-direction: column;
+        }
+
+        .action-btn {
+          justify-content: center;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .welcome-section,
+      .groups-section,
+      .quick-actions-section,
+      .recent-activity-section {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .welcome-section {
+        animation-delay: 0.1s;
+      }
+      .groups-section {
+        animation-delay: 0.2s;
+      }
+      .quick-actions-section {
+        animation-delay: 0.3s;
+      }
+      .recent-activity-section {
+        animation-delay: 0.4s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-code"></i>
+            <span>Código para Todos</span>
+          </div>
+          <span class="nav-subtitle">Dashboard Docente</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="#" class="nav-link active" data-page="dashboard">
+            <i class="fas fa-home"></i>
+            Mis Grupos
+          </a>
+          <a href="#" class="nav-link" data-page="analytics">
+            <i class="fas fa-chart-bar"></i>
+            Analytics
+          </a>
+          <a href="#" class="nav-link" data-page="competitions">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+          <a href="#" class="nav-link" data-page="students">
+            <i class="fas fa-users"></i>
+            Estudiantes
+          </a>
+        </div>
+
+        <div class="nav-profile">
+          <div class="profile-info">
+            <span class="profile-name">Dr. Fernando Castillo</span>
+            <span class="profile-role">Docente</span>
+          </div>
+          <div class="profile-avatar">
+            <img
+              src="https://ui-avatars.com/api/?name=Fernando+Castillo&background=4A90E2&color=fff&size=40"
+              alt="Dr. Fernando Castillo"
+            />
+          </div>
+          <i class="fas fa-chevron-down dropdown-icon"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <!-- Welcome Header -->
+      <section class="welcome-section">
+        <div class="welcome-header">
+          <div class="welcome-text">
+            <h1>¡Bienvenido de vuelta, Dr. Castillo!</h1>
+            <p>
+              Aquí tienes un resumen de la actividad en tus grupos de
+              programación
+            </p>
+          </div>
+          <div class="welcome-stats">
+            <div class="stat-card">
+              <div class="stat-icon students">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="totalStudents">60</span>
+                <span class="stat-label">Estudiantes</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon groups">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="activeGroups">3</span>
+                <span class="stat-label">Grupos Activos</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon activities">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="weeklyActivities">127</span>
+                <span class="stat-label">Actividades/Semana</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon risk">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="studentsAtRisk">8</span>
+                <span class="stat-label">En Riesgo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Groups Section -->
+      <section class="groups-section">
+        <div class="section-header">
+          <div class="header-content">
+            <h2>Mis Grupos</h2>
+            <p>Gestiona y supervisa el progreso de tus grupos de estudiantes</p>
+          </div>
+          <button class="create-group-btn" id="createGroupBtn">
+            <i class="fas fa-plus"></i>
+            Crear Nuevo Grupo
+          </button>
+        </div>
+
+        <div class="groups-grid">
+          <!-- Grupo Java ITESM -->
+          <div class="group-card active" data-group="java-itesm">
+            <div class="group-header">
+              <div class="group-icon java">
+                <i class="fab fa-java"></i>
+              </div>
+              <div class="group-status">
+                <div class="status-badge active">Activo</div>
+                <div class="last-activity">Hace 2h</div>
+              </div>
+            </div>
+
+            <div class="group-info">
+              <h3>Programación Java - ITESM</h3>
+              <p>Fundamentos de programación orientada a objetos con Java</p>
+
+              <div class="group-stats">
+                <div class="stat-item">
+                  <i class="fas fa-users"></i>
+                  <span>32 estudiantes</span>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-code"></i>
+                  <span>Código: JAVA2025</span>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>Creado: 15 Ago</span>
+                </div>
+              </div>
+
+              <div class="progress-section">
+                <div class="progress-header">
+                  <span>Progreso Promedio</span>
+                  <span class="progress-percentage">68%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 68%"></div>
+                </div>
+              </div>
+
+              <div class="group-alerts">
+                <div class="alert-item risk">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span>5 estudiantes en riesgo</span>
+                </div>
+                <div class="alert-item pending">
+                  <i class="fas fa-clock"></i>
+                  <span>12 actividades pendientes</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="group-actions">
+              <button class="action-btn secondary">
+                <i class="fas fa-cog"></i>
+                Configurar
+              </button>
+              <button class="action-btn primary">
+                <i class="fas fa-arrow-right"></i>
+                Ver Detalles
+              </button>
+            </div>
+          </div>
+
+          <!-- Grupo Web UNAM -->
+          <div class="group-card active" data-group="web-unam">
+            <div class="group-header">
+              <div class="group-icon web">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="group-status">
+                <div class="status-badge active">Activo</div>
+                <div class="last-activity">Hace 30min</div>
+              </div>
+            </div>
+
+            <div class="group-info">
+              <h3>Fundamentos Web - UNAM</h3>
+              <p>HTML, CSS y JavaScript para desarrollo web moderno</p>
+
+              <div class="group-stats">
+                <div class="stat-item">
+                  <i class="fas fa-users"></i>
+                  <span>28 estudiantes</span>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-code"></i>
+                  <span>Código: WEB2025</span>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>Creado: 20 Ago</span>
+                </div>
+              </div>
+
+              <div class="progress-section">
+                <div class="progress-header">
+                  <span>Progreso Promedio</span>
+                  <span class="progress-percentage">75%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
+
+              <div class="group-alerts">
+                <div class="alert-item risk">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span>2 estudiantes en riesgo</span>
+                </div>
+                <div class="alert-item success">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Progreso excelente</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="group-actions">
+              <button class="action-btn secondary">
+                <i class="fas fa-cog"></i>
+                Configurar
+              </button>
+              <button class="action-btn primary">
+                <i class="fas fa-arrow-right"></i>
+                Ver Detalles
+              </button>
+            </div>
+          </div>
+
+          <!-- Grupo POO ITESM -->
+          <div class="group-card moderate" data-group="oop-itesm">
+            <div class="group-header">
+              <div class="group-icon oop">
+                <i class="fas fa-cube"></i>
+              </div>
+              <div class="group-status">
+                <div class="status-badge moderate">Moderado</div>
+                <div class="last-activity">Hace 1h</div>
+              </div>
+            </div>
+
+            <div class="group-info">
+              <h3>POO Avanzado - ITESM</h3>
+              <p>
+                Programación orientada a objetos avanzada y patrones de diseño
+              </p>
+
+              <div class="group-stats">
+                <div class="stat-item">
+                  <i class="fas fa-users"></i>
+                  <span>15 estudiantes</span>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-code"></i>
+                  <span>Código: OOP2025</span>
+                </div>
+                <div class="stat-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>Creado: 25 Ago</span>
+                </div>
+              </div>
+
+              <div class="progress-section">
+                <div class="progress-header">
+                  <span>Progreso Promedio</span>
+                  <span class="progress-percentage">45%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 45%"></div>
+                </div>
+              </div>
+
+              <div class="group-alerts">
+                <div class="alert-item risk">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span>1 estudiante en riesgo</span>
+                </div>
+                <div class="alert-item warning">
+                  <i class="fas fa-clock"></i>
+                  <span>Ritmo lento</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="group-actions">
+              <button class="action-btn secondary">
+                <i class="fas fa-cog"></i>
+                Configurar
+              </button>
+              <button class="action-btn primary">
+                <i class="fas fa-arrow-right"></i>
+                Ver Detalles
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Actions Section -->
+      <section class="quick-actions-section">
+        <div class="section-header">
+          <h2>Acciones Rápidas</h2>
+          <p>Herramientas frecuentes para gestionar tus grupos</p>
+        </div>
+
+        <div class="actions-grid">
+          <div class="action-card">
+            <div class="action-icon competition">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="action-content">
+              <h4>Crear Competencia</h4>
+              <p>Organiza una competencia entre estudiantes</p>
+            </div>
+            <button class="action-button">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+
+          <div class="action-card">
+            <div class="action-icon analytics">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="action-content">
+              <h4>Ver Analytics</h4>
+              <p>Reportes detallados de rendimiento</p>
+            </div>
+            <button class="action-button">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <div class="action-card">
+            <div class="action-icon export">
+              <i class="fas fa-download"></i>
+            </div>
+            <div class="action-content">
+              <h4>Exportar Datos</h4>
+              <p>Descargar reportes en PDF/Excel</p>
+            </div>
+            <button class="action-button">
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+
+          <div class="action-card">
+            <div class="action-icon settings">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div class="action-content">
+              <h4>Configuración</h4>
+              <p>Ajustes generales del sistema</p>
+            </div>
+            <button class="action-button">
+              <i class="fas fa-cog"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Activity Section -->
+      <section class="recent-activity-section">
+        <div class="section-header">
+          <h2>Actividad Reciente</h2>
+          <a href="#" class="view-all-link">Ver todas las actividades</a>
+        </div>
+
+        <div class="activity-feed">
+          <div class="activity-item">
+            <div class="activity-icon java">
+              <i class="fab fa-java"></i>
+            </div>
+            <div class="activity-content">
+              <h4>Ana García completó "Calculadora Básica"</h4>
+              <p>Programación Java - ITESM • Calificación: 4/5 estrellas</p>
+              <span class="activity-time">Hace 2 horas</span>
+            </div>
+            <div class="activity-rating">
+              <div class="stars">
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon web">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="activity-content">
+              <h4>Carlos Ruiz envió "Página de Portfolio"</h4>
+              <p>Fundamentos Web - UNAM • Pendiente de revisión</p>
+              <span class="activity-time">Hace 1 hora</span>
+            </div>
+            <div class="activity-status pending">
+              <span>Pendiente</span>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon competition">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="activity-content">
+              <h4>Competencia "Lógica Básica" programada</h4>
+              <p>Programación Java - ITESM • Viernes 25 Sept, 2:00 PM</p>
+              <span class="activity-time">Hace 3 horas</span>
+            </div>
+            <div class="activity-status scheduled">
+              <span>Programada</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Create Group Modal -->
+    <div class="modal-overlay" id="createGroupModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Crear Nuevo Grupo</h3>
+          <button class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form id="createGroupForm">
+            <div class="form-group">
+              <label for="groupName">Nombre del Grupo</label>
+              <input
+                type="text"
+                id="groupName"
+                placeholder="ej. Programación Java - ITESM"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="groupDescription">Descripción</label>
+              <textarea
+                id="groupDescription"
+                placeholder="Descripción del curso y objetivos"
+              ></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="groupCode">Código de Acceso</label>
+                <input
+                  type="text"
+                  id="groupCode"
+                  placeholder="JAVA2025"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="groupCourse">Tipo de Curso</label>
+                <select id="groupCourse" required>
+                  <option value="">Seleccionar curso</option>
+                  <option value="java">Java Fundamentos</option>
+                  <option value="web">Desarrollo Web</option>
+                  <option value="oop">POO Avanzado</option>
+                  <option value="data">Estructuras de Datos</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="groupInstitution">Institución</label>
+              <input
+                type="text"
+                id="groupInstitution"
+                placeholder="ej. ITESM Campus Veracruz"
+              />
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" id="cancelCreate">
+                Cancelar
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-plus"></i>
+                Crear Grupo
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-notification" id="toastNotification">
+      <div class="toast-content">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message">Grupo creado exitosamente</span>
+      </div>
+      <button class="toast-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <script>
+      /* JavaScript será copiado aquí */
+      // Variables globales para el Dashboard Docente
+      let teacherData = {
+        name: "Dr. Fernando Castillo García",
+        institution: "ITESM Campus Veracruz",
+        specialization: "Fundamentos de Programación",
+        experience: 8,
+        totalStudents: 60,
+        activeGroups: 3,
+        weeklyActivities: 127,
+        studentsAtRisk: 8,
+        aiResponseTime: 2.3,
+      };
+
+      let groupsData = [
+        {
+          id: "java-itesm",
+          name: "Programación Java - ITESM",
+          description:
+            "Fundamentos de programación orientada a objetos con Java",
+          code: "JAVA2025",
+          course: "java",
+          institution: "ITESM Campus Veracruz",
+          students: 32,
+          progress: 68,
+          studentsAtRisk: 5,
+          pendingActivities: 12,
+          lastActivity: "2 horas",
+          status: "active",
+          createdDate: "15 Agosto 2025",
+          icon: "java",
+        },
+        {
+          id: "web-unam",
+          name: "Fundamentos Web - UNAM",
+          description: "HTML, CSS y JavaScript para desarrollo web moderno",
+          code: "WEB2025",
+          course: "web",
+          institution: "UNAM Campus Ciudad Universitaria",
+          students: 28,
+          progress: 75,
+          studentsAtRisk: 2,
+          pendingActivities: 8,
+          lastActivity: "30 minutos",
+          status: "active",
+          createdDate: "20 Agosto 2025",
+          icon: "web",
+        },
+        {
+          id: "oop-itesm",
+          name: "POO Avanzado - ITESM",
+          description:
+            "Programación orientada a objetos avanzada y patrones de diseño",
+          code: "OOP2025",
+          course: "oop",
+          institution: "ITESM Campus Veracruz",
+          students: 15,
+          progress: 45,
+          studentsAtRisk: 1,
+          pendingActivities: 6,
+          lastActivity: "1 hora",
+          status: "moderate",
+          createdDate: "25 Agosto 2025",
+          icon: "oop",
+        },
+      ];
+
+      // Datos de actividad reciente
+      let recentActivities = [
+        {
+          id: 1,
+          student: "Ana García",
+          activity: "Calculadora Básica",
+          group: "Programación Java - ITESM",
+          type: "java",
+          rating: 4,
+          status: "completed",
+          time: "2 horas",
+        },
+        {
+          id: 2,
+          student: "Carlos Ruiz",
+          activity: "Página de Portfolio",
+          group: "Fundamentos Web - UNAM",
+          type: "web",
+          status: "pending",
+          time: "1 hora",
+        },
+        {
+          id: 3,
+          student: "Competencia",
+          activity: "Lógica Básica",
+          group: "Programación Java - ITESM",
+          type: "competition",
+          status: "scheduled",
+          time: "3 horas",
+          scheduledFor: "Viernes 25 Sept, 2:00 PM",
+        },
+      ];
+
+      // Inicialización del dashboard
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeTeacherDashboard();
+        setupEventListeners();
+        updateTeacherStats();
+        loadRecentActivities();
+        startRealTimeUpdates();
+        console.log("🎯 Dashboard Docente inicializado correctamente");
+      });
+
+      function initializeTeacherDashboard() {
+        updateTeacherStats();
+        loadGroupCards();
+        loadRecentActivities();
+        setupModalEvents();
+        console.log("📊 Dashboard del Dr. Fernando Castillo cargado");
+      }
+
+      function setupEventListeners() {
+        // Navigation links
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", handleNavigation);
+        });
+
+        // Profile dropdown
+        const profileDropdown = document.querySelector(".nav-profile");
+        if (profileDropdown) {
+          profileDropdown.addEventListener("click", toggleProfileMenu);
+        }
+
+        // Group cards
+        document.querySelectorAll(".group-card").forEach((card) => {
+          card.addEventListener("click", handleGroupClick);
+        });
+
+        // Action buttons dentro de group cards
+        document.querySelectorAll(".action-btn").forEach((btn) => {
+          btn.addEventListener("click", handleGroupAction);
+        });
+
+        // Create group button
+        const createGroupBtn = document.getElementById("createGroupBtn");
+        if (createGroupBtn) {
+          createGroupBtn.addEventListener("click", openCreateGroupModal);
+        }
+
+        // Quick action cards
+        document.querySelectorAll(".action-card").forEach((card) => {
+          card.addEventListener("click", handleQuickAction);
+        });
+
+        // Recent activity items
+        document.querySelectorAll(".activity-item").forEach((item) => {
+          item.addEventListener("click", handleActivityClick);
+        });
+      }
+
+      function updateTeacherStats() {
+        // Actualizar estadísticas globales con animación
+        const totalStudentsEl = document.getElementById("totalStudents");
+        const activeGroupsEl = document.getElementById("activeGroups");
+        const weeklyActivitiesEl = document.getElementById("weeklyActivities");
+        const studentsAtRiskEl = document.getElementById("studentsAtRisk");
+
+        if (totalStudentsEl) {
+          animateNumber(totalStudentsEl, teacherData.totalStudents);
+        }
+
+        if (activeGroupsEl) {
+          animateNumber(activeGroupsEl, teacherData.activeGroups);
+        }
+
+        if (weeklyActivitiesEl) {
+          animateNumber(weeklyActivitiesEl, teacherData.weeklyActivities);
+        }
+
+        if (studentsAtRiskEl) {
+          animateNumber(studentsAtRiskEl, teacherData.studentsAtRisk);
+        }
+      }
+
+      function animateNumber(element, targetNumber) {
+        const duration = 1000; // 1 segundo
+        const start = 0;
+        const increment = targetNumber / (duration / 16); // 60 FPS
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= targetNumber) {
+            current = targetNumber;
+            clearInterval(timer);
+          }
+          element.textContent = Math.floor(current);
+        }, 16);
+      }
+
+      function loadGroupCards() {
+        // Las cards ya están en el HTML, pero podríamos actualizarlas dinámicamente
+        groupsData.forEach((group, index) => {
+          const card = document.querySelector(`[data-group="${group.id}"]`);
+          if (card) {
+            updateGroupCard(card, group);
+          }
+        });
+      }
+
+      function updateGroupCard(cardElement, groupData) {
+        // Actualizar datos dinámicos de la card
+        const progressFill = cardElement.querySelector(".progress-fill");
+        const progressPercentage = cardElement.querySelector(
+          ".progress-percentage"
+        );
+
+        if (progressFill) {
+          progressFill.style.width = `${groupData.progress}%`;
+        }
+
+        if (progressPercentage) {
+          progressPercentage.textContent = `${groupData.progress}%`;
+        }
+
+        // Actualizar alertas basadas en datos reales
+        const riskAlert = cardElement.querySelector(".alert-item.risk span");
+        if (riskAlert) {
+          riskAlert.textContent = `${groupData.studentsAtRisk} estudiantes en riesgo`;
+        }
+      }
+
+      function loadRecentActivities() {
+        // Las actividades ya están en el HTML, pero se pueden actualizar dinámicamente
+        console.log(
+          "📋 Actividades recientes cargadas:",
+          recentActivities.length
+        );
+      }
+
+      function handleNavigation(event) {
+        event.preventDefault();
+        const page = event.currentTarget.dataset.page;
+
+        // Remover clase active de todos los links
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        // Agregar clase active al link clickeado
+        event.currentTarget.classList.add("active");
+
+        showNotification(`Navegando a ${page}`, "info");
+        console.log("📱 Navegación a:", page);
+      }
+
+      function toggleProfileMenu() {
+        showNotification("Menú de perfil (funcionalidad futura)", "info");
+        console.log("👤 Menú de perfil clickeado");
+      }
+
+      function handleGroupClick(event) {
+        // Solo proceder si no se clickeó un botón de acción
+        if (event.target.closest(".action-btn")) {
+          return;
+        }
+
+        const groupId = event.currentTarget.dataset.group;
+        const group = groupsData.find((g) => g.id === groupId);
+
+        if (group) {
+          showNotification(`Abriendo detalles de ${group.name}`, "success");
+          console.log("🔍 Ver detalles del grupo:", group.name);
+
+          // Simular navegación a página de detalles
+          setTimeout(() => {
+            // Aquí se redirigiría a group-detail.html con el ID del grupo
+            console.log(`Redirigiendo a: group-detail.html?id=${groupId}`);
+          }, 500);
+        }
+      }
+
+      function handleGroupAction(event) {
+        event.stopPropagation(); // Prevenir que se active el click del card
+
+        const actionType = event.currentTarget.classList.contains("primary")
+          ? "details"
+          : "config";
+        const groupCard = event.currentTarget.closest(".group-card");
+        const groupId = groupCard.dataset.group;
+        const group = groupsData.find((g) => g.id === groupId);
+
+        if (actionType === "details") {
+          showNotification(`Abriendo detalles de ${group.name}`, "success");
+          console.log("📊 Ver detalles:", group.name);
+        } else {
+          showNotification(`Configurando ${group.name}`, "info");
+          console.log("⚙️ Configurar grupo:", group.name);
+        }
+      }
+
+      function handleQuickAction(event) {
+        const actionCard = event.currentTarget;
+        const actionTitle = actionCard.querySelector("h4").textContent;
+
+        showNotification(`Ejecutando: ${actionTitle}`, "info");
+        console.log("⚡ Acción rápida:", actionTitle);
+
+        // Simular diferentes acciones
+        setTimeout(() => {
+          if (actionTitle.includes("Competencia")) {
+            console.log("🏆 Abriendo creador de competencias");
+          } else if (actionTitle.includes("Analytics")) {
+            console.log("📈 Abriendo panel de analytics");
+          } else if (actionTitle.includes("Exportar")) {
+            console.log("💾 Iniciando exportación de datos");
+          } else if (actionTitle.includes("Configuración")) {
+            console.log("⚙️ Abriendo configuración general");
+          }
+        }, 300);
+      }
+
+      function handleActivityClick(event) {
+        const activityContent = event.currentTarget.querySelector(
+          ".activity-content h4"
+        );
+        const activityTitle = activityContent.textContent;
+
+        showNotification(`Revisando: ${activityTitle}`, "info");
+        console.log("📋 Actividad clickeada:", activityTitle);
+      }
+
+      // Modal de Crear Grupo
+      function setupModalEvents() {
+        const modal = document.getElementById("createGroupModal");
+        const closeBtn = document.getElementById("closeModal");
+        const cancelBtn = document.getElementById("cancelCreate");
+        const form = document.getElementById("createGroupForm");
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeCreateGroupModal);
+        }
+
+        if (cancelBtn) {
+          cancelBtn.addEventListener("click", closeCreateGroupModal);
+        }
+
+        if (modal) {
+          modal.addEventListener("click", function (event) {
+            if (event.target === modal) {
+              closeCreateGroupModal();
+            }
+          });
+        }
+
+        if (form) {
+          form.addEventListener("submit", handleCreateGroup);
+        }
+      }
+
+      function openCreateGroupModal() {
+        const modal = document.getElementById("createGroupModal");
+        if (modal) {
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+
+          // Focus en el primer input
+          const firstInput = modal.querySelector("input");
+          if (firstInput) {
+            setTimeout(() => firstInput.focus(), 100);
+          }
+        }
+        console.log("➕ Modal de crear grupo abierto");
+      }
+
+      function closeCreateGroupModal() {
+        const modal = document.getElementById("createGroupModal");
+        if (modal) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+
+          // Limpiar formulario
+          const form = document.getElementById("createGroupForm");
+          if (form) {
+            form.reset();
+          }
+        }
+        console.log("❌ Modal de crear grupo cerrado");
+      }
+
+      function handleCreateGroup(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const newGroup = {
+          id: `group-${Date.now()}`,
+          name: document.getElementById("groupName").value,
+          description: document.getElementById("groupDescription").value,
+          code: document.getElementById("groupCode").value,
+          course: document.getElementById("groupCourse").value,
+          institution: document.getElementById("groupInstitution").value,
+          students: 0,
+          progress: 0,
+          studentsAtRisk: 0,
+          pendingActivities: 0,
+          lastActivity: "Recién creado",
+          status: "active",
+          createdDate: new Date().toLocaleDateString("es-MX"),
+          icon: document.getElementById("groupCourse").value,
+        };
+
+        // Simular creación del grupo
+        console.log("✅ Creando nuevo grupo:", newGroup);
+
+        // Agregar a la lista de grupos
+        groupsData.push(newGroup);
+
+        // Actualizar estadísticas
+        teacherData.activeGroups += 1;
+        updateTeacherStats();
+
+        // Mostrar notificación de éxito
+        showNotification(
+          `Grupo "${newGroup.name}" creado exitosamente`,
+          "success"
+        );
+
+        // Cerrar modal
+        closeCreateGroupModal();
+
+        // Simular actualización de la interfaz
+        setTimeout(() => {
+          console.log("🔄 Actualizando interfaz con nuevo grupo");
+          showNotification(`Código de acceso: ${newGroup.code}`, "info");
+        }, 1000);
+      }
+
+      // Sistema de Notificaciones
+      function showNotification(message, type = "success") {
+        const toast = document.getElementById("toastNotification");
+        const toastMessage = toast.querySelector(".toast-message");
+        const toastIcon = toast.querySelector(".toast-icon");
+
+        // Configurar mensaje
+        toastMessage.textContent = message;
+
+        // Configurar icono según el tipo
+        toastIcon.className = "toast-icon fas";
+        toast.style.borderLeftColor = "";
+
+        switch (type) {
+          case "success":
+            toastIcon.classList.add("fa-check-circle");
+            toast.style.borderLeftColor = "var(--success)";
+            break;
+          case "error":
+            toastIcon.classList.add("fa-exclamation-circle");
+            toast.style.borderLeftColor = "var(--error)";
+            break;
+          case "warning":
+            toastIcon.classList.add("fa-exclamation-triangle");
+            toast.style.borderLeftColor = "var(--warning)";
+            break;
+          case "info":
+            toastIcon.classList.add("fa-info-circle");
+            toast.style.borderLeftColor = "var(--primary-blue)";
+            break;
+          default:
+            toastIcon.classList.add("fa-check-circle");
+            toast.style.borderLeftColor = "var(--success)";
+        }
+
+        // Mostrar toast
+        toast.classList.add("show");
+
+        // Auto-hide después de 3 segundos
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+
+        // Event listener para cerrar manualmente
+        const closeBtn = toast.querySelector(".toast-close");
+        closeBtn.onclick = () => {
+          toast.classList.remove("show");
+        };
+      }
+
+      // Actualizaciones en tiempo real
+      function startRealTimeUpdates() {
+        // Simular actualizaciones cada 30 segundos
+        setInterval(() => {
+          updateRealTimeData();
+        }, 30000);
+
+        console.log("🔄 Sistema de actualizaciones en tiempo real iniciado");
+      }
+
+      function updateRealTimeData() {
+        // Simular cambios en los datos
+        const randomGroup =
+          groupsData[Math.floor(Math.random() * groupsData.length)];
+
+        // Simular nueva actividad
+        if (Math.random() > 0.7) {
+          const students = [
+            "Ana García",
+            "Carlos Ruiz",
+            "María López",
+            "Diego Morales",
+            "Sofía Martínez",
+          ];
+          const activities = [
+            "Ejercicio de Arrays",
+            "Calculadora Avanzada",
+            "Página Web Responsive",
+            "Algoritmo de Ordenamiento",
+          ];
+
+          const newActivity = {
+            id: Date.now(),
+            student: students[Math.floor(Math.random() * students.length)],
+            activity: activities[Math.floor(Math.random() * activities.length)],
+            group: randomGroup.name,
+            type: randomGroup.icon,
+            rating: Math.floor(Math.random() * 5) + 1,
+            status: "completed",
+            time: "Ahora",
+          };
+
+          console.log("📝 Nueva actividad registrada:", newActivity);
+          showNotification(
+            `${newActivity.student} completó: ${newActivity.activity}`,
+            "info"
+          );
+        }
+
+        // Simular cambio en progreso
+        if (Math.random() > 0.8) {
+          const oldProgress = randomGroup.progress;
+          randomGroup.progress = Math.min(
+            100,
+            randomGroup.progress + Math.floor(Math.random() * 3)
+          );
+
+          if (randomGroup.progress !== oldProgress) {
+            console.log(
+              `📈 Progreso actualizado en ${randomGroup.name}: ${oldProgress}% → ${randomGroup.progress}%`
+            );
+            updateGroupCard(
+              document.querySelector(`[data-group="${randomGroup.id}"]`),
+              randomGroup
+            );
+          }
+        }
+      }
+
+      // Funciones de utilidad
+      function generateGroupCode() {
+        const prefixes = ["JAVA", "WEB", "OOP", "DATA", "ALGO"];
+        const year = new Date().getFullYear();
+        const randomPrefix =
+          prefixes[Math.floor(Math.random() * prefixes.length)];
+        return `${randomPrefix}${year}`;
+      }
+
+      function validateGroupForm() {
+        const groupName = document.getElementById("groupName").value;
+        const groupCode = document.getElementById("groupCode").value;
+        const groupCourse = document.getElementById("groupCourse").value;
+
+        if (!groupName.trim()) {
+          showNotification("El nombre del grupo es requerido", "error");
+          return false;
+        }
+
+        if (!groupCode.trim()) {
+          showNotification("El código de acceso es requerido", "error");
+          return false;
+        }
+
+        if (!groupCourse) {
+          showNotification("Selecciona un tipo de curso", "error");
+          return false;
+        }
+
+        // Verificar que el código no esté duplicado
+        const existingGroup = groupsData.find(
+          (g) => g.code.toLowerCase() === groupCode.toLowerCase()
+        );
+        if (existingGroup) {
+          showNotification("El código de acceso ya existe", "error");
+          return false;
+        }
+
+        return true;
+      }
+
+      // Funciones de análisis y reportes
+      function getGroupAnalytics(groupId) {
+        const group = groupsData.find((g) => g.id === groupId);
+        if (!group) return null;
+
+        return {
+          totalStudents: group.students,
+          averageProgress: group.progress,
+          studentsAtRisk: group.studentsAtRisk,
+          completionRate: group.progress / 100,
+          activityLevel:
+            group.lastActivity === "Ahora"
+              ? "Alta"
+              : group.lastActivity.includes("minutos")
+              ? "Media"
+              : "Baja",
+        };
+      }
+
+      function exportGroupData(groupId) {
+        const group = groupsData.find((g) => g.id === groupId);
+        if (!group) {
+          showNotification("Grupo no encontrado", "error");
+          return;
+        }
+
+        const analytics = getGroupAnalytics(groupId);
+        const exportData = {
+          grupo: group.name,
+          codigo: group.code,
+          institucion: group.institution,
+          estudiantes: group.students,
+          progreso: `${group.progress}%`,
+          enRiesgo: group.studentsAtRisk,
+          fechaCreacion: group.createdDate,
+          ultimaActividad: group.lastActivity,
+          analytics: analytics,
+        };
+
+        console.log("📊 Datos de exportación:", exportData);
+        showNotification(`Exportando datos de ${group.name}`, "success");
+
+        // Simular descarga
+        setTimeout(() => {
+          showNotification("Reporte descargado exitosamente", "success");
+        }, 2000);
+      }
+
+      // Gestión de estudiantes en riesgo
+      function getStudentsAtRisk() {
+        let totalAtRisk = 0;
+        const riskSummary = [];
+
+        groupsData.forEach((group) => {
+          totalAtRisk += group.studentsAtRisk;
+          if (group.studentsAtRisk > 0) {
+            riskSummary.push({
+              group: group.name,
+              count: group.studentsAtRisk,
+              percentage: (
+                (group.studentsAtRisk / group.students) *
+                100
+              ).toFixed(1),
+            });
+          }
+        });
+
+        return {
+          total: totalAtRisk,
+          byGroup: riskSummary,
+        };
+      }
+
+      // Manejo de eventos de teclado
+      document.addEventListener("keydown", function (event) {
+        // Cerrar modal con ESC
+        if (event.key === "Escape") {
+          const modal = document.getElementById("createGroupModal");
+          if (modal && modal.classList.contains("active")) {
+            closeCreateGroupModal();
+          }
+        }
+
+        // Atajos de teclado
+        if (event.ctrlKey || event.metaKey) {
+          switch (event.key) {
+            case "n":
+              event.preventDefault();
+              openCreateGroupModal();
+              break;
+            case "r":
+              event.preventDefault();
+              updateRealTimeData();
+              showNotification("Datos actualizados", "info");
+              break;
+          }
+        }
+      });
+
+      // Guardar/Cargar estado del dashboard
+      function saveDashboardState() {
+        try {
+          const dashboardState = {
+            teacherData,
+            groupsData,
+            recentActivities,
+            lastUpdate: new Date().toISOString(),
+          };
+
+          // En un entorno real, esto se enviaría al servidor
+          console.log("💾 Estado del dashboard guardado");
+        } catch (error) {
+          console.error("Error guardando estado:", error);
+          showNotification("Error al guardar datos", "error");
+        }
+      }
+
+      function loadDashboardState() {
+        try {
+          // En un entorno real, esto se cargaría del servidor
+          console.log("📂 Estado del dashboard cargado");
+        } catch (error) {
+          console.error("Error cargando estado:", error);
+          showNotification("Error al cargar datos", "warning");
+        }
+      }
+
+      // Guardar estado periódicamente
+      setInterval(saveDashboardState, 60000); // Cada minuto
+
+      // Funciones de accesibilidad
+      function announceToScreenReader(message) {
+        const announcement = document.createElement("div");
+        announcement.setAttribute("aria-live", "polite");
+        announcement.setAttribute("aria-atomic", "true");
+        announcement.className = "sr-only";
+        announcement.textContent = message;
+
+        document.body.appendChild(announcement);
+
+        setTimeout(() => {
+          document.body.removeChild(announcement);
+        }, 1000);
+      }
+
+      // Exportar funciones para uso global
+      window.TeacherDashboard = {
+        teacherData,
+        groupsData,
+        showNotification,
+        getGroupAnalytics,
+        exportGroupData,
+        getStudentsAtRisk,
+        openCreateGroupModal,
+        closeCreateGroupModal,
+      };
+
+      console.log(
+        "🎓 Dashboard Docente de Código para Todos cargado completamente"
+      );
+      console.log("👨‍🏫 Bienvenido Dr. Fernando Castillo García");
+      console.log("📚 Grupos activos:", teacherData.activeGroups);
+      console.log("👥 Total estudiantes:", teacherData.totalStudents);
+    </script>
+  </body>
+</html>

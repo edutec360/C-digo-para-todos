@@ -1,0 +1,3008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Logros - Código para Todos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS será copiado aquí */
+        /* Variables CSS */
+:root {
+    --primary-blue: #4A90E2;
+    --primary-green: #7ED321;
+    --accent-pink: #FF6B9D;
+    --accent-yellow: #F5A623;
+    --java-color: #ED8B00;
+    --success: #27AE60;
+    --warning: #F39C12;
+    --error: #E74C3C;
+    --neutral-light: #F8F9FA;
+    --neutral-dark: #2C3E50;
+    --text-primary: #2C3E50;
+    --text-secondary: #6C757D;
+    --border-light: #E9ECEF;
+    --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+    --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+    --shadow-glow: 0 0 30px rgba(74, 144, 226, 0.4);
+    --transition: all 0.3s ease;
+    --border-radius: 12px;
+}
+
+/* Reset y Estilos Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: white;
+    box-shadow: var(--shadow-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.nav-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-light);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.profile-level {
+    font-size: 0.8rem;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.profile-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Main Content */
+.achievements-main {
+    margin-top: 70px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Profile Header */
+.profile-header {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: var(--shadow-light);
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.profile-avatar-large {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.profile-avatar-large img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.avatar-frame {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid;
+    pointer-events: none;
+}
+
+.avatar-frame.gold {
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.5);
+}
+
+.avatar-frame.silver {
+    border-color: #C0C0C0;
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+}
+
+.profile-info-main {
+    flex: 1;
+}
+
+.profile-info-main h1 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.profile-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge.diagnostic {
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--primary-blue);
+}
+
+.badge.level {
+    background: rgba(126, 211, 33, 0.1);
+    color: var(--primary-green);
+}
+
+.badge.title {
+    background: rgba(245, 166, 35, 0.1);
+    color: var(--accent-yellow);
+}
+
+.customize-btn {
+    padding: 12px 24px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.customize-btn:hover {
+    background: #3a7bd5;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* XP Section */
+.xp-section {
+    background: var(--neutral-light);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.xp-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.xp-numbers {
+    color: var(--primary-blue);
+}
+
+.xp-bar {
+    height: 30px;
+    background: #E9ECEF;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 15px;
+    transition: width 1s ease;
+}
+
+.xp-percentage {
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.xp-info {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* Quick Stats */
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-icon.achievements {
+    background: var(--accent-yellow);
+}
+
+.stat-icon.streak {
+    background: var(--error);
+}
+
+.stat-icon.stars {
+    background: var(--primary-green);
+}
+
+.stat-icon.completion {
+    background: var(--primary-blue);
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-detail {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.stat-progress {
+    height: 6px;
+    background: var(--border-light);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.stat-progress-fill {
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+/* Recent Achievements Timeline */
+.recent-achievements {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.recent-achievements h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--neutral-light);
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-light);
+}
+
+.timeline-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.timeline-icon.streak-color {
+    background: var(--error);
+}
+
+.timeline-icon.speed-color {
+    background: var(--accent-yellow);
+}
+
+.timeline-icon.quality-color {
+    background: var(--primary-green);
+}
+
+.timeline-icon.secret-color {
+    background: var(--accent-pink);
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-content h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.timeline-time {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.timeline-xp {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+}
+
+/* Achievements Section */
+.achievements-section {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: 10px 20px;
+    background: var(--neutral-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.filter-tab:hover {
+    background: #E9ECEF;
+    color: var(--text-primary);
+}
+
+.filter-tab.active {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Achievements Category */
+.achievements-category {
+    margin-bottom: 40px;
+}
+
+.achievements-category:last-child {
+    margin-bottom: 0;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-light);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.category-title i {
+    margin-right: 10px;
+    color: var(--primary-blue);
+}
+
+.category-progress {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Achievements Grid */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.achievement-card {
+    background: var(--neutral-light);
+    padding: 25px 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-card.unlocked {
+    background: white;
+    border-color: var(--primary-green);
+}
+
+.achievement-card.unlocked:hover {
+    box-shadow: var(--shadow-glow);
+}
+
+.achievement-card.in-progress {
+    background: white;
+    border-color: var(--accent-yellow);
+}
+
+.achievement-card.locked {
+    opacity: 0.6;
+}
+
+.achievement-card.locked:hover {
+    opacity: 0.8;
+}
+
+.achievement-card.secret {
+    border-color: var(--accent-pink);
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%);
+}
+
+.achievement-card.mystery {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.achievement-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    animation: shimmer 2s infinite;
+}
+
+.achievement-glow.secret-glow {
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-yellow));
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.achievement-icon-large {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    color: white;
+}
+
+.achievement-icon-large.locked {
+    background: var(--border-light);
+    color: var(--text-secondary);
+}
+
+.achievement-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.achievement-card p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.achievement-date {
+    font-size: 0.8rem;
+    color: var(--success);
+    font-weight: 600;
+}
+
+.achievement-progress-bar {
+    background: var(--border-light);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-yellow), var(--accent-yellow));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.achievement-lock {
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.achievement-hint {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.mystery-hint {
+    color: var(--accent-pink);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Rewards Section */
+.rewards-section {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.rewards-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.rewards-grid {
+    display: grid;
+    gap: 30px;
+}
+
+.reward-category h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.rewards-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.reward-item {
+    text-align: center;
+    padding: 20px;
+    background: var(--neutral-light);
+    border-radius: 12px;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.reward-item:hover {
+    transform: translateY(-3px);
+}
+
+.reward-item.unlocked {
+    background: white;
+    border-color: var(--primary-green);
+}
+
+.reward-item.equipped {
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+}
+
+.reward-item.locked {
+    opacity: 0.5;
+}
+
+.reward-preview {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.reward-preview.avatar {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    color: white;
+}
+
+.reward-preview.avatar.locked {
+    background: var(--border-light);
+    color: var(--text-secondary);
+}
+
+.reward-preview.frame {
+    border-radius: 12px;
+    position: relative;
+}
+
+.reward-preview.frame.gold {
+    border: 4px solid var(--accent-yellow);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.5);
+}
+
+.reward-preview.frame.silver {
+    border: 4px solid #C0C0C0;
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+}
+
+.reward-preview.frame.locked {
+    border: 4px solid var(--border-light);
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+}
+
+.frame-demo {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    margin: 6px auto;
+}
+
+.reward-preview.title {
+    background: linear-gradient(135deg, var(--accent-yellow), var(--accent-pink));
+    color: white;
+}
+
+.reward-preview.title.locked {
+    background: var(--border-light);
+    color: var(--text-secondary);
+}
+
+.reward-item span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.equip-btn {
+    width: 100%;
+    padding: 8px 16px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.85rem;
+}
+
+.equip-btn:hover {
+    background: #3a7bd5;
+}
+
+.equip-btn.active {
+    background: var(--accent-yellow);
+    cursor: default;
+}
+
+.reward-item.locked .equip-btn {
+    background: var(--border-light);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+.title-reward {
+    grid-column: span 1;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(-20px);
+    transition: var(--transition);
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.modal-header h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 5px;
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+/* Customize Modal */
+.customize-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    background: var(--neutral-light);
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.preview-avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.preview-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.preview-frame {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid;
+    pointer-events: none;
+}
+
+.preview-frame.gold {
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.5);
+}
+
+.preview-info {
+    text-align: center;
+}
+
+.preview-info h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.preview-title {
+    font-size: 0.9rem;
+    color: var(--accent-yellow);
+    font-weight: 600;
+}
+
+.customize-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.customize-section h4 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.avatar-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.avatar-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--border-light);
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.avatar-option:hover {
+    border-color: var(--primary-blue);
+    transform: scale(1.1);
+}
+
+.avatar-option.active {
+    border-color: var(--primary-blue);
+    background: var(--primary-blue);
+    color: white;
+}
+
+.frame-options,
+.title-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.frame-option,
+.title-option {
+    padding: 10px 20px;
+    border: 2px solid var(--border-light);
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.frame-option:hover,
+.title-option:hover {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.frame-option.active,
+.title-option.active {
+    border-color: var(--primary-blue);
+    background: var(--primary-blue);
+    color: white;
+}
+
+.frame-option.disabled,
+.title-option.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.btn-secondary,
+.btn-primary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-secondary {
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+    background: var(--border-light);
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #3a7bd5;
+    transform: translateY(-2px);
+}
+
+/* Achievement Detail Modal */
+.achievement-detail-modal {
+    max-width: 500px;
+}
+
+.achievement-detail {
+    text-align: center;
+}
+
+.achievement-icon-huge {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    color: white;
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+}
+
+.achievement-detail h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.achievement-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.achievement-stats-detail {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stat-detail-item {
+    background: var(--neutral-light);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.stat-detail-item .label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.stat-detail-item .value {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.achievement-tip {
+    background: rgba(126, 211, 33, 0.1);
+    border-left: 4px solid var(--primary-green);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.achievement-tip i {
+    color: var(--primary-green);
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+.achievement-tip strong {
+    color: var(--primary-green);
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    background: white;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 3000;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    font-size: 1.3rem;
+}
+
+.toast-message {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    transition: var(--transition);
+}
+
+.toast-close:hover {
+    color: var(--text-primary);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.achievement-card.unlocked .achievement-icon-large {
+    animation: pulse 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .achievements-main {
+        padding: 20px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-info-main h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-badges {
+        justify-content: center;
+    }
+
+    .quick-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-tabs {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .achievement-icon-large {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .rewards-items {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .achievement-stats-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .timeline-xp {
+        align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rewards-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Código para Todos</span>
+                </div>
+                <span class="nav-subtitle">Mis Logros</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    Mis Cursos
+                </a>
+                <a href="#" class="nav-link active">
+                    <i class="fas fa-trophy"></i>
+                    Logros
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Ranking
+                </a>
+            </div>
+            
+            <div class="nav-profile">
+                <div class="profile-info">
+                    <span class="profile-name">Ana García</span>
+                    <span class="profile-level">Nivel 8</span>
+                </div>
+                <div class="profile-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40" alt="Ana García">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="achievements-main">
+        <!-- Profile Header -->
+        <section class="profile-header">
+            <div class="profile-card">
+                <div class="profile-avatar-large">
+                    <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=120" alt="Ana García">
+                    <div class="avatar-frame gold"></div>
+                </div>
+                
+                <div class="profile-info-main">
+                    <h1>Ana García Hernández</h1>
+                    <div class="profile-badges">
+                        <span class="badge diagnostic">
+                            <i class="fas fa-graduation-cap"></i>
+                            Estudiante Intermedia
+                        </span>
+                        <span class="badge level">
+                            <i class="fas fa-rocket"></i>
+                            Nivel 8 - Programadora
+                        </span>
+                        <span class="badge title">
+                            <i class="fas fa-bolt"></i>
+                            Velocista Java
+                        </span>
+                    </div>
+                </div>
+                
+                <button class="customize-btn" id="customizeBtn">
+                    <i class="fas fa-palette"></i>
+                    Personalizar
+                </button>
+            </div>
+            
+            <div class="xp-section">
+                <div class="xp-header">
+                    <span>Progreso al Nivel 9</span>
+                    <span class="xp-numbers">2,847 / 3,500 XP</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 81%">
+                        <span class="xp-percentage">81%</span>
+                    </div>
+                </div>
+                <p class="xp-info">Gana XP completando actividades, obteniendo estrellas y desbloqueando logros</p>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-icon achievements">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">18/45</span>
+                    <span class="stat-label">Logros Desbloqueados</span>
+                    <div class="stat-progress">
+                        <div class="stat-progress-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon streak">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">7 días</span>
+                    <span class="stat-label">Racha Actual</span>
+                    <p class="stat-detail">¡Sigue así!</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon stars">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">284</span>
+                    <span class="stat-label">Estrellas Totales</span>
+                    <p class="stat-detail">127 Java • 43 Web</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon completion">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">40%</span>
+                    <span class="stat-label">Completado</span>
+                    <p class="stat-detail">27 logros restantes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Achievements Timeline -->
+        <section class="recent-achievements">
+            <h2>
+                <i class="fas fa-clock"></i>
+                Logros Recientes
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon streak-color">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>En Racha</h4>
+                        <p>Programaste durante 7 días consecutivos</p>
+                        <span class="timeline-time">Hace 2 horas</span>
+                    </div>
+                    <div class="timeline-xp">+50 XP</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon speed-color">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Velocista</h4>
+                        <p>Completaste un ejercicio en menos de 5 minutos</p>
+                        <span class="timeline-time">Hace 1 día</span>
+                    </div>
+                    <div class="timeline-xp">+30 XP</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon quality-color">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Código Limpio</h4>
+                        <p>Obtuviste 100% en buenas prácticas en 5 ejercicios</p>
+                        <span class="timeline-time">Hace 3 días</span>
+                    </div>
+                    <div class="timeline-xp">+40 XP</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon secret-color">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>Búho de Medianoche</h4>
+                        <p>Completaste un ejercicio a las 3:00 AM</p>
+                        <span class="timeline-time">Hace 5 días</span>
+                    </div>
+                    <div class="timeline-xp">+25 XP</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Filters -->
+        <section class="achievements-section">
+            <div class="section-header">
+                <h2>Galería de Logros</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        Todos
+                    </button>
+                    <button class="filter-tab" data-category="learning">
+                        <i class="fas fa-book-open"></i>
+                        Aprendizaje
+                    </button>
+                    <button class="filter-tab" data-category="practice">
+                        <i class="fas fa-dumbbell"></i>
+                        Práctica
+                    </button>
+                    <button class="filter-tab" data-category="social">
+                        <i class="fas fa-users"></i>
+                        Sociales
+                    </button>
+                    <button class="filter-tab" data-category="technical">
+                        <i class="fas fa-code"></i>
+                        Técnicos
+                    </button>
+                    <button class="filter-tab" data-category="secret">
+                        <i class="fas fa-eye-slash"></i>
+                        Secretos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Learning Achievements -->
+            <div class="achievements-category" data-category="learning">
+                <h3 class="category-title">
+                    <i class="fas fa-book-open"></i>
+                    Logros de Aprendizaje
+                    <span class="category-progress">5/8</span>
+                </h3>
+                
+                <div class="achievements-grid">
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <h4>Primer Paso</h4>
+                        <p>Completa tu primera actividad</p>
+                        <div class="achievement-date">Desbloqueado el 15 Ago</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Velocista</h4>
+                        <p>Completa ejercicio en menos de 5 minutos</p>
+                        <div class="achievement-date">Desbloqueado el 27 Sep</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h4>Políglota</h4>
+                        <p>Ejercicios en Java, HTML y JavaScript</p>
+                        <div class="achievement-date">Desbloqueado el 20 Sep</div>
+                    </div>
+
+                    <div class="achievement-card in-progress">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4>Perfeccionista</h4>
+                        <p>10 actividades con 5 estrellas</p>
+                        <div class="achievement-progress-bar">
+                            <div class="progress-fill" style="width: 70%"></div>
+                            <span class="progress-text">7/10</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4>Autodidacta</h4>
+                        <p>20 horas de estudio acumuladas</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h4>Explorador</h4>
+                        <p>Completa 3 cursos diferentes</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Achievements -->
+            <div class="achievements-category" data-category="practice">
+                <h3 class="category-title">
+                    <i class="fas fa-dumbbell"></i>
+                    Logros de Práctica
+                    <span class="category-progress">4/7</span>
+                </h3>
+                
+                <div class="achievements-grid">
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h4>En Racha</h4>
+                        <p>7 días consecutivos programando</p>
+                        <div class="achievement-date">Desbloqueado hace 2 horas</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h4>Madrugador</h4>
+                        <p>Ejercicio antes de las 7 AM</p>
+                        <div class="achievement-date">Desbloqueado el 22 Sep</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h4>Nocturno</h4>
+                        <p>Ejercicio después de las 10 PM</p>
+                        <div class="achievement-date">Desbloqueado el 18 Sep</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <h4>Fin de Semanero</h4>
+                        <p>5 ejercicios en fin de semana</p>
+                        <div class="achievement-date">Desbloqueado el 24 Sep</div>
+                    </div>
+
+                    <div class="achievement-card in-progress">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h4>Maratonista</h4>
+                        <p>10 ejercicios en un día</p>
+                        <div class="achievement-progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                            <span class="progress-text">8/10</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Consistente</h4>
+                        <p>30 días de racha</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Dedicado</h4>
+                        <p>100 horas totales de práctica</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Achievements -->
+            <div class="achievements-category" data-category="social">
+                <h3 class="category-title">
+                    <i class="fas fa-users"></i>
+                    Logros Sociales
+                    <span class="category-progress">2/6</span>
+                </h3>
+                
+                <div class="achievements-grid">
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4>Competidor</h4>
+                        <p>Participa en tu primera competencia</p>
+                        <div class="achievement-date">Desbloqueado el 10 Sep</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Rival Amistoso</h4>
+                        <p>3 competencias completadas</p>
+                        <div class="achievement-date">Desbloqueado el 25 Sep</div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Ganador</h4>
+                        <p>Gana tu primera competencia</p>
+                        <div class="achievement-hint">Quedaste 2do lugar, ¡casi!</div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h4>Campeón</h4>
+                        <p>Gana 5 competencias</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4>Colaborador</h4>
+                        <p>Ayuda a 5 compañeros</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Líder del Pack</h4>
+                        <p>Alcanza el 1er lugar en el scoreboard</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Achievements -->
+            <div class="achievements-category" data-category="technical">
+                <h3 class="category-title">
+                    <i class="fas fa-code"></i>
+                    Logros Técnicos
+                    <span class="category-progress">3/8</span>
+                </h3>
+                
+                <div class="achievements-grid">
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h4>Debugging Master</h4>
+                        <p>Corrige 10 errores de sintaxis</p>
+                        <div class="achievement-date">Desbloqueado el 17 Sep</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-sparkles"></i>
+                        </div>
+                        <h4>Código Limpio</h4>
+                        <p>5 ejercicios con 100% en buenas prácticas</p>
+                        <div class="achievement-date">Desbloqueado hace 3 días</div>
+                    </div>
+
+                    <div class="achievement-card unlocked">
+                        <div class="achievement-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                        <h4>Documentador</h4>
+                        <p>Comenta correctamente 10 códigos</p>
+                        <div class="achievement-date">Desbloqueado el 19 Sep</div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4>Optimizador</h4>
+                        <p>Mejora rendimiento de 5 programas</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4>Arquitecto</h4>
+                        <p>Usa patrones de diseño en 3 ejercicios</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h4>Tester</h4>
+                        <p>Crea casos de prueba para 10 ejercicios</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h4>Refactor Pro</h4>
+                        <p>Refactoriza código en 5 actividades</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <h4>Sin Errores</h4>
+                        <p>10 ejercicios perfectos al primer intento</p>
+                        <div class="achievement-lock">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secret Achievements -->
+            <div class="achievements-category" data-category="secret">
+                <h3 class="category-title">
+                    <i class="fas fa-eye-slash"></i>
+                    Logros Secretos
+                    <span class="category-progress">4/16</span>
+                </h3>
+                
+                <div class="achievements-grid">
+                    <div class="achievement-card unlocked secret">
+                        <div class="achievement-glow secret-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h4>Búho de Medianoche</h4>
+                        <p>Completaste un ejercicio a las 3 AM</p>
+                        <div class="achievement-date">Desbloqueado hace 5 días</div>
+                    </div>
+
+                    <div class="achievement-card unlocked secret">
+                        <div class="achievement-glow secret-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4>Perseverante</h4>
+                        <p>Intentaste 10 veces el mismo ejercicio</p>
+                        <div class="achievement-date">Desbloqueado el 16 Sep</div>
+                    </div>
+
+                    <div class="achievement-card unlocked secret">
+                        <div class="achievement-glow secret-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>Inspector</h4>
+                        <p>Leíste todo el código de ejemplo</p>
+                        <div class="achievement-date">Desbloqueado el 21 Sep</div>
+                    </div>
+
+                    <div class="achievement-card unlocked secret">
+                        <div class="achievement-glow secret-glow"></div>
+                        <div class="achievement-icon-large">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Curioso</h4>
+                        <p>Probaste todos los temas disponibles</p>
+                        <div class="achievement-date">Desbloqueado el 23 Sep</div>
+                    </div>
+
+                    <div class="achievement-card mystery locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h4>???</h4>
+                        <p class="mystery-hint">Pista: "La perfección existe en los detalles..."</p>
+                    </div>
+
+                    <div class="achievement-card mystery locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h4>???</h4>
+                        <p class="mystery-hint">Pista: "El tiempo es relativo..."</p>
+                    </div>
+
+                    <div class="achievement-card mystery locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h4>???</h4>
+                        <p class="mystery-hint">Pista: "Los errores enseñan más que los aciertos..."</p>
+                    </div>
+
+                    <div class="achievement-card mystery locked">
+                        <div class="achievement-icon-large locked">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h4>???</h4>
+                        <p class="mystery-hint">Logro secreto no revelado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rewards Gallery -->
+        <section class="rewards-section">
+            <h2>
+                <i class="fas fa-gift"></i>
+                Recompensas Desbloqueadas
+            </h2>
+            
+            <div class="rewards-grid">
+                <div class="reward-category">
+                    <h3>Avatares (3)</h3>
+                    <div class="rewards-items">
+                        <div class="reward-item unlocked">
+                            <div class="reward-preview avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <span>Robot Azul</span>
+                            <button class="equip-btn">Equipar</button>
+                        </div>
+
+                        <div class="reward-item unlocked">
+                            <div class="reward-preview avatar">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <span>Cohete Verde</span>
+                            <button class="equip-btn">Equipar</button>
+                        </div>
+
+                        <div class="reward-item unlocked equipped">
+                            <div class="reward-preview avatar">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>Estrella Dorada</span>
+                            <button class="equip-btn active">Equipado</button>
+                        </div>
+
+                        <div class="reward-item locked">
+                            <div class="reward-preview avatar locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Dragón Épico</span>
+                        </div>
+
+                        <div class="reward-item locked">
+                            <div class="reward-preview avatar locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Ninja Código</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-category">
+                    <h3>Marcos de Perfil (2)</h3>
+                    <div class="rewards-items">
+                        <div class="reward-item unlocked equipped">
+                            <div class="reward-preview frame gold">
+                                <div class="frame-demo"></div>
+                            </div>
+                            <span>Marco Dorado</span>
+                            <button class="equip-btn active">Equipado</button>
+                        </div>
+
+                        <div class="reward-item unlocked">
+                            <div class="reward-preview frame silver">
+                                <div class="frame-demo"></div>
+                            </div>
+                            <span>Marco Plateado</span>
+                            <button class="equip-btn">Equipar</button>
+                        </div>
+
+                        <div class="reward-item locked">
+                            <div class="reward-preview frame locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Marco Diamante</span>
+                        </div>
+
+                        <div class="reward-item locked">
+                            <div class="reward-preview frame locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Marco Arcoíris</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-category">
+                    <h3>Títulos Especiales (1)</h3>
+                    <div class="rewards-items">
+                        <div class="reward-item unlocked equipped title-reward">
+                            <div class="reward-preview title">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <span>Velocista Java</span>
+                            <button class="equip-btn active">Equipado</button>
+                        </div>
+
+                        <div class="reward-item locked title-reward">
+                            <div class="reward-preview title locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Maestro del Código</span>
+                        </div>
+
+                        <div class="reward-item locked title-reward">
+                            <div class="reward-preview title locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Leyenda Competitiva</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Customize Modal -->
+    <div class="modal-overlay" id="customizeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Personalizar Perfil</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="customize-preview">
+                    <div class="preview-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=100" alt="Preview">
+                        <div class="preview-frame gold"></div>
+                    </div>
+                    <div class="preview-info">
+                        <h4>Ana García Hernández</h4>
+                        <span class="preview-title">Velocista Java</span>
+                    </div>
+                </div>
+
+                <div class="customize-sections">
+                    <div class="customize-section">
+                        <h4>Seleccionar Avatar</h4>
+                        <div class="avatar-options">
+                            <button class="avatar-option">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <button class="avatar-option">
+                                <i class="fas fa-robot"></i>
+                            </button>
+                            <button class="avatar-option active">
+                                <i class="fas fa-rocket"></i>
+                            </button>
+                            <button class="avatar-option">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="customize-section">
+                        <h4>Seleccionar Marco</h4>
+                        <div class="frame-options">
+                            <button class="frame-option active" data-frame="gold">Dorado</button>
+                            <button class="frame-option" data-frame="silver">Plateado</button>
+                            <button class="frame-option disabled" data-frame="diamond">Diamante 🔒</button>
+                        </div>
+                    </div>
+
+                    <div class="customize-section">
+                        <h4>Seleccionar Título</h4>
+                        <div class="title-options">
+                            <button class="title-option active">Velocista Java</button>
+                            <button class="title-option disabled">Maestro del Código 🔒</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn-secondary" id="cancelCustomize">Cancelar</button>
+                    <button class="btn-primary" id="saveCustomize">
+                        <i class="fas fa-save"></i>
+                        Guardar Cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Detail Modal -->
+    <div class="modal-overlay" id="achievementModal">
+        <div class="modal achievement-detail-modal">
+            <div class="modal-header">
+                <h3>Detalle del Logro</h3>
+                <button class="close-modal" id="closeAchievementModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="achievement-detail">
+                    <div class="achievement-icon-huge">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h2>En Racha</h2>
+                    <p class="achievement-description">Programaste durante 7 días consecutivos. ¡La constancia es clave para dominar la programación!</p>
+                    
+                    <div class="achievement-stats-detail">
+                        <div class="stat-detail-item">
+                            <span class="label">Desbloqueado</span>
+                            <span class="value">Hace 2 horas</span>
+                        </div>
+                        <div class="stat-detail-item">
+                            <span class="label">XP Ganado</span>
+                            <span class="value">+50 XP</span>
+                        </div>
+                        <div class="stat-detail-item">
+                            <span class="label">Rareza</span>
+                            <span class="value">Común</span>
+                        </div>
+                        <div class="stat-detail-item">
+                            <span class="label">Desbloqueado por</span>
+                            <span class="value">32% de estudiantes</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <strong>Consejo:</strong> Continúa tu racha diaria para desbloquear "Consistente" (30 días)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message">Operación exitosa</span>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script>
+        /* JavaScript será copiado aquí */
+        // Achievements Page JavaScript - Código para Todos
+
+// Estado global
+let currentFilter = 'all';
+let studentData = {
+    name: 'Ana García Hernández',
+    level: 8,
+    levelName: 'Programadora',
+    diagnosticLevel: 'Intermedia',
+    xp: 2847,
+    xpToNext: 3500,
+    totalStars: 284,
+    javaStars: 127,
+    webStars: 43,
+    streak: 7,
+    totalAchievements: 45,
+    unlockedAchievements: 18,
+    equippedAvatar: 'star',
+    equippedFrame: 'gold',
+    equippedTitle: 'Velocista Java'
+};
+
+// Datos de logros
+const achievementsData = {
+    learning: [
+        { id: 1, name: 'Primer Paso', description: 'Completa tu primera actividad', icon: 'flag-checkered', unlocked: true, date: '15 Ago', xp: 20 },
+        { id: 2, name: 'Velocista', description: 'Completa ejercicio en menos de 5 minutos', icon: 'bolt', unlocked: true, date: '27 Sep', xp: 30 },
+        { id: 3, name: 'Políglota', description: 'Ejercicios en Java, HTML y JavaScript', icon: 'language', unlocked: true, date: '20 Sep', xp: 35 },
+        { id: 4, name: 'Perfeccionista', description: '10 actividades con 5 estrellas', icon: 'gem', unlocked: false, progress: 7, total: 10 },
+        { id: 5, name: 'Autodidacta', description: '20 horas de estudio acumuladas', icon: 'book', unlocked: false },
+        { id: 6, name: 'Explorador', description: 'Completa 3 cursos diferentes', icon: 'compass', unlocked: false }
+    ],
+    practice: [
+        { id: 7, name: 'En Racha', description: '7 días consecutivos programando', icon: 'fire', unlocked: true, date: 'Hace 2 horas', xp: 50 },
+        { id: 8, name: 'Madrugador', description: 'Ejercicio antes de las 7 AM', icon: 'sun', unlocked: true, date: '22 Sep', xp: 25 },
+        { id: 9, name: 'Nocturno', description: 'Ejercicio después de las 10 PM', icon: 'moon', unlocked: true, date: '18 Sep', xp: 25 },
+        { id: 10, name: 'Fin de Semanero', description: '5 ejercicios en fin de semana', icon: 'calendar-week', unlocked: true, date: '24 Sep', xp: 30 },
+        { id: 11, name: 'Maratonista', description: '10 ejercicios en un día', icon: 'running', unlocked: false, progress: 8, total: 10 },
+        { id: 12, name: 'Consistente', description: '30 días de racha', icon: 'calendar-check', unlocked: false },
+        { id: 13, name: 'Dedicado', description: '100 horas totales de práctica', icon: 'clock', unlocked: false }
+    ],
+    social: [
+        { id: 14, name: 'Competidor', description: 'Participa en tu primera competencia', icon: 'medal', unlocked: true, date: '10 Sep', xp: 30 },
+        { id: 15, name: 'Rival Amistoso', description: '3 competencias completadas', icon: 'handshake', unlocked: true, date: '25 Sep', xp: 40 },
+        { id: 16, name: 'Ganador', description: 'Gana tu primera competencia', icon: 'trophy', unlocked: false, hint: 'Quedaste 2do lugar, ¡casi!' },
+        { id: 17, name: 'Campeón', description: 'Gana 5 competencias', icon: 'crown', unlocked: false },
+        { id: 18, name: 'Colaborador', description: 'Ayuda a 5 compañeros', icon: 'hands-helping', unlocked: false },
+        { id: 19, name: 'Líder del Pack', description: 'Alcanza el 1er lugar en el scoreboard', icon: 'star', unlocked: false }
+    ],
+    technical: [
+        { id: 20, name: 'Debugging Master', description: 'Corrige 10 errores de sintaxis', icon: 'bug', unlocked: true, date: '17 Sep', xp: 35 },
+        { id: 21, name: 'Código Limpio', description: '5 ejercicios con 100% en buenas prácticas', icon: 'sparkles', unlocked: true, date: 'Hace 3 días', xp: 40 },
+        { id: 22, name: 'Documentador', description: 'Comenta correctamente 10 códigos', icon: 'file-code', unlocked: true, date: '19 Sep', xp: 30 },
+        { id: 23, name: 'Optimizador', description: 'Mejora rendimiento de 5 programas', icon: 'tachometer-alt', unlocked: false },
+        { id: 24, name: 'Arquitecto', description: 'Usa patrones de diseño en 3 ejercicios', icon: 'project-diagram', unlocked: false },
+        { id: 25, name: 'Tester', description: 'Crea casos de prueba para 10 ejercicios', icon: 'vial', unlocked: false },
+        { id: 26, name: 'Refactor Pro', description: 'Refactoriza código en 5 actividades', icon: 'sync-alt', unlocked: false },
+        { id: 27, name: 'Sin Errores', description: '10 ejercicios perfectos al primer intento', icon: 'check-double', unlocked: false }
+    ],
+    secret: [
+        { id: 28, name: 'Búho de Medianoche', description: 'Completaste un ejercicio a las 3 AM', icon: 'moon', unlocked: true, date: 'Hace 5 días', xp: 25, secret: true },
+        { id: 29, name: 'Perseverante', description: 'Intentaste 10 veces el mismo ejercicio', icon: 'heartbeat', unlocked: true, date: '16 Sep', xp: 30, secret: true },
+        { id: 30, name: 'Inspector', description: 'Leíste todo el código de ejemplo', icon: 'search', unlocked: true, date: '21 Sep', xp: 20, secret: true },
+        { id: 31, name: 'Curioso', description: 'Probaste todos los temas disponibles', icon: 'eye', unlocked: true, date: '23 Sep', xp: 25, secret: true },
+        { id: 32, name: '???', description: 'La perfección existe en los detalles...', icon: 'question', unlocked: false, mystery: true },
+        { id: 33, name: '???', description: 'El tiempo es relativo...', icon: 'question', unlocked: false, mystery: true },
+        { id: 34, name: '???', description: 'Los errores enseñan más que los aciertos...', icon: 'question', unlocked: false, mystery: true },
+        { id: 35, name: '???', description: 'Logro secreto no revelado', icon: 'question', unlocked: false, mystery: true }
+    ]
+};
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    initializeAchievementsPage();
+    setupEventListeners();
+    updateXPBar();
+    console.log('🏆 Página de Logros inicializada');
+});
+
+function initializeAchievementsPage() {
+    console.log('📊 Datos del estudiante:', studentData);
+    console.log('🎯 Total de logros por categoría:');
+    Object.keys(achievementsData).forEach(category => {
+        const unlocked = achievementsData[category].filter(a => a.unlocked).length;
+        const total = achievementsData[category].length;
+        console.log(`   ${category}: ${unlocked}/${total}`);
+    });
+}
+
+function setupEventListeners() {
+    // Filter tabs
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', handleFilterChange);
+    });
+
+    // Achievement cards
+    document.querySelectorAll('.achievement-card').forEach(card => {
+        card.addEventListener('click', handleAchievementClick);
+    });
+
+    // Customize button
+    const customizeBtn = document.getElementById('customizeBtn');
+    if (customizeBtn) {
+        customizeBtn.addEventListener('click', openCustomizeModal);
+    }
+
+    // Modal close buttons
+    const closeModalBtns = document.querySelectorAll('.close-modal');
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', closeModals);
+    });
+
+    // Customize modal actions
+    const cancelCustomize = document.getElementById('cancelCustomize');
+    if (cancelCustomize) {
+        cancelCustomize.addEventListener('click', closeModals);
+    }
+
+    const saveCustomize = document.getElementById('saveCustomize');
+    if (saveCustomize) {
+        saveCustomize.addEventListener('click', saveCustomization);
+    }
+
+    // Equip buttons
+    document.querySelectorAll('.equip-btn').forEach(btn => {
+        btn.addEventListener('click', handleEquipReward);
+    });
+
+    // Toast close
+    const toastClose = document.querySelector('.toast-close');
+    if (toastClose) {
+        toastClose.addEventListener('click', hideToast);
+    }
+
+    // Close modals on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                closeModals();
+            }
+        });
+    });
+
+    // Customize options
+    setupCustomizeOptions();
+}
+
+function setupCustomizeOptions() {
+    // Avatar options
+    document.querySelectorAll('.avatar-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Frame options
+    document.querySelectorAll('.frame-option:not(.disabled)').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.frame-option').forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Title options
+    document.querySelectorAll('.title-option:not(.disabled)').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.title-option').forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+}
+
+function handleFilterChange(event) {
+    const filter = event.currentTarget.dataset.category;
+    
+    // Update active tab
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+    
+    // Filter categories
+    document.querySelectorAll('.achievements-category').forEach(category => {
+        const categoryType = category.dataset.category;
+        
+        if (filter === 'all' || categoryType === filter) {
+            category.style.display = 'block';
+        } else {
+            category.style.display = 'none';
+        }
+    });
+    
+    currentFilter = filter;
+    showToast(`Filtrando: ${getFilterName(filter)}`, 'info');
+    console.log(`🔍 Filtro aplicado: ${filter}`);
+}
+
+function getFilterName(filter) {
+    const names = {
+        'all': 'Todos los logros',
+        'learning': 'Logros de Aprendizaje',
+        'practice': 'Logros de Práctica',
+        'social': 'Logros Sociales',
+        'technical': 'Logros Técnicos',
+        'secret': 'Logros Secretos'
+    };
+    return names[filter] || filter;
+}
+
+function handleAchievementClick(event) {
+    const card = event.currentTarget;
+    const isUnlocked = card.classList.contains('unlocked');
+    
+    if (isUnlocked) {
+        openAchievementDetailModal(card);
+    } else {
+        const achievementName = card.querySelector('h4').textContent;
+        showToast(`${achievementName} aún no desbloqueado`, 'info');
+    }
+}
+
+function openAchievementDetailModal(card) {
+    const modal = document.getElementById('achievementModal');
+    if (!modal) return;
+    
+    // Aquí se cargarían los detalles del logro específico
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    console.log('📖 Abriendo detalles del logro');
+}
+
+function openCustomizeModal() {
+    const modal = document.getElementById('customizeModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        console.log('🎨 Modal de personalización abierto');
+    }
+}
+
+function closeModals() {
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+        modal.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+    console.log('❌ Modales cerrados');
+}
+
+function saveCustomization() {
+    // Obtener selecciones
+    const selectedAvatar = document.querySelector('.avatar-option.active');
+    const selectedFrame = document.querySelector('.frame-option.active');
+    const selectedTitle = document.querySelector('.title-option.active');
+    
+    if (selectedAvatar) {
+        studentData.equippedAvatar = 'custom';
+        console.log('👤 Avatar actualizado');
+    }
+    
+    if (selectedFrame) {
+        studentData.equippedFrame = selectedFrame.dataset.frame;
+        console.log('🖼️ Marco actualizado:', studentData.equippedFrame);
+    }
+    
+    if (selectedTitle) {
+        studentData.equippedTitle = selectedTitle.textContent;
+        console.log('🏷️ Título actualizado:', studentData.equippedTitle);
+    }
+    
+    showToast('Personalización guardada correctamente', 'success');
+    closeModals();
+    
+    // Actualizar vista del perfil
+    updateProfileDisplay();
+}
+
+function updateProfileDisplay() {
+    // Actualizar el título en el header
+    const titleBadge = document.querySelector('.badge.title');
+    if (titleBadge) {
+        const icon = titleBadge.querySelector('i');
+        titleBadge.textContent = studentData.equippedTitle;
+        titleBadge.prepend(icon);
+    }
+    
+    console.log('✨ Perfil actualizado visualmente');
+}
+
+function handleEquipReward(event) {
+    event.stopPropagation();
+    const btn = event.currentTarget;
+    const rewardItem = btn.closest('.reward-item');
+    
+    if (rewardItem.classList.contains('locked')) {
+        showToast('Esta recompensa aún no está desbloqueada', 'warning');
+        return;
+    }
+    
+    if (btn.classList.contains('active')) {
+        showToast('Esta recompensa ya está equipada', 'info');
+        return;
+    }
+    
+    // Remover equipado de otros items en la misma categoría
+    const category = rewardItem.closest('.reward-category');
+    category.querySelectorAll('.reward-item').forEach(item => {
+        item.classList.remove('equipped');
+        const itemBtn = item.querySelector('.equip-btn');
+        if (itemBtn) {
+            itemBtn.classList.remove('active');
+            itemBtn.textContent = 'Equipar';
+        }
+    });
+    
+    // Equipar el nuevo item
+    rewardItem.classList.add('equipped');
+    btn.classList.add('active');
+    btn.textContent = 'Equipado';
+    
+    const rewardName = rewardItem.querySelector('span').textContent;
+    showToast(`${rewardName} equipado correctamente`, 'success');
+    console.log(`✅ Recompensa equipada: ${rewardName}`);
+}
+
+function updateXPBar() {
+    const xpFill = document.querySelector('.xp-fill');
+    const xpPercentage = document.querySelector('.xp-percentage');
+    const percentage = Math.round((studentData.xp / studentData.xpToNext) * 100);
+    
+    if (xpFill) {
+        xpFill.style.width = `${percentage}%`;
+    }
+    
+    if (xpPercentage) {
+        xpPercentage.textContent = `${percentage}%`;
+    }
+}
+
+// Toast Notifications
+function showToast(message, type = 'info') {
+    const toast = document.getElementById('toastNotification');
+    if (!toast) return;
+    
+    const icon = toast.querySelector('.toast-icon');
+    const msg = toast.querySelector('.toast-message');
+    
+    msg.textContent = message;
+    
+    icon.className = 'toast-icon fas';
+    switch(type) {
+        case 'success':
+            icon.classList.add('fa-check-circle');
+            icon.style.color = 'var(--success)';
+            break;
+        case 'warning':
+            icon.classList.add('fa-exclamation-circle');
+            icon.style.color = 'var(--warning)';
+            break;
+        case 'error':
+            icon.classList.add('fa-times-circle');
+            icon.style.color = 'var(--error)';
+            break;
+        case 'info':
+        default:
+            icon.classList.add('fa-info-circle');
+            icon.style.color = 'var(--primary-blue)';
+            break;
+    }
+    
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        hideToast();
+    }, 3000);
+}
+
+function hideToast() {
+    const toast = document.getElementById('toastNotification');
+    if (toast) {
+        toast.classList.remove('show');
+    }
+}
+
+// Simulate Achievement Unlock
+function simulateAchievementUnlock(achievementId) {
+    console.log(`🎉 Simulando desbloqueo del logro ID: ${achievementId}`);
+    
+    // Buscar el logro en todas las categorías
+    let unlockedAchievement = null;
+    let categoryName = '';
+    
+    for (const [category, achievements] of Object.entries(achievementsData)) {
+        const achievement = achievements.find(a => a.id === achievementId);
+        if (achievement && !achievement.unlocked) {
+            achievement.unlocked = true;
+            achievement.date = 'Ahora';
+            unlockedAchievement = achievement;
+            categoryName = category;
+            break;
+        }
+    }
+    
+    if (unlockedAchievement) {
+        studentData.unlockedAchievements++;
+        studentData.xp += unlockedAchievement.xp || 25;
+        
+        showToast(`¡Nuevo logro desbloqueado: ${unlockedAchievement.name}! +${unlockedAchievement.xp || 25} XP`, 'success');
+        
+        // Actualizar XP bar
+        updateXPBar();
+        
+        // Verificar si subió de nivel
+        checkLevelUp();
+        
+        console.log(`✨ Logro "${unlockedAchievement.name}" desbloqueado en categoría: ${categoryName}`);
+    }
+}
+
+function checkLevelUp() {
+    if (studentData.xp >= studentData.xpToNext) {
+        studentData.level++;
+        studentData.xp = studentData.xp - studentData.xpToNext;
+        studentData.xpToNext = Math.floor(studentData.xpToNext * 1.2);
+        
+        showToast(`¡Subiste al Nivel ${studentData.level}! 🎉`, 'success');
+        console.log(`⬆️ ¡Nivel ${studentData.level} alcanzado!`);
+        
+        // Actualizar UI
+        updateLevelDisplay();
+        updateXPBar();
+    }
+}
+
+function updateLevelDisplay() {
+    const levelBadge = document.querySelector('.badge.level');
+    if (levelBadge) {
+        const icon = levelBadge.querySelector('i');
+        levelBadge.textContent = `Nivel ${studentData.level} - ${getLevelName(studentData.level)}`;
+        levelBadge.prepend(icon);
+    }
+}
+
+function getLevelName(level) {
+    if (level <= 5) return 'Aprendiz';
+    if (level <= 10) return 'Programador';
+    if (level <= 15) return 'Experto';
+    if (level <= 20) return 'Maestro';
+    return 'Leyenda';
+}
+
+// Statistics Functions
+function getAchievementStats() {
+    const stats = {
+        total: studentData.totalAchievements,
+        unlocked: studentData.unlockedAchievements,
+        percentage: Math.round((studentData.unlockedAchievements / studentData.totalAchievements) * 100),
+        byCategory: {}
+    };
+    
+    Object.keys(achievementsData).forEach(category => {
+        const unlocked = achievementsData[category].filter(a => a.unlocked).length;
+        const total = achievementsData[category].length;
+        stats.byCategory[category] = {
+            unlocked,
+            total,
+            percentage: Math.round((unlocked / total) * 100)
+        };
+    });
+    
+    return stats;
+}
+
+function getRecentAchievements(limit = 5) {
+    const allAchievements = [];
+    
+    Object.values(achievementsData).forEach(category => {
+        category.forEach(achievement => {
+            if (achievement.unlocked) {
+                allAchievements.push(achievement);
+            }
+        });
+    });
+    
+    // Ordenar por fecha (simulado con el ID por ahora)
+    allAchievements.sort((a, b) => b.id - a.id);
+    
+    return allAchievements.slice(0, limit);
+}
+
+function getNextAchievements() {
+    const nextAchievements = [];
+    
+    Object.values(achievementsData).forEach(category => {
+        category.forEach(achievement => {
+            if (!achievement.unlocked && achievement.progress) {
+                const progressPercentage = (achievement.progress / achievement.total) * 100;
+                if (progressPercentage >= 50) {
+                    nextAchievements.push({
+                        ...achievement,
+                        progressPercentage
+                    });
+                }
+            }
+        });
+    });
+    
+    // Ordenar por progreso descendente
+    nextAchievements.sort((a, b) => b.progressPercentage - a.progressPercentage);
+    
+    return nextAchievements;
+}
+
+// Export Functions
+function exportAchievementsData() {
+    const exportData = {
+        student: studentData,
+        achievements: achievementsData,
+        stats: getAchievementStats(),
+        exportDate: new Date().toISOString()
+    };
+    
+    const dataStr = JSON.stringify(exportData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `logros_${studentData.name.replace(/\s+/g, '_')}.json`;
+    link.click();
+    
+    URL.revokeObjectURL(url);
+    
+    showToast('Datos de logros exportados correctamente', 'success');
+    console.log('📥 Datos exportados');
+}
+
+// Keyboard Shortcuts
+document.addEventListener('keydown', function(event) {
+    // Cerrar modales con ESC
+    if (event.key === 'Escape') {
+        closeModals();
+        hideToast();
+    }
+    
+    // Atajos con números para filtros
+    if (event.altKey) {
+        const filterMap = {
+            '1': 'all',
+            '2': 'learning',
+            '3': 'practice',
+            '4': 'social',
+            '5': 'technical',
+            '6': 'secret'
+        };
+        
+        const filter = filterMap[event.key];
+        if (filter) {
+            const tab = document.querySelector(`.filter-tab[data-category="${filter}"]`);
+            if (tab) {
+                tab.click();
+            }
+        }
+    }
+    
+    // Exportar con Ctrl+E
+    if ((event.ctrlKey || event.metaKey) && event.key === 'e') {
+        event.preventDefault();
+        exportAchievementsData();
+    }
+});
+
+// Animation Triggers
+function triggerAchievementAnimation(achievementElement) {
+    if (!achievementElement) return;
+    
+    achievementElement.style.animation = 'none';
+    setTimeout(() => {
+        achievementElement.style.animation = 'pulse 0.5s ease';
+    }, 10);
+}
+
+// Search Functionality
+function searchAchievements(query) {
+    const results = [];
+    
+    Object.entries(achievementsData).forEach(([category, achievements]) => {
+        achievements.forEach(achievement => {
+            const searchText = `${achievement.name} ${achievement.description}`.toLowerCase();
+            if (searchText.includes(query.toLowerCase())) {
+                results.push({
+                    ...achievement,
+                    category
+                });
+            }
+        });
+    });
+    
+    return results;
+}
+
+// Progress Tracking
+function calculateOverallProgress() {
+    const stats = getAchievementStats();
+    const xpProgress = (studentData.xp / studentData.xpToNext) * 100;
+    
+    return {
+        achievements: stats.percentage,
+        xp: xpProgress,
+        level: (studentData.level / 20) * 100, // Asumiendo nivel máximo 20
+        overall: (stats.percentage + xpProgress + (studentData.level / 20 * 100)) / 3
+    };
+}
+
+// Notifications for Near Achievements
+function checkNearAchievements() {
+    const nearAchievements = getNextAchievements();
+    
+    if (nearAchievements.length > 0) {
+        const nextAchievement = nearAchievements[0];
+        console.log(`🎯 Logro cercano: ${nextAchievement.name} (${Math.round(nextAchievement.progressPercentage)}%)`);
+    }
+}
+
+// Initialize near achievements check
+setTimeout(checkNearAchievements, 2000);
+
+// Analytics Tracking
+function trackAchievementView(achievementId) {
+    console.log(`📊 Vista de logro registrada: ${achievementId}`);
+    // Aquí se enviaría a un sistema de analytics
+}
+
+function trackFilterChange(filter) {
+    console.log(`📊 Filtro cambiado a: ${filter}`);
+    // Aquí se enviaría a un sistema de analytics
+}
+
+// Utility Functions
+function formatDate(dateString) {
+    if (dateString.includes('Hace')) return dateString;
+    
+    const options = { day: 'numeric', month: 'short' };
+    return new Date(dateString).toLocaleDateString('es-MX', options);
+}
+
+function calculateRarity(achievementId) {
+    // Simulación de rareza basada en porcentaje de estudiantes que lo tienen
+    const rarities = {
+        common: 'Común',
+        uncommon: 'Poco Común',
+        rare: 'Raro',
+        epic: 'Épico',
+        legendary: 'Legendario'
+    };
+    
+    // Basado en el ID (simulación)
+    if (achievementId <= 10) return rarities.common;
+    if (achievementId <= 20) return rarities.uncommon;
+    if (achievementId <= 30) return rarities.rare;
+    if (achievementId <= 40) return rarities.epic;
+    return rarities.legendary;
+}
+
+// Auto-save Progress
+let autoSaveInterval;
+
+function enableAutoSave() {
+    autoSaveInterval = setInterval(() => {
+        saveProgressToStorage();
+    }, 60000); // Cada minuto
+    
+    console.log('💾 Auto-guardado habilitado');
+}
+
+function saveProgressToStorage() {
+    // En un entorno real, esto se guardaría en el servidor
+    const progressData = {
+        student: studentData,
+        achievements: achievementsData,
+        timestamp: Date.now()
+    };
+    
+    console.log('💾 Progreso guardado (simulado)');
+}
+
+function disableAutoSave() {
+    if (autoSaveInterval) {
+        clearInterval(autoSaveInterval);
+        console.log('⏸️ Auto-guardado deshabilitado');
+    }
+}
+
+// Enable auto-save on load
+enableAutoSave();
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', function() {
+    saveProgressToStorage();
+    disableAutoSave();
+});
+
+// Global API
+window.AchievementsAPI = {
+    student: studentData,
+    achievements: achievementsData,
+    unlockAchievement: simulateAchievementUnlock,
+    getStats: getAchievementStats,
+    getRecent: getRecentAchievements,
+    getNext: getNextAchievements,
+    exportData: exportAchievementsData,
+    search: searchAchievements,
+    calculateProgress: calculateOverallProgress
+};
+
+// Log initialization
+console.log('========================================');
+console.log('🏆 Sistema de Logros Cargado');
+console.log('========================================');
+console.log(`👤 Estudiante: ${studentData.name}`);
+console.log(`🎓 Clasificación: ${studentData.diagnosticLevel}`);
+console.log(`🚀 Nivel: ${studentData.level} - ${studentData.levelName}`);
+console.log(`⭐ XP: ${studentData.xp}/${studentData.xpToNext}`);
+console.log(`🏅 Logros: ${studentData.unlockedAchievements}/${studentData.totalAchievements}`);
+console.log(`🔥 Racha: ${studentData.streak} días`);
+console.log('========================================');
+console.log('💡 Atajos de teclado:');
+console.log('   Alt + 1-6: Cambiar filtros');
+console.log('   Ctrl/Cmd + E: Exportar datos');
+console.log('   ESC: Cerrar modales');
+console.log('========================================');
+console.log('🎮 API disponible en: window.AchievementsAPI');
+console.log('========================================');
+    </script>
+</body>
+</html>

@@ -1522,6 +1522,815 @@ body {
 
     <script>
         /* JavaScript se copiará aquí */
+        // Variables globales
+let currentQuestionIndex = 0;
+let answers = [];
+let examStartTime = Date.now();
+let totalQuestions = 12; // Número fijo para el prototipo
+let userLevel = 'beginner';
+
+// Base de datos de preguntas simplificada para prototipo
+const questions = [
+    // Preguntas contextuales (3)
+    {
+        id: 1,
+        type: 'context',
+        question: '¿Cuál es tu experiencia previa en programación?',
+        description: 'Esta información nos ayuda a personalizar tu experiencia',
+        options: [
+            { value: 'none', text: 'Nunca he programado', subtext: 'Soy completamente nuevo en programación', icon: 'fa-seedling' },
+            { value: 'little', text: 'Muy poco', subtext: 'He visto algunos videos o tutoriales', icon: 'fa-leaf' },
+            { value: 'some', text: 'Algo de experiencia', subtext: 'He escrito algunos programas básicos', icon: 'fa-tree' },
+            { value: 'moderate', text: 'Experiencia moderada', subtext: 'Conozco varios lenguajes y conceptos', icon: 'fa-forest' }
+        ]
+    },
+    {
+        id: 2,
+        type: 'context',
+        question: '¿Por qué quieres aprender Java?',
+        description: 'Conocer tu motivación nos ayuda a enfocar mejor el contenido',
+        options: [
+            { value: 'career', text: 'Por mi carrera', subtext: 'Es parte de mis estudios universitarios', icon: 'fa-graduation-cap' },
+            { value: 'work', text: 'Para el trabajo', subtext: 'Necesito Java para proyectos laborales', icon: 'fa-briefcase' },
+            { value: 'hobby', text: 'Como hobby', subtext: 'Me gusta programar en mi tiempo libre', icon: 'fa-heart' },
+            { value: 'curiosity', text: 'Por curiosidad', subtext: 'Quiero saber cómo funciona la programación', icon: 'fa-lightbulb' }
+        ]
+    },
+    {
+        id: 3,
+        type: 'context',
+        question: '¿Qué esperas lograr con este curso?',
+        description: 'Esto nos ayuda a definir tu ruta de aprendizaje ideal',
+        options: [
+            { value: 'basics', text: 'Conceptos básicos', subtext: 'Entender los fundamentos de Java', icon: 'fa-building' },
+            { value: 'projects', text: 'Crear proyectos', subtext: 'Desarrollar aplicaciones reales', icon: 'fa-rocket' },
+            { value: 'certification', text: 'Certificación', subtext: 'Prepararme para exámenes oficiales', icon: 'fa-certificate' },
+            { value: 'mastery', text: 'Dominio completo', subtext: 'Convertirme en experto en Java', icon: 'fa-crown' }
+        ]
+    },
+    // Preguntas técnicas fáciles (3)
+    {
+        id: 4,
+        type: 'multiple',
+        difficulty: 'easy',
+        question: '¿Cuál es la extensión correcta de un archivo Java?',
+        options: [
+            { value: 'a', text: '.java', correct: true },
+            { value: 'b', text: '.jv' },
+            { value: 'c', text: '.class' },
+            { value: 'd', text: '.js' }
+        ]
+    },
+    {
+        id: 5,
+        type: 'multiple',
+        difficulty: 'easy',
+        question: '¿Qué palabra clave se usa para definir una clase en Java?',
+        options: [
+            { value: 'a', text: 'class', correct: true },
+            { value: 'b', text: 'Class' },
+            { value: 'c', text: 'define' },
+            { value: 'd', text: 'create' }
+        ]
+    },
+    {
+        id: 6,
+        type: 'multiple',
+        difficulty: 'easy',
+        question: '¿Cuál es el método principal de una aplicación Java?',
+        options: [
+            { value: 'a', text: 'public static void main(String[] args)', correct: true },
+            { value: 'b', text: 'public void main()' },
+            { value: 'c', text: 'static main()' },
+            { value: 'd', text: 'void main(String args)' }
+        ]
+    },
+    // Preguntas intermedias (3)
+    {
+        id: 7,
+        type: 'multiple',
+        difficulty: 'medium',
+        question: '¿Cuál es la diferencia principal entre int y String en Java?',
+        options: [
+            { value: 'a', text: 'int almacena números, String almacena texto', correct: true },
+            { value: 'b', text: 'No hay diferencia' },
+            { value: 'c', text: 'int es más rápido que String' },
+            { value: 'd', text: 'String solo puede tener números' }
+        ]
+    },
+    {
+        id: 8,
+        type: 'multiple',
+        difficulty: 'medium',
+        question: '¿Para qué sirve un ciclo "for" en programación?',
+        options: [
+            { value: 'a', text: 'Para repetir código un número específico de veces', correct: true },
+            { value: 'b', text: 'Para crear variables' },
+            { value: 'c', text: 'Para definir métodos' },
+            { value: 'd', text: 'Para importar librerías' }
+        ]
+    },
+    {
+        id: 9,
+        type: 'code',
+        difficulty: 'medium',
+        question: 'Completa el código para imprimir "¡Hola Java!" en la consola',
+        instruction: 'Completa la línea que falta para que el programa imprima el mensaje',
+        initialCode: `public class MiPrograma {
+    public static void main(String[] args) {
+        System.out.______("¡Hola Java!");
+    }
+}`,
+        correctAnswer: 'println'
+    },
+    // Preguntas difíciles (3)
+    {
+        id: 10,
+        type: 'multiple',
+        difficulty: 'hard',
+        question: '¿Qué imprimirá este código?\n\nint x = 5;\nint y = 3;\nSystem.out.println(x + y * 2);',
+        options: [
+            { value: 'a', text: '11', correct: true },
+            { value: 'b', text: '16' },
+            { value: 'c', text: '13' },
+            { value: 'd', text: 'Error' }
+        ]
+    },
+    {
+        id: 11,
+        type: 'multiple',
+        difficulty: 'hard',
+        question: '¿Cuál es el error en este código?\n\npublic class Test {\n    public void main() {\n        System.out.println("Hola");\n    }\n}',
+        options: [
+            { value: 'a', text: 'Falta "static" en el método main', correct: true },
+            { value: 'b', text: 'Falta punto y coma' },
+            { value: 'c', text: 'El nombre de la clase está mal' },
+            { value: 'd', text: 'No hay error' }
+        ]
+    },
+    {
+        id: 12,
+        type: 'code',
+        difficulty: 'hard',
+        question: 'Crea una variable edad con valor 20 y muestra si es mayor de edad',
+        instruction: 'Declara la variable y usa una estructura if para verificar si es mayor de edad (>= 18)',
+        initialCode: `public class VerificarEdad {
+    public static void main(String[] args) {
+        // Tu código aquí
+        
+        
+        
+    }
+}`,
+        keywords: ['int', 'edad', '20', 'if', '>=', '18']
+    }
+];
+
+// DOM Elements
+const screens = {
+    welcome: document.getElementById('welcomeScreen'),
+    question: document.getElementById('questionScreen'),
+    processing: document.getElementById('processingScreen'),
+    results: document.getElementById('resultsScreen')
+};
+
+// Inicialización cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    initializeDiagnostic();
+    setupEventListeners();
+});
+
+function initializeDiagnostic() {
+    // Mostrar pantalla de bienvenida
+    showScreen('welcome');
+    
+    // Resetear variables
+    currentQuestionIndex = 0;
+    answers = [];
+    examStartTime = Date.now();
+    
+    console.log('🧠 Examen Diagnóstico inicializado');
+}
+
+function setupEventListeners() {
+    // Botón de iniciar examen
+    const startBtn = document.getElementById('startExam');
+    if (startBtn) {
+        startBtn.addEventListener('click', startExam);
+    }
+    
+    // Botones de navegación
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextQuestion);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', previousQuestion);
+    }
+    
+    // Opciones de múltiple opción (delegación de eventos)
+    const optionsContainer = document.getElementById('optionsContainer');
+    if (optionsContainer) {
+        optionsContainer.addEventListener('click', selectOption);
+    }
+    
+    // Editor de código
+    const codeInput = document.getElementById('codeInput');
+    if (codeInput) {
+        codeInput.addEventListener('input', validateCode);
+    }
+    
+    // Botón reset código
+    const resetBtn = document.getElementById('resetCode');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetCode);
+    }
+    
+    // Botones de resultados
+    const startLearningBtn = document.getElementById('startLearning');
+    const retakeBtn = document.getElementById('retakeExam');
+    
+    if (startLearningBtn) {
+        startLearningBtn.addEventListener('click', goToDashboard);
+    }
+    
+    if (retakeBtn) {
+        retakeBtn.addEventListener('click', retakeExam);
+    }
+}
+
+function showScreen(screenName) {
+    // Ocultar todas las pantallas
+    Object.values(screens).forEach(screen => {
+        if (screen) {
+            screen.classList.remove('active');
+        }
+    });
+    
+    // Mostrar la pantalla solicitada
+    if (screens[screenName]) {
+        screens[screenName].classList.add('active');
+    }
+}
+
+function startExam() {
+    showScreen('question');
+    loadQuestion(0);
+    console.log('📝 Examen iniciado');
+}
+
+function loadQuestion(index) {
+    const question = questions[index];
+    
+    if (!question) {
+        completeExam();
+        return;
+    }
+    
+    // Actualizar contador de preguntas
+    const currentQuestionEl = document.getElementById('currentQuestion');
+    if (currentQuestionEl) {
+        currentQuestionEl.textContent = index + 1;
+    }
+    
+    // Actualizar pregunta
+    const questionTitle = document.getElementById('questionTitle');
+    const questionDescription = document.getElementById('questionDescription');
+    
+    if (questionTitle) {
+        questionTitle.textContent = question.question;
+    }
+    
+    if (questionDescription) {
+        questionDescription.textContent = question.description || '';
+    }
+    
+    // Mostrar tipo de pregunta apropiado
+    if (question.type === 'multiple' || question.type === 'context') {
+        showMultipleChoice(question);
+    } else if (question.type === 'code') {
+        showCodeEditor(question);
+    }
+    
+    // Actualizar progreso
+    updateProgress();
+    
+    // Actualizar estado de IA
+    updateAIStatus(index);
+    
+    // Actualizar navegación
+    updateNavigation(index);
+}
+
+function showMultipleChoice(question) {
+    const multipleChoice = document.getElementById('multipleChoice');
+    const codeEditor = document.getElementById('codeEditor');
+    const optionsContainer = document.getElementById('optionsContainer');
+    
+    if (multipleChoice) multipleChoice.style.display = 'block';
+    if (codeEditor) codeEditor.style.display = 'none';
+    
+    // Limpiar opciones anteriores
+    if (optionsContainer) {
+        optionsContainer.innerHTML = '';
+        
+        // Crear opciones
+        question.options.forEach(option => {
+            const optionElement = document.createElement('div');
+            optionElement.className = 'option';
+            optionElement.setAttribute('data-value', option.value);
+            
+            optionElement.innerHTML = `
+                <div class="option-content">
+                    <div class="option-icon">
+                        <i class="fas ${option.icon || 'fa-circle'}"></i>
+                    </div>
+                    <div class="option-text">
+                        <h4>${option.text}</h4>
+                        <p>${option.subtext || ''}</p>
+                    </div>
+                </div>
+            `;
+            
+            optionsContainer.appendChild(optionElement);
+        });
+    }
+    
+    // Deshabilitar botón siguiente inicialmente
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) {
+        nextBtn.disabled = true;
+    }
+}
+
+function showCodeEditor(question) {
+    const multipleChoice = document.getElementById('multipleChoice');
+    const codeEditor = document.getElementById('codeEditor');
+    const codeInput = document.getElementById('codeInput');
+    
+    if (multipleChoice) multipleChoice.style.display = 'none';
+    if (codeEditor) codeEditor.style.display = 'block';
+    
+    // Actualizar instrucciones
+    const instructionTitle = document.querySelector('#codeInstructions h4');
+    const instructionText = document.querySelector('#codeInstructions p');
+    
+    if (instructionTitle) {
+        instructionTitle.textContent = question.question;
+    }
+    
+    if (instructionText) {
+        instructionText.textContent = question.instruction;
+    }
+    
+    // Establecer código inicial
+    if (codeInput) {
+        codeInput.value = question.initialCode || '';
+    }
+    
+    // Actualizar números de línea
+    updateLineNumbers();
+    
+    // Habilitar botón siguiente para preguntas de código
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) {
+        nextBtn.disabled = false;
+    }
+    
+    // Limpiar feedback
+    hideCodeFeedback();
+}
+
+function selectOption(event) {
+    const option = event.target.closest('.option');
+    if (!option) return;
+    
+    // Remover selección anterior
+    document.querySelectorAll('.option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    
+    // Seleccionar opción actual
+    option.classList.add('selected');
+    
+    // Guardar respuesta
+    const value = option.getAttribute('data-value');
+    storeAnswer(value);
+    
+    // Habilitar botón siguiente
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) {
+        nextBtn.disabled = false;
+    }
+    
+    // Animación de selección
+    option.style.transform = 'scale(0.98)';
+    setTimeout(() => {
+        option.style.transform = 'scale(1)';
+    }, 150);
+}
+
+function storeAnswer(value) {
+    const currentQuestion = questions[currentQuestionIndex];
+    
+    answers[currentQuestionIndex] = {
+        questionId: currentQuestion.id,
+        answer: value,
+        timestamp: Date.now(),
+        timeSpent: Date.now() - examStartTime
+    };
+}
+
+function validateCode() {
+    const codeInput = document.getElementById('codeInput');
+    if (!codeInput) return;
+    
+    const code = codeInput.value;
+    const currentQuestion = questions[currentQuestionIndex];
+    
+    if (!currentQuestion || currentQuestion.type !== 'code') return;
+    
+    // Guardar respuesta
+    storeAnswer(code);
+    
+    // Actualizar números de línea
+    updateLineNumbers();
+    
+    // Validación simple
+    if (code.trim().length > 10) {
+        showCodeFeedback(true, 'Código válido');
+    } else {
+        hideCodeFeedback();
+    }
+}
+
+function updateLineNumbers() {
+    const codeInput = document.getElementById('codeInput');
+    const lineNumbers = document.getElementById('lineNumbers');
+    
+    if (!codeInput || !lineNumbers) return;
+    
+    const code = codeInput.value;
+    const lines = code.split('\n').length;
+    
+    lineNumbers.innerHTML = '';
+    for (let i = 1; i <= Math.max(lines, 5); i++) {
+        const span = document.createElement('span');
+        span.textContent = i;
+        lineNumbers.appendChild(span);
+    }
+}
+
+function showCodeFeedback(isSuccess, message) {
+    const feedbackContainer = document.getElementById('codeFeedback');
+    if (!feedbackContainer) return;
+    
+    const successEl = feedbackContainer.querySelector('.feedback-item.success');
+    const errorEl = feedbackContainer.querySelector('.feedback-item.error');
+    
+    if (isSuccess && successEl) {
+        successEl.style.display = 'flex';
+        if (errorEl) errorEl.style.display = 'none';
+        const messageEl = successEl.querySelector('span');
+        if (messageEl) messageEl.textContent = message;
+    } else if (!isSuccess && errorEl) {
+        errorEl.style.display = 'flex';
+        if (successEl) successEl.style.display = 'none';
+        const messageEl = errorEl.querySelector('#errorMessage');
+        if (messageEl) messageEl.textContent = message;
+    }
+}
+
+function hideCodeFeedback() {
+    const feedbackContainer = document.getElementById('codeFeedback');
+    if (!feedbackContainer) return;
+    
+    feedbackContainer.querySelectorAll('.feedback-item').forEach(item => {
+        item.style.display = 'none';
+    });
+}
+
+function resetCode() {
+    const currentQuestion = questions[currentQuestionIndex];
+    const codeInput = document.getElementById('codeInput');
+    
+    if (currentQuestion && currentQuestion.initialCode && codeInput) {
+        codeInput.value = currentQuestion.initialCode;
+        updateLineNumbers();
+        hideCodeFeedback();
+    }
+}
+
+function nextQuestion() {
+    showLoadingOverlay();
+    
+    setTimeout(() => {
+        hideLoadingOverlay();
+        
+        currentQuestionIndex++;
+        
+        if (currentQuestionIndex >= questions.length) {
+            completeExam();
+        } else {
+            loadQuestion(currentQuestionIndex);
+        }
+    }, 1000);
+}
+
+function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion(currentQuestionIndex);
+    }
+}
+
+function updateProgress() {
+    const progressFill = document.getElementById('progressFill');
+    if (progressFill) {
+        const progress = Math.min((currentQuestionIndex / totalQuestions) * 100, 95);
+        progressFill.style.width = progress + '%';
+    }
+}
+
+function updateAIStatus(questionIndex) {
+    const aiStatus = document.getElementById('aiStatus');
+    if (!aiStatus) return;
+    
+    const statusMessages = [
+        'Analizando tu perfil...',
+        'Evaluando respuestas...',
+        'Ajustando dificultad...',
+        'Identificando fortalezas...',
+        'Determinando nivel óptimo...',
+        'Finalizando diagnóstico...'
+    ];
+    
+    if (questionIndex < 3) {
+        aiStatus.innerHTML = '<i class="fas fa-user-cog pulse"></i> Recopilando información...';
+    } else {
+        const messageIndex = Math.min(questionIndex - 3, statusMessages.length - 1);
+        aiStatus.innerHTML = `<i class="fas fa-brain pulse"></i> ${statusMessages[messageIndex]}`;
+    }
+}
+
+function updateNavigation(index) {
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    
+    // Botón anterior (deshabilitado en examen adaptativo)
+    if (prevBtn) {
+        prevBtn.style.opacity = '0.5';
+        prevBtn.style.pointerEvents = 'none';
+    }
+    
+    // Texto del botón siguiente
+    if (nextBtn) {
+        if (index >= questions.length - 1) {
+            nextBtn.innerHTML = '<i class="fas fa-check"></i> Finalizar';
+        } else {
+            nextBtn.innerHTML = 'Siguiente <i class="fas fa-arrow-right"></i>';
+        }
+    }
+}
+
+function showLoadingOverlay() {
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    if (loadingOverlay) {
+        loadingOverlay.style.display = 'flex';
+    }
+}
+
+function hideLoadingOverlay() {
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    if (loadingOverlay) {
+        loadingOverlay.style.display = 'none';
+    }
+}
+
+function completeExam() {
+    showProcessingScreen();
+}
+
+function showProcessingScreen() {
+    showScreen('processing');
+    
+    const steps = document.querySelectorAll('.step');
+    const processingText = document.getElementById('processingText');
+    
+    const processingTexts = [
+        'Analizando patrones de respuesta...',
+        'Identificando áreas de fortaleza...',
+        'Determinando nivel de conocimiento...',
+        'Generando recomendaciones personalizadas...',
+        'Preparando tu ruta de aprendizaje...'
+    ];
+    
+    let currentStep = 0;
+    
+    const processSteps = () => {
+        if (currentStep < steps.length) {
+            // Actualizar texto de procesamiento
+            if (currentStep < processingTexts.length && processingText) {
+                processingText.textContent = processingTexts[currentStep];
+            }
+            
+            // Marcar paso anterior como completado
+            if (currentStep > 0 && steps[currentStep - 1]) {
+                steps[currentStep - 1].classList.remove('processing');
+                steps[currentStep - 1].classList.add('completed');
+            }
+            
+            // Marcar paso actual como procesando
+            if (steps[currentStep]) {
+                steps[currentStep].classList.add('processing');
+            }
+            
+            currentStep++;
+            setTimeout(processSteps, 2000);
+        } else {
+            // Todos los pasos completados
+            if (steps[steps.length - 1]) {
+                steps[steps.length - 1].classList.remove('processing');
+                steps[steps.length - 1].classList.add('completed');
+            }
+            
+            setTimeout(() => {
+                generateResults();
+                showResults();
+            }, 1000);
+        }
+    };
+    
+    setTimeout(processSteps, 1000);
+}
+
+function generateResults() {
+    // Calcular nivel basado en respuestas
+    let correctAnswers = 0;
+    let totalTechnicalQuestions = 0;
+    
+    answers.forEach((answer, index) => {
+        const question = questions[index];
+        if (question && (question.type === 'multiple' || question.type === 'code')) {
+            totalTechnicalQuestions++;
+            
+            if (question.type === 'multiple') {
+                const correctOption = question.options.find(opt => opt.correct);
+                if (correctOption && answer.answer === correctOption.value) {
+                    correctAnswers++;
+                }
+            } else if (question.type === 'code') {
+                // Validación simple para código
+                if (question.correctAnswer && answer.answer.includes(question.correctAnswer)) {
+                    correctAnswers++;
+                } else if (question.keywords) {
+                    const hasKeywords = question.keywords.some(keyword => 
+                        answer.answer.toLowerCase().includes(keyword.toLowerCase())
+                    );
+                    if (hasKeywords) correctAnswers++;
+                }
+            }
+        }
+    });
+    
+    // Determinar nivel
+    const accuracy = totalTechnicalQuestions > 0 ? correctAnswers / totalTechnicalQuestions : 0;
+    
+    if (accuracy >= 0.8) {
+        userLevel = 'advanced';
+    } else if (accuracy >= 0.5) {
+        userLevel = 'intermediate';
+    } else {
+        userLevel = 'beginner';
+    }
+    
+    console.log('📊 Resultados generados:', {
+        accuracy,
+        correctAnswers,
+        totalTechnicalQuestions,
+        userLevel
+    });
+}
+
+function showResults() {
+    showScreen('results');
+    
+    // Animación de celebración
+    setTimeout(() => {
+        const celebrationIcon = document.querySelector('.celebration-icon');
+        if (celebrationIcon) {
+            celebrationIcon.style.animation = 'celebrate 2s infinite';
+        }
+    }, 500);
+    
+    // Configuración de niveles
+    const levelConfig = {
+        beginner: {
+            icon: 'fa-seedling',
+            title: 'Principiante',
+            description: 'Perfecto para comenzar desde los fundamentos',
+            color: 'var(--success)',
+            strengths: ['Motivación para aprender', 'Actitud positiva', 'Disposición para practicar'],
+            focusAreas: ['Sintaxis básica de Java', 'Conceptos fundamentales', 'Práctica con ejercicios simples', 'Entorno de desarrollo']
+        },
+        intermediate: {
+            icon: 'fa-tree',
+            title: 'Intermedio',
+            description: 'Tienes bases sólidas, continuemos construyendo',
+            color: 'var(--primary-blue)',
+            strengths: ['Comprensión de conceptos básicos', 'Experiencia previa', 'Pensamiento lógico'],
+            focusAreas: ['Estructuras de control avanzadas', 'Programación orientada a objetos', 'Manejo de errores', 'Proyectos prácticos']
+        },
+        advanced: {
+            icon: 'fa-crown',
+            title: 'Avanzado',
+            description: 'Excelente nivel, enfoquémonos en temas especializados',
+            color: 'var(--accent-yellow)',
+            strengths: ['Dominio de sintaxis', 'Experiencia en programación', 'Resolución de problemas', 'Pensamiento algorítmico'],
+            focusAreas: ['Patrones de diseño', 'Optimización de código', 'Frameworks avanzados', 'Proyectos complejos']
+        }
+    };
+    
+    const config = levelConfig[userLevel];
+    
+    // Actualizar badge de nivel
+    const levelIcon = document.getElementById('levelIcon');
+    const userLevelEl = document.getElementById('userLevel');
+    const levelDescription = document.getElementById('levelDescription');
+    
+    if (levelIcon) {
+        levelIcon.innerHTML = `<i class="fas ${config.icon}"></i>`;
+        levelIcon.style.background = `linear-gradient(135deg, ${config.color}, var(--primary-green))`;
+    }
+    
+    if (userLevelEl) {
+        userLevelEl.textContent = config.title;
+    }
+    
+    if (levelDescription) {
+        levelDescription.textContent = config.description;
+    }
+    
+    // Actualizar fortalezas
+    const strengthsList = document.getElementById('strengthsList');
+    if (strengthsList) {
+        strengthsList.innerHTML = config.strengths.map(strength => 
+            `<li>${strength}</li>`
+        ).join('');
+    }
+    
+    // Actualizar áreas de enfoque
+    const focusAreasList = document.getElementById('focusAreasList');
+    if (focusAreasList) {
+        focusAreasList.innerHTML = config.focusAreas.map(area => 
+            `<li>${area}</li>`
+        ).join('');
+    }
+    
+    // Actualizar estadísticas
+    const totalTime = Math.round((Date.now() - examStartTime) / 1000 / 60);
+    const questionsAnswered = answers.length;
+    const accuracyRate = Math.round((answers.filter(a => a.answer).length / questionsAnswered) * 100);
+    
+    const questionsAnsweredEl = document.getElementById('questionsAnswered');
+    const timeSpentEl = document.getElementById('timeSpent');
+    const accuracyRateEl = document.getElementById('accuracyRate');
+    
+    if (questionsAnsweredEl) {
+        questionsAnsweredEl.textContent = questionsAnswered;
+    }
+    
+    if (timeSpentEl) {
+        timeSpentEl.textContent = `${totalTime} min`;
+    }
+    
+    if (accuracyRateEl) {
+        accuracyRateEl.textContent = `${accuracyRate}%`;
+    }
+}
+
+function goToDashboard() {
+    alert('¡Excelente! Te llevaremos a tu dashboard personalizado 🎯');
+    // window.location.href = 'student-dashboard.html';
+}
+
+function retakeExam() {
+    if (confirm('¿Estás seguro de que quieres volver a tomar el examen?')) {
+        // Resetear variables
+        currentQuestionIndex = 0;
+        answers = [];
+        examStartTime = Date.now();
+        userLevel = 'beginner';
+        
+        // Volver a la pantalla de bienvenida
+        showScreen('welcome');
+        
+        console.log('🔄 Examen reiniciado');
+    }
+}
     </script>
 </body>
 </html>

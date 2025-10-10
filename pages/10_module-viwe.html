@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch - Sentencias Condicionales | Código para Todos</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS será copiado aquí */
+        /* Module View V2 CSS - Copiar en etiqueta <style> */
+
+:root {
+    --primary-blue: #4A90E2;
+    --primary-green: #7ED321;
+    --accent-pink: #FF6B9D;
+    --accent-yellow: #F5A623;
+    --java-color: #ED8B00;
+    --success: #27AE60;
+    --warning: #F39C12;
+    --error: #E74C3C;
+    
+    --text-primary: #2C3E50;
+    --text-secondary: #7F8C8D;
+    --background-light: #F8F9FA;
+    --neutral-light: #ECF0F1;
+    --border-light: #E9ECEF;
+    
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+    --shadow-heavy: 0 8px 24px rgba(0,0,0,0.2);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    
+    --sidebar-width: 320px;
+    --nav-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--background-light);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Main Navigation */
+.main-nav {
+    background: white;
+    box-shadow: var(--shadow-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--nav-height);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 30px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.breadcrumb-nav {
+    margin-left: 20px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-item a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary-blue);
+}
+
+.breadcrumb-item.active {
+    color: var(--text-primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.breadcrumb-separator {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-blue);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.user-stars {
+    font-size: 0.8rem;
+    color: var(--accent-yellow);
+    font-weight: 600;
+}
+
+/* Main Layout */
+.main-layout {
+    display: flex;
+    margin-top: var(--nav-height);
+    min-height: calc(100vh - var(--nav-height));
+}
+
+/* Module Sidebar */
+.module-sidebar {
+    width: var(--sidebar-width);
+    background: white;
+    box-shadow: var(--shadow-light);
+    padding: 25px 20px;
+    position: fixed;
+    height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+    z-index: 50;
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-light);
+    margin-bottom: 20px;
+}
+
+.module-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+}
+
+.module-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.module-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.module-progress-section {
+    padding: 15px;
+    background: var(--neutral-light);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.progress-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border-light);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    transition: width 0.6s ease;
+}
+
+/* Topics Navigation */
+.topics-navigation h4,
+.subtopics-navigation h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.topics-list,
+.subtopics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.topics-navigation {
+    margin-bottom: 20px;
+}
+
+.topic-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.topic-item:hover {
+    background: var(--neutral-light);
+    border-color: var(--primary-blue);
+}
+
+.topic-item.completed {
+    background: rgba(39, 174, 96, 0.1);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.topic-item.current {
+    background: rgba(74, 144, 226, 0.1);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* Subtopics Navigation */
+.subtopic-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    background: white;
+    border: 2px solid var(--border-light);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.subtopic-item:hover {
+    background: var(--neutral-light);
+    transform: translateX(3px);
+}
+
+.subtopic-item.active {
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(126, 211, 33, 0.05));
+    border-color: var(--primary-blue);
+    box-shadow: var(--shadow-light);
+}
+
+.subtopic-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--border-light);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.subtopic-item.active .subtopic-number {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.subtopic-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtopic-info span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.subtopic-info i {
+    color: var(--text-secondary);
+}
+
+.subtopic-item.active .subtopic-info i {
+    color: var(--primary-blue);
+}
+
+/* Content Area */
+.content-area {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 30px;
+    max-width: calc(100% - var(--sidebar-width));
+}
+
+.topic-title-bar {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topic-title-info h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.topic-title-info h1 i {
+    color: var(--primary-blue);
+}
+
+.topic-title-info p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.topic-progress-info {
+    text-align: center;
+}
+
+.progress-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.progress-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Subtopic Content Container */
+.subtopic-content-container {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: var(--shadow-light);
+    min-height: 500px;
+    margin-bottom: 25px;
+}
+
+/* Navigation Controls */
+.subtopic-navigation-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px 30px;
+    box-shadow: var(--shadow-light);
+}
+
+.nav-control-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--primary-blue);
+    color: white;
+}
+
+.nav-control-btn:hover:not(:disabled) {
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.nav-control-btn:disabled {
+    background: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.subtopic-indicator {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Content Styles - Objectives */
+.objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.objective-card {
+    background: var(--neutral-light);
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.objective-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-light);
+}
+
+.objective-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 15px;
+}
+
+.objective-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.objective-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Content Styles - Video */
+.video-player-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.video-player {
+    background: #1e1e1e;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.video-display {
+    min-height: 500px;
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.play-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 20px;
+}
+
+.play-button:hover {
+    background: var(--primary-green);
+    transform: scale(1.1);
+}
+
+.video-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.video-duration {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.video-controls {
+    background: rgba(0,0,0,0.9);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.control-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.progress-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-bar-video {
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.time-display {
+    color: white;
+    font-size: 0.9rem;
+    min-width: 100px;
+}
+
+/* Content Styles - Slides */
+.slides-viewer {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.slide-display {
+    background: var(--neutral-light);
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    min-height: 500px;
+    margin-bottom: 20px;
+}
+
+.slide-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.slide-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.slide-code {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 25px;
+    border-radius: 8px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.slide-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slide-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-blue);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slide-btn:hover:not(:disabled) {
+    background: #357abd;
+}
+
+.slide-btn:disabled {
+    background: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+.slide-counter {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Content Styles - Infographic */
+.infographic-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.infographic-display {
+    background: var(--neutral-light);
+    border: 2px dashed var(--border-light);
+    border-radius: var(--border-radius);
+    padding: 60px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.infographic-placeholder {
+    font-size: 4rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.infographic-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.infographic-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+/* Content Styles - IDE */
+.ide-container {
+    background: #1e1e1e;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+}
+
+.ide-header {
+    background: #2d2d30;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3e3e42;
+}
+
+.ide-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.ide-tab {
+    background: #3c3c3c;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px 6px 0 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ide-tab.active {
+    background: #1e1e1e;
+    border-bottom: 2px solid var(--java-color);
+}
+
+.ide-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.ide-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ide-btn.run {
+    background: var(--success);
+    color: white;
+}
+
+.ide-btn.run:hover {
+    background: #219a52;
+}
+
+.ide-btn.submit {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.ide-btn.submit:hover {
+    background: #357abd;
+}
+
+.ide-workspace {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    height: 500px;
+}
+
+.code-editor {
+    background: #1e1e1e;
+    padding: 20px;
+}
+
+.code-editor textarea {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: #d4d4d4;
+    border: none;
+    resize: none;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+}
+
+.console-output {
+    background: #0d1117;
+    border-left: 1px solid #3e3e42;
+    display: flex;
+    flex-direction: column;
+}
+
+.console-header {
+    background: #161b22;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #21262d;
+}
+
+.console-header h5 {
+    color: #f0f6fc;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.console-content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #f0f6fc;
+}
+
+.console-line {
+    margin-bottom: 8px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background: white;
+    border-radius: var(--border-radius);
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-heavy);
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background: var(--neutral-light);
+    color: var(--text-primary);
+}
+
+.modal-content {
+    padding: 25px;
+}
+
+/* Questions Styles */
+.questions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.question-card {
+    background: var(--neutral-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.question-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.question-number {
+    background: var(--primary-blue);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.question-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.question-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.option-btn {
+    background: white;
+    border: 2px solid var(--border-light);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.option-btn:hover {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.option-btn.selected {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.option-btn.correct {
+    border-color: var(--success);
+    background: rgba(39, 174, 96, 0.1);
+}
+
+.option-btn.incorrect {
+    border-color: var(--error);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.feedback-section {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.feedback-section.correct {
+    border-left-color: var(--success);
+}
+
+.feedback-section.incorrect {
+    border-left-color: var(--error);
+}
+
+.feedback-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.submit-answers-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 20px;
+}
+
+.submit-answers-btn:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1100;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-icon {
+    font-size: 1.2rem;
+}
+
+.toast-icon.fa-check-circle {
+    color: var(--success);
+}
+
+.toast-icon.fa-exclamation-circle {
+    color: var(--warning);
+}
+
+.toast-icon.fa-info-circle {
+    color: var(--primary-blue);
+}
+
+.toast-message {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.subtopic-content-container {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .ide-workspace {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 200px;
+    }
+}
+
+@media (max-width: 992px) {
+    .module-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .module-sidebar.mobile-open {
+        transform: translateX(0);
+    }
+    
+    .content-area {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    
+    .breadcrumb-nav {
+        display: none;
+    }
+    
+    .topic-title-bar {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-area {
+        padding: 20px 15px;
+    }
+    
+    .subtopic-content-container {
+        padding: 25px 20px;
+    }
+    
+    .objectives-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .subtopic-navigation-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-control-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .topic-title-info h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtopic-content-container {
+        padding: 20px 15px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Código para Todos</span>
+                </div>
+                
+                <nav class="breadcrumb-nav">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#" id="dashboardLink">
+                                <i class="fas fa-home"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="breadcrumb-separator">
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" id="courseLink">
+                                <i class="fab fa-java"></i>
+                                Java Fundamentos
+                            </a>
+                        </li>
+                        <li class="breadcrumb-separator">
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" id="moduleLink">
+                                <i class="fas fa-code-branch"></i>
+                                Sentencias Condicionales
+                            </a>
+                        </li>
+                        <li class="breadcrumb-separator">
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <i class="fas fa-random"></i>
+                            Switch
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="nav-right">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff" alt="Ana García">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Ana García</span>
+                        <span class="user-stars">127⭐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Module Sidebar -->
+        <aside class="module-sidebar">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <div class="module-info">
+                    <h3>Sentencias Condicionales</h3>
+                    <p>Módulo 4 • 4 temas</p>
+                </div>
+            </div>
+
+            <!-- Module Progress -->
+            <div class="module-progress-section">
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Progreso del módulo</span>
+                        <span class="stat-value">75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topics Navigation -->
+            <nav class="topics-navigation">
+                <h4>Temas del Módulo</h4>
+                <div class="topics-list">
+                    <div class="topic-item completed" data-topic="if">
+                        <i class="fas fa-check-circle"></i>
+                        <span>1. If</span>
+                    </div>
+                    
+                    <div class="topic-item completed" data-topic="if-else">
+                        <i class="fas fa-check-circle"></i>
+                        <span>2. If-else</span>
+                    </div>
+                    
+                    <div class="topic-item completed" data-topic="if-anidado">
+                        <i class="fas fa-check-circle"></i>
+                        <span>3. If-anidado</span>
+                    </div>
+                    
+                    <div class="topic-item current" data-topic="switch">
+                        <i class="fas fa-play-circle"></i>
+                        <span>4. Switch</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Subtopics Navigation -->
+            <nav class="subtopics-navigation">
+                <h4>Subtemas: Switch</h4>
+                <div class="subtopics-list">
+                    <div class="subtopic-item active" data-subtopic="objetivos">
+                        <div class="subtopic-number">1</div>
+                        <div class="subtopic-info">
+                            <span>Objetivos del Tema</span>
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="subtopic-item" data-subtopic="video-teorico">
+                        <div class="subtopic-number">2</div>
+                        <div class="subtopic-info">
+                            <span>Video Teórico</span>
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="subtopic-item" data-subtopic="diapositivas">
+                        <div class="subtopic-number">3</div>
+                        <div class="subtopic-info">
+                            <span>Diapositivas</span>
+                            <i class="fas fa-presentation"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="subtopic-item" data-subtopic="video-practico">
+                        <div class="subtopic-number">4</div>
+                        <div class="subtopic-info">
+                            <span>Video Práctico</span>
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="subtopic-item" data-subtopic="infografia">
+                        <div class="subtopic-number">5</div>
+                        <div class="subtopic-info">
+                            <span>Infografía</span>
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="subtopic-item" data-subtopic="ide">
+                        <div class="subtopic-number">6</div>
+                        <div class="subtopic-info">
+                            <span>IDE</span>
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Topic Title Bar -->
+            <div class="topic-title-bar">
+                <div class="topic-title-info">
+                    <h1>
+                        <i class="fas fa-random"></i>
+                        Switch Case
+                    </h1>
+                    <p>Aprende a usar la estructura switch para manejar múltiples condiciones de forma eficiente</p>
+                </div>
+                <div class="topic-progress-info">
+                    <span class="progress-label">Progreso del tema</span>
+                    <div class="progress-indicator">
+                        <div class="progress-circle">
+                            <span class="progress-value">50%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Content Container -->
+            <div id="subtopicContent" class="subtopic-content-container">
+                <!-- El contenido cambiará dinámicamente según el subtema seleccionado -->
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="subtopic-navigation-controls">
+                <button class="nav-control-btn prev-btn" id="prevSubtopic">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>Anterior</span>
+                </button>
+                
+                <div class="subtopic-indicator">
+                    <span class="current-subtopic-text" id="currentSubtopicIndicator">1 de 6</span>
+                </div>
+                
+                <button class="nav-control-btn next-btn" id="nextSubtopic">
+                    <span>Siguiente</span>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Video Questions Modal (aparece AL TERMINAR el video) -->
+    <div class="modal-overlay" id="videoQuestionsModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> Preguntas de Comprensión</h3>
+                <button class="modal-close" id="closeQuestionsModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="questionsContent">
+                <!-- Las preguntas se cargarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-content">
+            <i class="toast-icon fas fa-check-circle"></i>
+            <span class="toast-message">Acción completada exitosamente</span>
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script>
+        /* JavaScript será copiado aquí */
+        // Module View V2 JavaScript - Complete
+
+// Estado global
+let currentSubtopicIndex = 0;
+const subtopics = ['objetivos', 'video-teorico', 'diapositivas', 'video-practico', 'infografia', 'ide'];
+
+// Datos de subtemas y contenido
+const subtopicsContent = {
+    'objetivos': {
+        name: 'Objetivos del Tema',
+        icon: 'fas fa-bullseye',
+        template: 'objectives'
+    },
+    'video-teorico': {
+        name: 'Video Teórico',
+        icon: 'fas fa-play-circle',
+        template: 'video',
+        videoData: {
+            title: 'Fundamentos del Switch en Java',
+            duration: '12:30',
+            hasQuestions: true,
+            questions: [
+                {
+                    id: 1,
+                    question: '¿Cuál es la principal ventaja del switch sobre múltiples if-else?',
+                    options: [
+                        'Mayor legibilidad y eficiencia cuando se evalúa la misma variable',
+                        'Puede evaluar expresiones complejas',
+                        'Es más rápido en todos los casos',
+                        'Permite usar cualquier tipo de dato'
+                    ],
+                    correctIndex: 0,
+                    feedback: 'Correcto! El switch es más claro y eficiente para evaluar múltiples valores de una sola variable.'
+                },
+                {
+                    id: 2,
+                    question: '¿Qué sucede si olvidas el break en un case?',
+                    options: [
+                        'El programa no compila',
+                        'Se ejecutan todos los cases siguientes hasta encontrar un break',
+                        'Solo se ejecuta ese case',
+                        'Da un error en tiempo de ejecución'
+                    ],
+                    correctIndex: 1,
+                    feedback: 'Excelente! Este comportamiento se llama "fall-through" y puede ser útil en algunos casos específicos.'
+                },
+                {
+                    id: 3,
+                    question: '¿Para qué sirve la cláusula default?',
+                    options: [
+                        'Para inicializar variables',
+                        'Para terminar el switch',
+                        'Para manejar casos que no coinciden con ningún case específico',
+                        'Para definir el primer caso'
+                    ],
+                    correctIndex: 2,
+                    feedback: 'Perfecto! Default es como un "else" para el switch, maneja cualquier valor no contemplado.'
+                }
+            ]
+        }
+    },
+    'diapositivas': {
+        name: 'Diapositivas',
+        icon: 'fas fa-presentation',
+        template: 'slides',
+        slides: [
+            {
+                title: 'Introducción al Switch',
+                code: `// Sintaxis básica del switch
+switch (variable) {
+    case valor1:
+        // código
+        break;
+    case valor2:
+        // código
+        break;
+    default:
+        // código por defecto
+}`
+            },
+            {
+                title: 'Comparación: If-else vs Switch',
+                code: `// Con if-else (menos legible)
+if (dia == 1) {
+    System.out.println("Lunes");
+} else if (dia == 2) {
+    System.out.println("Martes");
+}
+
+// Con switch (más legible)
+switch (dia) {
+    case 1: 
+        System.out.println("Lunes"); 
+        break;
+    case 2: 
+        System.out.println("Martes"); 
+        break;
+}`
+            },
+            {
+                title: 'Ejemplo: Calculadora con Switch',
+                code: `switch (operacion) {
+    case '+':
+        resultado = a + b;
+        break;
+    case '-':
+        resultado = a - b;
+        break;
+    case '*':
+        resultado = a * b;
+        break;
+    case '/':
+        if (b != 0) {
+            resultado = a / b;
+        }
+        break;
+    default:
+        System.out.println("Operación no válida");
+}`
+            }
+        ]
+    },
+    'video-practico': {
+        name: 'Video Práctico',
+        icon: 'fas fa-code',
+        template: 'video',
+        videoData: {
+            title: 'Implementando Switch: Calculadora Avanzada',
+            duration: '18:45',
+            hasQuestions: true,
+            questions: [
+                {
+                    id: 1,
+                    question: '¿Cuándo es mejor usar switch que if-else?',
+                    options: [
+                        'Cuando necesitas evaluar rangos de valores',
+                        'Cuando comparas múltiples valores de UNA misma variable',
+                        'Cuando necesitas condiciones complejas',
+                        'Siempre es mejor usar switch'
+                    ],
+                    correctIndex: 1,
+                    feedback: 'Correcto! Switch es ideal cuando evalúas múltiples valores posibles de una sola variable.'
+                },
+                {
+                    id: 2,
+                    question: '¿El break es obligatorio en cada case?',
+                    options: [
+                        'Sí, siempre',
+                        'No, pero es recomendado para evitar fall-through no deseado',
+                        'Solo en el último case',
+                        'Nunca es necesario'
+                    ],
+                    correctIndex: 1,
+                    feedback: 'Exacto! El break no es obligatorio pero evita que se ejecuten los siguientes cases.'
+                }
+            ]
+        }
+    },
+    'infografia': {
+        name: 'Infografía',
+        icon: 'fas fa-image',
+        template: 'infographic'
+    },
+    'ide': {
+        name: 'IDE',
+        icon: 'fas fa-laptop-code',
+        template: 'ide'
+    }
+};
+
+let currentSlideIndex = 0;
+let videoProgress = 0;
+let videoPlaying = false;
+let videoInterval = null;
+let userAnswers = {};
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    initializeModuleView();
+    setupEventListeners();
+    loadSubtopic(currentSubtopicIndex);
+    console.log('🎯 Module View V2 inicializado - Un subtema a la vez');
+});
+
+function initializeModuleView() {
+    updateSubtopicIndicator();
+    updateNavigationButtons();
+}
+
+function setupEventListeners() {
+    // Breadcrumb navigation
+    document.getElementById('dashboardLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo('dashboard');
+    });
+    
+    document.getElementById('courseLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo('course-overview');
+    });
+    
+    document.getElementById('moduleLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo('module-overview');
+    });
+
+    // Subtopic navigation en sidebar
+    document.querySelectorAll('.subtopic-item').forEach((item, index) => {
+        item.addEventListener('click', () => {
+            loadSubtopic(index);
+        });
+    });
+
+    // Botones de navegación
+    document.getElementById('prevSubtopic')?.addEventListener('click', navigateToPrevious);
+    document.getElementById('nextSubtopic')?.addEventListener('click', navigateToNext);
+
+    // Modal
+    document.getElementById('closeQuestionsModal')?.addEventListener('click', closeQuestionsModal);
+}
+
+// Navegación entre subtemas
+function navigateToPrevious() {
+    if (currentSubtopicIndex > 0) {
+        loadSubtopic(currentSubtopicIndex - 1);
+    }
+}
+
+function navigateToNext() {
+    if (currentSubtopicIndex < subtopics.length - 1) {
+        loadSubtopic(currentSubtopicIndex + 1);
+    }
+}
+
+function loadSubtopic(index) {
+    currentSubtopicIndex = index;
+    const subtopicId = subtopics[index];
+    const content = subtopicsContent[subtopicId];
+    
+    // Limpiar estado del video si existe
+    if (videoInterval) {
+        clearInterval(videoInterval);
+        videoInterval = null;
+    }
+    videoPlaying = false;
+    videoProgress = 0;
+    
+    // Actualizar sidebar
+    updateSidebarSelection();
+    
+    // Actualizar indicador
+    updateSubtopicIndicator();
+    
+    // Actualizar botones de navegación
+    updateNavigationButtons();
+    
+    // Cargar contenido según el template
+    const container = document.getElementById('subtopicContent');
+    container.innerHTML = '';
+    
+    switch(content.template) {
+        case 'objectives':
+            renderObjectives(container);
+            break;
+        case 'video':
+            renderVideo(container, content.videoData);
+            break;
+        case 'slides':
+            currentSlideIndex = 0;
+            renderSlides(container, content.slides);
+            break;
+        case 'infographic':
+            renderInfographic(container);
+            break;
+        case 'ide':
+            renderIDE(container);
+            break;
+    }
+    
+    // Scroll al inicio
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    showNotification(`Cargando: ${content.name}`, 'info');
+}
+
+function updateSidebarSelection() {
+    document.querySelectorAll('.subtopic-item').forEach((item, index) => {
+        if (index === currentSubtopicIndex) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
+
+function updateSubtopicIndicator() {
+    const indicator = document.getElementById('currentSubtopicIndicator');
+    if (indicator) {
+        indicator.textContent = `${currentSubtopicIndex + 1} de ${subtopics.length}`;
+    }
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevSubtopic');
+    const nextBtn = document.getElementById('nextSubtopic');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentSubtopicIndex === 0;
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentSubtopicIndex === subtopics.length - 1;
+    }
+}
+
+// Renderizado de Objetivos
+function renderObjectives(container) {
+    container.innerHTML = `
+        <div class="objectives-grid">
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h4>Sintaxis del Switch</h4>
+                <p>Comprender la estructura y sintaxis básica de la sentencia switch en Java</p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <h4>Casos y Break</h4>
+                <p>Dominar el uso de case, break y default en estructuras switch</p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h4>Switch vs If-else</h4>
+                <p>Identificar cuándo usar switch en lugar de múltiples if-else</p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h4>Aplicación Práctica</h4>
+                <p>Implementar soluciones reales usando estructuras switch</p>
+            </div>
+        </div>
+    `;
+}
+
+// Renderizado de Video
+function renderVideo(container, videoData) {
+    videoProgress = 0;
+    videoPlaying = false;
+    
+    container.innerHTML = `
+        <div class="video-player-container">
+            <div class="video-player">
+                <div class="video-display" id="videoDisplay">
+                    <button class="play-button" id="playButton">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <h3 class="video-title">${videoData.title}</h3>
+                    <p class="video-duration">Duración: ${videoData.duration}</p>
+                </div>
+                <div class="video-controls">
+                    <button class="control-btn" id="playPauseBtn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="progress-track" id="progressTrack">
+                        <div class="progress-bar-video" id="progressBarVideo"></div>
+                    </div>
+                    <span class="time-display" id="timeDisplay">00:00 / ${videoData.duration}</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Event listeners del video
+    document.getElementById('playButton')?.addEventListener('click', () => startVideo(videoData));
+    document.getElementById('playPauseBtn')?.addEventListener('click', () => toggleVideo(videoData));
+}
+
+function startVideo(videoData) {
+    videoPlaying = true;
+    const display = document.getElementById('videoDisplay');
+    display.innerHTML = `
+        <h3 class="video-title">${videoData.title}</h3>
+        <p class="video-duration" style="color: rgba(255,255,255,0.8);">Reproduciendo...</p>
+    `;
+    
+    simulateVideoPlayback(videoData);
+    updatePlayPauseButton();
+}
+
+function toggleVideo(videoData) {
+    videoPlaying = !videoPlaying;
+    
+    if (videoPlaying) {
+        simulateVideoPlayback(videoData);
+    } else {
+        clearInterval(videoInterval);
+    }
+    
+    updatePlayPauseButton();
+}
+
+function simulateVideoPlayback(videoData) {
+    const progressBar = document.getElementById('progressBarVideo');
+    const timeDisplay = document.getElementById('timeDisplay');
+    
+    if (videoInterval) clearInterval(videoInterval);
+    
+    videoInterval = setInterval(() => {
+        if (videoPlaying) {
+            videoProgress += 1;
+            
+            if (videoProgress >= 100) {
+                videoProgress = 100;
+                videoPlaying = false;
+                clearInterval(videoInterval);
+                
+                // Video terminó - Mostrar preguntas
+                if (videoData.hasQuestions) {
+                    setTimeout(() => {
+                        showVideoQuestions(videoData.questions);
+                    }, 500);
+                }
+                
+                showNotification('¡Video completado!', 'success');
+            }
+            
+            if (progressBar) progressBar.style.width = `${videoProgress}%`;
+            if (timeDisplay) {
+                const duration = videoData.duration.split(':');
+                const totalSeconds = parseInt(duration[0]) * 60 + parseInt(duration[1]);
+                const currentSeconds = Math.floor((videoProgress / 100) * totalSeconds);
+                const mins = Math.floor(currentSeconds / 60);
+                const secs = currentSeconds % 60;
+                timeDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')} / ${videoData.duration}`;
+            }
+            
+            updatePlayPauseButton();
+        }
+    }, 200);
+}
+
+function updatePlayPauseButton() {
+    const btn = document.getElementById('playPauseBtn');
+    if (btn) {
+        const icon = btn.querySelector('i');
+        if (videoPlaying) {
+            icon.className = 'fas fa-pause';
+        } else {
+            icon.className = 'fas fa-play';
+        }
+    }
+}
+
+// Mostrar preguntas después del video
+function showVideoQuestions(questions) {
+    const modal = document.getElementById('videoQuestionsModal');
+    const content = document.getElementById('questionsContent');
+    
+    userAnswers = {};
+    
+    let questionsHTML = '<div class="questions-container">';
+    
+    questions.forEach((q, index) => {
+        questionsHTML += `
+            <div class="question-card" data-question="${index}">
+                <div class="question-header">
+                    <div class="question-number">${index + 1}</div>
+                    <div class="question-text">${q.question}</div>
+                </div>
+                <div class="question-options">
+                    ${q.options.map((opt, optIndex) => `
+                        <button class="option-btn" data-question="${index}" data-option="${optIndex}">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div class="feedback-section" id="feedback-${index}" style="display: none;"></div>
+            </div>
+        `;
+    });
+    
+    questionsHTML += `
+        <button class="submit-answers-btn" id="submitAnswers">
+            <i class="fas fa-check"></i> Enviar Respuestas
+        </button>
+    </div>`;
+    
+    content.innerHTML = questionsHTML;
+    
+    // Event listeners para opciones
+    document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+    });
+    
+    document.getElementById('submitAnswers')?.addEventListener('click', () => {
+        submitAnswers(questions);
+    });
+    
+    // Mostrar modal
+    modal.classList.add('active');
+}
+
+function handleOptionSelect(e) {
+    const btn = e.currentTarget;
+    const questionIndex = parseInt(btn.dataset.question);
+    const optionIndex = parseInt(btn.dataset.option);
+    
+    // Deseleccionar otras opciones de la misma pregunta
+    document.querySelectorAll(`.option-btn[data-question="${questionIndex}"]`).forEach(b => {
+        b.classList.remove('selected');
+    });
+    
+    // Seleccionar esta opción
+    btn.classList.add('selected');
+    
+    // Guardar respuesta
+    userAnswers[questionIndex] = optionIndex;
+}
+
+function submitAnswers(questions) {
+    let correctCount = 0;
+    
+    questions.forEach((q, index) => {
+        const userAnswer = userAnswers[index];
+        const feedbackDiv = document.getElementById(`feedback-${index}`);
+        const optionButtons = document.querySelectorAll(`.option-btn[data-question="${index}"]`);
+        
+        if (userAnswer !== undefined) {
+            const isCorrect = userAnswer === q.correctIndex;
+            
+            if (isCorrect) {
+                correctCount++;
+            }
+            
+            // Actualizar botones
+            optionButtons.forEach((btn, optIndex) => {
+                btn.disabled = true;
+                if (optIndex === q.correctIndex) {
+                    btn.classList.add('correct');
+                } else if (optIndex === userAnswer && !isCorrect) {
+                    btn.classList.add('incorrect');
+                }
+            });
+            
+            // Mostrar feedback
+            feedbackDiv.style.display = 'block';
+            feedbackDiv.className = `feedback-section ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedbackDiv.innerHTML = `
+                <div class="feedback-text">
+                    <i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                    <span>${q.feedback}</span>
+                </div>
+            `;
+        }
+    });
+    
+    // Deshabilitar botón de enviar
+    const submitBtn = document.getElementById('submitAnswers');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = `Resultado: ${correctCount}/${questions.length} correctas`;
+    }
+    
+    showNotification(`Has respondido correctamente ${correctCount} de ${questions.length} preguntas`, 'success');
+}
+
+function closeQuestionsModal() {
+    const modal = document.getElementById('videoQuestionsModal');
+    modal.classList.remove('active');
+}
+
+// Renderizado de Diapositivas
+function renderSlides(container, slides) {
+    container.innerHTML = `
+        <div class="slides-viewer">
+            <div class="slide-display">
+                <h2 class="slide-title">${slides[currentSlideIndex].title}</h2>
+                <div class="slide-content">
+                    <pre class="slide-code">${slides[currentSlideIndex].code}</pre>
+                </div>
+            </div>
+            <div class="slide-controls">
+                <button class="slide-btn" id="prevSlide" ${currentSlideIndex === 0 ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-left"></i>
+                    Anterior
+                </button>
+                <span class="slide-counter" id="slideCounter">${currentSlideIndex + 1} / ${slides.length}</span>
+                <button class="slide-btn" id="nextSlide" ${currentSlideIndex === slides.length - 1 ? 'disabled' : ''}>
+                    Siguiente
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('prevSlide')?.addEventListener('click', () => navigateSlide(-1, slides));
+    document.getElementById('nextSlide')?.addEventListener('click', () => navigateSlide(1, slides));
+}
+
+function navigateSlide(direction, slides) {
+    currentSlideIndex += direction;
+    
+    if (currentSlideIndex < 0) currentSlideIndex = 0;
+    if (currentSlideIndex >= slides.length) currentSlideIndex = slides.length - 1;
+    
+    const container = document.getElementById('subtopicContent');
+    renderSlides(container, slides);
+}
+
+// Renderizado de Infografía
+function renderInfographic(container) {
+    container.innerHTML = `
+        <div class="infographic-container">
+            <div class="infographic-display">
+                <div class="infographic-placeholder">
+                    <i class="fas fa-image"></i>
+                </div>
+                <h3 class="infographic-title">Infografía: Switch en Java</h3>
+                <p class="infographic-description">Aquí se mostraría una infografía visual sobre el uso de switch</p>
+            </div>
+        </div>
+    `;
+}
+
+// Renderizado de IDE
+function renderIDE(container) {
+    container.innerHTML = `
+        <div class="ide-container">
+            <div class="ide-header">
+                <div class="ide-tabs">
+                    <div class="ide-tab active">
+                        <i class="fab fa-java"></i>
+                        Main.java
+                    </div>
+                </div>
+                <div class="ide-actions">
+                    <button class="ide-btn run" id="runCode">
+                        <i class="fas fa-play"></i>
+                        Ejecutar
+                    </button>
+                    <button class="ide-btn submit" id="submitCode">
+                        <i class="fas fa-check"></i>
+                        Enviar
+                    </button>
+                </div>
+            </div>
+            <div class="ide-workspace">
+                <div class="code-editor">
+                    <textarea id="codeEditor" spellcheck="false">public class Main {
+    public static void main(String[] args) {
+        int dia = 3;
+        
+        switch (dia) {
+            case 1:
+                System.out.println("Lunes");
+                break;
+            case 2:
+                System.out.println("Martes");
+                break;
+            case 3:
+                System.out.println("Miércoles");
+                break;
+            default:
+                System.out.println("Día no válido");
+        }
+    }
+}</textarea>
+                </div>
+                <div class="console-output">
+                    <div class="console-header">
+                        <h5><i class="fas fa-terminal"></i> Consola</h5>
+                    </div>
+                    <div class="console-content" id="consoleOutput">
+                        <div class="console-line">Presiona 'Ejecutar' para ver el resultado...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('runCode')?.addEventListener('click', runCode);
+    document.getElementById('submitCode')?.addEventListener('click', submitCode);
+}
+
+function runCode() {
+    const console = document.getElementById('consoleOutput');
+    console.innerHTML = `
+        <div class="console-line" style="color: #7ED321;">✓ Compilación exitosa</div>
+        <div class="console-line" style="color: #4A90E2;">Ejecutando programa...</div>
+        <div class="console-line">Miércoles</div>
+        <div class="console-line" style="color: #7ED321; margin-top: 10px;">✓ Programa ejecutado correctamente</div>
+    `;
+    
+    showNotification('Código ejecutado correctamente', 'success');
+}
+
+function submitCode() {
+    showNotification('Código enviado para revisión', 'success');
+}
+
+// Sistema de Notificaciones
+function showNotification(message, type = 'info') {
+    const toast = document.getElementById('toastNotification');
+    const icon = toast.querySelector('.toast-icon');
+    const msg = toast.querySelector('.toast-message');
+    
+    // Actualizar contenido
+    msg.textContent = message;
+    
+    // Actualizar icono según tipo
+    icon.className = 'toast-icon fas';
+    switch(type) {
+        case 'success':
+            icon.classList.add('fa-check-circle');
+            break;
+        case 'warning':
+            icon.classList.add('fa-exclamation-circle');
+            break;
+        case 'info':
+        default:
+            icon.classList.add('fa-info-circle');
+            break;
+    }
+    
+    // Mostrar toast
+    toast.classList.add('show');
+    
+    // Ocultar después de 3 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+// Navegación general
+function navigateTo(page) {
+    console.log(`Navegando a: ${page}`);
+    showNotification(`Navegando a ${page}...`, 'info');
+    // Aquí implementarías la navegación real
+}
+
+// Event listener para cerrar toast
+document.querySelector('.toast-close')?.addEventListener('click', () => {
+    document.getElementById('toastNotification').classList.remove('show');
+});
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,3562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Código para Todos</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS se copiará aquí */
+        /* Student Profile CSS - Código para Todos */
+
+:root {
+    --primary-blue: #4A90E2;
+    --primary-green: #7ED321;
+    --accent-pink: #FF6B9D;
+    --accent-yellow: #F5A623;
+    --java-color: #ED8B00;
+    --python-color: #3776AB;
+    --web-color: #E44D26;
+    --success: #27AE60;
+    --warning: #F39C12;
+    --error: #E74C3C;
+    
+    --text-primary: #2C3E50;
+    --text-secondary: #7F8C8D;
+    --background-light: #F8F9FA;
+    --neutral-light: #ECF0F1;
+    --border-light: #E9ECEF;
+    
+    --shadow-light: 0 2px 4px rgba(0,0,0,0color-option.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.color-check, .color-lock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.unlock-hint {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.badges-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.badge-selector-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid var(--border-light);
+    transition: var(--transition);
+    position: relative;
+}
+
+.badge-selector-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-light);
+}
+
+.badge-selector-item.active {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.badge-display {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.badge-selector-item span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.badge-selector-item input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.selection-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.bio-editor {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-primary);
+    resize: vertical;
+    transition: var(--transition);
+}
+
+.bio-editor:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.bio-counter {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+.privacy-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.privacy-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+}
+
+.privacy-info label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.privacy-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-light);
+    transition: var(--transition);
+    border-radius: 30px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: var(--transition);
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: var(--primary-blue);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(30px);
+}
+
+.customization-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.save-customization-btn, .reset-customization-btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.save-customization-btn {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.save-customization-btn:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.reset-customization-btn {
+    background: white;
+    color: var(--text-secondary);
+    border: 2px solid var(--border-light);
+}
+
+.reset-customization-btn:hover {
+    border-color: var(--error);
+    color: var(--error);
+}
+
+/* Responsive Design Updates */
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .customization-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .achievements-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .activity-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .activity-filters {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .activity-filter-select {
+        width: 100%;
+    }
+    
+    .timeline-item {
+        grid-template-columns: 60px 2px 1fr;
+        gap: 15px;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .avatar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .color-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .badges-selector {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .profile-header-content {
+        padding: 0 15px;
+    }
+    
+    .profile-content {
+        padding: 0 15px 30px;
+    }
+    
+    .profile-basic-info h1 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.4rem;
+    }
+    
+    .period-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .chart-bar {
+        grid-template-columns: 60px 1fr 40px;
+        gap: 10px;
+    }
+    
+    .customization-actions {
+        flex-direction: column;
+    }
+    
+    .save-customization-btn, .reset-customization-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}1);
+    --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+    --shadow-heavy: 0 8px 24px rgba(0,0,0,0.2);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    
+    --nav-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--background-light);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding-top: var(--nav-height);
+}
+
+/* Main Navigation */
+.main-nav {
+    background: white;
+    box-shadow: var(--shadow-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--nav-height);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 5px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover {
+    background: var(--neutral-light);
+    color: var(--text-primary);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(126, 211, 33, 0.05));
+    color: var(--primary-blue);
+}
+
+.nav-link i {
+    font-size: 1.1rem;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notification-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.notification-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: var(--error);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.user-menu:hover {
+    background: var(--neutral-light);
+}
+
+.user-menu img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+/* Profile Header */
+.profile-header {
+    position: relative;
+    background: white;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-light);
+}
+
+.profile-header-bg {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+}
+
+.profile-header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+}
+
+.profile-avatar-section {
+    display: flex;
+    align-items: flex-end;
+    gap: 30px;
+    margin-top: -80px;
+    padding-bottom: 30px;
+}
+
+.profile-avatar {
+    position: relative;
+}
+
+.profile-avatar img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: var(--shadow-medium);
+}
+
+.change-avatar-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid white;
+    background: var(--primary-blue);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.change-avatar-btn:hover {
+    background: var(--primary-green);
+    transform: scale(1.1);
+}
+
+.profile-basic-info {
+    flex: 1;
+    padding-bottom: 10px;
+}
+
+.profile-basic-info h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.username {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.bio {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.edit-profile-btn {
+    padding: 10px 24px;
+    border: 2px solid var(--primary-blue);
+    border-radius: 8px;
+    background: white;
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-profile-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 30px 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: var(--neutral-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-light);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-icon.stars {
+    background: var(--accent-yellow);
+}
+
+.stat-icon.courses {
+    background: var(--primary-blue);
+}
+
+.stat-icon.streak {
+    background: var(--error);
+}
+
+.stat-icon.time {
+    background: var(--primary-green);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Profile Content */
+.profile-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px 50px;
+}
+
+/* Tabs Navigation */
+.tabs-navigation {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 8px;
+    box-shadow: var(--shadow-light);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tab-btn:hover {
+    background: var(--neutral-light);
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    color: white;
+}
+
+.tab-btn i {
+    font-size: 1.1rem;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 30px;
+}
+
+/* Info Cards */
+.info-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow-light);
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.info-card h3 i {
+    color: var(--primary-blue);
+}
+
+/* Info List */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.info-label i {
+    font-size: 1rem;
+    width: 20px;
+}
+
+.info-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.level-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.level-badge.intermediate {
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--primary-blue);
+}
+
+/* Rankings Card */
+.rankings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ranking-item {
+    background: var(--neutral-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    border: 2px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.ranking-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-light);
+}
+
+.ranking-item.group-ranking {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.ranking-item.open-ranking {
+    border-color: var(--primary-green);
+    background: rgba(126, 211, 33, 0.05);
+}
+
+.ranking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.course-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.course-name i {
+    font-size: 1.2rem;
+}
+
+.ranking-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ranking-badge.group {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.ranking-badge.open {
+    background: var(--primary-green);
+    color: white;
+}
+
+.ranking-position {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.ranking-position .position {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.ranking-position .total {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.ranking-stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent-yellow);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.ranking-badge-display {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-item.top3 {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+}
+
+.badge-item.top50 {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    color: white;
+}
+
+/* Badges Display */
+.badges-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.badge-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background: var(--neutral-light);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.badge-showcase:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-light);
+}
+
+.badge-icon {
+    font-size: 2.5rem;
+}
+
+.badge-showcase span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Courses Progress */
+.courses-progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.course-progress-item {
+    padding: 20px;
+    background: var(--neutral-light);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.course-progress-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-light);
+}
+
+.course-progress-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.course-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.course-icon.java {
+    background: var(--java-color);
+}
+
+.course-icon.web {
+    background: var(--web-color);
+}
+
+.course-icon.python {
+    background: var(--python-color);
+}
+
+.course-info {
+    flex: 1;
+}
+
+.course-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.course-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.course-percentage {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    transition: width 0.6s ease;
+}
+
+.course-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.course-stats span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Activity Timeline */
+.activity-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: var(--neutral-light);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.activity-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-light);
+}
+
+.activity-item .activity-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    background: var(--java-color);
+    flex-shrink: 0;
+}
+
+.activity-item .activity-icon.web {
+    background: var(--web-color);
+}
+
+.activity-item .activity-icon.python {
+    background: var(--python-color);
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.activity-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.activity-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activity-meta .stars {
+    display: flex;
+    gap: 2px;
+}
+
+.activity-meta .stars i {
+    font-size: 0.9rem;
+    color: var(--accent-yellow);
+}
+
+.activity-meta .stars i.far {
+    color: var(--border-light);
+}
+
+.activity-meta .time {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.view-all-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: 2px solid var(--primary-blue);
+    border-radius: 8px;
+    background: white;
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.view-all-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1100;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-icon {
+    font-size: 1.2rem;
+    color: var(--success);
+}
+
+.toast-message {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .profile-avatar-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs-navigation {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    
+    .tab-btn {
+        flex-shrink: 0;
+    }
+    
+    .badges-display {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Stats Tab Styles */
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.stats-period-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.period-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    background: white;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.period-btn:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.period-btn.active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.stat-chart-card {
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.stat-chart-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.chart-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chart-bar {
+    display: grid;
+    grid-template-columns: 80px 1fr 50px;
+    align-items: center;
+    gap: 15px;
+}
+
+.bar-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.bar-container {
+    height: 30px;
+    background: var(--border-light);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    border-radius: 15px;
+    transition: width 0.6s ease;
+}
+
+.bar-value {
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.heatmap-day {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.heatmap-day:hover {
+    transform: scale(1.1);
+}
+
+.heatmap-day.level-0 {
+    background: var(--border-light);
+}
+
+.heatmap-day.level-1 {
+    background: rgba(74, 144, 226, 0.3);
+}
+
+.heatmap-day.level-2 {
+    background: rgba(74, 144, 226, 0.5);
+}
+
+.heatmap-day.level-3 {
+    background: rgba(74, 144, 226, 0.7);
+}
+
+.heatmap-day.level-4 {
+    background: var(--primary-blue);
+}
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.legend-items {
+    display: flex;
+    gap: 4px;
+}
+
+.legend-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.time-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.time-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.time-course {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 180px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.time-bar {
+    flex: 1;
+    height: 30px;
+    background: var(--border-light);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.time-fill {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 0.6s ease;
+}
+
+.time-fill.java {
+    background: var(--java-color);
+}
+
+.time-fill.web {
+    background: var(--web-color);
+}
+
+.time-fill.python {
+    background: var(--python-color);
+}
+
+.time-value {
+    min-width: 50px;
+    text-align: right;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.metric-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.metric-value-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.metric-bar {
+    flex: 1;
+    height: 10px;
+    background: var(--border-light);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.metric-fill {
+    height: 100%;
+    background: var(--success);
+    border-radius: 5px;
+    transition: width 0.6s ease;
+}
+
+.metric-percent {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.star-rating-display {
+    display: flex;
+    gap: 4px;
+}
+
+.star-rating-display i {
+    color: var(--accent-yellow);
+    font-size: 1.2rem;
+}
+
+.metric-large {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+/* Achievements Tab Styles */
+.achievements-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.achievements-header {
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.achievements-progress {
+    margin-bottom: 20px;
+}
+
+.achievements-summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.unlocked-count {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.progress-bar-achievements {
+    flex: 1;
+    height: 12px;
+    background: var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill-achievements {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    transition: width 0.6s ease;
+}
+
+.achievement-points {
+    font-weight: 700;
+    color: var(--accent-yellow);
+    font-size: 1.1rem;
+}
+
+.achievements-filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    background: white;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.filter-btn.active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+}
+
+.achievements-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.achievement-category h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.achievement-card {
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid var(--border-light);
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.achievement-card.unlocked {
+    border-color: var(--success);
+    background: rgba(39, 174, 96, 0.05);
+}
+
+.achievement-card.locked {
+    opacity: 0.6;
+}
+
+.achievement-card.secret {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(142, 68, 173, 0.05));
+    border-color: #9B59B6;
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.achievement-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.achievement-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.achievement-date {
+    font-size: 0.85rem;
+    color: var(--success);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.achievement-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.achievement-progress-fill {
+    height: 100%;
+    background: var(--primary-blue);
+    transition: width 0.6s ease;
+}
+
+.achievement-requirement {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.achievement-points {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-yellow);
+    background: rgba(245, 166, 35, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Activity Tab Styles */
+.full-activity-container {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.activity-filters {
+    display: flex;
+    gap: 15px;
+}
+
+.activity-filter-select {
+    padding: 10px 15px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    background: white;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.activity-filter-select:hover {
+    border-color: var(--primary-blue);
+}
+
+.activity-filter-select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.activity-timeline-full {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 80px 2px 1fr;
+    gap: 20px;
+    position: relative;
+}
+
+.timeline-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--neutral-light);
+    border-radius: 12px;
+    padding: 15px 10px;
+}
+
+.date-day {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.date-month {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.timeline-line {
+    width: 2px;
+    background: var(--border-light);
+    position: relative;
+}
+
+.timeline-line::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+}
+
+.timeline-content {
+    display: flex;
+    gap: 15px;
+    background: var(--neutral-light);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    background: white;
+    box-shadow: var(--shadow-light);
+    transform: translateX(5px);
+}
+
+.timeline-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.timeline-icon.java {
+    background: var(--java-color);
+}
+
+.timeline-icon.web {
+    background: var(--web-color);
+}
+
+.timeline-icon.python {
+    background: var(--python-color);
+}
+
+.timeline-details {
+    flex: 1;
+}
+
+.timeline-details h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.timeline-details p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.timeline-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.timeline-meta .stars {
+    display: flex;
+    gap: 3px;
+}
+
+.timeline-meta .stars i {
+    font-size: 1rem;
+    color: var(--accent-yellow);
+}
+
+.timeline-meta .stars i.far {
+    color: var(--border-light);
+}
+
+.time-taken, .timestamp {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Customization Tab Styles */
+.customization-container {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.customization-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+.customization-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.customization-section {
+    background: var(--neutral-light);
+    padding: 25px;
+    border-radius: var(--border-radius);
+}
+
+.customization-section.full-width {
+    grid-column: 1 / -1;
+}
+
+.customization-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.section-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.avatar-option {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.avatar-option:hover {
+    transform: scale(1.05);
+}
+
+.avatar-option.active {
+    border-color: var(--primary-blue);
+}
+
+.avatar-option.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.avatar-option img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-check, .avatar-lock {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--primary-blue);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.avatar-lock {
+    background: var(--text-secondary);
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.color-option {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.color-option:hover {
+    transform: scale(1.05);
+}
+
+.color-option.active {
+    border-color: white;
+    box-shadow: 0 0 0 3px var(--text-primary);
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Código para Todos</span>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        <span>Mis Cursos</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-trophy"></i>
+                        <span>Competencias</span>
+                    </a>
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-user"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff" alt="Ana García">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-header-bg"></div>
+        <div class="profile-header-content">
+            <div class="profile-avatar-section">
+                <div class="profile-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=200" alt="Ana García">
+                    <button class="change-avatar-btn" id="changeAvatarBtn">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="profile-basic-info">
+                    <h1>Ana García Hernández</h1>
+                    <p class="username">@anagarcia_dev</p>
+                    <p class="bio">"Aprendiendo a programar paso a paso 💻"</p>
+                    <button class="edit-profile-btn" id="editProfileBtn">
+                        <i class="fas fa-edit"></i>
+                        Editar Perfil
+                    </button>
+                </div>
+            </div>
+            
+            <div class="profile-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon stars">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">284</span>
+                        <span class="stat-label">Estrellas Totales</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon courses">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Cursos Activos</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon streak">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">7</span>
+                        <span class="stat-label">Días de Racha</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon time">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">156h</span>
+                        <span class="stat-label">Tiempo Total</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Content -->
+    <div class="profile-content">
+        <!-- Tabs Navigation -->
+        <div class="tabs-navigation">
+            <button class="tab-btn active" data-tab="overview">
+                <i class="fas fa-chart-line"></i>
+                Resumen
+            </button>
+            <button class="tab-btn" data-tab="stats">
+                <i class="fas fa-chart-bar"></i>
+                Estadísticas
+            </button>
+            <button class="tab-btn" data-tab="achievements">
+                <i class="fas fa-trophy"></i>
+                Logros
+            </button>
+            <button class="tab-btn" data-tab="activity">
+                <i class="fas fa-history"></i>
+                Actividad
+            </button>
+            <button class="tab-btn" data-tab="customization">
+                <i class="fas fa-palette"></i>
+                Personalización
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content active" id="overview">
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="content-left">
+                    <!-- Personal Info Card -->
+                    <div class="info-card">
+                        <h3>
+                            <i class="fas fa-user"></i>
+                            Información Personal
+                        </h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <span class="info-label">
+                                    <i class="fas fa-envelope"></i>
+                                    Email
+                                </span>
+                                <span class="info-value">ana.garcia@estudiante.mx</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">
+                                    <i class="fas fa-university"></i>
+                                    Institución
+                                </span>
+                                <span class="info-value">ITESM Campus Monterrey</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    Carrera
+                                </span>
+                                <span class="info-value">Ing. en Tecnologías Computacionales</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">
+                                    <i class="fas fa-book-open"></i>
+                                    Semestre
+                                </span>
+                                <span class="info-value">4to Semestre</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Miembro desde
+                                </span>
+                                <span class="info-value">Enero 2025</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">
+                                    <i class="fas fa-chart-line"></i>
+                                    Nivel
+                                </span>
+                                <span class="info-value">
+                                    <span class="level-badge intermediate">Intermedio</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rankings Card -->
+                    <div class="info-card rankings-card">
+                        <h3>
+                            <i class="fas fa-ranking-star"></i>
+                            Tus Rankings
+                        </h3>
+                        <div class="rankings-list">
+                            <!-- Ranking Grupal -->
+                            <div class="ranking-item group-ranking">
+                                <div class="ranking-header">
+                                    <div class="course-name">
+                                        <i class="fab fa-java"></i>
+                                        Java Fundamentos
+                                    </div>
+                                    <div class="ranking-badge group">
+                                        <i class="fas fa-users"></i>
+                                        Grupo ITESM
+                                    </div>
+                                </div>
+                                <div class="ranking-position">
+                                    <span class="position">#3</span>
+                                    <span class="total">de 28 estudiantes</span>
+                                </div>
+                                <div class="ranking-stars">
+                                    <i class="fas fa-star"></i>
+                                    127 estrellas
+                                </div>
+                                <div class="ranking-badge-display">
+                                    <span class="badge-item top3">🏆 Top 3 del Grupo</span>
+                                </div>
+                            </div>
+
+                            <!-- Ranking Abierto 1 -->
+                            <div class="ranking-item open-ranking">
+                                <div class="ranking-header">
+                                    <div class="course-name">
+                                        <i class="fas fa-code"></i>
+                                        Desarrollo Web
+                                    </div>
+                                    <div class="ranking-badge open">
+                                        <i class="fas fa-globe"></i>
+                                        Ranking Abierto
+                                    </div>
+                                </div>
+                                <div class="ranking-position">
+                                    <span class="position">#47</span>
+                                    <span class="total">de 1,234 estudiantes</span>
+                                </div>
+                                <div class="ranking-stars">
+                                    <i class="fas fa-star"></i>
+                                    43 estrellas
+                                </div>
+                                <div class="ranking-badge-display">
+                                    <span class="badge-item top50">⭐ Top 50 Global</span>
+                                </div>
+                            </div>
+
+                            <!-- Ranking Abierto 2 -->
+                            <div class="ranking-item open-ranking">
+                                <div class="ranking-header">
+                                    <div class="course-name">
+                                        <i class="fab fa-python"></i>
+                                        Python Básico
+                                    </div>
+                                    <div class="ranking-badge open">
+                                        <i class="fas fa-globe"></i>
+                                        Ranking Abierto
+                                    </div>
+                                </div>
+                                <div class="ranking-position">
+                                    <span class="position">#892</span>
+                                    <span class="total">de 1,234 estudiantes</span>
+                                </div>
+                                <div class="ranking-stars">
+                                    <i class="fas fa-star"></i>
+                                    14 estrellas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badges Display -->
+                    <div class="info-card badges-card">
+                        <h3>
+                            <i class="fas fa-award"></i>
+                            Insignias Destacadas
+                        </h3>
+                        <div class="badges-display">
+                            <div class="badge-showcase">
+                                <div class="badge-icon top3">🏆</div>
+                                <span>Top 3</span>
+                            </div>
+                            <div class="badge-showcase">
+                                <div class="badge-icon speed">⚡</div>
+                                <span>Velocista</span>
+                            </div>
+                            <div class="badge-showcase">
+                                <div class="badge-icon streak">🔥</div>
+                                <span>Racha</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="content-right">
+                    <!-- Courses Progress Card -->
+                    <div class="info-card courses-progress-card">
+                        <h3>
+                            <i class="fas fa-book"></i>
+                            Progreso en Cursos
+                        </h3>
+                        <div class="courses-progress-list">
+                            <!-- Java Course -->
+                            <div class="course-progress-item">
+                                <div class="course-progress-header">
+                                    <div class="course-icon java">
+                                        <i class="fab fa-java"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h4>Java Fundamentos</h4>
+                                        <p>
+                                            <i class="fas fa-users"></i>
+                                            Grupo ITESM
+                                        </p>
+                                    </div>
+                                    <span class="course-percentage">60%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <div class="course-stats">
+                                    <span><i class="fas fa-star"></i> 127</span>
+                                    <span><i class="fas fa-tasks"></i> 15 actividades</span>
+                                    <span><i class="fas fa-clock"></i> 89h</span>
+                                </div>
+                            </div>
+
+                            <!-- Web Course -->
+                            <div class="course-progress-item">
+                                <div class="course-progress-header">
+                                    <div class="course-icon web">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h4>Desarrollo Web</h4>
+                                        <p>
+                                            <i class="fas fa-user"></i>
+                                            Auto-aprendizaje
+                                        </p>
+                                    </div>
+                                    <span class="course-percentage">25%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%"></div>
+                                </div>
+                                <div class="course-stats">
+                                    <span><i class="fas fa-star"></i> 43</span>
+                                    <span><i class="fas fa-tasks"></i> 8 actividades</span>
+                                    <span><i class="fas fa-clock"></i> 67h</span>
+                                </div>
+                            </div>
+
+                            <!-- Python Course -->
+                            <div class="course-progress-item">
+                                <div class="course-progress-header">
+                                    <div class="course-icon python">
+                                        <i class="fab fa-python"></i>
+                                    </div>
+                                    <div class="course-info">
+                                        <h4>Python Básico</h4>
+                                        <p>
+                                            <i class="fas fa-user"></i>
+                                            Auto-aprendizaje
+                                        </p>
+                                    </div>
+                                    <span class="course-percentage">5%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 5%"></div>
+                                </div>
+                                <div class="course-stats">
+                                    <span><i class="fas fa-star"></i> 14</span>
+                                    <span><i class="fas fa-tasks"></i> 2 actividades</span>
+                                    <span><i class="fas fa-clock"></i> 8h</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="info-card activity-card">
+                        <h3>
+                            <i class="fas fa-history"></i>
+                            Actividad Reciente
+                        </h3>
+                        <div class="activity-timeline">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Calculadora Básica</h4>
+                                    <p>Java Fundamentos</p>
+                                    <div class="activity-meta">
+                                        <span class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="time">Hace 2 horas</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Tabla de Multiplicar</h4>
+                                    <p>Java Fundamentos</p>
+                                    <div class="activity-meta">
+                                        <span class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="time">Ayer</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon web">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Formulario HTML</h4>
+                                    <p>Desarrollo Web</p>
+                                    <div class="activity-meta">
+                                        <span class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="time">Hace 2 días</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Números Primos</h4>
+                                    <p>Java Fundamentos</p>
+                                    <div class="activity-meta">
+                                        <span class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="time">Hace 3 días</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon python">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Hola Mundo Python</h4>
+                                    <p>Python Básico</p>
+                                    <div class="activity-meta">
+                                        <span class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="time">Hace 5 días</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="view-all-btn">Ver toda la actividad</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Tab -->
+        <div class="tab-content" id="stats">
+            <div class="stats-container">
+                <div class="stats-header">
+                    <h2>Estadísticas Detalladas</h2>
+                    <div class="stats-period-selector">
+                        <button class="period-btn active" data-period="week">Semana</button>
+                        <button class="period-btn" data-period="month">Mes</button>
+                        <button class="period-btn" data-period="all">Todo</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <!-- Distribución de Estrellas -->
+                    <div class="stat-chart-card">
+                        <h3><i class="fas fa-star"></i> Distribución de Estrellas</h3>
+                        <div class="chart-bars">
+                            <div class="chart-bar">
+                                <div class="bar-label">⭐</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 15%"></div>
+                                </div>
+                                <div class="bar-value">3</div>
+                            </div>
+                            <div class="chart-bar">
+                                <div class="bar-label">⭐⭐</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 20%"></div>
+                                </div>
+                                <div class="bar-value">4</div>
+                            </div>
+                            <div class="chart-bar">
+                                <div class="bar-label">⭐⭐⭐</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 35%"></div>
+                                </div>
+                                <div class="bar-value">7</div>
+                            </div>
+                            <div class="chart-bar">
+                                <div class="bar-label">⭐⭐⭐⭐</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 60%"></div>
+                                </div>
+                                <div class="bar-value">12</div>
+                            </div>
+                            <div class="chart-bar">
+                                <div class="bar-label">⭐⭐⭐⭐⭐</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 100%"></div>
+                                </div>
+                                <div class="bar-value">20</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actividad Semanal -->
+                    <div class="stat-chart-card">
+                        <h3><i class="fas fa-calendar"></i> Actividad Semanal</h3>
+                        <div class="heatmap-grid">
+                            <div class="heatmap-day level-2" title="Lunes: 2 actividades"></div>
+                            <div class="heatmap-day level-3" title="Martes: 3 actividades"></div>
+                            <div class="heatmap-day level-1" title="Miércoles: 1 actividad"></div>
+                            <div class="heatmap-day level-4" title="Jueves: 4 actividades"></div>
+                            <div class="heatmap-day level-2" title="Viernes: 2 actividades"></div>
+                            <div class="heatmap-day level-0" title="Sábado: 0 actividades"></div>
+                            <div class="heatmap-day level-1" title="Domingo: 1 actividad"></div>
+                        </div>
+                        <div class="heatmap-legend">
+                            <span>Menos</span>
+                            <div class="legend-items">
+                                <div class="legend-box level-0"></div>
+                                <div class="legend-box level-1"></div>
+                                <div class="legend-box level-2"></div>
+                                <div class="legend-box level-3"></div>
+                                <div class="legend-box level-4"></div>
+                            </div>
+                            <span>Más</span>
+                        </div>
+                    </div>
+
+                    <!-- Tiempo por Curso -->
+                    <div class="stat-chart-card">
+                        <h3><i class="fas fa-clock"></i> Tiempo por Curso</h3>
+                        <div class="time-distribution">
+                            <div class="time-item">
+                                <div class="time-course">
+                                    <i class="fab fa-java"></i>
+                                    <span>Java Fundamentos</span>
+                                </div>
+                                <div class="time-bar">
+                                    <div class="time-fill java" style="width: 57%"></div>
+                                </div>
+                                <span class="time-value">89h</span>
+                            </div>
+                            <div class="time-item">
+                                <div class="time-course">
+                                    <i class="fas fa-code"></i>
+                                    <span>Desarrollo Web</span>
+                                </div>
+                                <div class="time-bar">
+                                    <div class="time-fill web" style="width: 43%"></div>
+                                </div>
+                                <span class="time-value">67h</span>
+                            </div>
+                            <div class="time-item">
+                                <div class="time-course">
+                                    <i class="fab fa-python"></i>
+                                    <span>Python Básico</span>
+                                </div>
+                                <div class="time-bar">
+                                    <div class="time-fill python" style="width: 5%"></div>
+                                </div>
+                                <span class="time-value">8h</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Métricas Clave -->
+                    <div class="stat-chart-card">
+                        <h3><i class="fas fa-chart-line"></i> Métricas Clave</h3>
+                        <div class="metrics-list">
+                            <div class="metric-item">
+                                <span class="metric-label">Tasa de Éxito</span>
+                                <div class="metric-value-bar">
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 87%"></div>
+                                    </div>
+                                    <span class="metric-percent">87%</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Promedio de Estrellas</span>
+                                <div class="metric-value-bar">
+                                    <div class="star-rating-display">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="metric-percent">4.2</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Tiempo Promedio</span>
+                                <div class="metric-value-bar">
+                                    <span class="metric-large">18min</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Mejor Racha</span>
+                                <div class="metric-value-bar">
+                                    <span class="metric-large">7 días</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Tab -->
+        <div class="tab-content" id="achievements">
+            <div class="achievements-container">
+                <div class="achievements-header">
+                    <div class="achievements-progress">
+                        <h2>Mis Logros</h2>
+                        <div class="achievements-summary">
+                            <span class="unlocked-count">6 de 18 desbloqueados</span>
+                            <div class="progress-bar-achievements">
+                                <div class="progress-fill-achievements" style="width: 33%"></div>
+                            </div>
+                            <span class="achievement-points">850 puntos</span>
+                        </div>
+                    </div>
+                    <div class="achievements-filters">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="unlocked">Desbloqueados</button>
+                        <button class="filter-btn" data-filter="locked">Bloqueados</button>
+                    </div>
+                </div>
+
+                <div class="achievements-content">
+                    <!-- Logros de Progreso -->
+                    <div class="achievement-category">
+                        <h3><i class="fas fa-chart-line"></i> Logros de Progreso</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-card unlocked" data-state="unlocked">
+                                <div class="achievement-icon">🎯</div>
+                                <h4>Primer Programa</h4>
+                                <p>Completaste tu primera actividad</p>
+                                <div class="achievement-date">Desbloqueado: 15 Ene 2025</div>
+                                <div class="achievement-points">+50 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">🎓</div>
+                                <h4>Graduado Java</h4>
+                                <p>Completa el curso de Java Fundamentos</p>
+                                <div class="achievement-progress-bar">
+                                    <div class="achievement-progress-fill" style="width: 60%"></div>
+                                </div>
+                                <div class="achievement-requirement">Progreso: 60/100%</div>
+                                <div class="achievement-points">+200 pts</div>
+                            </div>
+                            <div class="achievement-card unlocked" data-state="unlocked">
+                                <div class="achievement-icon">📚</div>
+                                <h4>Explorador</h4>
+                                <p>Inicia 3 cursos diferentes</p>
+                                <div class="achievement-date">Desbloqueado: 20 Ene 2025</div>
+                                <div class="achievement-points">+100 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">🌟</div>
+                                <h4>Maestro de Estrellas</h4>
+                                <p>Acumula 500 estrellas en total</p>
+                                <div class="achievement-progress-bar">
+                                    <div class="achievement-progress-fill" style="width: 57%"></div>
+                                </div>
+                                <div class="achievement-requirement">284/500 estrellas</div>
+                                <div class="achievement-points">+300 pts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logros de Velocidad -->
+                    <div class="achievement-category">
+                        <h3><i class="fas fa-bolt"></i> Logros de Velocidad</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-card unlocked" data-state="unlocked">
+                                <div class="achievement-icon">⚡</div>
+                                <h4>Velocista</h4>
+                                <p>Completa una actividad en menos de 5 minutos</p>
+                                <div class="achievement-date">Desbloqueado: 18 Ene 2025</div>
+                                <div class="achievement-points">+75 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">🏃</div>
+                                <h4>Corredor</h4>
+                                <p>Completa 10 actividades en menos de 5 minutos</p>
+                                <div class="achievement-progress-bar">
+                                    <div class="achievement-progress-fill" style="width: 30%"></div>
+                                </div>
+                                <div class="achievement-requirement">3/10 actividades</div>
+                                <div class="achievement-points">+150 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">🚀</div>
+                                <h4>Flash</h4>
+                                <p>Completa una actividad en menos de 2 minutos</p>
+                                <div class="achievement-requirement">¡Sé rápido!</div>
+                                <div class="achievement-points">+250 pts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logros de Consistencia -->
+                    <div class="achievement-category">
+                        <h3><i class="fas fa-fire"></i> Logros de Consistencia</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-card unlocked" data-state="unlocked">
+                                <div class="achievement-icon">🔥</div>
+                                <h4>Racha de Fuego</h4>
+                                <p>Mantén una racha de 7 días</p>
+                                <div class="achievement-date">Desbloqueado: Hoy</div>
+                                <div class="achievement-points">+100 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">⭐</div>
+                                <h4>Semana Perfecta</h4>
+                                <p>Completa al menos una actividad cada día por 7 días</p>
+                                <div class="achievement-progress-bar">
+                                    <div class="achievement-progress-fill" style="width: 100%"></div>
+                                </div>
+                                <div class="achievement-requirement">7/7 días</div>
+                                <div class="achievement-points">+175 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">📅</div>
+                                <h4>Mes Activo</h4>
+                                <p>Mantén una racha de 30 días</p>
+                                <div class="achievement-requirement">Sigue practicando</div>
+                                <div class="achievement-points">+500 pts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logros Sociales -->
+                    <div class="achievement-category">
+                        <h3><i class="fas fa-users"></i> Logros Sociales</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-card unlocked" data-state="unlocked">
+                                <div class="achievement-icon">🏅</div>
+                                <h4>Top 3</h4>
+                                <p>Alcanza el top 3 en el scoreboard grupal</p>
+                                <div class="achievement-date">Desbloqueado: 22 Ene 2025</div>
+                                <div class="achievement-points">+125 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">👥</div>
+                                <h4>Colaborador</h4>
+                                <p>Ayuda a 3 compañeros con sus dudas</p>
+                                <div class="achievement-progress-bar">
+                                    <div class="achievement-progress-fill" style="width: 33%"></div>
+                                </div>
+                                <div class="achievement-requirement">1/3 compañeros</div>
+                                <div class="achievement-points">+150 pts</div>
+                            </div>
+                            <div class="achievement-card locked" data-state="locked">
+                                <div class="achievement-icon">🤝</div>
+                                <h4>Mentor</h4>
+                                <p>Ayuda a 10 compañeros con sus dudas</p>
+                                <div class="achievement-requirement">Sé solidario</div>
+                                <div class="achievement-points">+300 pts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logros Secretos -->
+                    <div class="achievement-category">
+                        <h3><i class="fas fa-question-circle"></i> Logros Secretos</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-card locked secret" data-state="locked">
+                                <div class="achievement-icon">🔮</div>
+                                <h4>???</h4>
+                                <p>Este logro es secreto...</p>
+                                <div class="achievement-requirement">???</div>
+                                <div class="achievement-points">+??? pts</div>
+                            </div>
+                            <div class="achievement-card unlocked" data-state="unlocked">
+                                <div class="achievement-icon">🌙</div>
+                                <h4>Búho Nocturno</h4>
+                                <p>Completa una actividad después de las 10pm</p>
+                                <div class="achievement-date">Desbloqueado: 19 Ene 2025</div>
+                                <div class="achievement-points">+75 pts</div>
+                            </div>
+                            <div class="achievement-card unlocked" data-state="unlocked">
+                                <div class="achievement-icon">💯</div>
+                                <h4>Perfeccionista</h4>
+                                <p>Obtén 5 estrellas en 5 actividades consecutivas</p>
+                                <div class="achievement-date">Desbloqueado: 21 Ene 2025</div>
+                                <div class="achievement-points">+175 pts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Tab -->
+        <div class="tab-content" id="activity">
+            <div class="full-activity-container">
+                <div class="activity-header">
+                    <h2>Historial Completo de Actividades</h2>
+                    <div class="activity-filters">
+                        <select class="activity-filter-select" id="courseFilter">
+                            <option value="all">Todos los cursos</option>
+                            <option value="java">Java Fundamentos</option>
+                            <option value="web">Desarrollo Web</option>
+                            <option value="python">Python Básico</option>
+                        </select>
+                        <select class="activity-filter-select" id="starsFilter">
+                            <option value="all">Todas las calificaciones</option>
+                            <option value="5">5 estrellas</option>
+                            <option value="4">4 estrellas</option>
+                            <option value="3">3 estrellas</option>
+                            <option value="2">2 estrellas</option>
+                            <option value="1">1 estrella</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="activity-timeline-full">
+                    <div class="timeline-item" data-course="java" data-stars="4">
+                        <div class="timeline-date">
+                            <span class="date-day">28</span>
+                            <span class="date-month">Ene</span>
+                        </div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon java">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>Calculadora Básica</h4>
+                                <p>Java Fundamentos • Operaciones con if/else</p>
+                                <div class="timeline-meta">
+                                    <span class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span class="time-taken"><i class="fas fa-clock"></i> 18 min</span>
+                                    <span class="timestamp">14:23</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-course="java" data-stars="5">
+                        <div class="timeline-date">
+                            <span class="date-day">27</span>
+                            <span class="date-month">Ene</span>
+                        </div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon java">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>Tabla de Multiplicar</h4>
+                                <p>Java Fundamentos • Ciclos For</p>
+                                <div class="timeline-meta">
+                                    <span class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                    <span class="time-taken"><i class="fas fa-clock"></i> 12 min</span>
+                                    <span class="timestamp">19:45</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-course="web" data-stars="3">
+                        <div class="timeline-date">
+                            <span class="date-day">26</span>
+                            <span class="date-month">Ene</span>
+                        </div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon web">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>Formulario HTML</h4>
+                                <p>Desarrollo Web • Formularios y Validación</p>
+                                <div class="timeline-meta">
+                                    <span class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span class="time-taken"><i class="fas fa-clock"></i> 25 min</span>
+                                    <span class="timestamp">16:30</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-course="java" data-stars="4">
+                        <div class="timeline-date">
+                            <span class="date-day">25</span>
+                            <span class="date-month">Ene</span>
+                        </div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon java">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>Números Primos</h4>
+                                <p>Java Fundamentos • Algoritmos</p>
+                                <div class="timeline-meta">
+                                    <span class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span class="time-taken"><i class="fas fa-clock"></i> 22 min</span>
+                                    <span class="timestamp">20:15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-course="python" data-stars="5">
+                        <div class="timeline-date">
+                            <span class="date-day">23</span>
+                            <span class="date-month">Ene</span>
+                        </div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon python">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>Hola Mundo Python</h4>
+                                <p>Python Básico • Introducción</p>
+                                <div class="timeline-meta">
+                                    <span class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                    <span class="time-taken"><i class="fas fa-clock"></i> 5 min</span>
+                                    <span class="timestamp">15:20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-course="web" data-stars="4">
+                        <div class="timeline-date">
+                            <span class="date-day">22</span>
+                            <span class="date-month">Ene</span>
+                        </div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon web">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>Página Personal</h4>
+                                <p>Desarrollo Web • HTML y CSS</p>
+                                <div class="timeline-meta">
+                                    <span class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span class="time-taken"><i class="fas fa-clock"></i> 35 min</span>
+                                    <span class="timestamp">17:50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customization Tab -->
+        <div class="tab-content" id="customization">
+            <div class="customization-container">
+                <h2>Personaliza tu Perfil</h2>
+                
+                <div class="customization-grid">
+                    <!-- Avatar Selection -->
+                    <div class="customization-section">
+                        <h3><i class="fas fa-user-circle"></i> Avatar</h3>
+                        <div class="avatar-grid">
+                            <div class="avatar-option active">
+                                <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff" alt="Avatar 1">
+                                <span class="avatar-check"><i class="fas fa-check"></i></span>
+                            </div>
+                            <div class="avatar-option">
+                                <img src="https://ui-avatars.com/api/?name=AG&background=7ED321&color=fff" alt="Avatar 2">
+                            </div>
+                            <div class="avatar-option">
+                                <img src="https://ui-avatars.com/api/?name=Ana&background=FF
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-content">
+            <i class="toast-icon fas fa-check-circle"></i>
+            <span class="toast-message">Acción completada</span>
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script>
+        /* JavaScript se copiará aquí */
+        // Student Profile JavaScript - Código para Todos (COMPLETO Y FUNCIONAL)
+
+// Estado global
+let currentTab = 'overview';
+let selectedPeriod = 'week';
+let achievementFilter = 'all';
+let activityCourseFilter = 'all';
+let activityStarsFilter = 'all';
+let selectedBadgesCount = 3;
+let customizationChanged = false;
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    initializeProfile();
+    setupEventListeners();
+    setupStatsListeners();
+    setupAchievementsListeners();
+    setupActivityListeners();
+    setupCustomizationListeners();
+    console.log('✅ Perfil de Estudiante inicializado - Todos los tabs funcionales');
+});
+
+function initializeProfile() {
+    console.log('Perfil cargado correctamente');
+}
+
+function setupEventListeners() {
+    // Tab navigation
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', handleTabChange);
+    });
+    
+    // Edit profile button
+    document.getElementById('editProfileBtn')?.addEventListener('click', handleEditProfile);
+    
+    // Change avatar button
+    document.getElementById('changeAvatarBtn')?.addEventListener('click', handleChangeAvatar);
+    
+    // View all activity button
+    document.querySelector('.view-all-btn')?.addEventListener('click', () => {
+        switchToTab('activity');
+    });
+    
+    // Navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', handleNavigation);
+    });
+    
+    // Toast close button
+    document.querySelector('.toast-close')?.addEventListener('click', hideToast);
+}
+
+// Stats Tab Listeners
+function setupStatsListeners() {
+    document.querySelectorAll('.period-btn').forEach(btn => {
+        btn.addEventListener('click', handlePeriodChange);
+    });
+}
+
+function handlePeriodChange(event) {
+    const btn = event.currentTarget;
+    const period = btn.dataset.period;
+    
+    document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    selectedPeriod = period;
+    
+    const periodNames = {
+        'week': 'Semana',
+        'month': 'Mes',
+        'all': 'Todo el tiempo'
+    };
+    
+    showToast(`Mostrando estadísticas: ${periodNames[period]}`, 'info');
+}
+
+// Achievements Tab Listeners
+function setupAchievementsListeners() {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', handleAchievementFilter);
+    });
+    
+    document.querySelectorAll('.achievement-card').forEach(card => {
+        card.addEventListener('click', handleAchievementClick);
+    });
+}
+
+function handleAchievementFilter(event) {
+    const btn = event.currentTarget;
+    const filter = btn.dataset.filter;
+    
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    achievementFilter = filter;
+    
+    // Filtrar logros
+    document.querySelectorAll('.achievement-card').forEach(card => {
+        const state = card.dataset.state;
+        
+        if (filter === 'all') {
+            card.style.display = 'block';
+        } else if (filter === 'unlocked' && state === 'unlocked') {
+            card.style.display = 'block';
+        } else if (filter === 'locked' && state === 'locked') {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    const filterNames = {
+        'all': 'Todos los logros',
+        'unlocked': 'Logros desbloqueados',
+        'locked': 'Logros bloqueados'
+    };
+    
+    showToast(`Filtrando: ${filterNames[filter]}`, 'info');
+}
+
+function handleAchievementClick(event) {
+    const card = event.currentTarget;
+    const state = card.dataset.state;
+    const title = card.querySelector('h4').textContent;
+    
+    if (state === 'unlocked') {
+        showToast(`¡Ya desbloqueaste: ${title}!`, 'success');
+    } else {
+        showToast(`Sigue trabajando para desbloquear: ${title}`, 'info');
+    }
+}
+
+// Activity Tab Listeners
+function setupActivityListeners() {
+    const courseFilter = document.getElementById('courseFilter');
+    const starsFilter = document.getElementById('starsFilter');
+    
+    courseFilter?.addEventListener('change', handleActivityFilter);
+    starsFilter?.addEventListener('change', handleActivityFilter);
+}
+
+function handleActivityFilter() {
+    const courseFilter = document.getElementById('courseFilter').value;
+    const starsFilter = document.getElementById('starsFilter').value;
+    
+    activityCourseFilter = courseFilter;
+    activityStarsFilter = starsFilter;
+    
+    document.querySelectorAll('.timeline-item').forEach(item => {
+        const itemCourse = item.dataset.course;
+        const itemStars = item.dataset.stars;
+        
+        let showItem = true;
+        
+        if (courseFilter !== 'all' && itemCourse !== courseFilter) {
+            showItem = false;
+        }
+        
+        if (starsFilter !== 'all' && itemStars !== starsFilter) {
+            showItem = false;
+        }
+        
+        item.style.display = showItem ? 'grid' : 'none';
+    });
+    
+    showToast('Filtros aplicados', 'info');
+}
+
+// Customization Tab Listeners
+function setupCustomizationListeners() {
+    // Avatar selection
+    document.querySelectorAll('.avatar-option:not(.locked)').forEach(option => {
+        option.addEventListener('click', handleAvatarSelect);
+    });
+    
+    // Color selection
+    document.querySelectorAll('.color-option:not(.locked)').forEach(option => {
+        option.addEventListener('click', handleColorSelect);
+    });
+    
+    // Badge selection
+    document.querySelectorAll('.badge-selector-item').forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        checkbox?.addEventListener('change', handleBadgeSelect);
+        item.addEventListener('click', (e) => {
+            if (e.target !== checkbox) {
+                checkbox.click();
+            }
+        });
+    });
+    
+    // Bio editor
+    const bioEditor = document.getElementById('bioEditor');
+    const bioCount = document.getElementById('bioCount');
+    
+    bioEditor?.addEventListener('input', () => {
+        bioCount.textContent = bioEditor.value.length;
+        customizationChanged = true;
+    });
+    
+    // Privacy toggles
+    document.querySelectorAll('.toggle-switch input').forEach(toggle => {
+        toggle.addEventListener('change', () => {
+            customizationChanged = true;
+            showToast('Configuración actualizada', 'info');
+        });
+    });
+    
+    // Save button
+    document.getElementById('saveCustomization')?.addEventListener('click', handleSaveCustomization);
+    
+    // Reset button
+    document.getElementById('resetCustomization')?.addEventListener('click', handleResetCustomization);
+}
+
+function handleAvatarSelect(event) {
+    const option = event.currentTarget;
+    
+    document.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('active'));
+    option.classList.add('active');
+    
+    customizationChanged = true;
+    showToast('Avatar seleccionado', 'success');
+}
+
+function handleColorSelect(event) {
+    const option = event.currentTarget;
+    const color = option.dataset.color;
+    
+    document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+    option.classList.add('active');
+    
+    customizationChanged = true;
+    showToast(`Color ${color} seleccionado`, 'success');
+}
+
+function handleBadgeSelect(event) {
+    const checkbox = event.currentTarget;
+    const item = checkbox.closest('.badge-selector-item');
+    const checkedCount = document.querySelectorAll('.badge-selector-item input:checked').length;
+    
+    if (checkbox.checked && checkedCount > 3) {
+        checkbox.checked = false;
+        showToast('Solo puedes seleccionar 3 insignias', 'warning');
+        return;
+    }
+    
+    if (checkbox.checked) {
+        item.classList.add('active');
+    } else {
+        item.classList.remove('active');
+    }
+    
+    selectedBadgesCount = document.querySelectorAll('.badge-selector-item input:checked').length;
+    document.querySelector('.selection-count').textContent = `${selectedBadgesCount}/3 insignias seleccionadas`;
+    
+    customizationChanged = true;
+}
+
+function handleSaveCustomization() {
+    if (!customizationChanged) {
+        showToast('No hay cambios para guardar', 'info');
+        return;
+    }
+    
+    // Simular guardado
+    setTimeout(() => {
+        customizationChanged = false;
+        showToast('¡Personalización guardada exitosamente!', 'success');
+    }, 500);
+}
+
+function handleResetCustomization() {
+    if (!confirm('¿Estás seguro de que quieres restaurar la configuración por defecto?')) {
+        return;
+    }
+    
+    // Simular reset
+    setTimeout(() => {
+        location.reload();
+    }, 500);
+    
+    showToast('Restaurando configuración...', 'info');
+}
+
+// Tab Management
+function handleTabChange(event) {
+    const btn = event.currentTarget;
+    const tabId = btn.dataset.tab;
+    
+    if (tabId === currentTab) return;
+    
+    switchToTab(tabId);
+}
+
+function switchToTab(tabId) {
+    // Update buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        if (btn.dataset.tab === tabId) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Update content
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    const targetContent = document.getElementById(tabId);
+    if (targetContent) {
+        targetContent.classList.add('active');
+    }
+    
+    currentTab = tabId;
+    
+    // Mostrar notificación
+    const tabNames = {
+        'overview': 'Resumen',
+        'stats': 'Estadísticas',
+        'achievements': 'Logros',
+        'activity': 'Actividad',
+        'customization': 'Personalización'
+    };
+    
+    showToast(`Navegando a ${tabNames[tabId]}`, 'info');
+}
+
+// Profile Actions
+function handleEditProfile() {
+    showToast('Función de edición de perfil próximamente', 'info');
+}
+
+function handleChangeAvatar() {
+    switchToTab('customization');
+    showToast('Cambia tu avatar en la sección de personalización', 'info');
+}
+
+// Navigation
+function handleNavigation(event) {
+    event.preventDefault();
+    const link = event.currentTarget;
+    const page = link.querySelector('span')?.textContent || 'Página';
+    
+    // Remover active de todos los links
+    document.querySelectorAll('.nav-link').forEach(l => {
+        l.classList.remove('active');
+    });
+    
+    // Agregar active al link clickeado
+    link.classList.add('active');
+    
+    showToast(`Navegando a ${page}`, 'info');
+}
+
+// Toast Notifications
+function showToast(message, type = 'info') {
+    const toast = document.getElementById('toastNotification');
+    const icon = toast.querySelector('.toast-icon');
+    const msg = toast.querySelector('.toast-message');
+    
+    // Actualizar contenido
+    msg.textContent = message;
+    
+    // Actualizar icono según tipo
+    icon.className = 'toast-icon fas';
+    switch(type) {
+        case 'success':
+            icon.classList.add('fa-check-circle');
+            icon.style.color = 'var(--success)';
+            break;
+        case 'warning':
+            icon.classList.add('fa-exclamation-circle');
+            icon.style.color = 'var(--warning)';
+            break;
+        case 'error':
+            icon.classList.add('fa-times-circle');
+            icon.style.color = 'var(--error)';
+            break;
+        case 'info':
+        default:
+            icon.classList.add('fa-info-circle');
+            icon.style.color = 'var(--primary-blue)';
+            break;
+    }
+    
+    // Mostrar toast
+    toast.classList.add('show');
+    
+    // Ocultar después de 3 segundos
+    setTimeout(() => {
+        hideToast();
+    }, 3000);
+}
+
+function hideToast() {
+    const toast = document.getElementById('toastNotification');
+    toast.classList.remove('show');
+}
+
+// Atajos de teclado
+document.addEventListener('keydown', function(event) {
+    if (event.altKey) {
+        switch(event.key) {
+            case '1':
+                switchToTab('overview');
+                break;
+            case '2':
+                switchToTab('stats');
+                break;
+            case '3':
+                switchToTab('achievements');
+                break;
+            case '4':
+                switchToTab('activity');
+                break;
+            case '5':
+                switchToTab('customization');
+                break;
+        }
+    }
+});
+
+// Animaciones de entrada
+window.addEventListener('load', function() {
+    const statCards = document.querySelectorAll('.stat-card');
+    statCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.5s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 50);
+        }, index * 100);
+    });
+});
+
+// Advertencia al salir si hay cambios sin guardar
+window.addEventListener('beforeunload', function(e) {
+    if (customizationChanged && currentTab === 'customization') {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+});
+    </script>
+</body>
+</html>

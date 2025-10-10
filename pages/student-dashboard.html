@@ -1,0 +1,2477 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Dashboard - Código para Todos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="#" class="nav-link active">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fas fa-book"></i>
+            Temas
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fas fa-trophy"></i>
+            Scoreboard
+          </a>
+          <a href="#" class="nav-link">
+            <i class="fas fa-chart-line"></i>
+            Mi Avance
+          </a>
+        </div>
+
+        <div class="nav-profile">
+          <div class="profile-info">
+            <span class="user-name">Ana García</span>
+            <span class="user-level">Intermedio</span>
+          </div>
+          <div class="profile-avatar" id="userAvatar">
+            <img
+              src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+              alt="Ana García"
+            />
+          </div>
+          <div class="profile-dropdown">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <div class="dashboard-container">
+        <!-- Welcome Header -->
+        <header class="welcome-header">
+          <div class="welcome-content">
+            <h1>¡Bienvenida de vuelta, Ana! 👋</h1>
+            <p>
+              Continuemos con tu aprendizaje de Java. Tienes 2 actividades
+              pendientes.
+            </p>
+          </div>
+          <div class="welcome-stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="totalStars">127</span>
+                <span class="stat-label">Estrellas</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-fire"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="streakDays">5</span>
+                <span class="stat-label">Días seguidos</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="studyTime">12h</span>
+                <span class="stat-label">Esta semana</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Left Column -->
+          <div class="dashboard-left">
+            <!-- Progress Section -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Mi Progreso por Temas</h2>
+                <a href="#" class="section-link">Ver todos</a>
+              </div>
+              <div class="progress-grid">
+                <div class="progress-card completed" data-topic="if">
+                  <div class="progress-icon">
+                    <i class="fas fa-code-branch"></i>
+                  </div>
+                  <div class="progress-info">
+                    <h3>Condicionales if/else</h3>
+                    <p>Toma de decisiones en código</p>
+                  </div>
+                  <div class="progress-circle" data-progress="100">
+                    <svg class="progress-svg">
+                      <circle
+                        class="progress-bg"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                      <circle
+                        class="progress-fill"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                    </svg>
+                    <span class="progress-text">100%</span>
+                  </div>
+                  <div class="progress-status">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Completado</span>
+                  </div>
+                </div>
+
+                <div class="progress-card in-progress" data-topic="switch">
+                  <div class="progress-icon">
+                    <i class="fas fa-list-ul"></i>
+                  </div>
+                  <div class="progress-info">
+                    <h3>Switch Case</h3>
+                    <p>Múltiples opciones de control</p>
+                  </div>
+                  <div class="progress-circle" data-progress="75">
+                    <svg class="progress-svg">
+                      <circle
+                        class="progress-bg"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                      <circle
+                        class="progress-fill"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                    </svg>
+                    <span class="progress-text">75%</span>
+                  </div>
+                  <div class="progress-status">
+                    <i class="fas fa-play-circle"></i>
+                    <span>En progreso</span>
+                  </div>
+                </div>
+
+                <div class="progress-card in-progress" data-topic="for">
+                  <div class="progress-icon">
+                    <i class="fas fa-sync-alt"></i>
+                  </div>
+                  <div class="progress-info">
+                    <h3>Ciclos For</h3>
+                    <p>Repetición controlada de código</p>
+                  </div>
+                  <div class="progress-circle" data-progress="50">
+                    <svg class="progress-svg">
+                      <circle
+                        class="progress-bg"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                      <circle
+                        class="progress-fill"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                    </svg>
+                    <span class="progress-text">50%</span>
+                  </div>
+                  <div class="progress-status">
+                    <i class="fas fa-play-circle"></i>
+                    <span>En progreso</span>
+                  </div>
+                </div>
+
+                <div class="progress-card not-started" data-topic="arrays">
+                  <div class="progress-icon">
+                    <i class="fas fa-th-list"></i>
+                  </div>
+                  <div class="progress-info">
+                    <h3>Arrays</h3>
+                    <p>Almacenar múltiples valores</p>
+                  </div>
+                  <div class="progress-circle" data-progress="0">
+                    <svg class="progress-svg">
+                      <circle
+                        class="progress-bg"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                      <circle
+                        class="progress-fill"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                    </svg>
+                    <span class="progress-text">0%</span>
+                  </div>
+                  <div class="progress-status">
+                    <i class="fas fa-lock"></i>
+                    <span>Bloqueado</span>
+                  </div>
+                </div>
+
+                <div class="progress-card locked" data-topic="methods">
+                  <div class="progress-icon">
+                    <i class="fas fa-cogs"></i>
+                  </div>
+                  <div class="progress-info">
+                    <h3>Métodos</h3>
+                    <p>Funciones reutilizables</p>
+                  </div>
+                  <div class="progress-circle" data-progress="0">
+                    <svg class="progress-svg">
+                      <circle
+                        class="progress-bg"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                      <circle
+                        class="progress-fill"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                    </svg>
+                    <span class="progress-text">0%</span>
+                  </div>
+                  <div class="progress-status">
+                    <i class="fas fa-lock"></i>
+                    <span>Bloqueado</span>
+                  </div>
+                </div>
+
+                <div class="progress-card locked" data-topic="oop">
+                  <div class="progress-icon">
+                    <i class="fas fa-cube"></i>
+                  </div>
+                  <div class="progress-info">
+                    <h3>Programación Orientada a Objetos</h3>
+                    <p>Clases y objetos en Java</p>
+                  </div>
+                  <div class="progress-circle" data-progress="0">
+                    <svg class="progress-svg">
+                      <circle
+                        class="progress-bg"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                      <circle
+                        class="progress-fill"
+                        cx="30"
+                        cy="30"
+                        r="25"
+                      ></circle>
+                    </svg>
+                    <span class="progress-text">0%</span>
+                  </div>
+                  <div class="progress-status">
+                    <i class="fas fa-lock"></i>
+                    <span>Bloqueado</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Recent Activities -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Actividades Recientes</h2>
+                <a href="#" class="section-link">Ver historial</a>
+              </div>
+              <div class="activities-list">
+                <div class="activity-item completed">
+                  <div class="activity-icon">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="activity-info">
+                    <h4>Ejercicio: Calculadora Básica</h4>
+                    <p>Operaciones matemáticas con if/else</p>
+                    <span class="activity-time">Hace 2 horas</span>
+                  </div>
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">4/5</span>
+                  </div>
+                </div>
+
+                <div class="activity-item completed">
+                  <div class="activity-icon">
+                    <i class="fas fa-sync-alt"></i>
+                  </div>
+                  <div class="activity-info">
+                    <h4>Práctica: Ciclos Anidados</h4>
+                    <p>Bucles dentro de bucles</p>
+                    <span class="activity-time">Ayer</span>
+                  </div>
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">3/5</span>
+                  </div>
+                </div>
+
+                <div class="activity-item pending">
+                  <div class="activity-icon">
+                    <i class="fas fa-th-list"></i>
+                  </div>
+                  <div class="activity-info">
+                    <h4>Desafío: Array Bidimensional</h4>
+                    <p>Matrices y manipulación de datos</p>
+                    <span class="activity-time">Asignado hace 3 días</span>
+                  </div>
+                  <div class="activity-rating">
+                    <span class="status-badge pending">Pendiente</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right Column -->
+          <div class="dashboard-right">
+            <!-- Scoreboard -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Scoreboard del Grupo</h2>
+                <span class="group-name">Programación Java - ITESM</span>
+              </div>
+              <div class="scoreboard">
+                <div class="scoreboard-item rank-1">
+                  <div class="rank-icon">
+                    <i class="fas fa-crown"></i>
+                  </div>
+                  <div class="student-info">
+                    <img
+                      src="https://ui-avatars.com/api/?name=Carlos+Ruiz&background=FFD700&color=000&size=40"
+                      alt="Carlos"
+                    />
+                    <div class="student-details">
+                      <span class="student-name">Carlos Ruiz</span>
+                      <span class="student-level">Avanzado</span>
+                    </div>
+                  </div>
+                  <div class="student-score">
+                    <span class="score-number">245</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="scoreboard-item rank-2 current-user">
+                  <div class="rank-icon">
+                    <span class="rank-number">2</span>
+                  </div>
+                  <div class="student-info">
+                    <img
+                      src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+                      alt="Ana"
+                    />
+                    <div class="student-details">
+                      <span class="student-name">Ana García (Tú)</span>
+                      <span class="student-level">Intermedio</span>
+                    </div>
+                  </div>
+                  <div class="student-score">
+                    <span class="score-number">127</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="scoreboard-item rank-3">
+                  <div class="rank-icon">
+                    <span class="rank-number">3</span>
+                  </div>
+                  <div class="student-info">
+                    <img
+                      src="https://ui-avatars.com/api/?name=Maria+Lopez&background=7ED321&color=fff&size=40"
+                      alt="María"
+                    />
+                    <div class="student-details">
+                      <span class="student-name">María López</span>
+                      <span class="student-level">Intermedio</span>
+                    </div>
+                  </div>
+                  <div class="student-score">
+                    <span class="score-number">98</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="scoreboard-item">
+                  <div class="rank-icon">
+                    <span class="rank-number">4</span>
+                  </div>
+                  <div class="student-info">
+                    <img
+                      src="https://ui-avatars.com/api/?name=Diego+Morales&background=FF6B9D&color=fff&size=40"
+                      alt="Diego"
+                    />
+                    <div class="student-details">
+                      <span class="student-name">Diego Morales</span>
+                      <span class="student-level">Principiante</span>
+                    </div>
+                  </div>
+                  <div class="student-score">
+                    <span class="score-number">67</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="scoreboard-item">
+                  <div class="rank-icon">
+                    <span class="rank-number">5</span>
+                  </div>
+                  <div class="student-info">
+                    <img
+                      src="https://ui-avatars.com/api/?name=Sofia+Martinez&background=F5A623&color=fff&size=40"
+                      alt="Sofía"
+                    />
+                    <div class="student-details">
+                      <span class="student-name">Sofía Martínez</span>
+                      <span class="student-level">Principiante</span>
+                    </div>
+                  </div>
+                  <div class="student-score">
+                    <span class="score-number">45</span>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="scoreboard-footer">
+                <a href="#" class="view-full-ranking">Ver ranking completo</a>
+              </div>
+            </section>
+
+            <!-- Next Activities -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Próximas Actividades</h2>
+              </div>
+              <div class="next-activities">
+                <div class="next-activity urgent">
+                  <div class="activity-type">
+                    <i class="fas fa-play-circle"></i>
+                  </div>
+                  <div class="activity-content">
+                    <h4>Video: Introducción a Arrays</h4>
+                    <p>Aprende sobre estructuras de datos básicas</p>
+                    <div class="activity-meta">
+                      <span class="duration">
+                        <i class="fas fa-clock"></i>
+                        15 min
+                      </span>
+                      <span class="deadline urgent">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Hoy
+                      </span>
+                    </div>
+                  </div>
+                  <button class="start-activity-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+
+                <div class="next-activity">
+                  <div class="activity-type">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="activity-content">
+                    <h4>Ejercicio: Suma de Elementos</h4>
+                    <p>Recorre un array y suma sus valores</p>
+                    <div class="activity-meta">
+                      <span class="duration">
+                        <i class="fas fa-clock"></i>
+                        30 min
+                      </span>
+                      <span class="deadline">
+                        <i class="fas fa-calendar"></i>
+                        Mañana
+                      </span>
+                    </div>
+                  </div>
+                  <button class="start-activity-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+
+                <div class="next-activity competition">
+                  <div class="activity-type">
+                    <i class="fas fa-trophy"></i>
+                  </div>
+                  <div class="activity-content">
+                    <h4>Competencia Grupal</h4>
+                    <p>Desafío de programación en tiempo real</p>
+                    <div class="activity-meta">
+                      <span class="duration">
+                        <i class="fas fa-users"></i>
+                        Grupal
+                      </span>
+                      <span class="deadline">
+                        <i class="fas fa-calendar"></i>
+                        Viernes 2:00 PM
+                      </span>
+                    </div>
+                  </div>
+                  <button class="start-activity-btn">
+                    <i class="fas fa-bell"></i>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Logros</h2>
+                <a href="#" class="section-link">Ver todos</a>
+              </div>
+              <div class="achievements-grid">
+                <div
+                  class="achievement-item unlocked"
+                  title="Completaste tu primer programa"
+                >
+                  <div class="achievement-icon">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">Primer Programa</span>
+                  </div>
+                </div>
+
+                <div
+                  class="achievement-item unlocked"
+                  title="Completaste un ejercicio en menos de 5 minutos"
+                >
+                  <div class="achievement-icon">
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">Velocista</span>
+                  </div>
+                </div>
+
+                <div
+                  class="achievement-item locked"
+                  title="Obtén 5 estrellas en 10 ejercicios"
+                >
+                  <div class="achievement-icon">
+                    <i class="fas fa-medal"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">Perfeccionista</span>
+                  </div>
+                  <div class="achievement-progress">7/10</div>
+                </div>
+
+                <div
+                  class="achievement-item locked"
+                  title="Gana 3 competencias"
+                >
+                  <div class="achievement-icon">
+                    <i class="fas fa-crown"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">Competidor</span>
+                  </div>
+                  <div class="achievement-progress">1/3</div>
+                </div>
+
+                <div
+                  class="achievement-item locked"
+                  title="Estudia 7 días consecutivos"
+                >
+                  <div class="achievement-icon">
+                    <i class="fas fa-fire"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">En Racha</span>
+                  </div>
+                  <div class="achievement-progress">5/7</div>
+                </div>
+
+                <div class="achievement-item secret locked" title="???">
+                  <div class="achievement-icon">
+                    <i class="fas fa-question"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">Logro Secreto</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <style>
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --neutral-light: #f8f9fa;
+        --neutral-dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --border-light: #e5e5e5;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+      }
+
+      /* Reset y Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: white;
+        box-shadow: var(--shadow-light);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        border-radius: 8px;
+        transition: var(--transition);
+        font-weight: 500;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .nav-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .nav-profile:hover {
+        background: var(--neutral-light);
+      }
+
+      .profile-info {
+        text-align: right;
+      }
+
+      .user-name {
+        display: block;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .user-level {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .profile-avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-blue);
+      }
+
+      .profile-dropdown {
+        color: var(--text-secondary);
+      }
+
+      /* Main Dashboard */
+      .dashboard-main {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+
+      .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Welcome Header */
+      .welcome-header {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .welcome-content h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .welcome-content p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .welcome-stats {
+        display: flex;
+        gap: 30px;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: white;
+      }
+
+      .stat-item:nth-child(1) .stat-icon {
+        background: linear-gradient(135deg, var(--accent-yellow), #fdb94e);
+      }
+
+      .stat-item:nth-child(2) .stat-icon {
+        background: linear-gradient(135deg, var(--error), #ff7675);
+      }
+
+      .stat-item:nth-child(3) .stat-icon {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+      }
+
+      .stat-info {
+        text-align: center;
+      }
+
+      .stat-number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Dashboard Grid */
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+      }
+
+      .dashboard-left,
+      .dashboard-right {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Section Styling */
+      .dashboard-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow-light);
+        transition: var(--transition);
+      }
+
+      .dashboard-section:hover {
+        box-shadow: var(--shadow-medium);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--neutral-light);
+      }
+
+      .section-header h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .section-link {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .section-link:hover {
+        color: var(--primary-green);
+      }
+
+      .group-name {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-style: italic;
+      }
+
+      /* Progress Grid */
+      .progress-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .progress-card {
+        background: var(--neutral-light);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        transition: var(--transition);
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .progress-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .progress-card.completed {
+        background: linear-gradient(135deg, #e8f5e8, #f0fff0);
+        border-color: var(--success);
+      }
+
+      .progress-card.in-progress {
+        background: linear-gradient(135deg, #e3f2fd, #f0f8ff);
+        border-color: var(--primary-blue);
+      }
+
+      .progress-card.not-started {
+        background: linear-gradient(135deg, #fff8e1, #fffbf0);
+        border-color: var(--warning);
+      }
+
+      .progress-card.locked {
+        background: linear-gradient(135deg, #f5f5f5, #fafafa);
+        border-color: var(--border-light);
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .progress-card .progress-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .progress-card.completed .progress-icon {
+        background: var(--success);
+        color: white;
+      }
+
+      .progress-card.in-progress .progress-icon {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .progress-card.not-started .progress-icon {
+        background: var(--warning);
+        color: white;
+      }
+
+      .progress-card.locked .progress-icon {
+        background: var(--text-secondary);
+        color: white;
+      }
+
+      .progress-info h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--text-primary);
+      }
+
+      .progress-info p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+      }
+
+      /* Progress Circle */
+      .progress-circle {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        margin: 15px auto;
+      }
+
+      .progress-svg {
+        width: 60px;
+        height: 60px;
+        transform: rotate(-90deg);
+      }
+
+      .progress-bg,
+      .progress-fill {
+        fill: none;
+        stroke-width: 4;
+      }
+
+      .progress-bg {
+        stroke: var(--border-light);
+      }
+
+      .progress-fill {
+        stroke: var(--primary-blue);
+        stroke-linecap: round;
+        stroke-dasharray: 157;
+        stroke-dashoffset: 157;
+        transition: stroke-dashoffset 1s ease;
+      }
+
+      .progress-card.completed .progress-fill {
+        stroke: var(--success);
+      }
+
+      .progress-card.in-progress .progress-fill {
+        stroke: var(--primary-blue);
+      }
+
+      .progress-card.not-started .progress-fill {
+        stroke: var(--warning);
+      }
+
+      .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+      }
+
+      .progress-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .progress-card.completed .progress-status {
+        color: var(--success);
+      }
+
+      .progress-card.in-progress .progress-status {
+        color: var(--primary-blue);
+      }
+
+      .progress-card.not-started .progress-status {
+        color: var(--warning);
+      }
+
+      .progress-card.locked .progress-status {
+        color: var(--text-secondary);
+      }
+
+      /* Activities List */
+      .activities-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        transition: var(--transition);
+        border: 1px solid var(--border-light);
+      }
+
+      .activity-item:hover {
+        background: var(--neutral-light);
+        transform: translateX(5px);
+      }
+
+      .activity-item.completed {
+        border-left: 4px solid var(--success);
+      }
+
+      .activity-item.pending {
+        border-left: 4px solid var(--warning);
+      }
+
+      .activity-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: white;
+        background: var(--primary-blue);
+      }
+
+      .activity-item.completed .activity-icon {
+        background: var(--success);
+      }
+
+      .activity-item.pending .activity-icon {
+        background: var(--warning);
+      }
+
+      .activity-info {
+        flex: 1;
+      }
+
+      .activity-info h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--text-primary);
+      }
+
+      .activity-info p {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+      }
+
+      .activity-time {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-style: italic;
+      }
+
+      /* Star Rating */
+      .activity-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .stars {
+        display: flex;
+        gap: 2px;
+      }
+
+      .stars i {
+        font-size: 1rem;
+        color: var(--border-light);
+      }
+
+      .stars i.filled {
+        color: var(--accent-yellow);
+      }
+
+      .rating-text {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.9rem;
+      }
+
+      .status-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status-badge.pending {
+        background: rgba(243, 156, 18, 0.2);
+        color: var(--warning);
+      }
+
+      /* Scoreboard */
+      .scoreboard {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .scoreboard-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        transition: var(--transition);
+        border: 1px solid var(--border-light);
+      }
+
+      .scoreboard-item:hover {
+        background: var(--neutral-light);
+      }
+
+      .scoreboard-item.current-user {
+        background: linear-gradient(
+          135deg,
+          rgba(74, 144, 226, 0.1),
+          rgba(126, 211, 33, 0.1)
+        );
+        border-color: var(--primary-blue);
+      }
+
+      .scoreboard-item.rank-1 {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.2),
+          rgba(255, 223, 0, 0.1)
+        );
+      }
+
+      .rank-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      .rank-1 .rank-icon {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+        color: white;
+      }
+
+      .rank-2 .rank-icon,
+      .rank-3 .rank-icon {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .rank-icon .rank-number {
+        font-size: 1.1rem;
+      }
+
+      .student-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+      }
+
+      .student-info img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .student-details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .student-name {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+      }
+
+      .student-level {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .student-score {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 600;
+        color: var(--accent-yellow);
+      }
+
+      .score-number {
+        font-size: 1.1rem;
+      }
+
+      .scoreboard-footer {
+        text-align: center;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--border-light);
+      }
+
+      .view-full-ranking {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      /* Next Activities */
+      .next-activities {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .next-activity {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid var(--border-light);
+        transition: var(--transition);
+      }
+
+      .next-activity:hover {
+        background: var(--neutral-light);
+        transform: translateY(-2px);
+      }
+
+      .next-activity.urgent {
+        border-left: 4px solid var(--error);
+        background: rgba(231, 76, 60, 0.05);
+      }
+
+      .next-activity.competition {
+        border-left: 4px solid var(--accent-yellow);
+        background: rgba(245, 166, 35, 0.05);
+      }
+
+      .activity-type {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .next-activity.urgent .activity-type {
+        background: var(--error);
+      }
+
+      .next-activity.competition .activity-type {
+        background: var(--accent-yellow);
+      }
+
+      .activity-content {
+        flex: 1;
+      }
+
+      .activity-content h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--text-primary);
+      }
+
+      .activity-content p {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+      }
+
+      .activity-meta {
+        display: flex;
+        gap: 15px;
+        font-size: 0.8rem;
+      }
+
+      .duration,
+      .deadline {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--text-secondary);
+      }
+
+      .deadline.urgent {
+        color: var(--error);
+        font-weight: 600;
+      }
+
+      .start-activity-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: var(--primary-blue);
+        color: white;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .start-activity-btn:hover {
+        background: var(--primary-green);
+        transform: scale(1.1);
+      }
+
+      .next-activity.urgent .start-activity-btn {
+        background: var(--error);
+      }
+
+      .next-activity.competition .start-activity-btn {
+        background: var(--accent-yellow);
+      }
+
+      /* Achievements */
+      .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+      }
+
+      .achievement-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid var(--border-light);
+        transition: var(--transition);
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .achievement-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .achievement-item.unlocked {
+        border-color: var(--success);
+        background: linear-gradient(
+          135deg,
+          rgba(39, 174, 96, 0.1),
+          rgba(46, 204, 113, 0.05)
+        );
+      }
+
+      .achievement-item.locked {
+        opacity: 0.6;
+      }
+
+      .achievement-item.secret {
+        background: linear-gradient(
+          135deg,
+          rgba(155, 89, 182, 0.1),
+          rgba(142, 68, 173, 0.05)
+        );
+        border-color: #9b59b6;
+      }
+
+      .achievement-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        background: var(--text-secondary);
+        color: white;
+      }
+
+      .achievement-item.unlocked .achievement-icon {
+        background: var(--success);
+      }
+
+      .achievement-item.secret .achievement-icon {
+        background: #9b59b6;
+      }
+
+      .achievement-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .achievement-progress {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .dashboard-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .welcome-header {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .welcome-stats {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          padding: 0 15px;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .dashboard-main {
+          padding: 20px 15px;
+        }
+
+        .welcome-header {
+          padding: 20px;
+        }
+
+        .welcome-stats {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .progress-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .achievements-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .dashboard-section {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .dashboard-section:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .dashboard-section:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .dashboard-section:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .dashboard-section:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+    </style>
+    <script>
+      // Variables globales del dashboard
+      let studentData = {
+        name: "Ana García",
+        level: "Intermedio",
+        totalStars: 127,
+        streakDays: 5,
+        studyTime: "12h",
+        groupRank: 2,
+        progress: {
+          if: 100,
+          switch: 75,
+          for: 50,
+          arrays: 0,
+          methods: 0,
+          oop: 0,
+        },
+        achievements: {
+          unlocked: ["first_program", "speed_demon"],
+          progress: {
+            perfectionist: 7,
+            competitor: 1,
+            streak: 5,
+          },
+        },
+      };
+
+      // Datos mock del grupo
+      const groupData = [
+        {
+          rank: 1,
+          name: "Carlos Ruiz",
+          level: "Avanzado",
+          stars: 245,
+          avatar: "Carlos+Ruiz",
+          bg: "FFD700",
+        },
+        {
+          rank: 2,
+          name: "Ana García",
+          level: "Intermedio",
+          stars: 127,
+          avatar: "Ana+Garcia",
+          bg: "4A90E2",
+          isCurrentUser: true,
+        },
+        {
+          rank: 3,
+          name: "María López",
+          level: "Intermedio",
+          stars: 98,
+          avatar: "Maria+Lopez",
+          bg: "7ED321",
+        },
+        {
+          rank: 4,
+          name: "Diego Morales",
+          level: "Principiante",
+          stars: 67,
+          avatar: "Diego+Morales",
+          bg: "FF6B9D",
+        },
+        {
+          rank: 5,
+          name: "Sofía Martínez",
+          level: "Principiante",
+          stars: 45,
+          avatar: "Sofia+Martinez",
+          bg: "F5A623",
+        },
+      ];
+
+      // Inicialización cuando se carga la página
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeDashboard();
+        setupEventListeners();
+        animateProgressCircles();
+        startRealTimeUpdates();
+      });
+
+      function initializeDashboard() {
+        updateUserStats();
+        updateProgressCards();
+        updateScoreboard();
+        updateAchievements();
+        console.log("🎯 Dashboard del estudiante inicializado");
+      }
+
+      function setupEventListeners() {
+        // Progress cards clicks
+        document.querySelectorAll(".progress-card").forEach((card) => {
+          card.addEventListener("click", handleTopicClick);
+        });
+
+        // Activity buttons
+        document.querySelectorAll(".start-activity-btn").forEach((btn) => {
+          btn.addEventListener("click", handleActivityStart);
+        });
+
+        // Achievement items
+        document.querySelectorAll(".achievement-item").forEach((item) => {
+          item.addEventListener("click", showAchievementDetails);
+        });
+
+        // Scoreboard items
+        document.querySelectorAll(".scoreboard-item").forEach((item) => {
+          item.addEventListener("click", showStudentProfile);
+        });
+
+        // Navigation links
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", handleNavigation);
+        });
+
+        // Profile dropdown
+        const profileDropdown = document.querySelector(".nav-profile");
+        if (profileDropdown) {
+          profileDropdown.addEventListener("click", toggleProfileMenu);
+        }
+      }
+
+      function updateUserStats() {
+        // Actualizar estadísticas en el header
+        const totalStarsEl = document.getElementById("totalStars");
+        const streakDaysEl = document.getElementById("streakDays");
+        const studyTimeEl = document.getElementById("studyTime");
+
+        if (totalStarsEl) {
+          animateNumber(totalStarsEl, studentData.totalStars);
+        }
+
+        if (streakDaysEl) {
+          animateNumber(streakDaysEl, studentData.streakDays);
+        }
+
+        if (studyTimeEl) {
+          studyTimeEl.textContent = studentData.studyTime;
+        }
+      }
+
+      function updateProgressCards() {
+        document.querySelectorAll(".progress-card").forEach((card) => {
+          const topic = card.getAttribute("data-topic");
+          const progress = studentData.progress[topic] || 0;
+
+          // Actualizar círculo de progreso
+          const progressCircle = card.querySelector(".progress-fill");
+          const progressText = card.querySelector(".progress-text");
+
+          if (progressCircle && progressText) {
+            const circumference = 2 * Math.PI * 25; // radio = 25
+            const offset = circumference - (progress / 100) * circumference;
+
+            setTimeout(() => {
+              progressCircle.style.strokeDashoffset = offset;
+              progressText.textContent = progress + "%";
+            }, 500);
+          }
+
+          // Actualizar estado de la card
+          updateCardState(card, progress);
+        });
+      }
+
+      function updateCardState(card, progress) {
+        // Remover clases existentes
+        card.classList.remove(
+          "completed",
+          "in-progress",
+          "not-started",
+          "locked"
+        );
+
+        if (progress === 100) {
+          card.classList.add("completed");
+        } else if (progress > 0) {
+          card.classList.add("in-progress");
+        } else {
+          // Verificar si está desbloqueado
+          const topic = card.getAttribute("data-topic");
+          const isUnlocked = checkTopicUnlocked(topic);
+
+          if (isUnlocked) {
+            card.classList.add("not-started");
+          } else {
+            card.classList.add("locked");
+          }
+        }
+      }
+
+      function checkTopicUnlocked(topic) {
+        const topicOrder = ["if", "switch", "for", "arrays", "methods", "oop"];
+        const currentIndex = topicOrder.indexOf(topic);
+
+        if (currentIndex === 0) return true; // if/else siempre desbloqueado
+
+        // Verificar si el tema anterior está completado al 75%
+        const previousTopic = topicOrder[currentIndex - 1];
+        return studentData.progress[previousTopic] >= 75;
+      }
+
+      function updateScoreboard() {
+        const scoreboard = document.querySelector(".scoreboard");
+        if (!scoreboard) return;
+
+        // Limpiar scoreboard actual
+        scoreboard.innerHTML = "";
+
+        groupData.forEach((student) => {
+          const item = document.createElement("div");
+          item.className = `scoreboard-item rank-${student.rank}`;
+
+          if (student.isCurrentUser) {
+            item.classList.add("current-user");
+          }
+
+          item.innerHTML = `
+            <div class="rank-icon">
+                ${
+                  student.rank === 1
+                    ? '<i class="fas fa-crown"></i>'
+                    : `<span class="rank-number">${student.rank}</span>`
+                }
+            </div>
+            <div class="student-info">
+                <img src="https://ui-avatars.com/api/?name=${
+                  student.avatar
+                }&background=${student.bg}&color=${
+            student.rank === 1 ? "000" : "fff"
+          }&size=40" alt="${student.name}">
+                <div class="student-details">
+                    <span class="student-name">${student.name}${
+            student.isCurrentUser ? " (Tú)" : ""
+          }</span>
+                    <span class="student-level">${student.level}</span>
+                </div>
+            </div>
+            <div class="student-score">
+                <span class="score-number">${student.stars}</span>
+                <i class="fas fa-star"></i>
+            </div>
+        `;
+
+          scoreboard.appendChild(item);
+        });
+      }
+
+      function updateAchievements() {
+        const achievements = document.querySelectorAll(".achievement-item");
+
+        achievements.forEach((achievement) => {
+          const achievementType = getAchievementType(achievement);
+
+          if (studentData.achievements.unlocked.includes(achievementType)) {
+            achievement.classList.add("unlocked");
+            achievement.classList.remove("locked");
+          } else {
+            updateAchievementProgress(achievement, achievementType);
+          }
+        });
+      }
+
+      function getAchievementType(achievementEl) {
+        const name = achievementEl
+          .querySelector(".achievement-name")
+          .textContent.toLowerCase();
+
+        if (name.includes("primer")) return "first_program";
+        if (name.includes("velocista")) return "speed_demon";
+        if (name.includes("perfeccionista")) return "perfectionist";
+        if (name.includes("competidor")) return "competitor";
+        if (name.includes("racha")) return "streak";
+
+        return "secret";
+      }
+
+      function updateAchievementProgress(achievementEl, type) {
+        const progressEl = achievementEl.querySelector(".achievement-progress");
+        if (!progressEl) return;
+
+        const progress = studentData.achievements.progress[type];
+        if (progress !== undefined) {
+          let maxValue;
+          switch (type) {
+            case "perfectionist":
+              maxValue = 10;
+              break;
+            case "competitor":
+              maxValue = 3;
+              break;
+            case "streak":
+              maxValue = 7;
+              break;
+            default:
+              maxValue = 5;
+          }
+
+          progressEl.textContent = `${progress}/${maxValue}`;
+
+          // Animar barra de progreso si está cerca de completarse
+          if (progress >= maxValue * 0.8) {
+            achievementEl.style.animation = "pulse 2s infinite";
+          }
+        }
+      }
+
+      function animateProgressCircles() {
+        setTimeout(() => {
+          document.querySelectorAll(".progress-card").forEach((card, index) => {
+            setTimeout(() => {
+              const topic = card.getAttribute("data-topic");
+              const progress = studentData.progress[topic] || 0;
+              const progressFill = card.querySelector(".progress-fill");
+
+              if (progressFill) {
+                const circumference = 2 * Math.PI * 25;
+                const offset = circumference - (progress / 100) * circumference;
+                progressFill.style.strokeDashoffset = offset;
+              }
+            }, index * 200);
+          });
+        }, 1000);
+      }
+
+      function animateNumber(element, targetNumber) {
+        const startNumber = 0;
+        const duration = 2000;
+        const startTime = Date.now();
+
+        function updateNumber() {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Función de easing
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+          const currentNumber = Math.floor(
+            startNumber + (targetNumber - startNumber) * easedProgress
+          );
+          element.textContent = currentNumber;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+          }
+        }
+
+        updateNumber();
+      }
+
+      function handleTopicClick(event) {
+        const card = event.currentTarget;
+        const topic = card.getAttribute("data-topic");
+        const progress = studentData.progress[topic] || 0;
+
+        if (card.classList.contains("locked")) {
+          showNotification(
+            "Este tema aún no está disponible. Completa el tema anterior primero.",
+            "warning"
+          );
+          return;
+        }
+
+        // Simular navegación al tema
+        showNotification(`Abriendo tema: ${getTopicName(topic)}`, "info");
+
+        // Aquí iría la navegación real
+        setTimeout(() => {
+          // window.location.href = `course.html?topic=${topic}`;
+          console.log(`Navegando a tema: ${topic}`);
+        }, 1000);
+      }
+
+      function getTopicName(topic) {
+        const names = {
+          if: "Condicionales if/else",
+          switch: "Switch Case",
+          for: "Ciclos For",
+          arrays: "Arrays",
+          methods: "Métodos",
+          oop: "Programación Orientada a Objetos",
+        };
+
+        return names[topic] || topic;
+      }
+
+      function handleActivityStart(event) {
+        event.stopPropagation();
+        const activity = event.currentTarget.closest(
+          ".next-activity, .activity-item"
+        );
+        const activityName = activity.querySelector("h4").textContent;
+
+        if (activity.classList.contains("competition")) {
+          showNotification(
+            "¡Te recordaremos antes de la competencia!",
+            "success"
+          );
+        } else if (activity.classList.contains("urgent")) {
+          showNotification(`Iniciando: ${activityName}`, "info");
+          // Simular inicio de actividad urgente
+          setTimeout(() => {
+            console.log("Navegando a actividad urgente");
+          }, 1000);
+        } else {
+          showNotification(`Iniciando: ${activityName}`, "info");
+          setTimeout(() => {
+            console.log("Navegando a actividad");
+          }, 1000);
+        }
+      }
+
+      function showAchievementDetails(event) {
+        const achievement = event.currentTarget;
+        const name = achievement.querySelector(".achievement-name").textContent;
+        const isUnlocked = achievement.classList.contains("unlocked");
+        const isSecret = achievement.classList.contains("secret");
+
+        if (isSecret && !isUnlocked) {
+          showNotification(
+            "Este es un logro secreto. ¡Sigue programando para descubrirlo!",
+            "mystery"
+          );
+        } else if (isUnlocked) {
+          showNotification(
+            `¡Felicidades! Has desbloqueado: ${name}`,
+            "success"
+          );
+        } else {
+          const progress = achievement.querySelector(".achievement-progress");
+          if (progress) {
+            showNotification(
+              `Progreso en ${name}: ${progress.textContent}`,
+              "info"
+            );
+          } else {
+            showNotification(`Logro bloqueado: ${name}`, "warning");
+          }
+        }
+      }
+
+      function showStudentProfile(event) {
+        const studentItem = event.currentTarget;
+        const studentName =
+          studentItem.querySelector(".student-name").textContent;
+
+        if (studentItem.classList.contains("current-user")) {
+          showNotification("Este es tu perfil", "info");
+        } else {
+          showNotification(`Viendo perfil de: ${studentName}`, "info");
+          // Aquí iría la navegación al perfil del estudiante
+        }
+      }
+
+      function handleNavigation(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const linkText = link.textContent.trim();
+
+        // Remover clase active de todos los links
+        document
+          .querySelectorAll(".nav-link")
+          .forEach((l) => l.classList.remove("active"));
+
+        // Agregar clase active al link clickeado
+        link.classList.add("active");
+
+        showNotification(`Navegando a: ${linkText}`, "info");
+
+        // Simular navegación
+        setTimeout(() => {
+          console.log(`Navegando a: ${linkText}`);
+          // Aquí iría la navegación real según el link
+        }, 500);
+      }
+
+      function toggleProfileMenu() {
+        showNotification("Menú de perfil", "info");
+        // Aquí se implementaría el dropdown del perfil
+        console.log("Toggle profile menu");
+      }
+
+      function showNotification(message, type = "info") {
+        // Crear elemento de notificación
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+
+        const icons = {
+          success: "fa-check-circle",
+          warning: "fa-exclamation-triangle",
+          error: "fa-times-circle",
+          info: "fa-info-circle",
+          mystery: "fa-question-circle",
+        };
+
+        notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${icons[type] || icons.info}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+
+        // Agregar estilos si no existen
+        if (!document.querySelector("#notification-styles")) {
+          const styles = document.createElement("style");
+          styles.id = "notification-styles";
+          styles.textContent = `
+            .notification {
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                background: white;
+                border-radius: 10px;
+                padding: 15px 20px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                z-index: 1000;
+                min-width: 300px;
+                max-width: 400px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                border-left: 4px solid var(--primary-blue);
+            }
+            
+            .notification.success {
+                border-left-color: var(--success);
+            }
+            
+            .notification.warning {
+                border-left-color: var(--warning);
+            }
+            
+            .notification.error {
+                border-left-color: var(--error);
+            }
+            
+            .notification.mystery {
+                border-left-color: #9B59B6;
+            }
+            
+            .notification.show {
+                transform: translateX(0);
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex: 1;
+            }
+            
+            .notification-content i {
+                font-size: 1.2rem;
+                color: var(--primary-blue);
+            }
+            
+            .notification.success .notification-content i {
+                color: var(--success);
+            }
+            
+            .notification.warning .notification-content i {
+                color: var(--warning);
+            }
+            
+            .notification.error .notification-content i {
+                color: var(--error);
+            }
+            
+            .notification.mystery .notification-content i {
+                color: #9B59B6;
+            }
+            
+            .notification-content span {
+                font-weight: 500;
+                color: var(--text-primary);
+            }
+            
+            .notification-close {
+                background: none;
+                border: none;
+                color: var(--text-secondary);
+                cursor: pointer;
+                padding: 5px;
+                border-radius: 5px;
+                transition: background 0.2s ease;
+            }
+            
+            .notification-close:hover {
+                background: var(--neutral-light);
+            }
+        `;
+          document.head.appendChild(styles);
+        }
+
+        // Agregar al DOM
+        document.body.appendChild(notification);
+
+        // Mostrar con animación
+        setTimeout(() => {
+          notification.classList.add("show");
+        }, 100);
+
+        // Configurar cierre
+        const closeBtn = notification.querySelector(".notification-close");
+        closeBtn.addEventListener("click", () => {
+          hideNotification(notification);
+        });
+
+        // Auto-hide después de 4 segundos
+        setTimeout(() => {
+          if (notification.parentNode) {
+            hideNotification(notification);
+          }
+        }, 4000);
+      }
+
+      function hideNotification(notification) {
+        notification.classList.remove("show");
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }
+
+      function startRealTimeUpdates() {
+        // Simular actualizaciones en tiempo real cada 30 segundos
+        setInterval(() => {
+          updateRandomProgress();
+        }, 30000);
+
+        // Simular notificaciones periódicas
+        setTimeout(() => {
+          showNotification("¡Carlos Ruiz completó un nuevo ejercicio!", "info");
+        }, 10000);
+
+        setTimeout(() => {
+          showNotification("¡Tienes una nueva actividad asignada!", "warning");
+        }, 25000);
+      }
+
+      function updateRandomProgress() {
+        // Simular progreso aleatorio en temas
+        const topics = Object.keys(studentData.progress);
+        const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+
+        if (studentData.progress[randomTopic] < 100) {
+          const increment = Math.floor(Math.random() * 5) + 1;
+          studentData.progress[randomTopic] = Math.min(
+            100,
+            studentData.progress[randomTopic] + increment
+          );
+
+          // Actualizar UI
+          updateProgressCards();
+
+          if (studentData.progress[randomTopic] === 100) {
+            showNotification(
+              `¡Felicidades! Completaste ${getTopicName(randomTopic)}`,
+              "success"
+            );
+          }
+        }
+      }
+
+      function simulateActivityCompletion() {
+        // Simular completar una actividad
+        studentData.totalStars += Math.floor(Math.random() * 10) + 5;
+        updateUserStats();
+        showNotification(
+          "¡Ganaste estrellas por completar una actividad!",
+          "success"
+        );
+      }
+
+      function simulateAchievementUnlock() {
+        const lockedAchievements = ["perfectionist", "competitor", "streak"];
+        const randomAchievement =
+          lockedAchievements[
+            Math.floor(Math.random() * lockedAchievements.length)
+          ];
+
+        if (!studentData.achievements.unlocked.includes(randomAchievement)) {
+          studentData.achievements.unlocked.push(randomAchievement);
+          updateAchievements();
+          showNotification(
+            `¡Nuevo logro desbloqueado: ${randomAchievement}!`,
+            "success"
+          );
+        }
+      }
+
+      // Funciones de utilidad
+      function formatTime(hours) {
+        if (hours < 1) {
+          return `${Math.round(hours * 60)}m`;
+        } else if (hours < 24) {
+          return `${Math.round(hours)}h`;
+        } else {
+          const days = Math.floor(hours / 24);
+          const remainingHours = Math.round(hours % 24);
+          return `${days}d ${remainingHours}h`;
+        }
+      }
+
+      function getRelativeTime(timestamp) {
+        const now = Date.now();
+        const diff = now - timestamp;
+        const minutes = Math.floor(diff / (1000 * 60));
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        if (minutes < 60) {
+          return `Hace ${minutes} minutos`;
+        } else if (hours < 24) {
+          return `Hace ${hours} horas`;
+        } else {
+          return `Hace ${days} días`;
+        }
+      }
+
+      function calculateLevelProgress() {
+        const totalPossibleStars = 500; // Ejemplo
+        const currentStars = studentData.totalStars;
+        return Math.round((currentStars / totalPossibleStars) * 100);
+      }
+
+      // Eventos de teclado para funciones de desarrollo
+      document.addEventListener("keydown", function (event) {
+        // Funciones de prueba para desarrollo (solo en prototipo)
+        if (event.ctrlKey && event.shiftKey) {
+          switch (event.key) {
+            case "S":
+              // Simular completar actividad
+              event.preventDefault();
+              simulateActivityCompletion();
+              break;
+            case "A":
+              // Simular desbloquear logro
+              event.preventDefault();
+              simulateAchievementUnlock();
+              break;
+            case "R":
+              // Resetear progreso (para pruebas)
+              event.preventDefault();
+              resetProgress();
+              break;
+          }
+        }
+      });
+
+      function resetProgress() {
+        studentData.progress = {
+          if: 100,
+          switch: 75,
+          for: 50,
+          arrays: 0,
+          methods: 0,
+          oop: 0,
+        };
+
+        studentData.achievements.unlocked = ["first_program", "speed_demon"];
+        updateProgressCards();
+        updateAchievements();
+        showNotification("Progreso reiniciado (solo para demo)", "info");
+      }
+
+      // Funciones para animaciones adicionales
+      function addSparkleEffect(element) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle-effect";
+        sparkle.innerHTML = "✨";
+
+        sparkle.style.position = "absolute";
+        sparkle.style.pointerEvents = "none";
+        sparkle.style.fontSize = "1.5rem";
+        sparkle.style.animation = "sparkle 1s ease-out forwards";
+
+        element.style.position = "relative";
+        element.appendChild(sparkle);
+
+        setTimeout(() => {
+          if (sparkle.parentNode) {
+            sparkle.parentNode.removeChild(sparkle);
+          }
+        }, 1000);
+
+        // Agregar animación CSS si no existe
+        if (!document.querySelector("#sparkle-styles")) {
+          const styles = document.createElement("style");
+          styles.id = "sparkle-styles";
+          styles.textContent = `
+            @keyframes sparkle {
+                0% {
+                    opacity: 0;
+                    transform: scale(0) rotate(0deg);
+                    top: 50%;
+                    left: 50%;
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.2) rotate(180deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0) rotate(360deg);
+                    top: 20%;
+                    left: 80%;
+                }
+            }
+            
+            @keyframes pulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+        `;
+          document.head.appendChild(styles);
+        }
+      }
+
+      // Función para cargar datos desde localStorage (simulado)
+      function loadStudentData() {
+        const saved = localStorage.getItem("studentDashboardData");
+        if (saved) {
+          try {
+            const parsed = JSON.parse(saved);
+            studentData = { ...studentData, ...parsed };
+          } catch (e) {
+            console.log("Error loading saved data:", e);
+          }
+        }
+      }
+
+      // Función para guardar datos en localStorage (simulado)
+      function saveStudentData() {
+        try {
+          localStorage.setItem(
+            "studentDashboardData",
+            JSON.stringify(studentData)
+          );
+        } catch (e) {
+          console.log("Error saving data:", e);
+        }
+      }
+
+      // Guardar datos periódicamente
+      setInterval(saveStudentData, 10000);
+
+      // Cargar datos al inicializar
+      // loadStudentData(); // Comentado para mantener datos mock consistentes
+    </script>
+  </body>
+</html>

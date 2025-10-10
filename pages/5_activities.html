@@ -1,0 +1,2603 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Fundamentos - Actividades | Código para Todos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="dashboardEstudiante2.html" class="nav-link" data-page="dashboard">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="course-overview.html" class="nav-link" data-page="courses">
+            <i class="fas fa-book"></i>
+            Mis Cursos
+          </a>
+          <a href="#" class="nav-link active" data-page="activities">
+            <i class="fas fa-tasks"></i>
+            Actividades
+          </a>
+          <a href="#" class="nav-link" data-page="competitions">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+          <a href="#" class="nav-link" data-page="progress">
+            <i class="fas fa-chart-line"></i>
+            Mi Progreso
+          </a>
+        </div>
+
+        <div class="nav-profile">
+          <div class="profile-info">
+            <span class="user-name">Ana García</span>
+            <span class="user-level">Estudiante Activa</span>
+          </div>
+          <div class="profile-avatar">
+            <img
+              src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+              alt="Ana García"
+            />
+          </div>
+          <div class="profile-dropdown">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="activities-main">
+      <div class="activities-container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="#" id="dashboardLink">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="breadcrumb-separator">
+              <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="course-overview.html" id="courseLink">
+                <i class="fab fa-java"></i>
+                Java Fundamentos
+              </a>
+            </li>
+            <li class="breadcrumb-separator">
+              <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="breadcrumb-item active">
+              <i class="fas fa-tasks"></i>
+              Actividades
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Course Header -->
+        <header class="course-header">
+          <div class="course-info">
+            <div class="course-icon java">
+              <i class="fab fa-java"></i>
+            </div>
+            <div class="course-details">
+              <h1>Java Fundamentos - Actividades</h1>
+              <p>
+                Ejercicios prácticos para dominar los conceptos básicos de
+                programación
+              </p>
+            </div>
+          </div>
+
+          <div class="course-stats">
+            <div class="stat-card">
+              <div class="stat-icon completed">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="completedCount">7</span>
+                <span class="stat-label">Completadas</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon progress">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="pendingCount">2</span>
+                <span class="stat-label">Pendientes</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon average">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="averageRating">4.2</span>
+                <span class="stat-label">Promedio</span>
+              </div>
+            </div>
+
+            <div class="course-progress-container">
+              <div class="progress-circle" data-progress="60">
+                <svg class="progress-svg">
+                  <circle class="progress-bg" cx="35" cy="35" r="30"></circle>
+                  <circle class="progress-fill" cx="35" cy="35" r="30"></circle>
+                </svg>
+                <span class="progress-text">60%</span>
+              </div>
+              <span class="progress-label">Progreso del Curso</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Filters and Controls -->
+        <section class="controls-section">
+          <div class="filters-container">
+            <div class="filter-group">
+              <label class="filter-label">Estado:</label>
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">
+                  <i class="fas fa-list"></i>
+                  Todas
+                </button>
+                <button class="filter-btn" data-filter="completed">
+                  <i class="fas fa-check-circle"></i>
+                  Completadas
+                </button>
+                <button class="filter-btn" data-filter="pending">
+                  <i class="fas fa-clock"></i>
+                  Pendientes
+                </button>
+                <button class="filter-btn" data-filter="progress">
+                  <i class="fas fa-play-circle"></i>
+                  En Progreso
+                </button>
+                <button class="filter-btn" data-filter="overdue">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  Vencidas
+                </button>
+                <button class="filter-btn" data-filter="locked">
+                  <i class="fas fa-lock"></i>
+                  Bloqueadas
+                </button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Dificultad:</label>
+              <div class="filter-buttons">
+                <button class="difficulty-btn active" data-difficulty="all">
+                  Todas
+                </button>
+                <button class="difficulty-btn easy" data-difficulty="easy">
+                  Fácil
+                </button>
+                <button class="difficulty-btn medium" data-difficulty="medium">
+                  Intermedio
+                </button>
+                <button class="difficulty-btn hard" data-difficulty="hard">
+                  Difícil
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="sort-container">
+            <label class="sort-label">Ordenar por:</label>
+            <select class="sort-select" id="sortSelect">
+              <option value="dueDate">Fecha de entrega</option>
+              <option value="rating">Calificación</option>
+              <option value="difficulty">Dificultad</option>
+              <option value="status">Estado</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Activities by Topic -->
+        <section class="activities-section">
+          <!-- Topic 1: Condicionales if/else -->
+          <div class="topic-group" data-topic="if-else">
+            <div class="topic-header">
+              <div class="topic-info">
+                <div class="topic-icon completed">
+                  <i class="fas fa-code-branch"></i>
+                </div>
+                <div class="topic-details">
+                  <h2>Condicionales if/else</h2>
+                  <p>Toma de decisiones en el código</p>
+                </div>
+              </div>
+              <div class="topic-status completed">
+                <i class="fas fa-check-circle"></i>
+                <span>Completado</span>
+              </div>
+            </div>
+
+            <div class="activities-grid">
+              <div
+                class="activity-card completed"
+                data-activity="calculadora"
+                data-difficulty="easy"
+                data-status="completed"
+                data-due="2024-11-10"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Calculadora Básica</h3>
+                    <p>
+                      Crea una calculadora que realice operaciones básicas
+                      usando condicionales
+                    </p>
+                  </div>
+                  <div class="activity-difficulty easy">
+                    <i class="fas fa-circle"></i>
+                    <span>Fácil</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-code"></i>
+                    <span>IDE Integrado</span>
+                  </div>
+                  <div class="activity-due completed">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Entregada</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">4/5</span>
+                  </div>
+                  <button class="activity-btn review">
+                    <i class="fas fa-eye"></i>
+                    Ver Resultado
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="activity-card completed"
+                data-activity="verificador-edad"
+                data-difficulty="easy"
+                data-status="completed"
+                data-due="2024-11-12"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Verificador de Edad</h3>
+                    <p>
+                      Programa que determine si una persona es mayor de edad o
+                      menor
+                    </p>
+                  </div>
+                  <div class="activity-difficulty easy">
+                    <i class="fas fa-circle"></i>
+                    <span>Fácil</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-upload"></i>
+                    <span>Subir Archivo</span>
+                  </div>
+                  <div class="activity-due completed">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Entregada</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                    </div>
+                    <span class="rating-text">5/5</span>
+                  </div>
+                  <button class="activity-btn review">
+                    <i class="fas fa-eye"></i>
+                    Ver Resultado
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="activity-card completed"
+                data-activity="sistema-notas"
+                data-difficulty="medium"
+                data-status="completed"
+                data-due="2024-11-15"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Sistema de Notas</h3>
+                    <p>
+                      Calcula la calificación final y determina si el estudiante
+                      aprueba
+                    </p>
+                  </div>
+                  <div class="activity-difficulty medium">
+                    <i class="fas fa-circle"></i>
+                    <span>Intermedio</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-code"></i>
+                    <span>IDE Integrado</span>
+                  </div>
+                  <div class="activity-due completed">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Entregada</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">3/5</span>
+                  </div>
+                  <button class="activity-btn review">
+                    <i class="fas fa-eye"></i>
+                    Ver Resultado
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topic 2: Switch Case -->
+          <div class="topic-group" data-topic="switch">
+            <div class="topic-header">
+              <div class="topic-info">
+                <div class="topic-icon completed">
+                  <i class="fas fa-list-ul"></i>
+                </div>
+                <div class="topic-details">
+                  <h2>Switch Case</h2>
+                  <p>Múltiples opciones de control</p>
+                </div>
+              </div>
+              <div class="topic-status completed">
+                <i class="fas fa-check-circle"></i>
+                <span>Completado</span>
+              </div>
+            </div>
+
+            <div class="activities-grid">
+              <div
+                class="activity-card completed"
+                data-activity="menu-restaurante"
+                data-difficulty="medium"
+                data-status="completed"
+                data-due="2024-11-18"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Menú de Restaurante</h3>
+                    <p>
+                      Sistema de pedidos que muestre diferentes opciones de
+                      comida
+                    </p>
+                  </div>
+                  <div class="activity-difficulty medium">
+                    <i class="fas fa-circle"></i>
+                    <span>Intermedio</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-upload"></i>
+                    <span>Subir Archivo</span>
+                  </div>
+                  <div class="activity-due completed">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Entregada</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">4/5</span>
+                  </div>
+                  <button class="activity-btn review">
+                    <i class="fas fa-eye"></i>
+                    Ver Resultado
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="activity-card completed"
+                data-activity="dias-semana"
+                data-difficulty="easy"
+                data-status="completed"
+                data-due="2024-11-20"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Días de la Semana</h3>
+                    <p>
+                      Programa que muestre información según el día seleccionado
+                    </p>
+                  </div>
+                  <div class="activity-difficulty easy">
+                    <i class="fas fa-circle"></i>
+                    <span>Fácil</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-code"></i>
+                    <span>IDE Integrado</span>
+                  </div>
+                  <div class="activity-due completed">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Entregada</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                    </div>
+                    <span class="rating-text">5/5</span>
+                  </div>
+                  <button class="activity-btn review">
+                    <i class="fas fa-eye"></i>
+                    Ver Resultado
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topic 3: Ciclos For -->
+          <div class="topic-group" data-topic="for-loops">
+            <div class="topic-header">
+              <div class="topic-info">
+                <div class="topic-icon progress">
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="topic-details">
+                  <h2>Ciclos For</h2>
+                  <p>Repetición controlada de código</p>
+                </div>
+              </div>
+              <div class="topic-status progress">
+                <i class="fas fa-play-circle"></i>
+                <span>En Progreso</span>
+              </div>
+            </div>
+
+            <div class="activities-grid">
+              <div
+                class="activity-card progress"
+                data-activity="tabla-multiplicar"
+                data-difficulty="medium"
+                data-status="progress"
+                data-due="2024-12-01"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Tabla de Multiplicar</h3>
+                    <p>
+                      Genera la tabla de multiplicar de cualquier número usando
+                      ciclos for
+                    </p>
+                  </div>
+                  <div class="activity-difficulty medium">
+                    <i class="fas fa-circle"></i>
+                    <span>Intermedio</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-code"></i>
+                    <span>IDE Integrado</span>
+                  </div>
+                  <div class="activity-due progress">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Vence en 3 días</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-progress-bar">
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <span class="progress-text">65% completado</span>
+                  </div>
+                  <button class="activity-btn continue">
+                    <i class="fas fa-play"></i>
+                    Continuar
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="activity-card pending"
+                data-activity="numeros-primos"
+                data-difficulty="hard"
+                data-status="pending"
+                data-due="2024-11-29"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Números Primos</h3>
+                    <p>
+                      Determina si un número es primo usando ciclos y
+                      condicionales
+                    </p>
+                  </div>
+                  <div class="activity-difficulty hard">
+                    <i class="fas fa-circle"></i>
+                    <span>Difícil</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-upload"></i>
+                    <span>Subir Archivo</span>
+                  </div>
+                  <div class="activity-due urgent">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Vence mañana</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-tags">
+                    <span class="tag urgent">Urgente</span>
+                    <span class="tag difficulty">Alta dificultad</span>
+                  </div>
+                  <button class="activity-btn start">
+                    <i class="fas fa-play"></i>
+                    Comenzar
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="activity-card overdue"
+                data-activity="suma-numeros"
+                data-difficulty="easy"
+                data-status="overdue"
+                data-due="2024-11-25"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Suma de Números</h3>
+                    <p>
+                      Calcula la suma de números del 1 al 100 usando un ciclo
+                      for
+                    </p>
+                  </div>
+                  <div class="activity-difficulty easy">
+                    <i class="fas fa-circle"></i>
+                    <span>Fácil</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-code"></i>
+                    <span>IDE Integrado</span>
+                  </div>
+                  <div class="activity-due overdue">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Vencida hace 2 días</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-penalty">
+                    <i class="fas fa-minus-circle"></i>
+                    <span>Penalización aplicada</span>
+                  </div>
+                  <button class="activity-btn overdue">
+                    <i class="fas fa-upload"></i>
+                    Entregar Tarde
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topic 4: Arrays -->
+          <div class="topic-group" data-topic="arrays">
+            <div class="topic-header">
+              <div class="topic-info">
+                <div class="topic-icon locked">
+                  <i class="fas fa-th-list"></i>
+                </div>
+                <div class="topic-details">
+                  <h2>Arrays</h2>
+                  <p>Almacenar múltiples valores</p>
+                </div>
+              </div>
+              <div class="topic-status locked">
+                <i class="fas fa-lock"></i>
+                <span>Bloqueado</span>
+              </div>
+            </div>
+
+            <div class="activities-grid">
+              <div
+                class="activity-card locked"
+                data-activity="gestor-estudiantes"
+                data-difficulty="hard"
+                data-status="locked"
+                data-due="2024-12-10"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Gestor de Estudiantes</h3>
+                    <p>
+                      Sistema para gestionar información de estudiantes usando
+                      arrays
+                    </p>
+                  </div>
+                  <div class="activity-difficulty hard">
+                    <i class="fas fa-circle"></i>
+                    <span>Difícil</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-upload"></i>
+                    <span>Subir Archivo</span>
+                  </div>
+                  <div class="activity-due locked">
+                    <i class="fas fa-lock"></i>
+                    <span>Bloqueada</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-prerequisite">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Completa "Ciclos For" para desbloquear</span>
+                  </div>
+                  <button class="activity-btn locked" disabled>
+                    <i class="fas fa-lock"></i>
+                    Bloqueada
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="activity-card locked"
+                data-activity="ordenamiento-burbuja"
+                data-difficulty="hard"
+                data-status="locked"
+                data-due="2024-12-15"
+              >
+                <div class="activity-header">
+                  <div class="activity-info">
+                    <h3>Ordenamiento Burbuja</h3>
+                    <p>Implementa el algoritmo de ordenamiento burbuja</p>
+                  </div>
+                  <div class="activity-difficulty hard">
+                    <i class="fas fa-circle"></i>
+                    <span>Difícil</span>
+                  </div>
+                </div>
+
+                <div class="activity-meta">
+                  <div class="activity-type">
+                    <i class="fas fa-code"></i>
+                    <span>IDE Integrado</span>
+                  </div>
+                  <div class="activity-due locked">
+                    <i class="fas fa-lock"></i>
+                    <span>Bloqueada</span>
+                  </div>
+                </div>
+
+                <div class="activity-footer">
+                  <div class="activity-prerequisite">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Completa "Ciclos For" para desbloquear</span>
+                  </div>
+                  <button class="activity-btn locked" disabled>
+                    <i class="fas fa-lock"></i>
+                    Bloqueada
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <style>
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --java-color: #ed8b00;
+        --neutral-light: #f8f9fa;
+        --neutral-dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --border-light: #e5e5e5;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+        --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.2);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+      }
+
+      /* Reset y Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: white;
+        box-shadow: var(--shadow-light);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        border-radius: 8px;
+        transition: var(--transition);
+        font-weight: 500;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .nav-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .nav-profile:hover {
+        background: var(--neutral-light);
+      }
+
+      .profile-info {
+        text-align: right;
+      }
+
+      .user-name {
+        display: block;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .user-level {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .profile-avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-blue);
+      }
+
+      .profile-dropdown {
+        color: var(--text-secondary);
+      }
+
+      /* Main Content */
+      .activities-main {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+
+      .activities-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 15px 20px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .breadcrumb-item a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .breadcrumb-item a:hover {
+        color: var(--primary-blue);
+      }
+
+      .breadcrumb-item.active {
+        color: var(--text-primary);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .breadcrumb-separator {
+        margin: 0 12px;
+        color: var(--text-secondary);
+      }
+
+      /* Course Header */
+      .course-header {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .course-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .course-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+      }
+
+      .course-icon.java {
+        background: linear-gradient(135deg, var(--java-color), #ff9500);
+      }
+
+      .course-details h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .course-details p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .course-stats {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .stat-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: white;
+      }
+
+      .stat-icon.completed {
+        background: linear-gradient(135deg, var(--success), #2ecc71);
+      }
+
+      .stat-icon.progress {
+        background: linear-gradient(135deg, var(--primary-blue), #5dade2);
+      }
+
+      .stat-icon.average {
+        background: linear-gradient(135deg, var(--accent-yellow), #f7dc6f);
+      }
+
+      .stat-info {
+        text-align: center;
+      }
+
+      .stat-number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .course-progress-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .progress-circle {
+        position: relative;
+        width: 70px;
+        height: 70px;
+      }
+
+      .progress-svg {
+        width: 70px;
+        height: 70px;
+        transform: rotate(-90deg);
+      }
+
+      .progress-bg,
+      .progress-fill {
+        fill: none;
+        stroke-width: 6;
+      }
+
+      .progress-bg {
+        stroke: var(--border-light);
+      }
+
+      .progress-fill {
+        stroke: var(--primary-blue);
+        stroke-linecap: round;
+        stroke-dasharray: 188;
+        stroke-dashoffset: 188;
+        transition: stroke-dashoffset 1.5s ease;
+      }
+
+      .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--text-primary);
+      }
+
+      .progress-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      /* Controls Section */
+      .controls-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .filters-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .filter-label {
+        font-weight: 600;
+        color: var(--text-primary);
+        min-width: 60px;
+      }
+
+      .filter-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border: 1px solid var(--border-light);
+        background: white;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .filter-btn:hover {
+        border-color: var(--primary-blue);
+        color: var(--primary-blue);
+      }
+
+      .filter-btn.active {
+        background: var(--primary-blue);
+        color: white;
+        border-color: var(--primary-blue);
+      }
+
+      .difficulty-btn {
+        padding: 6px 14px;
+        border: 1px solid var(--border-light);
+        background: white;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .difficulty-btn.active {
+        background: var(--text-primary);
+        color: white;
+        border-color: var(--text-primary);
+      }
+
+      .difficulty-btn.easy {
+        border-color: var(--success);
+        color: var(--success);
+      }
+
+      .difficulty-btn.easy.active {
+        background: var(--success);
+        color: white;
+      }
+
+      .difficulty-btn.medium {
+        border-color: var(--warning);
+        color: var(--warning);
+      }
+
+      .difficulty-btn.medium.active {
+        background: var(--warning);
+        color: white;
+      }
+
+      .difficulty-btn.hard {
+        border-color: var(--error);
+        color: var(--error);
+      }
+
+      .difficulty-btn.hard.active {
+        background: var(--error);
+        color: white;
+      }
+
+      .sort-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .sort-label {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .sort-select {
+        padding: 8px 12px;
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        background: white;
+        color: var(--text-primary);
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      /* Activities Section */
+      .activities-section {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .topic-group {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+        transition: var(--transition);
+      }
+
+      .topic-group:hover {
+        box-shadow: var(--shadow-medium);
+      }
+
+      .topic-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--neutral-light);
+      }
+
+      .topic-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .topic-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: white;
+      }
+
+      .topic-icon.completed {
+        background: linear-gradient(135deg, var(--success), #2ecc71);
+      }
+
+      .topic-icon.progress {
+        background: linear-gradient(135deg, var(--primary-blue), #5dade2);
+      }
+
+      .topic-icon.locked {
+        background: linear-gradient(135deg, var(--text-secondary), #95a5a6);
+      }
+
+      .topic-details h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .topic-details p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+
+      .topic-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .topic-status.completed {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .topic-status.progress {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      .topic-status.locked {
+        background: rgba(127, 140, 141, 0.1);
+        color: var(--text-secondary);
+      }
+
+      /* Activities Grid */
+      .activities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+      }
+
+      .activity-card {
+        border: 2px solid var(--border-light);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        transition: var(--transition);
+        cursor: pointer;
+        background: white;
+      }
+
+      .activity-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .activity-card.completed {
+        border-color: var(--success);
+        background: linear-gradient(
+          135deg,
+          rgba(39, 174, 96, 0.03),
+          rgba(46, 204, 113, 0.01)
+        );
+      }
+
+      .activity-card.progress {
+        border-color: var(--primary-blue);
+        background: linear-gradient(
+          135deg,
+          rgba(74, 144, 226, 0.03),
+          rgba(93, 173, 226, 0.01)
+        );
+      }
+
+      .activity-card.pending {
+        border-color: var(--warning);
+        background: linear-gradient(
+          135deg,
+          rgba(243, 156, 18, 0.03),
+          rgba(247, 220, 111, 0.01)
+        );
+      }
+
+      .activity-card.overdue {
+        border-color: var(--error);
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.05),
+          rgba(245, 101, 101, 0.02)
+        );
+      }
+
+      .activity-card.locked {
+        border-color: var(--text-secondary);
+        background: linear-gradient(
+          135deg,
+          rgba(127, 140, 141, 0.03),
+          rgba(149, 165, 166, 0.01)
+        );
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .activity-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+
+      .activity-info {
+        flex: 1;
+        margin-right: 15px;
+      }
+
+      .activity-info h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .activity-info p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      .activity-difficulty {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .activity-difficulty.easy {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .activity-difficulty.medium {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .activity-difficulty.hard {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+      }
+
+      .activity-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding: 10px 0;
+        border-top: 1px solid var(--border-light);
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .activity-type {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .activity-due {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .activity-due.completed {
+        color: var(--success);
+      }
+
+      .activity-due.progress {
+        color: var(--primary-blue);
+      }
+
+      .activity-due.urgent {
+        color: var(--error);
+        animation: pulse 2s infinite;
+      }
+
+      .activity-due.overdue {
+        color: var(--error);
+      }
+
+      .activity-due.locked {
+        color: var(--text-secondary);
+      }
+
+      .activity-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Activity Rating */
+      .activity-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .stars {
+        display: flex;
+        gap: 2px;
+      }
+
+      .stars i {
+        font-size: 1rem;
+        color: var(--border-light);
+      }
+
+      .stars i.filled {
+        color: var(--accent-yellow);
+      }
+
+      .rating-text {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.9rem;
+      }
+
+      /* Activity Progress Bar */
+      .activity-progress-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1;
+        margin-right: 15px;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: var(--border-light);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      .progress-bar .progress-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 3px;
+        transition: width 1s ease;
+      }
+
+      .progress-text {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      /* Activity Tags */
+      .activity-tags {
+        display: flex;
+        gap: 8px;
+      }
+
+      .tag {
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .tag.urgent {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+      }
+
+      .tag.difficulty {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      /* Activity Buttons */
+      .activity-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
+
+      .activity-btn.review {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .activity-btn.review:hover {
+        background: #3a7bd5;
+        transform: translateY(-2px);
+      }
+
+      .activity-btn.continue {
+        background: var(--success);
+        color: white;
+      }
+
+      .activity-btn.continue:hover {
+        background: #219a52;
+        transform: translateY(-2px);
+      }
+
+      .activity-btn.start {
+        background: var(--warning);
+        color: white;
+      }
+
+      .activity-btn.start:hover {
+        background: #e67e22;
+        transform: translateY(-2px);
+      }
+
+      .activity-btn.overdue {
+        background: var(--error);
+        color: white;
+      }
+
+      .activity-btn.overdue:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+      }
+
+      .activity-btn.locked {
+        background: var(--text-secondary);
+        color: white;
+        cursor: not-allowed;
+      }
+
+      .activity-btn:disabled {
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Activity Additional Info */
+      .activity-penalty {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--error);
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .activity-prerequisite {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .course-header {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .course-stats {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .controls-section {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .activities-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          padding: 0 15px;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .activities-main {
+          padding: 20px 15px;
+        }
+
+        .course-header {
+          padding: 20px;
+        }
+
+        .course-info {
+          flex-direction: column;
+          text-align: center;
+          gap: 15px;
+        }
+
+        .course-details h1 {
+          font-size: 1.5rem;
+        }
+
+        .controls-section {
+          padding: 20px;
+        }
+
+        .filter-buttons {
+          justify-content: center;
+        }
+
+        .topic-header {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+
+        .activity-header {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .activity-meta {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+
+        .activity-footer {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      .topic-group {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .topic-group:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .topic-group:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .topic-group:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .topic-group:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .activity-card {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .activity-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .activity-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .activity-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+    </style>
+    <script>
+      // Variables globales para actividades
+      let courseActivities = {
+        courseId: "java-fundamentals",
+        courseName: "Java Fundamentos",
+        totalActivities: 12,
+        completedActivities: 7,
+        pendingActivities: 2,
+        overdueActivities: 1,
+        lockedActivities: 2,
+        averageRating: 4.2,
+        courseProgress: 60,
+
+        activities: [
+          // Tema 1: if/else (Completado)
+          {
+            id: "calculadora",
+            title: "Calculadora Básica",
+            description:
+              "Crea una calculadora que realice operaciones básicas usando condicionales",
+            topic: "if-else",
+            difficulty: "easy",
+            type: "ide",
+            status: "completed",
+            rating: 4,
+            dueDate: "2024-11-10",
+            completedDate: "2024-11-09",
+            feedback:
+              "Excelente implementación de condicionales. Considera optimizar el código para casos edge.",
+          },
+          {
+            id: "verificador-edad",
+            title: "Verificador de Edad",
+            description:
+              "Programa que determine si una persona es mayor de edad o menor",
+            topic: "if-else",
+            difficulty: "easy",
+            type: "upload",
+            status: "completed",
+            rating: 5,
+            dueDate: "2024-11-12",
+            completedDate: "2024-11-11",
+            feedback: "Perfecto! Código limpio y bien estructurado.",
+          },
+          {
+            id: "sistema-notas",
+            title: "Sistema de Notas",
+            description:
+              "Calcula la calificación final y determina si el estudiante aprueba",
+            topic: "if-else",
+            difficulty: "medium",
+            type: "ide",
+            status: "completed",
+            rating: 3,
+            dueDate: "2024-11-15",
+            completedDate: "2024-11-15",
+            feedback:
+              "Buen trabajo, pero puedes mejorar la validación de datos de entrada.",
+          },
+
+          // Tema 2: switch (Completado)
+          {
+            id: "menu-restaurante",
+            title: "Menú de Restaurante",
+            description:
+              "Sistema de pedidos que muestre diferentes opciones de comida",
+            topic: "switch",
+            difficulty: "medium",
+            type: "upload",
+            status: "completed",
+            rating: 4,
+            dueDate: "2024-11-18",
+            completedDate: "2024-11-17",
+            feedback: "Buen uso de switch. Considera agregar un caso default.",
+          },
+          {
+            id: "dias-semana",
+            title: "Días de la Semana",
+            description:
+              "Programa que muestre información según el día seleccionado",
+            topic: "switch",
+            difficulty: "easy",
+            type: "ide",
+            status: "completed",
+            rating: 5,
+            dueDate: "2024-11-20",
+            completedDate: "2024-11-19",
+            feedback: "¡Excelente! Implementación perfecta de switch case.",
+          },
+
+          // Tema 3: for loops (En progreso)
+          {
+            id: "tabla-multiplicar",
+            title: "Tabla de Multiplicar",
+            description:
+              "Genera la tabla de multiplicar de cualquier número usando ciclos for",
+            topic: "for-loops",
+            difficulty: "medium",
+            type: "ide",
+            status: "progress",
+            progress: 65,
+            dueDate: "2024-12-01",
+            startedDate: "2024-11-26",
+          },
+          {
+            id: "numeros-primos",
+            title: "Números Primos",
+            description:
+              "Determina si un número es primo usando ciclos y condicionales",
+            topic: "for-loops",
+            difficulty: "hard",
+            type: "upload",
+            status: "pending",
+            dueDate: "2024-11-29",
+          },
+          {
+            id: "suma-numeros",
+            title: "Suma de Números",
+            description:
+              "Calcula la suma de números del 1 al 100 usando un ciclo for",
+            topic: "for-loops",
+            difficulty: "easy",
+            type: "ide",
+            status: "overdue",
+            dueDate: "2024-11-25",
+            penalty: true,
+          },
+
+          // Tema 4: arrays (Bloqueado)
+          {
+            id: "gestor-estudiantes",
+            title: "Gestor de Estudiantes",
+            description:
+              "Sistema para gestionar información de estudiantes usando arrays",
+            topic: "arrays",
+            difficulty: "hard",
+            type: "upload",
+            status: "locked",
+            dueDate: "2024-12-10",
+            prerequisite: "for-loops",
+          },
+          {
+            id: "ordenamiento-burbuja",
+            title: "Ordenamiento Burbuja",
+            description: "Implementa el algoritmo de ordenamiento burbuja",
+            topic: "arrays",
+            difficulty: "hard",
+            type: "ide",
+            status: "locked",
+            dueDate: "2024-12-15",
+            prerequisite: "for-loops",
+          },
+        ],
+      };
+
+      // Filtros activos
+      let activeFilters = {
+        status: "all",
+        difficulty: "all",
+        sort: "dueDate",
+      };
+
+      // Inicialización
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeActivities();
+        setupEventListeners();
+        animateProgressCircle();
+        updateStatistics();
+      });
+
+      function initializeActivities() {
+        displayActivities();
+        updateStatistics();
+        console.log(
+          "📚 Página de Actividades de Java Fundamentos inicializada"
+        );
+      }
+
+      function setupEventListeners() {
+        // Navigation and breadcrumb
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", handleNavigation);
+        });
+
+        document
+          .getElementById("dashboardLink")
+          .addEventListener("click", () => {
+            showNotification("Navegando al Dashboard", "info");
+          });
+
+        document.getElementById("courseLink").addEventListener("click", () => {
+          showNotification("Navegando al curso Java Fundamentos", "info");
+        });
+
+        // Filter buttons
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.addEventListener("click", handleStatusFilter);
+        });
+
+        document.querySelectorAll(".difficulty-btn").forEach((btn) => {
+          btn.addEventListener("click", handleDifficultyFilter);
+        });
+
+        // Sort select
+        document
+          .getElementById("sortSelect")
+          .addEventListener("change", handleSort);
+
+        // Activity cards
+        document.querySelectorAll(".activity-card").forEach((card) => {
+          card.addEventListener("click", handleActivityClick);
+        });
+
+        // Activity buttons
+        document.querySelectorAll(".activity-btn").forEach((btn) => {
+          btn.addEventListener("click", handleActivityAction);
+        });
+      }
+
+      function handleNavigation(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const page = link.getAttribute("data-page");
+
+        // Update active nav
+        document
+          .querySelectorAll(".nav-link")
+          .forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+
+        showNotification(`Navegando a ${link.textContent.trim()}`, "info");
+
+        setTimeout(() => {
+          console.log(`Navegando a: ${page}`);
+        }, 500);
+      }
+
+      function handleStatusFilter(event) {
+        const btn = event.currentTarget;
+        const filter = btn.getAttribute("data-filter");
+
+        // Update active filter
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        activeFilters.status = filter;
+        applyFilters();
+
+        showNotification(`Filtro aplicado: ${btn.textContent.trim()}`, "info");
+      }
+
+      function handleDifficultyFilter(event) {
+        const btn = event.currentTarget;
+        const difficulty = btn.getAttribute("data-difficulty");
+
+        // Update active filter
+        document
+          .querySelectorAll(".difficulty-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        activeFilters.difficulty = difficulty;
+        applyFilters();
+
+        showNotification(`Dificultad: ${btn.textContent.trim()}`, "info");
+      }
+
+      function handleSort(event) {
+        const sortBy = event.target.value;
+        activeFilters.sort = sortBy;
+        applyFilters();
+
+        showNotification(
+          `Ordenado por: ${
+            event.target.options[event.target.selectedIndex].text
+          }`,
+          "info"
+        );
+      }
+
+      function applyFilters() {
+        let filteredActivities = [...courseActivities.activities];
+
+        // Filter by status
+        if (activeFilters.status !== "all") {
+          filteredActivities = filteredActivities.filter(
+            (activity) => activity.status === activeFilters.status
+          );
+        }
+
+        // Filter by difficulty
+        if (activeFilters.difficulty !== "all") {
+          filteredActivities = filteredActivities.filter(
+            (activity) => activity.difficulty === activeFilters.difficulty
+          );
+        }
+
+        // Sort activities
+        filteredActivities.sort((a, b) => {
+          switch (activeFilters.sort) {
+            case "dueDate":
+              return new Date(a.dueDate) - new Date(b.dueDate);
+            case "rating":
+              return (b.rating || 0) - (a.rating || 0);
+            case "difficulty":
+              const difficultyOrder = { easy: 1, medium: 2, hard: 3 };
+              return (
+                difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]
+              );
+            case "status":
+              const statusOrder = {
+                completed: 1,
+                progress: 2,
+                pending: 3,
+                overdue: 4,
+                locked: 5,
+              };
+              return statusOrder[a.status] - statusOrder[b.status];
+            default:
+              return 0;
+          }
+        });
+
+        displayFilteredActivities(filteredActivities);
+      }
+
+      function displayActivities() {
+        // Las actividades ya están en el HTML, solo necesitamos manejar la interactividad
+        console.log("Actividades mostradas");
+      }
+
+      function displayFilteredActivities(filteredActivities) {
+        // En una implementación real, aquí regeneraríamos el HTML
+        // Por ahora, simulamos el filtrado mostrando/ocultando cards
+        document.querySelectorAll(".activity-card").forEach((card) => {
+          const activityId = card.getAttribute("data-activity");
+          const isVisible = filteredActivities.some(
+            (activity) => activity.id === activityId
+          );
+
+          if (isVisible) {
+            card.style.display = "block";
+            card.style.animation = "fadeInUp 0.5s ease forwards";
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        // Update topic groups visibility
+        document.querySelectorAll(".topic-group").forEach((group) => {
+          const visibleCards = group.querySelectorAll(
+            '.activity-card[style*="display: block"], .activity-card:not([style*="display: none"])'
+          );
+
+          if (visibleCards.length === 0) {
+            group.style.display = "none";
+          } else {
+            group.style.display = "block";
+          }
+        });
+      }
+
+      function handleActivityClick(event) {
+        // Solo manejar click si no es en un botón
+        if (event.target.closest(".activity-btn")) return;
+
+        const card = event.currentTarget;
+        const activityId = card.getAttribute("data-activity");
+        const activity = courseActivities.activities.find(
+          (a) => a.id === activityId
+        );
+
+        if (!activity) return;
+
+        if (activity.status === "locked") {
+          showNotification(
+            "Esta actividad está bloqueada. Completa el tema anterior primero.",
+            "warning"
+          );
+          return;
+        }
+
+        showNotification(`Abriendo: ${activity.title}`, "info");
+
+        setTimeout(() => {
+          console.log(`Navegando a actividad: ${activityId}`);
+          window.location.href = `activities-individual.html`;
+
+        }, 1000);
+      }
+
+      function handleActivityAction(event) {
+        event.stopPropagation();
+        const btn = event.currentTarget;
+        const card = btn.closest(".activity-card");
+        const activityId = card.getAttribute("data-activity");
+        const activity = courseActivities.activities.find(
+          (a) => a.id === activityId
+        );
+
+        if (!activity) return;
+
+        if (btn.classList.contains("review")) {
+          showNotification(
+            `Revisando resultados de: ${activity.title}`,
+            "info"
+          );
+          setTimeout(() => {
+            console.log(`Ver resultados: ${activityId}`);
+          }, 500);
+        } else if (btn.classList.contains("continue")) {
+          showNotification(`Continuando: ${activity.title}`, "success");
+          setTimeout(() => {
+            console.log(`Continuar actividad: ${activityId}`);
+          }, 500);
+        } else if (btn.classList.contains("start")) {
+          showNotification(`Iniciando: ${activity.title}`, "success");
+          setTimeout(() => {
+            console.log(`Iniciar actividad: ${activityId}`);
+          }, 500);
+        } else if (btn.classList.contains("overdue")) {
+          showNotification(`Entregando tarde: ${activity.title}`, "warning");
+          setTimeout(() => {
+            console.log(`Entregar tarde: ${activityId}`);
+          }, 500);
+        }
+      }
+
+      function updateStatistics() {
+        // Actualizar contadores
+        const completedEl = document.getElementById("completedCount");
+        const pendingEl = document.getElementById("pendingCount");
+        const averageEl = document.getElementById("averageRating");
+
+        if (completedEl) {
+          animateNumber(completedEl, courseActivities.completedActivities);
+        }
+
+        if (pendingEl) {
+          animateNumber(pendingEl, courseActivities.pendingActivities);
+        }
+
+        if (averageEl) {
+          animateNumber(averageEl, courseActivities.averageRating, true);
+        }
+      }
+
+      function animateProgressCircle() {
+        setTimeout(() => {
+          const progressCircle = document.querySelector(".progress-fill");
+          if (progressCircle) {
+            const progress = courseActivities.courseProgress;
+            const circumference = 2 * Math.PI * 30; // radio = 30
+            const offset = circumference - (progress / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+          }
+        }, 1000);
+      }
+
+      function animateNumber(element, targetNumber, isDecimal = false) {
+        const startNumber = parseFloat(element.textContent) || 0;
+        const duration = 2000;
+        const startTime = Date.now();
+
+        function updateNumber() {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Función de easing
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+          let currentNumber;
+          if (isDecimal) {
+            currentNumber = (
+              startNumber +
+              (targetNumber - startNumber) * easedProgress
+            ).toFixed(1);
+          } else {
+            currentNumber = Math.floor(
+              startNumber + (targetNumber - startNumber) * easedProgress
+            );
+          }
+
+          element.textContent = currentNumber;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+          }
+        }
+
+        updateNumber();
+      }
+
+      function showNotification(message, type = "info") {
+        // Crear elemento de notificación
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+
+        const icons = {
+          success: "fa-check-circle",
+          warning: "fa-exclamation-triangle",
+          error: "fa-times-circle",
+          info: "fa-info-circle",
+        };
+
+        notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${icons[type] || icons.info}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+
+        // Agregar estilos si no existen
+        if (!document.querySelector("#notification-styles")) {
+          const styles = document.createElement("style");
+          styles.id = "notification-styles";
+          styles.textContent = `
+            .notification {
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                background: white;
+                border-radius: 10px;
+                padding: 15px 20px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                z-index: 1000;
+                min-width: 300px;
+                max-width: 400px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                border-left: 4px solid var(--primary-blue);
+            }
+            
+            .notification.success {
+                border-left-color: var(--success);
+            }
+            
+            .notification.warning {
+                border-left-color: var(--warning);
+            }
+            
+            .notification.error {
+                border-left-color: var(--error);
+            }
+            
+            .notification.show {
+                transform: translateX(0);
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex: 1;
+            }
+            
+            .notification-content i {
+                font-size: 1.2rem;
+                color: var(--primary-blue);
+            }
+            
+            .notification.success .notification-content i {
+                color: var(--success);
+            }
+            
+            .notification.warning .notification-content i {
+                color: var(--warning);
+            }
+            
+            .notification.error .notification-content i {
+                color: var(--error);
+            }
+            
+            .notification-content span {
+                font-weight: 500;
+                color: var(--text-primary);
+            }
+            
+            .notification-close {
+                background: none;
+                border: none;
+                color: var(--text-secondary);
+                cursor: pointer;
+                padding: 5px;
+                border-radius: 5px;
+                transition: background 0.2s ease;
+            }
+            
+            .notification-close:hover {
+                background: var(--neutral-light);
+            }
+        `;
+          document.head.appendChild(styles);
+        }
+
+        // Agregar al DOM
+        document.body.appendChild(notification);
+
+        // Mostrar con animación
+        setTimeout(() => {
+          notification.classList.add("show");
+        }, 100);
+
+        // Configurar cierre
+        const closeBtn = notification.querySelector(".notification-close");
+        closeBtn.addEventListener("click", () => {
+          hideNotification(notification);
+        });
+
+        // Auto-hide después de 4 segundos
+        setTimeout(() => {
+          if (notification.parentNode) {
+            hideNotification(notification);
+          }
+        }, 4000);
+      }
+
+      function hideNotification(notification) {
+        notification.classList.remove("show");
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }
+
+      // Funciones de utilidad para fechas
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const today = new Date();
+        const diffTime = date - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays < 0) {
+          return `Vencida hace ${Math.abs(diffDays)} días`;
+        } else if (diffDays === 0) {
+          return "Vence hoy";
+        } else if (diffDays === 1) {
+          return "Vence mañana";
+        } else {
+          return `Vence en ${diffDays} días`;
+        }
+      }
+
+      function getTimeUntilDue(dateString) {
+        const dueDate = new Date(dateString);
+        const now = new Date();
+        const diffTime = dueDate - now;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        return {
+          days: diffDays,
+          isOverdue: diffDays < 0,
+          isUrgent: diffDays <= 1 && diffDays >= 0,
+        };
+      }
+
+      // Simulaciones para desarrollo
+      function simulateActivityCompletion(activityId) {
+        const activity = courseActivities.activities.find(
+          (a) => a.id === activityId
+        );
+        if (activity && activity.status !== "completed") {
+          activity.status = "completed";
+          activity.rating = Math.floor(Math.random() * 2) + 4; // 4 o 5 estrellas
+          activity.completedDate = new Date().toISOString().split("T")[0];
+
+          // Actualizar estadísticas
+          courseActivities.completedActivities++;
+          if (activity.status === "pending") {
+            courseActivities.pendingActivities--;
+          }
+
+          updateStatistics();
+          showNotification(
+            `¡Actividad completada: ${activity.title}!`,
+            "success"
+          );
+        }
+      }
+
+      function simulateTopicUnlock(topic) {
+        const topicActivities = courseActivities.activities.filter(
+          (a) => a.topic === topic
+        );
+        topicActivities.forEach((activity) => {
+          if (activity.status === "locked") {
+            activity.status = "pending";
+            courseActivities.lockedActivities--;
+            courseActivities.pendingActivities++;
+          }
+        });
+
+        updateStatistics();
+        showNotification(`¡Tema desbloqueado: ${topic}!`, "success");
+      }
+
+      // Eventos de teclado para desarrollo
+      document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.shiftKey) {
+          switch (event.key) {
+            case "C":
+              // Completar actividad aleatoria pendiente
+              event.preventDefault();
+              const pendingActivities = courseActivities.activities.filter(
+                (a) => a.status === "pending" || a.status === "progress"
+              );
+              if (pendingActivities.length > 0) {
+                const randomActivity =
+                  pendingActivities[
+                    Math.floor(Math.random() * pendingActivities.length)
+                  ];
+                simulateActivityCompletion(randomActivity.id);
+              }
+              break;
+            case "U":
+              // Desbloquear tema Arrays
+              event.preventDefault();
+              simulateTopicUnlock("arrays");
+              break;
+            case "R":
+              // Resetear filtros
+              event.preventDefault();
+              activeFilters = {
+                status: "all",
+                difficulty: "all",
+                sort: "dueDate",
+              };
+              document
+                .querySelectorAll(".filter-btn")
+                .forEach((btn) => btn.classList.remove("active"));
+              document
+                .querySelector('.filter-btn[data-filter="all"]')
+                .classList.add("active");
+              document
+                .querySelectorAll(".difficulty-btn")
+                .forEach((btn) => btn.classList.remove("active"));
+              document
+                .querySelector('.difficulty-btn[data-difficulty="all"]')
+                .classList.add("active");
+              document.getElementById("sortSelect").value = "dueDate";
+              applyFilters();
+              showNotification("Filtros reiniciados", "info");
+              break;
+          }
+        }
+      });
+
+      // Exportar para uso global
+      window.JavaActivities = {
+        courseActivities,
+        activeFilters,
+        showNotification,
+        simulateActivityCompletion,
+        simulateTopicUnlock,
+      };
+
+      console.log(
+        "🚀 Sistema de Actividades de Java Fundamentos cargado completamente"
+      );
+    </script>
+  </body>
+</html>

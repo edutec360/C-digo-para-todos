@@ -1,0 +1,3061 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Java - ITESM | Código para Todos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS será copiado aquí */
+        /* Variables CSS */
+:root {
+    --primary-blue: #4A90E2;
+    --primary-green: #7ED321;
+    --accent-pink: #FF6B9D;
+    --accent-yellow: #F5A623;
+    --java-color: #ED8B00;
+    --success: #27AE60;
+    --warning: #F39C12;
+    --error: #E74C3C;
+    --neutral-light: #F8F9FA;
+    --neutral-dark: #2C3E50;
+    --text-primary: #2C3E50;
+    --text-secondary: #6C757D;
+    --border-light: #E9ECEF;
+    --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+    --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+    --transition: all 0.3s ease;
+    --border-radius: 12px;
+}
+
+/* Reset y Estilos Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: white;
+    box-shadow: var(--shadow-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nav-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--border-light);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.nav-profile:hover {
+    background: var(--neutral-light);
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.profile-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.profile-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Main Content */
+.group-detail-main {
+    margin-top: 70px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Group Header Section */
+.group-header-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+}
+
+.group-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.group-main-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.group-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+}
+
+.group-icon.java {
+    background: var(--java-color);
+}
+
+.group-details h1 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.group-details p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.group-meta {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.meta-item i {
+    color: var(--primary-blue);
+}
+
+.group-stats-summary {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    min-width: 80px;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 4px;
+}
+
+.stat-item.warning .stat-number {
+    color: var(--error);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.group-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn.secondary {
+    background: var(--neutral-light);
+    color: var(--text-secondary);
+}
+
+.action-btn.secondary:hover {
+    background: var(--border-light);
+    color: var(--text-primary);
+}
+
+.action-btn.primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.action-btn.primary:hover {
+    background: #3a7bd5;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Analytics Section */
+.analytics-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+}
+
+.section-header {
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Analytics Cards */
+.analytics-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    border: 2px solid var(--border-light);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.analytics-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.analytics-card.difficult {
+    border-color: var(--error);
+}
+
+.analytics-card.difficult:hover {
+    border-color: var(--error);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.2);
+}
+
+.analytics-card.easy {
+    border-color: var(--success);
+}
+
+.analytics-card.easy:hover {
+    border-color: var(--success);
+    box-shadow: 0 8px 25px rgba(39, 174, 96, 0.2);
+}
+
+.analytics-card.moderate {
+    border-color: var(--warning);
+}
+
+.analytics-card.moderate:hover {
+    border-color: var(--warning);
+    box-shadow: 0 8px 25px rgba(243, 156, 18, 0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.topic-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.topic-icon.difficult {
+    background: var(--error);
+}
+
+.topic-icon.easy {
+    background: var(--success);
+}
+
+.topic-icon.moderate {
+    background: var(--warning);
+}
+
+.difficulty-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.difficulty-badge.difficult {
+    background: rgba(231, 76, 60, 0.1);
+    color: var(--error);
+}
+
+.difficulty-badge.easy {
+    background: rgba(39, 174, 96, 0.1);
+    color: var(--success);
+}
+
+.difficulty-badge.moderate {
+    background: rgba(243, 156, 18, 0.1);
+    color: var(--warning);
+}
+
+.card-content {
+    text-align: center;
+}
+
+.card-content h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* Progress Circle */
+.progress-circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+}
+
+.circle-progress {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary-blue) 0deg, var(--border-light) 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circle-progress::before {
+    content: '';
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: white;
+}
+
+.progress-text {
+    position: relative;
+    z-index: 1;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.completion-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.stat-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon.completed {
+    color: var(--success);
+}
+
+.stat-icon.pending {
+    color: var(--text-secondary);
+}
+
+.stat-icon.in-progress {
+    color: var(--warning);
+}
+
+.stat-icon.rating {
+    color: var(--accent-yellow);
+}
+
+.card-footer {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+    padding-top: 15px;
+}
+
+.click-hint {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Students Section */
+.students-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+}
+
+.section-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 2px solid var(--border-light);
+    border-radius: 20px;
+    background: white;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.filter-btn.risk {
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.filter-btn.risk:hover,
+.filter-btn.risk.active {
+    background: rgba(231, 76, 60, 0.1);
+}
+
+/* Level Groups */
+.level-group {
+    margin-top: 30px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px;
+    background: var(--neutral-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.level-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.level-icon.advanced {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.level-icon.intermediate {
+    background: var(--primary-blue);
+}
+
+.level-icon.beginner {
+    background: var(--primary-green);
+}
+
+.level-header h3 {
+    flex: 1;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.level-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.risk-count {
+    color: var(--error);
+    font-weight: 600;
+}
+
+.students-grid {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* Student Cards */
+.student-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--border-light);
+    transition: var(--transition);
+    cursor: pointer;
+    background: white;
+}
+
+.student-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--primary-blue);
+}
+
+.student-card.risk {
+    border-color: var(--error);
+    background: rgba(231, 76, 60, 0.02);
+}
+
+.student-card.risk:hover {
+    border-color: var(--error);
+    box-shadow: 0 4px 20px rgba(231, 76, 60, 0.15);
+}
+
+.student-rank {
+    min-width: 40px;
+}
+
+.rank-badge {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: var(--text-secondary);
+    color: white;
+}
+
+.rank-badge.first {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.rank-badge.second {
+    background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+}
+
+.rank-badge.third {
+    background: linear-gradient(135deg, #CD7F32, #B8860B);
+}
+
+.student-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.student-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.student-info h4 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.student-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.level-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.level-badge.advanced {
+    background: rgba(255, 215, 0, 0.2);
+    color: #B8860B;
+}
+
+.level-badge.intermediate {
+    background: rgba(74, 144, 226, 0.2);
+    color: var(--primary-blue);
+}
+
+.level-badge.beginner {
+    background: rgba(126, 211, 33, 0.2);
+    color: var(--primary-green);
+}
+
+.stars {
+    font-weight: 600;
+    color: var(--accent-yellow);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.student-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border-light);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    min-width: fit-content;
+}
+
+.risk-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--error);
+    font-size: 0.8rem;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 6px;
+}
+
+.student-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: fit-content;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.status-indicator.active {
+    background: var(--success);
+    box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.3);
+}
+
+.status-indicator.moderate {
+    background: var(--warning);
+    box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.3);
+}
+
+.status-indicator.risk {
+    background: var(--error);
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+}
+
+.last-seen {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* Show More Card */
+.show-more-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 2px dashed var(--border-light);
+    border-radius: 12px;
+    background: var(--neutral-light);
+}
+
+.show-more-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.show-more-btn:hover {
+    color: var(--primary-blue);
+}
+
+/* Competition Section */
+.competition-section {
+    background: linear-gradient(135deg, var(--accent-yellow), #F39C12);
+    border-radius: var(--border-radius);
+    padding: 0;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+}
+
+.competition-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    color: white;
+}
+
+.competition-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.competition-info {
+    flex: 1;
+}
+
+.competition-info h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    opacity: 0.9;
+}
+
+.competition-info h4 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.competition-info p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.participants {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.competition-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.competition-actions .action-btn {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.competition-actions .action-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.competition-actions .action-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.competition-actions .action-btn.primary {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.competition-actions .action-btn.primary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(-20px);
+    transition: var(--transition);
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+/* Topic Overview Stats */
+.topic-overview {
+    margin-bottom: 30px;
+}
+
+.overview-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.overview-stats .stat-card {
+    text-align: center;
+    padding: 20px;
+    background: var(--neutral-light);
+    border-radius: 12px;
+}
+
+.overview-stats .stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.overview-stats .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Students Breakdown */
+.students-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.breakdown-section h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.students-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.student-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: var(--neutral-light);
+    border-radius: 8px;
+}
+
+.student-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.student-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--accent-yellow);
+    font-size: 0.9rem;
+}
+
+.student-progress {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.student-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.student-status.risk {
+    background: rgba(231, 76, 60, 0.1);
+    color: var(--error);
+}
+
+.show-more-students {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.show-more-students .show-more-btn {
+    color: var(--primary-blue);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    background: white;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: var(--shadow-medium);
+    border-left: 4px solid var(--success);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 3000;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    color: var(--success);
+    font-size: 1.2rem;
+}
+
+.toast-message {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.toast-close:hover {
+    color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .group-detail-main {
+        padding: 20px;
+    }
+    
+    .group-header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .group-main-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .group-stats-summary {
+        justify-content: center;
+    }
+    
+    .analytics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .overview-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .group-detail-main {
+        padding: 15px;
+        gap: 20px;
+    }
+    
+    .group-header-section,
+    .analytics-section,
+    .students-section {
+        padding: 20px;
+    }
+    
+    .group-main-info {
+        gap: 15px;
+    }
+    
+    .group-details h1 {
+        font-size: 1.5rem;
+    }
+    
+    .group-meta {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .group-stats-summary {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .group-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .action-btn {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-filters {
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .students-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .student-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .student-meta {
+        justify-content: center;
+    }
+    
+    .student-progress {
+        width: 100%;
+    }
+    
+    .competition-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .competition-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .modal {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .overview-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .students-breakdown {
+        gap: 20px;
+    }
+    
+    .student-item {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Progress Circle Animation */
+@keyframes progressFill {
+    from {
+        background: conic-gradient(var(--primary-blue) 0deg, var(--border-light) 0deg);
+    }
+}
+
+/* Aplicar animaciones */
+.group-header-section {
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.1s;
+}
+
+.analytics-section {
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.students-section {
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.competition-section {
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.analytics-card {
+    animation: slideInUp 0.5s ease forwards;
+}
+
+.analytics-card:nth-child(1) { animation-delay: 0.1s; }
+.analytics-card:nth-child(2) { animation-delay: 0.2s; }
+.analytics-card:nth-child(3) { animation-delay: 0.3s; }
+.analytics-card:nth-child(4) { animation-delay: 0.4s; }
+
+.student-card {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+.student-card:nth-child(1) { animation-delay: 0.1s; }
+.student-card:nth-child(2) { animation-delay: 0.2s; }
+.student-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover animations */
+.analytics-card:hover .progress-circle {
+    animation: pulse 0.6s ease;
+}
+
+.student-card:hover .student-avatar {
+    transform: scale(1.1);
+    transition: var(--transition);
+}
+
+.competition-card:hover .competition-icon {
+    animation: pulse 1s infinite;
+}
+
+/* Focus states para accesibilidad */
+.filter-btn:focus,
+.action-btn:focus,
+.analytics-card:focus,
+.student-card:focus {
+    outline: 3px solid rgba(74, 144, 226, 0.3);
+    outline-offset: 2px;
+}
+
+/* Estados de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-light);
+    border-top: 2px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Utilidades */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="back-btn" id="backToDashboard">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Volver al Dashboard</span>
+                </button>
+                <div class="nav-divider"></div>
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>Código para Todos</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-link active" data-section="overview">
+                    <i class="fas fa-chart-pie"></i>
+                    Resumen
+                </a>
+                <a href="#" class="nav-link" data-section="students">
+                    <i class="fas fa-users"></i>
+                    Estudiantes
+                </a>
+                <a href="#" class="nav-link" data-section="analytics">
+                    <i class="fas fa-chart-bar"></i>
+                    Analytics
+                </a>
+                <a href="#" class="nav-link" data-section="activities">
+                    <i class="fas fa-tasks"></i>
+                    Actividades
+                </a>
+            </div>
+            
+            <div class="nav-profile">
+                <div class="profile-info">
+                    <span class="profile-name">Dr. Fernando Castillo</span>
+                    <span class="profile-role">Docente</span>
+                </div>
+                <div class="profile-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Fernando+Castillo&background=4A90E2&color=fff&size=40" alt="Dr. Fernando Castillo">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="group-detail-main">
+        <!-- Group Header -->
+        <section class="group-header-section">
+            <div class="group-header-content">
+                <div class="group-main-info">
+                    <div class="group-icon java">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="group-details">
+                        <h1>Programación Java - ITESM</h1>
+                        <p>Fundamentos de programación orientada a objetos con Java</p>
+                        <div class="group-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-code"></i>
+                                Código: <strong>JAVA2025</strong>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                Creado: <strong>15 Agosto 2025</strong>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-building"></i>
+                                <strong>ITESM Campus Veracruz</strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="group-stats-summary">
+                    <div class="stat-item">
+                        <div class="stat-number">32</div>
+                        <div class="stat-label">Estudiantes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">68%</div>
+                        <div class="stat-label">Progreso Promedio</div>
+                    </div>
+                    <div class="stat-item warning">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">En Riesgo</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">18min</div>
+                        <div class="stat-label">Tiempo Promedio</div>
+                    </div>
+                </div>
+                
+                <div class="group-actions">
+                    <button class="action-btn secondary">
+                        <i class="fas fa-cog"></i>
+                        Configurar
+                    </button>
+                    <button class="action-btn secondary">
+                        <i class="fas fa-download"></i>
+                        Exportar
+                    </button>
+                    <button class="action-btn primary" id="createCompetitionBtn">
+                        <i class="fas fa-trophy"></i>
+                        Crear Competencia
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Cards Section -->
+        <section class="analytics-section">
+            <div class="section-header">
+                <h2>Analytics por Tema</h2>
+                <p>Haz clic en cada card para ver el desglose detallado</p>
+            </div>
+            
+            <div class="analytics-grid">
+                <!-- Arrays y Métodos - Más Difícil -->
+                <div class="analytics-card difficult" data-topic="arrays-methods">
+                    <div class="card-header">
+                        <div class="topic-icon difficult">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <div class="difficulty-badge difficult">Más Difícil</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Arrays y Métodos</h3>
+                        <div class="progress-circle">
+                            <div class="circle-progress" data-progress="42">
+                                <span class="progress-text">42%</span>
+                            </div>
+                        </div>
+                        <div class="completion-stats">
+                            <div class="stat-row">
+                                <span class="stat-icon completed"><i class="fas fa-check-circle"></i></span>
+                                <span>13 completado</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon pending"><i class="fas fa-clock"></i></span>
+                                <span>19 pendiente</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon in-progress"><i class="fas fa-spinner"></i></span>
+                                <span>5 en progreso</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-hint">Clic para desglose</span>
+                    </div>
+                </div>
+
+                <!-- Variables e if/else - Más Fácil -->
+                <div class="analytics-card easy" data-topic="variables-if">
+                    <div class="card-header">
+                        <div class="topic-icon easy">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="difficulty-badge easy">Más Fácil</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Variables e if/else</h3>
+                        <div class="progress-circle">
+                            <div class="circle-progress" data-progress="89">
+                                <span class="progress-text">89%</span>
+                            </div>
+                        </div>
+                        <div class="completion-stats">
+                            <div class="stat-row">
+                                <span class="stat-icon completed"><i class="fas fa-check-circle"></i></span>
+                                <span>28 completado</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon pending"><i class="fas fa-clock"></i></span>
+                                <span>4 pendiente</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon rating"><i class="fas fa-star"></i></span>
+                                <span>4.2/5 promedio</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-hint">Clic para desglose</span>
+                    </div>
+                </div>
+
+                <!-- Ciclos For - Moderado -->
+                <div class="analytics-card moderate" data-topic="for-loops">
+                    <div class="card-header">
+                        <div class="topic-icon moderate">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="difficulty-badge moderate">Moderado</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ciclos For</h3>
+                        <div class="progress-circle">
+                            <div class="circle-progress" data-progress="65">
+                                <span class="progress-text">65%</span>
+                            </div>
+                        </div>
+                        <div class="completion-stats">
+                            <div class="stat-row">
+                                <span class="stat-icon completed"><i class="fas fa-check-circle"></i></span>
+                                <span>20 completado</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon pending"><i class="fas fa-clock"></i></span>
+                                <span>12 pendiente</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon rating"><i class="fas fa-star"></i></span>
+                                <span>3.8/5 promedio</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-hint">Clic para desglose</span>
+                    </div>
+                </div>
+
+                <!-- Métodos y Funciones - Difícil -->
+                <div class="analytics-card difficult" data-topic="methods">
+                    <div class="card-header">
+                        <div class="topic-icon difficult">
+                            <i class="fas fa-function"></i>
+                        </div>
+                        <div class="difficulty-badge difficult">Difícil</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Métodos y Funciones</h3>
+                        <div class="progress-circle">
+                            <div class="circle-progress" data-progress="38">
+                                <span class="progress-text">38%</span>
+                            </div>
+                        </div>
+                        <div class="completion-stats">
+                            <div class="stat-row">
+                                <span class="stat-icon completed"><i class="fas fa-check-circle"></i></span>
+                                <span>8 completado</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon pending"><i class="fas fa-clock"></i></span>
+                                <span>24 pendiente</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-icon rating"><i class="fas fa-star"></i></span>
+                                <span>3.1/5 promedio</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-hint">Clic para desglose</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Students by Level Section -->
+        <section class="students-section">
+            <div class="section-header">
+                <h2>Estudiantes por Nivel</h2>
+                <div class="section-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        Todos (32)
+                    </button>
+                    <button class="filter-btn" data-filter="advanced">
+                        Avanzado (1)
+                    </button>
+                    <button class="filter-btn" data-filter="intermediate">
+                        Intermedio (15)
+                    </button>
+                    <button class="filter-btn" data-filter="beginner">
+                        Principiante (16)
+                    </button>
+                    <button class="filter-btn risk" data-filter="risk">
+                        En Riesgo (5)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Advanced Students -->
+            <div class="level-group" data-level="advanced">
+                <div class="level-header">
+                    <div class="level-icon advanced">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Avanzado (1 estudiante)</h3>
+                    <div class="level-stats">
+                        <span class="avg-stars">245⭐ promedio</span>
+                    </div>
+                </div>
+                
+                <div class="students-grid">
+                    <div class="student-card advanced active">
+                        <div class="student-rank">
+                            <div class="rank-badge first">1°</div>
+                        </div>
+                        <div class="student-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Carlos+Ruiz&background=FFD700&color=fff&size=50" alt="Carlos Ruiz">
+                        </div>
+                        <div class="student-info">
+                            <h4>Carlos Ruiz</h4>
+                            <div class="student-meta">
+                                <span class="level-badge advanced">Avanzado</span>
+                                <span class="stars">245⭐</span>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                                <span class="progress-text">95% completado</span>
+                            </div>
+                        </div>
+                        <div class="student-status">
+                            <div class="status-indicator active"></div>
+                            <span class="last-seen">Hace 1h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intermediate Students -->
+            <div class="level-group" data-level="intermediate">
+                <div class="level-header">
+                    <div class="level-icon intermediate">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Intermedio (15 estudiantes)</h3>
+                    <div class="level-stats">
+                        <span class="avg-stars">91⭐ promedio</span>
+                    </div>
+                </div>
+                
+                <div class="students-grid">
+                    <div class="student-card intermediate active">
+                        <div class="student-rank">
+                            <div class="rank-badge second">2°</div>
+                        </div>
+                        <div class="student-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=50" alt="Ana García">
+                        </div>
+                        <div class="student-info">
+                            <h4>Ana García</h4>
+                            <div class="student-meta">
+                                <span class="level-badge intermediate">Intermedio</span>
+                                <span class="stars">127⭐</span>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                                <span class="progress-text">78% completado</span>
+                            </div>
+                        </div>
+                        <div class="student-status">
+                            <div class="status-indicator active"></div>
+                            <span class="last-seen">Hace 2h</span>
+                        </div>
+                    </div>
+
+                    <div class="student-card intermediate active">
+                        <div class="student-rank">
+                            <div class="rank-badge third">3°</div>
+                        </div>
+                        <div class="student-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Maria+Lopez&background=7ED321&color=fff&size=50" alt="María López">
+                        </div>
+                        <div class="student-info">
+                            <h4>María López</h4>
+                            <div class="student-meta">
+                                <span class="level-badge intermediate">Intermedio</span>
+                                <span class="stars">98⭐</span>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%"></div>
+                                </div>
+                                <span class="progress-text">72% completado</span>
+                            </div>
+                        </div>
+                        <div class="student-status">
+                            <div class="status-indicator moderate"></div>
+                            <span class="last-seen">Ayer</span>
+                        </div>
+                    </div>
+
+                    <div class="student-card intermediate risk">
+                        <div class="student-rank">
+                            <div class="rank-badge">6°</div>
+                        </div>
+                        <div class="student-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Luis+Hernandez&background=E74C3C&color=fff&size=50" alt="Luis Hernández">
+                        </div>
+                        <div class="student-info">
+                            <h4>Luis Hernández</h4>
+                            <div class="student-meta">
+                                <span class="level-badge intermediate">Intermedio</span>
+                                <span class="stars">89⭐</span>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 68%"></div>
+                                </div>
+                                <span class="progress-text">68% completado</span>
+                            </div>
+                            <div class="risk-indicator">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Sin actividad 5 días</span>
+                            </div>
+                        </div>
+                        <div class="student-status">
+                            <div class="status-indicator risk"></div>
+                            <span class="last-seen">5 días</span>
+                        </div>
+                    </div>
+
+                    <!-- Mostrar solo 3 para demo, botón "Ver más" -->
+                    <div class="show-more-card">
+                        <button class="show-more-btn" data-level="intermediate">
+                            <i class="fas fa-plus"></i>
+                            <span>Ver 12 estudiantes más</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beginner Students -->
+            <div class="level-group" data-level="beginner">
+                <div class="level-header">
+                    <div class="level-icon beginner">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Principiante (16 estudiantes)</h3>
+                    <div class="level-stats">
+                        <span class="avg-stars">52⭐ promedio</span>
+                        <span class="risk-count">3 en riesgo</span>
+                    </div>
+                </div>
+                
+                <div class="students-grid">
+                    <div class="student-card beginner risk">
+                        <div class="student-rank">
+                            <div class="rank-badge">4°</div>
+                        </div>
+                        <div class="student-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Diego+Morales&background=E74C3C&color=fff&size=50" alt="Diego Morales">
+                        </div>
+                        <div class="student-info">
+                            <h4>Diego Morales</h4>
+                            <div class="student-meta">
+                                <span class="level-badge beginner">Principiante</span>
+                                <span class="stars">67⭐</span>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%"></div>
+                                </div>
+                                <span class="progress-text">45% completado</span>
+                            </div>
+                            <div class="risk-indicator">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>2 actividades vencidas</span>
+                            </div>
+                        </div>
+                        <div class="student-status">
+                            <div class="status-indicator risk"></div>
+                            <span class="last-seen">3 días</span>
+                        </div>
+                    </div>
+
+                    <div class="student-card beginner risk">
+                        <div class="student-rank">
+                            <div class="rank-badge">5°</div>
+                        </div>
+                        <div class="student-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Sofia+Martinez&background=E74C3C&color=fff&size=50" alt="Sofía Martínez">
+                        </div>
+                        <div class="student-info">
+                            <h4>Sofía Martínez</h4>
+                            <div class="student-meta">
+                                <span class="level-badge beginner">Principiante</span>
+                                <span class="stars">45⭐</span>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 32%"></div>
+                                </div>
+                                <span class="progress-text">32% completado</span>
+                            </div>
+                            <div class="risk-indicator">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Bajo rendimiento</span>
+                            </div>
+                        </div>
+                        <div class="student-status">
+                            <div class="status-indicator risk"></div>
+                            <span class="last-seen">2 días</span>
+                        </div>
+                    </div>
+
+                    <div class="student-card beginner active">
+                        <div class="student-rank">
+                            <div class="rank-badge">7°</div>
+                        </div>
+                        <div class="student-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Pablo+Jimenez&background=7ED321&color=fff&size=50" alt="Pablo Jiménez">
+                        </div>
+                        <div class="student-info">
+                            <h4>Pablo Jiménez</h4>
+                            <div class="student-meta">
+                                <span class="level-badge beginner">Principiante</span>
+                                <span class="stars">56⭐</span>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 42%"></div>
+                                </div>
+                                <span class="progress-text">42% completado</span>
+                            </div>
+                        </div>
+                        <div class="student-status">
+                            <div class="status-indicator active"></div>
+                            <span class="last-seen">Hace 4h</span>
+                        </div>
+                    </div>
+
+                    <!-- Mostrar solo 3 para demo -->
+                    <div class="show-more-card">
+                        <button class="show-more-btn" data-level="beginner">
+                            <i class="fas fa-plus"></i>
+                            <span>Ver 13 estudiantes más</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Competition -->
+        <section class="competition-section">
+            <div class="competition-card">
+                <div class="competition-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="competition-info">
+                    <h3>Próxima Competencia</h3>
+                    <h4>"Lógica Básica"</h4>
+                    <p>Viernes 25 Septiembre, 2:00 PM</p>
+                    <div class="participants">
+                        <span>28 estudiantes registrados</span>
+                    </div>
+                </div>
+                <div class="competition-actions">
+                    <button class="action-btn secondary">
+                        Ver Detalles
+                    </button>
+                    <button class="action-btn primary">
+                        Gestionar
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Topic Detail Modal -->
+    <div class="modal-overlay" id="topicDetailModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="topicModalTitle">Arrays y Métodos</h3>
+                <button class="close-modal" id="closeTopicModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="topic-overview">
+                    <div class="overview-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="modalCompletedCount">13</div>
+                            <div class="stat-label">Completado</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="modalPendingCount">19</div>
+                            <div class="stat-label">Pendiente</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="modalProgressCount">5</div>
+                            <div class="stat-label">En Progreso</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="modalAvgRating">3.1</div>
+                            <div class="stat-label">Rating Promedio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="students-breakdown">
+                    <div class="breakdown-section">
+                        <h4>
+                            <i class="fas fa-check-circle" style="color: var(--success)"></i>
+                            Completado (13 estudiantes)
+                        </h4>
+                        <div class="students-list" id="completedStudentsList">
+                            <div class="student-item">
+                                <span class="student-name">Carlos Ruiz</span>
+                                <span class="student-rating">
+                                    <i class="fas fa-star"></i> 5/5
+                                </span>
+                            </div>
+                            <div class="student-item">
+                                <span class="student-name">Ana García</span>
+                                <span class="student-rating">
+                                    <i class="fas fa-star"></i> 4/5
+                                </span>
+                            </div>
+                            <div class="student-item">
+                                <span class="student-name">María López</span>
+                                <span class="student-rating">
+                                    <i class="fas fa-star"></i> 3/5
+                                </span>
+                            </div>
+                            <div class="show-more-students">
+                                <button class="show-more-btn">Ver 10 más...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-section">
+                        <h4>
+                            <i class="fas fa-spinner" style="color: var(--warning)"></i>
+                            En Progreso (5 estudiantes)
+                        </h4>
+                        <div class="students-list" id="progressStudentsList">
+                            <div class="student-item">
+                                <span class="student-name">Roberto Silva</span>
+                                <span class="student-progress">65% completado</span>
+                            </div>
+                            <div class="student-item">
+                                <span class="student-name">Carmen Vega</span>
+                                <span class="student-progress">40% completado</span>
+                            </div>
+                            <div class="show-more-students">
+                                <button class="show-more-btn">Ver 3 más...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-section">
+                        <h4>
+                            <i class="fas fa-clock" style="color: var(--text-secondary)"></i>
+                            Pendiente (19 estudiantes)
+                        </h4>
+                        <div class="students-list" id="pendingStudentsList">
+                            <div class="student-item">
+                                <span class="student-name">Diego Morales</span>
+                                <span class="student-status risk">En riesgo</span>
+                            </div>
+                            <div class="student-item">
+                                <span class="student-name">Sofía Martínez</span>
+                                <span class="student-status risk">En riesgo</span>
+                            </div>
+                            <div class="student-item">
+                                <span class="student-name">Pablo Jiménez</span>
+                                <span class="student-status">Normal</span>
+                            </div>
+                            <div class="show-more-students">
+                                <button class="show-more-btn">Ver 16 más...</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+        <div class="toast-content">
+            <i class="toast-icon fas fa-check-circle"></i>
+            <span class="toast-message">Acción completada exitosamente</span>
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script>
+        /* JavaScript será copiado aquí */
+        // Variables globales para el detalle del grupo
+let currentGroup = {
+    id: 'java-itesm',
+    name: 'Programación Java - ITESM',
+    description: 'Fundamentos de programación orientada a objetos con Java',
+    code: 'JAVA2025',
+    institution: 'ITESM Campus Veracruz',
+    createdDate: '15 Agosto 2025',
+    totalStudents: 32,
+    averageProgress: 68,
+    studentsAtRisk: 5,
+    averageTime: 18
+};
+
+// Datos de analytics por tema
+let topicAnalytics = {
+    'arrays-methods': {
+        name: 'Arrays y Métodos',
+        difficulty: 'difficult',
+        progress: 42,
+        completed: 13,
+        pending: 19,
+        inProgress: 5,
+        averageRating: 3.1,
+        completedStudents: [
+            { name: 'Carlos Ruiz', rating: 5 },
+            { name: 'Ana García', rating: 4 },
+            { name: 'María López', rating: 3 },
+            { name: 'Roberto Silva', rating: 4 },
+            { name: 'Carmen Vega', rating: 3 },
+            { name: 'Patricia Ramos', rating: 4 },
+            { name: 'Miguel Torres', rating: 3 },
+            { name: 'Isabel Vargas', rating: 5 },
+            { name: 'Eduardo Luna', rating: 4 },
+            { name: 'Gabriela Soto', rating: 3 }
+        ],
+        inProgressStudents: [
+            { name: 'Roberto Silva', progress: 65 },
+            { name: 'Carmen Vega', progress: 40 },
+            { name: 'José Mendoza', progress: 75 },
+            { name: 'Laura Díaz', progress: 30 },
+            { name: 'David Cruz', progress: 55 }
+        ],
+        pendingStudents: [
+            { name: 'Diego Morales', status: 'risk' },
+            { name: 'Sofía Martínez', status: 'risk' },
+            { name: 'Pablo Jiménez', status: 'normal' },
+            { name: 'Luis Hernández', status: 'risk' },
+            { name: 'Alejandra Flores', status: 'normal' }
+        ]
+    },
+    'variables-if': {
+        name: 'Variables e if/else',
+        difficulty: 'easy',
+        progress: 89,
+        completed: 28,
+        pending: 4,
+        inProgress: 0,
+        averageRating: 4.2,
+        completedStudents: [],
+        inProgressStudents: [],
+        pendingStudents: []
+    },
+    'for-loops': {
+        name: 'Ciclos For',
+        difficulty: 'moderate',
+        progress: 65,
+        completed: 20,
+        pending: 12,
+        inProgress: 0,
+        averageRating: 3.8,
+        completedStudents: [],
+        inProgressStudents: [],
+        pendingStudents: []
+    },
+    'methods': {
+        name: 'Métodos y Funciones',
+        difficulty: 'difficult',
+        progress: 38,
+        completed: 8,
+        pending: 24,
+        inProgress: 0,
+        averageRating: 3.1,
+        completedStudents: [],
+        inProgressStudents: [],
+        pendingStudents: []
+    }
+};
+
+// Datos de estudiantes por nivel
+let studentsByLevel = {
+    advanced: [
+        {
+            name: 'Carlos Ruiz',
+            stars: 245,
+            progress: 95,
+            rank: 1,
+            status: 'active',
+            lastSeen: 'Hace 1h'
+        }
+    ],
+    intermediate: [
+        {
+            name: 'Ana García',
+            stars: 127,
+            progress: 78,
+            rank: 2,
+            status: 'active',
+            lastSeen: 'Hace 2h'
+        },
+        {
+            name: 'María López',
+            stars: 98,
+            progress: 72,
+            rank: 3,
+            status: 'moderate',
+            lastSeen: 'Ayer'
+        },
+        {
+            name: 'Luis Hernández',
+            stars: 89,
+            progress: 68,
+            rank: 6,
+            status: 'risk',
+            lastSeen: '5 días',
+            riskReason: 'Sin actividad 5 días'
+        }
+    ],
+    beginner: [
+        {
+            name: 'Diego Morales',
+            stars: 67,
+            progress: 45,
+            rank: 4,
+            status: 'risk',
+            lastSeen: '3 días',
+            riskReason: '2 actividades vencidas'
+        },
+        {
+            name: 'Sofía Martínez',
+            stars: 45,
+            progress: 32,
+            rank: 5,
+            status: 'risk',
+            lastSeen: '2 días',
+            riskReason: 'Bajo rendimiento'
+        },
+        {
+            name: 'Pablo Jiménez',
+            stars: 56,
+            progress: 42,
+            rank: 7,
+            status: 'active',
+            lastSeen: 'Hace 4h'
+        }
+    ]
+};
+
+// Variables de estado
+let currentFilter = 'all';
+let currentModal = null;
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    initializeGroupDetail();
+    setupEventListeners();
+    setupProgressCircles();
+    loadGroupData();
+    console.log('📊 Detalle del grupo inicializado:', currentGroup.name);
+});
+
+function initializeGroupDetail() {
+    loadGroupData();
+    setupProgressCircles();
+    setupModalEvents();
+    updateStudentCounts();
+    console.log('🎯 Detalle del grupo Java ITESM cargado');
+}
+
+function setupEventListeners() {
+    // Back to dashboard button
+    const backBtn = document.getElementById('backToDashboard');
+    if (backBtn) {
+        backBtn.addEventListener('click', handleBackToDashboard);
+    }
+
+    // Navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', handleNavigation);
+    });
+
+    // Analytics cards
+    document.querySelectorAll('.analytics-card').forEach(card => {
+        card.addEventListener('click', handleAnalyticsCardClick);
+    });
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', handleFilterChange);
+    });
+
+    // Student cards
+    document.querySelectorAll('.student-card').forEach(card => {
+        card.addEventListener('click', handleStudentCardClick);
+    });
+
+    // Show more buttons
+    document.querySelectorAll('.show-more-btn').forEach(btn => {
+        btn.addEventListener('click', handleShowMore);
+    });
+
+    // Action buttons
+    document.querySelectorAll('.action-btn').forEach(btn => {
+        btn.addEventListener('click', handleActionButton);
+    });
+
+    // Create competition button
+    const createCompBtn = document.getElementById('createCompetitionBtn');
+    if (createCompBtn) {
+        createCompBtn.addEventListener('click', handleCreateCompetition);
+    }
+}
+
+function setupProgressCircles() {
+    document.querySelectorAll('.circle-progress').forEach((circle, index) => {
+        const progress = parseInt(circle.dataset.progress);
+        animateProgressCircle(circle, progress, index * 200);
+    });
+}
+
+function animateProgressCircle(circle, targetProgress, delay) {
+    setTimeout(() => {
+        const angle = (targetProgress / 100) * 360;
+        circle.style.background = `conic-gradient(var(--primary-blue) ${angle}deg, var(--border-light) ${angle}deg)`;
+    }, delay);
+}
+
+function loadGroupData() {
+    // Los datos ya están cargados en el HTML
+    // Aquí se actualizarían dinámicamente si fuera necesario
+    console.log('📋 Datos del grupo cargados:', currentGroup);
+}
+
+function updateStudentCounts() {
+    // Actualizar contadores en los filtros
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        const filter = btn.dataset.filter;
+        let count = 0;
+        
+        switch (filter) {
+            case 'all':
+                count = currentGroup.totalStudents;
+                break;
+            case 'advanced':
+                count = studentsByLevel.advanced.length;
+                break;
+            case 'intermediate':
+                count = studentsByLevel.intermediate.length;
+                break;
+            case 'beginner':
+                count = studentsByLevel.beginner.length;
+                break;
+            case 'risk':
+                count = currentGroup.studentsAtRisk;
+                break;
+        }
+        
+        // Actualizar texto del botón si es necesario
+        const currentText = btn.textContent;
+        if (currentText.includes('(')) {
+            btn.textContent = currentText.replace(/\(\d+\)/, `(${count})`);
+        }
+    });
+}
+
+function handleBackToDashboard() {
+    showNotification('Regresando al dashboard docente', 'info');
+    console.log('🔙 Navegando de vuelta al dashboard');
+    
+    // Simular navegación con animación
+    document.body.style.opacity = '0.8';
+    setTimeout(() => {
+        // Aquí se redirigiría a teacher-dashboard.html
+        console.log('Redirigiendo a: teacher-dashboard.html');
+        document.body.style.opacity = '1';
+        showNotification('Navegación simulada completada', 'success');
+    }, 500);
+}
+
+function handleNavigation(event) {
+    event.preventDefault();
+    const section = event.currentTarget.dataset.section;
+    
+    // Remover clase active de todos los links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Agregar clase active al link clickeado
+    event.currentTarget.classList.add('active');
+    
+    showNotification(`Navegando a sección: ${section}`, 'info');
+    console.log('📱 Navegación a sección:', section);
+}
+
+function handleAnalyticsCardClick(event) {
+    const topicId = event.currentTarget.dataset.topic;
+    const topicData = topicAnalytics[topicId];
+    
+    if (topicData) {
+        openTopicDetailModal(topicData);
+        console.log('📊 Abriendo detalles del tema:', topicData.name);
+    }
+}
+
+function openTopicDetailModal(topicData) {
+    const modal = document.getElementById('topicDetailModal');
+    const title = document.getElementById('topicModalTitle');
+    
+    // Actualizar título
+    if (title) {
+        title.textContent = topicData.name;
+    }
+    
+    // Actualizar estadísticas
+    updateModalStats(topicData);
+    
+    // Actualizar listas de estudiantes
+    updateModalStudentLists(topicData);
+    
+    // Mostrar modal
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        currentModal = 'topic';
+    }
+    
+    showNotification(`Mostrando detalles de: ${topicData.name}`, 'info');
+}
+
+function updateModalStats(topicData) {
+    const elements = {
+        completedCount: document.getElementById('modalCompletedCount'),
+        pendingCount: document.getElementById('modalPendingCount'),
+        progressCount: document.getElementById('modalProgressCount'),
+        avgRating: document.getElementById('modalAvgRating')
+    };
+    
+    if (elements.completedCount) elements.completedCount.textContent = topicData.completed;
+    if (elements.pendingCount) elements.pendingCount.textContent = topicData.pending;
+    if (elements.progressCount) elements.progressCount.textContent = topicData.inProgress;
+    if (elements.avgRating) elements.avgRating.textContent = topicData.averageRating;
+}
+
+function updateModalStudentLists(topicData) {
+    // Actualizar lista de completados
+    const completedList = document.getElementById('completedStudentsList');
+    if (completedList && topicData.completedStudents.length > 0) {
+        updateStudentList(completedList, topicData.completedStudents, 'completed');
+    }
+    
+    // Actualizar lista en progreso
+    const progressList = document.getElementById('progressStudentsList');
+    if (progressList && topicData.inProgressStudents.length > 0) {
+        updateStudentList(progressList, topicData.inProgressStudents, 'progress');
+    }
+    
+    // Actualizar lista pendientes
+    const pendingList = document.getElementById('pendingStudentsList');
+    if (pendingList && topicData.pendingStudents.length > 0) {
+        updateStudentList(pendingList, topicData.pendingStudents, 'pending');
+    }
+}
+
+function updateStudentList(container, students, type) {
+    const existingItems = container.querySelectorAll('.student-item');
+    
+    students.slice(0, 3).forEach((student, index) => {
+        if (existingItems[index]) {
+            const nameEl = existingItems[index].querySelector('.student-name');
+            const metaEl = existingItems[index].querySelector('.student-rating, .student-progress, .student-status');
+            
+            if (nameEl) nameEl.textContent = student.name;
+            
+            if (metaEl && type === 'completed') {
+                metaEl.innerHTML = `<i class="fas fa-star"></i> ${student.rating}/5`;
+            } else if (metaEl && type === 'progress') {
+                metaEl.textContent = `${student.progress}% completado`;
+            } else if (metaEl && type === 'pending') {
+                metaEl.textContent = student.status === 'risk' ? 'En riesgo' : 'Normal';
+                metaEl.className = `student-status ${student.status}`;
+            }
+        }
+    });
+}
+
+function handleFilterChange(event) {
+    const filter = event.currentTarget.dataset.filter;
+    
+    // Remover clase active de todos los filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Agregar clase active al filtro clickeado
+    event.currentTarget.classList.add('active');
+    
+    // Aplicar filtro
+    applyStudentFilter(filter);
+    currentFilter = filter;
+    
+    showNotification(`Filtro aplicado: ${filter}`, 'info');
+    console.log('🔍 Filtro aplicado:', filter);
+}
+
+function applyStudentFilter(filter) {
+    const levelGroups = document.querySelectorAll('.level-group');
+    
+    levelGroups.forEach(group => {
+        const level = group.dataset.level;
+        
+        if (filter === 'all') {
+            group.style.display = 'block';
+        } else if (filter === 'risk') {
+            // Mostrar solo estudiantes en riesgo
+            const riskStudents = group.querySelectorAll('.student-card.risk');
+            if (riskStudents.length > 0) {
+                group.style.display = 'block';
+                // Ocultar estudiantes que no están en riesgo
+                const allStudents = group.querySelectorAll('.student-card');
+                allStudents.forEach(card => {
+                    card.style.display = card.classList.contains('risk') ? 'flex' : 'none';
+                });
+            } else {
+                group.style.display = 'none';
+            }
+        } else if (filter === level) {
+            group.style.display = 'block';
+            // Mostrar todos los estudiantes del nivel
+            const allStudents = group.querySelectorAll('.student-card');
+            allStudents.forEach(card => {
+                card.style.display = 'flex';
+            });
+        } else {
+            group.style.display = 'none';
+        }
+    });
+}
+
+function handleStudentCardClick(event) {
+    const studentCard = event.currentTarget;
+    const studentName = studentCard.querySelector('h4').textContent;
+    
+    showNotification(`Viendo perfil de ${studentName}`, 'info');
+    console.log('👤 Perfil de estudiante clickeado:', studentName);
+    
+    // Simular apertura de perfil detallado
+    setTimeout(() => {
+        console.log(`Abriendo perfil detallado de: ${studentName}`);
+    }, 300);
+}
+
+function handleShowMore(event) {
+    const level = event.currentTarget.dataset.level;
+    const button = event.currentTarget;
+    
+    // Simular carga de más estudiantes
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cargando...';
+    button.disabled = true;
+    
+    setTimeout(() => {
+        showNotification(`Mostrando más estudiantes de nivel ${level}`, 'success');
+        button.innerHTML = '<i class="fas fa-check"></i> Todos mostrados';
+        console.log('📋 Cargando más estudiantes de nivel:', level);
+    }, 1000);
+}
+
+function handleActionButton(event) {
+    const button = event.currentTarget;
+    const action = button.textContent.trim();
+    
+    showNotification(`Ejecutando: ${action}`, 'info');
+    console.log('⚡ Acción ejecutada:', action);
+    
+    // Simular diferentes acciones
+    if (action.includes('Configurar')) {
+        console.log('⚙️ Abriendo configuración del grupo');
+    } else if (action.includes('Exportar')) {
+        simulateExport();
+    } else if (action.includes('Ver Detalles')) {
+        console.log('📋 Mostrando detalles de competencia');
+    } else if (action.includes('Gestionar')) {
+        console.log('🏆 Gestionando competencia');
+    }
+}
+
+function handleCreateCompetition() {
+    showNotification('Abriendo creador de competencias', 'info');
+    console.log('🏆 Creando nueva competencia para el grupo');
+    
+    // Simular proceso de creación
+    setTimeout(() => {
+        showNotification('Competencia "Algoritmos Básicos" creada', 'success');
+    }, 1500);
+}
+
+function simulateExport() {
+    showNotification('Preparando exportación...', 'info');
+    
+    setTimeout(() => {
+        showNotification('Reporte del grupo descargado', 'success');
+        console.log('📊 Reporte exportado:', `${currentGroup.name}_reporte.pdf`);
+    }, 2000);
+}
+
+// Modal management
+function setupModalEvents() {
+    const modal = document.getElementById('topicDetailModal');
+    const closeBtn = document.getElementById('closeTopicModal');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeTopicDetailModal);
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeTopicDetailModal();
+            }
+        });
+    }
+}
+
+function closeTopicDetailModal() {
+    const modal = document.getElementById('topicDetailModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        currentModal = null;
+    }
+    console.log('❌ Modal de detalles cerrado');
+}
+
+// Sistema de Notificaciones
+function showNotification(message, type = 'success') {
+    const toast = document.getElementById('toastNotification');
+    const toastMessage = toast.querySelector('.toast-message');
+    const toastIcon = toast.querySelector('.toast-icon');
+    
+    // Configurar mensaje
+    toastMessage.textContent = message;
+    
+    // Configurar icono según el tipo
+    toastIcon.className = 'toast-icon fas';
+    toast.style.borderLeftColor = '';
+    
+    switch (type) {
+        case 'success':
+            toastIcon.classList.add('fa-check-circle');
+            toast.style.borderLeftColor = 'var(--success)';
+            break;
+        case 'error':
+            toastIcon.classList.add('fa-exclamation-circle');
+            toast.style.borderLeftColor = 'var(--error)';
+            break;
+        case 'warning':
+            toastIcon.classList.add('fa-exclamation-triangle');
+            toast.style.borderLeftColor = 'var(--warning)';
+            break;
+        case 'info':
+            toastIcon.classList.add('fa-info-circle');
+            toast.style.borderLeftColor = 'var(--primary-blue)';
+            break;
+        default:
+            toastIcon.classList.add('fa-check-circle');
+            toast.style.borderLeftColor = 'var(--success)';
+    }
+    
+    // Mostrar toast
+    toast.classList.add('show');
+    
+    // Auto-hide después de 3 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+    
+    // Event listener para cerrar manualmente
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.onclick = () => {
+        toast.classList.remove('show');
+    };
+}
+
+// Funciones de análisis
+function getStudentsByRisk() {
+    const allStudents = [
+        ...studentsByLevel.advanced,
+        ...studentsByLevel.intermediate,
+        ...studentsByLevel.beginner
+    ];
+    
+    return allStudents.filter(student => student.status === 'risk');
+}
+
+function getTopicDifficultyAnalysis() {
+    const topics = Object.values(topicAnalytics);
+    
+    const analysis = {
+        mostDifficult: topics.reduce((prev, current) => 
+            prev.progress < current.progress ? prev : current
+        ),
+        easiest: topics.reduce((prev, current) => 
+            prev.progress > current.progress ? prev : current
+        ),
+        averageCompletion: topics.reduce((sum, topic) => sum + topic.progress, 0) / topics.length
+    };
+    
+    return analysis;
+}
+
+function getGroupPerformanceMetrics() {
+    const riskStudents = getStudentsByRisk();
+    const allStudents = [
+        ...studentsByLevel.advanced,
+        ...studentsByLevel.intermediate,
+        ...studentsByLevel.beginner
+    ];
+    
+    const totalStars = allStudents.reduce((sum, student) => sum + student.stars, 0);
+    const averageProgress = allStudents.reduce((sum, student) => sum + student.progress, 0) / allStudents.length;
+    
+    return {
+        totalStudents: allStudents.length,
+        studentsAtRisk: riskStudents.length,
+        riskPercentage: (riskStudents.length / allStudents.length) * 100,
+        averageStars: totalStars / allStudents.length,
+        averageProgress: averageProgress,
+        topPerformer: allStudents.reduce((prev, current) => 
+            prev.stars > current.stars ? prev : current
+        )
+    };
+}
+
+// Manejo de eventos de teclado
+document.addEventListener('keydown', function(event) {
+    // Cerrar modal con ESC
+    if (event.key === 'Escape') {
+        if (currentModal === 'topic') {
+            closeTopicDetailModal();
+        }
+    }
+    
+    // Atajos de teclado
+    if (event.ctrlKey || event.metaKey) {
+        switch (event.key) {
+            case 'b':
+                event.preventDefault();
+                handleBackToDashboard();
+                break;
+            case 'e':
+                event.preventDefault();
+                simulateExport();
+                break;
+            case 'c':
+                event.preventDefault();
+                handleCreateCompetition();
+                break;
+            case 'f':
+                event.preventDefault();
+                // Focus en filtros
+                document.querySelector('.filter-btn').focus();
+                break;
+        }
+    }
+    
+    // Navegación con números
+    if (event.key >= '1' && event.key <= '5') {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const index = parseInt(event.key) - 1;
+        if (filterBtns[index]) {
+            filterBtns[index].click();
+        }
+    }
+});
+
+// Simulación de actualizaciones en tiempo real
+function startRealTimeUpdates() {
+    setInterval(() => {
+        updateRealTimeData();
+    }, 45000); // Cada 45 segundos
+    
+    console.log('🔄 Actualizaciones en tiempo real iniciadas');
+}
+
+function updateRealTimeData() {
+    // Simular nueva actividad de estudiante
+    if (Math.random() > 0.7) {
+        const students = ['Carlos Ruiz', 'Ana García', 'María López', 'Pablo Jiménez'];
+        const activities = ['completó ejercicio', 'inició nuevo tema', 'mejoró calificación'];
+        
+        const randomStudent = students[Math.floor(Math.random() * students.length)];
+        const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+        
+        showNotification(`${randomStudent} ${randomActivity}`, 'info');
+        console.log('📝 Actividad en tiempo real:', randomStudent, randomActivity);
+    }
+    
+    // Simular cambio en progreso grupal
+    if (Math.random() > 0.8) {
+        const oldProgress = currentGroup.averageProgress;
+        currentGroup.averageProgress = Math.min(100, oldProgress + Math.floor(Math.random() * 2));
+        
+        if (currentGroup.averageProgress !== oldProgress) {
+            console.log(`📈 Progreso grupal actualizado: ${oldProgress}% → ${currentGroup.averageProgress}%`);
+            updateGroupProgressDisplay();
+        }
+    }
+}
+
+function updateGroupProgressDisplay() {
+    // Actualizar el progreso promedio en la interfaz
+    const progressElements = document.querySelectorAll('.stat-number');
+    progressElements.forEach(el => {
+        if (el.textContent.includes('%')) {
+            el.textContent = `${currentGroup.averageProgress}%`;
+        }
+    });
+}
+
+// Funciones de filtrado avanzado
+function filterStudentsByPerformance(threshold = 50) {
+    const allStudents = [
+        ...studentsByLevel.advanced,
+        ...studentsByLevel.intermediate,
+        ...studentsByLevel.beginner
+    ];
+    
+    return {
+        highPerformers: allStudents.filter(s => s.progress > threshold),
+        lowPerformers: allStudents.filter(s => s.progress <= threshold)
+    };
+}
+
+function searchStudents(query) {
+    const allStudents = [
+        ...studentsByLevel.advanced,
+        ...studentsByLevel.intermediate,
+        ...studentsByLevel.beginner
+    ];
+    
+    return allStudents.filter(student => 
+        student.name.toLowerCase().includes(query.toLowerCase())
+    );
+}
+
+// Gestión de estado de la aplicación
+function saveGroupDetailState() {
+    try {
+        const state = {
+            currentGroup,
+            currentFilter,
+            topicAnalytics,
+            studentsByLevel,
+            lastUpdate: new Date().toISOString()
+        };
+        
+        console.log('💾 Estado del detalle del grupo guardado');
+    } catch (error) {
+        console.error('Error guardando estado:', error);
+        showNotification('Error al guardar datos', 'error');
+    }
+}
+
+function loadGroupDetailState() {
+    try {
+        console.log('📂 Estado del detalle del grupo cargado');
+    } catch (error) {
+        console.error('Error cargando estado:', error);
+        showNotification('Error al cargar datos', 'warning');
+    }
+}
+
+// Funciones de accesibilidad
+function announceToScreenReader(message) {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
+    announcement.textContent = message;
+    
+    document.body.appendChild(announcement);
+    
+    setTimeout(() => {
+        document.body.removeChild(announcement);
+    }, 1000);
+}
+
+// Validaciones y manejo de errores
+function validateGroupData() {
+    if (!currentGroup.id || !currentGroup.name) {
+        console.error('❌ Datos del grupo inválidos');
+        showNotification('Error: Datos del grupo no válidos', 'error');
+        return false;
+    }
+    
+    if (currentGroup.totalStudents !== 
+        studentsByLevel.advanced.length + 
+        studentsByLevel.intermediate.length + 
+        studentsByLevel.beginner.length) {
+        console.warn('⚠️ Inconsistencia en el conteo de estudiantes');
+    }
+    
+    return true;
+}
+
+// Funciones de utilidad
+function formatLastSeen(lastSeen) {
+    // Convertir "Hace 1h" a formato más legible
+    const timeMap = {
+        'h': 'hora(s)',
+        'min': 'minuto(s)',
+        'd': 'día(s)',
+        'días': 'días'
+    };
+    
+    return lastSeen;
+}
+
+function calculateRiskScore(student) {
+    let score = 0;
+    
+    // Factores de riesgo
+    if (student.progress < 50) score += 30;
+    if (student.lastSeen.includes('días')) score += 25;
+    if (student.stars < 60) score += 20;
+    if (student.status === 'risk') score += 25;
+    
+    return Math.min(100, score);
+}
+
+function generateRecommendations(student) {
+    const recommendations = [];
+    
+    if (student.progress < 50) {
+        recommendations.push('Necesita refuerzo en temas básicos');
+    }
+    
+    if (student.lastSeen.includes('días')) {
+        recommendations.push('Requiere seguimiento por inactividad');
+    }
+    
+    if (student.stars < 60) {
+        recommendations.push('Beneficiaría de ejercicios adicionales');
+    }
+    
+    return recommendations;
+}
+
+// Iniciar actualizaciones en tiempo real
+startRealTimeUpdates();
+
+// Guardar estado periódicamente
+setInterval(saveGroupDetailState, 120000); // Cada 2 minutos
+
+// Validar datos al inicializar
+validateGroupData();
+
+// Exportar funciones para uso global
+window.GroupDetail = {
+    currentGroup,
+    topicAnalytics,
+    studentsByLevel,
+    showNotification,
+    getStudentsByRisk,
+    getTopicDifficultyAnalysis,
+    getGroupPerformanceMetrics,
+    filterStudentsByPerformance,
+    searchStudents,
+    openTopicDetailModal,
+    closeTopicDetailModal,
+    handleBackToDashboard
+};
+
+console.log('📊 Detalle del Grupo Java ITESM cargado completamente');
+console.log('👥 Total estudiantes:', currentGroup.totalStudents);
+console.log('⚠️ Estudiantes en riesgo:', currentGroup.studentsAtRisk);
+console.log('📈 Progreso promedio:', currentGroup.averageProgress + '%');
+    </script>
+</body>
+</html>

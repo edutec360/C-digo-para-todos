@@ -1,0 +1,2915 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lógica Básica Java - En Vivo | Código para Todos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* CSS será copiado aquí */
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --java-color: #ed8b00;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --neutral-light: #f8f9fa;
+        --neutral-dark: #2c3e50;
+        --text-primary: #2c3e50;
+        --text-secondary: #6c757d;
+        --border-light: #e9ecef;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+        --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.12);
+        --transition: all 0.3s ease;
+        --border-radius: 12px;
+
+        /* IDE specific colors */
+        --editor-bg: #1e1e1e;
+        --editor-text: #d4d4d4;
+        --editor-keyword: #569cd6;
+        --editor-string: #ce9178;
+        --editor-comment: #6a9955;
+        --line-number-bg: #252526;
+        --line-number-text: #858585;
+      }
+
+      /* Reset y Estilos Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Competition Header */
+      .competition-header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-medium);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        border-bottom: 3px solid var(--primary-blue);
+      }
+
+      .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .competition-info h1 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .competition-meta {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .competition-type {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: linear-gradient(
+          135deg,
+          var(--accent-yellow),
+          var(--warning)
+        );
+        color: white;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .teacher-name {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .participants-count {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--primary-blue);
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .competition-status {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .problem-progress {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .current-problem {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .progress-bar {
+        width: 200px;
+        height: 6px;
+        background: var(--border-light);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 3px;
+        transition: var(--transition);
+        animation: progressGlow 2s ease-in-out infinite alternate;
+      }
+
+      .timer-container {
+        position: relative;
+      }
+
+      .competition-timer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(135deg, var(--error), #c0392b);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-medium);
+        animation: pulse 2s infinite;
+      }
+
+      .timer-icon {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .timer-display {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .timer-separator {
+        margin: 0 4px;
+        animation: blink 1s infinite;
+      }
+
+      .timer-label {
+        font-size: 0.8rem;
+        opacity: 0.9;
+      }
+
+      /* Main Competition Layout */
+      .competition-main {
+        margin-top: 100px;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 20px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: calc(100vh - 120px);
+      }
+
+      /* Problem Section */
+      .problem-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow-medium);
+        height: fit-content;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+      }
+
+      .problem-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .problem-title h2 {
+        font-size: 1.3rem;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .problem-difficulty {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .problem-difficulty.intermediate {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      .problem-points {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-end;
+      }
+
+      .base-points,
+      .bonus-points {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .base-points {
+        color: var(--primary-blue);
+      }
+
+      .bonus-points {
+        color: var(--accent-yellow);
+      }
+
+      .problem-content {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .problem-description h3 {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .problem-description p {
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+      }
+
+      .problem-specs {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .spec-section h4 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .spec-section h4 i {
+        color: var(--primary-blue);
+      }
+
+      .spec-section p {
+        margin-left: 25px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+      }
+
+      .problem-examples h3 {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 15px;
+      }
+
+      .examples-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .example-case {
+        background: var(--neutral-light);
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-blue);
+      }
+
+      .example-input,
+      .example-output {
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+
+      .example-input strong,
+      .example-output strong {
+        color: var(--text-primary);
+      }
+
+      /* IDE Section */
+      .ide-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .ide-container {
+        background: var(--editor-bg);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-medium);
+        height: calc(100vh - 140px);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ide-header {
+        background: #323233;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #464647;
+      }
+
+      .ide-tabs {
+        display: flex;
+        gap: 10px;
+      }
+
+      .tab {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        background: var(--editor-bg);
+        color: var(--editor-text);
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .tab.active {
+        background: #007acc;
+        color: white;
+      }
+
+      .ide-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .ide-btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+      }
+
+      .ide-btn.secondary {
+        background: #464647;
+        color: white;
+      }
+
+      .ide-btn.secondary:hover {
+        background: #525253;
+      }
+
+      .ide-btn.primary {
+        background: var(--success);
+        color: white;
+      }
+
+      .ide-btn.primary:hover {
+        background: #219a52;
+        transform: translateY(-1px);
+      }
+
+      .ide-workspace {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        flex: 1;
+        min-height: 0;
+      }
+
+      /* Code Editor */
+      .code-editor {
+        display: flex;
+        background: var(--editor-bg);
+        position: relative;
+      }
+
+      .editor-lines {
+        background: var(--line-number-bg);
+        color: var(--line-number-text);
+        padding: 15px 10px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        display: flex;
+        flex-direction: column;
+        min-width: 50px;
+        text-align: right;
+        user-select: none;
+        border-right: 1px solid #464647;
+      }
+
+      .line-number {
+        height: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .editor-textarea {
+        flex: 1;
+        background: var(--editor-bg);
+        color: var(--editor-text);
+        border: none;
+        outline: none;
+        padding: 15px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        resize: none;
+        white-space: pre;
+        overflow-wrap: normal;
+      }
+
+      .editor-textarea::placeholder {
+        color: #6a6a6a;
+      }
+
+      /* Test Cases Panel */
+      .test-cases-panel {
+        background: #252526;
+        border-left: 1px solid #464647;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel-header {
+        background: #323233;
+        padding: 12px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #464647;
+      }
+
+      .panel-header h4 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--editor-text);
+        font-size: 0.9rem;
+      }
+
+      .test-status {
+        color: var(--editor-text);
+        font-size: 0.8rem;
+      }
+
+      .passed-tests {
+        color: var(--success);
+        font-weight: 600;
+      }
+
+      .test-cases-list {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .test-case {
+        background: #1e1e1e;
+        border-radius: 6px;
+        padding: 12px;
+        border-left: 3px solid var(--border-light);
+        transition: var(--transition);
+      }
+
+      .test-case.passed {
+        border-left-color: var(--success);
+        background: rgba(39, 174, 96, 0.1);
+      }
+
+      .test-case.failed {
+        border-left-color: var(--error);
+        background: rgba(231, 76, 60, 0.1);
+      }
+
+      .test-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .test-name {
+        color: var(--editor-text);
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .test-result {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.8rem;
+      }
+
+      .test-result.waiting {
+        color: var(--text-secondary);
+      }
+
+      .test-result.passed {
+        color: var(--success);
+      }
+
+      .test-result.failed {
+        color: var(--error);
+      }
+
+      .test-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .test-input,
+      .test-expected,
+      .test-output {
+        font-family: "Courier New", monospace;
+        font-size: 0.8rem;
+        color: var(--editor-text);
+      }
+
+      .test-input {
+        color: #569cd6;
+      }
+
+      .test-expected {
+        color: #ce9178;
+      }
+
+      .test-output {
+        color: var(--editor-text);
+      }
+
+      /* Console Panel */
+      .console-panel {
+        background: #1e1e1e;
+        border-top: 1px solid #464647;
+        min-height: 120px;
+        max-height: 200px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .console-header {
+        background: #323233;
+        padding: 8px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #464647;
+      }
+
+      .console-header h4 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--editor-text);
+        font-size: 0.9rem;
+      }
+
+      .clear-console-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        transition: var(--transition);
+      }
+
+      .clear-console-btn:hover {
+        color: var(--editor-text);
+      }
+
+      .console-content {
+        flex: 1;
+        padding: 10px 15px;
+        overflow-y: auto;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+      }
+
+      .console-message {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 8px;
+        align-items: flex-start;
+      }
+
+      .timestamp {
+        color: var(--text-secondary);
+        flex-shrink: 0;
+      }
+
+      .message {
+        color: var(--editor-text);
+      }
+
+      .console-message.info .message {
+        color: #569cd6;
+      }
+
+      .console-message.success .message {
+        color: var(--success);
+      }
+
+      .console-message.error .message {
+        color: var(--error);
+      }
+
+      /* Leaderboard Section */
+      .leaderboard-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow-medium);
+        height: fit-content;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+      }
+
+      .leaderboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .leaderboard-header h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-primary);
+        font-size: 1.2rem;
+      }
+
+      .leaderboard-header h3 i {
+        color: var(--accent-yellow);
+      }
+
+      .leaderboard-stats {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .completed-count i {
+        color: var(--success);
+      }
+
+      .leaderboard-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .leaderboard-item {
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        gap: 15px;
+        align-items: center;
+        padding: 15px;
+        background: var(--neutral-light);
+        border-radius: 10px;
+        transition: var(--transition);
+        border-left: 4px solid transparent;
+      }
+
+      .leaderboard-item.rank-1 {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.1),
+          rgba(255, 165, 0, 0.1)
+        );
+        border-left-color: #ffd700;
+      }
+
+      .leaderboard-item.rank-2 {
+        background: linear-gradient(
+          135deg,
+          rgba(192, 192, 192, 0.1),
+          rgba(169, 169, 169, 0.1)
+        );
+        border-left-color: #c0c0c0;
+      }
+
+      .leaderboard-item.rank-3 {
+        background: linear-gradient(
+          135deg,
+          rgba(205, 127, 50, 0.1),
+          rgba(184, 134, 11, 0.1)
+        );
+        border-left-color: #cd7f32;
+      }
+
+      .leaderboard-item.current-user {
+        background: linear-gradient(
+          135deg,
+          rgba(74, 144, 226, 0.1),
+          rgba(90, 103, 216, 0.1)
+        );
+        border-left-color: var(--primary-blue);
+        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+      }
+
+      .rank-position {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .rank-number {
+        width: 30px;
+        height: 30px;
+        background: var(--text-secondary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .rank-1 .rank-number {
+        background: linear-gradient(135deg, #ffd700, #ffa500);
+      }
+
+      .rank-2 .rank-number {
+        background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
+      }
+
+      .rank-3 .rank-number {
+        background: linear-gradient(135deg, #cd7f32, #b8860b);
+      }
+
+      .current-user .rank-number {
+        background: var(--primary-blue);
+      }
+
+      .participant-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .participant-avatar img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+
+      .participant-details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .participant-name {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+      }
+
+      .participant-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        margin-top: 2px;
+      }
+
+      .participant-status.completed {
+        color: var(--success);
+      }
+
+      .participant-status.progress {
+        color: var(--primary-blue);
+      }
+
+      .participant-score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .score-points {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .score-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .participant-activity {
+        display: flex;
+        align-items: center;
+      }
+
+      .activity-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-weight: 500;
+      }
+
+      .activity-status.submitted {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .activity-status.coding {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      .activity-status.thinking {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .show-more-participants {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .show-more-btn {
+        background: none;
+        border: none;
+        color: var(--primary-blue);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0 auto;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .show-more-btn:hover {
+        color: #3a7bd5;
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
+        background: white;
+        border-radius: var(--border-radius);
+        width: 90%;
+        max-width: 500px;
+        transform: translateY(-20px);
+        transition: var(--transition);
+      }
+
+      .modal-overlay.active .modal {
+        transform: translateY(0);
+      }
+
+      .modal-content {
+        padding: 40px;
+        text-align: center;
+      }
+
+      /* Submission Modal */
+      .submission-header {
+        margin-bottom: 25px;
+      }
+
+      .submission-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--primary-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+
+      .submission-icon i {
+        font-size: 2rem;
+        color: white;
+      }
+
+      .submission-header h2 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+      }
+
+      .submission-summary p {
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+      }
+
+      .test-results-preview h4 {
+        color: var(--text-primary);
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      .results-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .result-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+
+      .result-item.unknown {
+        background: var(--neutral-light);
+        color: var(--text-secondary);
+      }
+
+      .result-item.passed {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .result-item.failed {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+      }
+
+      .submission-warning {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+
+      /* Results Modal */
+      .results-header {
+        margin-bottom: 30px;
+      }
+
+      .results-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+
+      .results-icon.success {
+        background: var(--success);
+      }
+
+      .results-icon i {
+        font-size: 2rem;
+        color: white;
+      }
+
+      .results-header h2 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+      }
+
+      .score-summary {
+        background: var(--neutral-light);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 25px;
+      }
+
+      .total-score {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      .score-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--success);
+      }
+
+      .score-label {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+      }
+
+      .score-breakdown {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .score-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+      }
+
+      .score-value {
+        color: var(--success);
+        font-weight: 600;
+      }
+
+      .test-results-final h4 {
+        color: var(--text-primary);
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      .results-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 25px;
+      }
+
+      .result-final {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+
+      .result-final.passed {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .leaderboard-update h4 {
+        color: var(--text-primary);
+        margin-bottom: 15px;
+      }
+
+      .position-display {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 8px;
+        background: var(--neutral-light);
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      .position-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+      }
+
+      .position-label {
+        font-size: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .total-points {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-left: 10px;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .action-btn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .action-btn.secondary {
+        background: var(--neutral-light);
+        color: var(--text-secondary);
+      }
+
+      .action-btn.secondary:hover {
+        background: var(--border-light);
+        color: var(--text-primary);
+      }
+
+      .action-btn.primary {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .action-btn.primary:hover {
+        background: #3a7bd5;
+        transform: translateY(-2px);
+      }
+
+      /* Toast Notification */
+      .toast-notification {
+        position: fixed;
+        top: 120px;
+        right: 30px;
+        background: white;
+        border-radius: 12px;
+        padding: 15px 20px;
+        box-shadow: var(--shadow-medium);
+        border-left: 4px solid var(--success);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 3000;
+        transform: translateX(400px);
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .toast-notification.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .toast-icon {
+        color: var(--success);
+        font-size: 1.2rem;
+      }
+
+      .toast-message {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .toast-close {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+      .toast-close:hover {
+        color: var(--text-primary);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .competition-main {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .ide-workspace {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr auto;
+        }
+
+        .test-cases-panel {
+          border-left: none;
+          border-top: 1px solid #464647;
+          max-height: 200px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-container {
+          padding: 10px 15px;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .competition-status {
+          flex-direction: column;
+          gap: 15px;
+          width: 100%;
+        }
+
+        .competition-main {
+          margin-top: 140px;
+          padding: 15px;
+        }
+
+        .problem-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .ide-header {
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+        }
+
+        .ide-actions {
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .modal-content {
+          padding: 30px 20px;
+        }
+
+        .modal-actions {
+          flex-direction: column;
+        }
+      }
+
+      /* Animations */
+      @keyframes progressGlow {
+        0% {
+          box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+        100% {
+          box-shadow: 0 0 20px rgba(74, 144, 226, 0.8);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0.3;
+        }
+      }
+
+      /* Syntax highlighting para el editor */
+      .editor-textarea:focus {
+        outline: 2px solid var(--primary-blue);
+        outline-offset: -2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Competition Header -->
+    <header class="competition-header">
+      <div class="header-container">
+        <div class="competition-info">
+          <h1 id="competitionTitle">Lógica Básica Java</h1>
+          <div class="competition-meta">
+            <span class="competition-type">
+              <i class="fas fa-bolt"></i>
+              Velocidad
+            </span>
+            <span class="teacher-name">Dr. Fernando Castillo</span>
+            <span class="participants-count">
+              <i class="fas fa-users"></i>
+              12 participantes
+            </span>
+          </div>
+        </div>
+
+        <div class="competition-status">
+          <div class="problem-progress">
+            <span class="current-problem"
+              >Problema <span id="currentProblem">3</span> de
+              <span id="totalProblems">5</span></span
+            >
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                id="progressFill"
+                style="width: 60%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="timer-container">
+            <div class="competition-timer" id="competitionTimer">
+              <div class="timer-icon">
+                <i class="fas fa-stopwatch"></i>
+              </div>
+              <div class="timer-display">
+                <span class="timer-minutes" id="timerMinutes">08</span>
+                <span class="timer-separator">:</span>
+                <span class="timer-seconds" id="timerSeconds">30</span>
+              </div>
+              <div class="timer-label">restantes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Competition Layout -->
+    <main class="competition-main">
+      <!-- Problem Section -->
+      <section class="problem-section">
+        <div class="problem-container">
+          <div class="problem-header">
+            <div class="problem-title">
+              <h2>Problema 3: Calculadora de Números Primos</h2>
+              <div class="problem-difficulty intermediate">
+                <i class="fas fa-star"></i>
+                <span>Intermedio</span>
+              </div>
+            </div>
+            <div class="problem-points">
+              <div class="base-points">
+                <i class="fas fa-gem"></i>
+                <span>100 pts base</span>
+              </div>
+              <div class="bonus-points">
+                <i class="fas fa-bolt"></i>
+                <span>+50 pts velocidad</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="problem-content">
+            <div class="problem-description">
+              <h3>Descripción</h3>
+              <p>
+                Crea un programa que determine si un número entrado por el
+                usuario es primo.
+              </p>
+
+              <div class="problem-specs">
+                <div class="spec-section">
+                  <h4><i class="fas fa-arrow-right"></i> Entrada</h4>
+                  <p>Un número entero positivo n (1 ≤ n ≤ 1000)</p>
+                </div>
+
+                <div class="spec-section">
+                  <h4><i class="fas fa-arrow-left"></i> Salida</h4>
+                  <p>"PRIMO" si el número es primo</p>
+                  <p>"NO PRIMO" si el número no es primo</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="problem-examples">
+              <h3>Ejemplos</h3>
+              <div class="examples-grid">
+                <div class="example-case">
+                  <div class="example-input"><strong>Entrada:</strong> 7</div>
+                  <div class="example-output">
+                    <strong>Salida:</strong> PRIMO
+                  </div>
+                </div>
+
+                <div class="example-case">
+                  <div class="example-input"><strong>Entrada:</strong> 8</div>
+                  <div class="example-output">
+                    <strong>Salida:</strong> NO PRIMO
+                  </div>
+                </div>
+
+                <div class="example-case">
+                  <div class="example-input"><strong>Entrada:</strong> 13</div>
+                  <div class="example-output">
+                    <strong>Salida:</strong> PRIMO
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IDE Section -->
+      <section class="ide-section">
+        <div class="ide-container">
+          <div class="ide-header">
+            <div class="ide-tabs">
+              <div class="tab active">
+                <i class="fab fa-java"></i>
+                <span>Main.java</span>
+              </div>
+            </div>
+            <div class="ide-actions">
+              <button class="ide-btn secondary" id="runCodeBtn">
+                <i class="fas fa-play"></i>
+                Ejecutar
+              </button>
+              <button class="ide-btn primary" id="submitCodeBtn">
+                <i class="fas fa-paper-plane"></i>
+                Enviar Solución
+              </button>
+            </div>
+          </div>
+
+          <div class="ide-workspace">
+            <div class="code-editor" id="codeEditor">
+              <div class="editor-lines">
+                <span class="line-number">1</span>
+                <span class="line-number">2</span>
+                <span class="line-number">3</span>
+                <span class="line-number">4</span>
+                <span class="line-number">5</span>
+                <span class="line-number">6</span>
+                <span class="line-number">7</span>
+                <span class="line-number">8</span>
+                <span class="line-number">9</span>
+                <span class="line-number">10</span>
+                <span class="line-number">11</span>
+                <span class="line-number">12</span>
+              </div>
+              <textarea
+                class="editor-textarea"
+                id="editorTextarea"
+                placeholder="// Escribe tu código aquí..."
+              >
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        
+        // Tu código aquí
+        
+        scanner.close();
+    }
+}</textarea
+              >
+            </div>
+
+            <div class="test-cases-panel">
+              <div class="panel-header">
+                <h4>
+                  <i class="fas fa-vial"></i>
+                  Casos de Prueba
+                </h4>
+                <div class="test-status">
+                  <span class="passed-tests" id="passedTests">0</span>/<span
+                    class="total-tests"
+                    >3</span
+                  >
+                </div>
+              </div>
+
+              <div class="test-cases-list">
+                <div class="test-case" id="testCase1">
+                  <div class="test-header">
+                    <span class="test-name">Caso 1</span>
+                    <span class="test-result waiting">
+                      <i class="fas fa-clock"></i>
+                    </span>
+                  </div>
+                  <div class="test-details">
+                    <div class="test-input">Entrada: 7</div>
+                    <div class="test-expected">Esperado: PRIMO</div>
+                    <div class="test-output">Salida: -</div>
+                  </div>
+                </div>
+
+                <div class="test-case" id="testCase2">
+                  <div class="test-header">
+                    <span class="test-name">Caso 2</span>
+                    <span class="test-result waiting">
+                      <i class="fas fa-clock"></i>
+                    </span>
+                  </div>
+                  <div class="test-details">
+                    <div class="test-input">Entrada: 8</div>
+                    <div class="test-expected">Esperado: NO PRIMO</div>
+                    <div class="test-output">Salida: -</div>
+                  </div>
+                </div>
+
+                <div class="test-case" id="testCase3">
+                  <div class="test-header">
+                    <span class="test-name">Caso 3</span>
+                    <span class="test-result waiting">
+                      <i class="fas fa-clock"></i>
+                    </span>
+                  </div>
+                  <div class="test-details">
+                    <div class="test-input">Entrada: 13</div>
+                    <div class="test-expected">Esperado: PRIMO</div>
+                    <div class="test-output">Salida: -</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="console-panel">
+            <div class="console-header">
+              <h4>
+                <i class="fas fa-terminal"></i>
+                Consola
+              </h4>
+              <button class="clear-console-btn" id="clearConsoleBtn">
+                <i class="fas fa-trash"></i>
+                Limpiar
+              </button>
+            </div>
+            <div class="console-content" id="consoleContent">
+              <div class="console-message info">
+                <span class="timestamp">[14:25:30]</span>
+                <span class="message"
+                  >Competencia iniciada. ¡Buena suerte!</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leaderboard Section -->
+      <section class="leaderboard-section">
+        <div class="leaderboard-container">
+          <div class="leaderboard-header">
+            <h3>
+              <i class="fas fa-trophy"></i>
+              Leaderboard en Vivo
+            </h3>
+            <div class="leaderboard-stats">
+              <span class="completed-count">
+                <i class="fas fa-check-circle"></i>
+                5 completaron
+              </span>
+            </div>
+          </div>
+
+          <div class="leaderboard-list">
+            <div class="leaderboard-item rank-1">
+              <div class="rank-position">
+                <div class="rank-number">1</div>
+              </div>
+              <div class="participant-info">
+                <div class="participant-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Carlos+Ruiz&background=FFD700&color=fff&size=40"
+                    alt="Carlos Ruiz"
+                  />
+                </div>
+                <div class="participant-details">
+                  <span class="participant-name">Carlos Ruiz</span>
+                  <span class="participant-status completed">
+                    <i class="fas fa-check-circle"></i>
+                    3/3 completados
+                  </span>
+                </div>
+              </div>
+              <div class="participant-score">
+                <span class="score-points">285</span>
+                <span class="score-label">pts</span>
+              </div>
+              <div class="participant-activity">
+                <span class="activity-status submitted">
+                  <i class="fas fa-paper-plane"></i>
+                  Enviado
+                </span>
+              </div>
+            </div>
+
+            <div class="leaderboard-item rank-2 current-user">
+              <div class="rank-position">
+                <div class="rank-number">2</div>
+              </div>
+              <div class="participant-info">
+                <div class="participant-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+                    alt="Ana García"
+                  />
+                </div>
+                <div class="participant-details">
+                  <span class="participant-name">Ana García (Tú)</span>
+                  <span class="participant-status progress">
+                    <i class="fas fa-code"></i>
+                    2/3 completados
+                  </span>
+                </div>
+              </div>
+              <div class="participant-score">
+                <span class="score-points">220</span>
+                <span class="score-label">pts</span>
+              </div>
+              <div class="participant-activity">
+                <span class="activity-status coding">
+                  <i class="fas fa-laptop-code"></i>
+                  Programando
+                </span>
+              </div>
+            </div>
+
+            <div class="leaderboard-item rank-3">
+              <div class="rank-position">
+                <div class="rank-number">3</div>
+              </div>
+              <div class="participant-info">
+                <div class="participant-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Maria+Lopez&background=7ED321&color=fff&size=40"
+                    alt="María López"
+                  />
+                </div>
+                <div class="participant-details">
+                  <span class="participant-name">María López</span>
+                  <span class="participant-status progress">
+                    <i class="fas fa-code"></i>
+                    2/3 completados
+                  </span>
+                </div>
+              </div>
+              <div class="participant-score">
+                <span class="score-points">195</span>
+                <span class="score-label">pts</span>
+              </div>
+              <div class="participant-activity">
+                <span class="activity-status submitted">
+                  <i class="fas fa-paper-plane"></i>
+                  Enviado
+                </span>
+              </div>
+            </div>
+
+            <div class="leaderboard-item">
+              <div class="rank-position">
+                <div class="rank-number">4</div>
+              </div>
+              <div class="participant-info">
+                <div class="participant-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Roberto+Silva&background=4A90E2&color=fff&size=40"
+                    alt="Roberto Silva"
+                  />
+                </div>
+                <div class="participant-details">
+                  <span class="participant-name">Roberto Silva</span>
+                  <span class="participant-status progress">
+                    <i class="fas fa-code"></i>
+                    1/3 completados
+                  </span>
+                </div>
+              </div>
+              <div class="participant-score">
+                <span class="score-points">125</span>
+                <span class="score-label">pts</span>
+              </div>
+              <div class="participant-activity">
+                <span class="activity-status coding">
+                  <i class="fas fa-laptop-code"></i>
+                  Programando
+                </span>
+              </div>
+            </div>
+
+            <div class="leaderboard-item">
+              <div class="rank-position">
+                <div class="rank-number">5</div>
+              </div>
+              <div class="participant-info">
+                <div class="participant-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Diego+Morales&background=E74C3C&color=fff&size=40"
+                    alt="Diego Morales"
+                  />
+                </div>
+                <div class="participant-details">
+                  <span class="participant-name">Diego Morales</span>
+                  <span class="participant-status progress">
+                    <i class="fas fa-code"></i>
+                    1/3 completados
+                  </span>
+                </div>
+              </div>
+              <div class="participant-score">
+                <span class="score-points">95</span>
+                <span class="score-label">pts</span>
+              </div>
+              <div class="participant-activity">
+                <span class="activity-status thinking">
+                  <i class="fas fa-brain"></i>
+                  Pensando
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="show-more-participants">
+            <button class="show-more-btn" id="showMoreLeaderboard">
+              <i class="fas fa-chevron-down"></i>
+              <span>Ver 7 participantes más</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Submission Modal -->
+    <div class="modal-overlay" id="submissionModal">
+      <div class="modal">
+        <div class="modal-content">
+          <div class="submission-header">
+            <div class="submission-icon">
+              <i class="fas fa-paper-plane"></i>
+            </div>
+            <h2>Enviar Solución</h2>
+          </div>
+
+          <div class="submission-summary">
+            <p>¿Estás seguro de que quieres enviar tu solución?</p>
+
+            <div class="test-results-preview">
+              <h4>Resultados de Pruebas:</h4>
+              <div class="results-grid" id="resultsPreview">
+                <div class="result-item unknown">
+                  <span>Caso 1:</span>
+                  <span>No probado</span>
+                </div>
+                <div class="result-item unknown">
+                  <span>Caso 2:</span>
+                  <span>No probado</span>
+                </div>
+                <div class="result-item unknown">
+                  <span>Caso 3:</span>
+                  <span>No probado</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="submission-warning">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>Solo puedes enviar una vez por problema</span>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="action-btn secondary" id="cancelSubmissionBtn">
+              Cancelar
+            </button>
+            <button class="action-btn primary" id="confirmSubmissionBtn">
+              <i class="fas fa-paper-plane"></i>
+              Enviar Solución
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal-overlay" id="resultsModal">
+      <div class="modal">
+        <div class="modal-content">
+          <div class="results-header">
+            <div class="results-icon success">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>¡Solución Enviada!</h2>
+          </div>
+
+          <div class="results-content">
+            <div class="score-summary">
+              <div class="total-score">
+                <span class="score-number" id="finalScore">120</span>
+                <span class="score-label">puntos</span>
+              </div>
+              <div class="score-breakdown">
+                <div class="score-item">
+                  <span>Solución correcta:</span>
+                  <span class="score-value">+100 pts</span>
+                </div>
+                <div class="score-item">
+                  <span>Bonus velocidad:</span>
+                  <span class="score-value">+20 pts</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="test-results-final">
+              <h4>Resultados Finales:</h4>
+              <div class="results-list" id="finalResults">
+                <div class="result-final passed">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Caso 1: PASÓ</span>
+                </div>
+                <div class="result-final passed">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Caso 2: PASÓ</span>
+                </div>
+                <div class="result-final passed">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Caso 3: PASÓ</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="leaderboard-update">
+              <h4>Tu posición actual:</h4>
+              <div class="position-display">
+                <span class="position-number">2°</span>
+                <span class="position-label">lugar</span>
+                <span class="total-points">340 pts totales</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="action-btn primary" id="continueCompetitionBtn">
+              <i class="fas fa-arrow-right"></i>
+              Continuar Competencia
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+      <div class="toast-content">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message">Código ejecutado exitosamente</span>
+      </div>
+      <button class="toast-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <script>
+      /* JavaScript será copiado aquí */
+      // Variables globales para la competencia en vivo
+      let competitionData = {
+        id: "COMP425",
+        name: "Lógica Básica Java",
+        type: "speed",
+        teacher: "Dr. Fernando Castillo",
+        currentProblem: 3,
+        totalProblems: 5,
+        timeRemaining: 510, // 8:30 en segundos
+        totalParticipants: 12,
+      };
+
+      let currentUser = {
+        name: "Ana García",
+        rank: 2,
+        score: 220,
+        problemsCompleted: 2,
+        currentProblemScore: 0,
+        isSubmitted: false,
+      };
+
+      let currentProblem = {
+        id: 3,
+        title: "Calculadora de Números Primos",
+        difficulty: "intermediate",
+        basePoints: 100,
+        bonusPoints: 50,
+        description:
+          "Crea un programa que determine si un número entrado por el usuario es primo.",
+        testCases: [
+          { input: "7", expected: "PRIMO", status: "waiting", output: "-" },
+          { input: "8", expected: "NO PRIMO", status: "waiting", output: "-" },
+          { input: "13", expected: "PRIMO", status: "waiting", output: "-" },
+        ],
+      };
+
+      let leaderboardData = [
+        {
+          rank: 1,
+          name: "Carlos Ruiz",
+          avatar: "Carlos+Ruiz",
+          background: "FFD700",
+          score: 285,
+          completed: 3,
+          status: "submitted",
+        },
+        {
+          rank: 2,
+          name: "Ana García",
+          avatar: "Ana+Garcia",
+          background: "4A90E2",
+          score: 220,
+          completed: 2,
+          status: "coding",
+          isCurrentUser: true,
+        },
+        {
+          rank: 3,
+          name: "María López",
+          avatar: "Maria+Lopez",
+          background: "7ED321",
+          score: 195,
+          completed: 2,
+          status: "submitted",
+        },
+        {
+          rank: 4,
+          name: "Roberto Silva",
+          avatar: "Roberto+Silva",
+          background: "4A90E2",
+          score: 125,
+          completed: 1,
+          status: "coding",
+        },
+        {
+          rank: 5,
+          name: "Diego Morales",
+          avatar: "Diego+Morales",
+          background: "E74C3C",
+          score: 95,
+          completed: 1,
+          status: "thinking",
+        },
+      ];
+
+      // Timers
+      let competitionTimer = null;
+      let lastActivity = Date.now();
+
+      // Estado del IDE
+      let codeContent = `import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        
+        // Tu código aquí
+        
+        scanner.close();
+    }
+}`;
+
+      // Inicialización
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeLiveCompetition();
+        setupEventListeners();
+        startCompetitionTimer();
+        simulateLeaderboardUpdates();
+        console.log("🔴 Competencia en vivo iniciada");
+      });
+
+      function initializeLiveCompetition() {
+        updateCompetitionHeader();
+        loadProblemData();
+        initializeIDE();
+        updateLeaderboard();
+        updateProgress();
+        console.log("🏆 Lógica Básica Java - Problema 3 cargado");
+      }
+
+      function setupEventListeners() {
+        // IDE Actions
+        const runCodeBtn = document.getElementById("runCodeBtn");
+        const submitCodeBtn = document.getElementById("submitCodeBtn");
+        const clearConsoleBtn = document.getElementById("clearConsoleBtn");
+
+        if (runCodeBtn) runCodeBtn.addEventListener("click", handleRunCode);
+        if (submitCodeBtn)
+          submitCodeBtn.addEventListener("click", handleSubmitCode);
+        if (clearConsoleBtn)
+          clearConsoleBtn.addEventListener("click", clearConsole);
+
+        // Editor
+        const editorTextarea = document.getElementById("editorTextarea");
+        if (editorTextarea) {
+          editorTextarea.addEventListener("input", handleCodeChange);
+          editorTextarea.addEventListener("keydown", handleEditorKeydown);
+        }
+
+        // Modal events
+        const cancelSubmissionBtn = document.getElementById(
+          "cancelSubmissionBtn"
+        );
+        const confirmSubmissionBtn = document.getElementById(
+          "confirmSubmissionBtn"
+        );
+        const continueCompetitionBtn = document.getElementById(
+          "continueCompetitionBtn"
+        );
+
+        if (cancelSubmissionBtn)
+          cancelSubmissionBtn.addEventListener("click", closeSubmissionModal);
+        if (confirmSubmissionBtn)
+          confirmSubmissionBtn.addEventListener("click", confirmSubmission);
+        if (continueCompetitionBtn)
+          continueCompetitionBtn.addEventListener(
+            "click",
+            continueToNextProblem
+          );
+
+        // Leaderboard
+        const showMoreBtn = document.getElementById("showMoreLeaderboard");
+        if (showMoreBtn)
+          showMoreBtn.addEventListener("click", toggleLeaderboardView);
+      }
+
+      function updateCompetitionHeader() {
+        document.getElementById("competitionTitle").textContent =
+          competitionData.name;
+        document.getElementById("currentProblem").textContent =
+          competitionData.currentProblem;
+        document.getElementById("totalProblems").textContent =
+          competitionData.totalProblems;
+      }
+
+      function loadProblemData() {
+        // Actualizar información del problema
+        const problemTitle = document.querySelector(".problem-title h2");
+        if (problemTitle) {
+          problemTitle.textContent = `Problema ${currentProblem.id}: ${currentProblem.title}`;
+        }
+
+        // Actualizar casos de prueba
+        currentProblem.testCases.forEach((testCase, index) => {
+          const testCaseEl = document.getElementById(`testCase${index + 1}`);
+          if (testCaseEl) {
+            updateTestCaseDisplay(testCaseEl, testCase);
+          }
+        });
+      }
+
+      function initializeIDE() {
+        const editorTextarea = document.getElementById("editorTextarea");
+        if (editorTextarea) {
+          editorTextarea.value = codeContent;
+          updateLineNumbers();
+        }
+
+        // Inicializar consola
+        addConsoleMessage("info", "Competencia iniciada. ¡Buena suerte!");
+        addConsoleMessage(
+          "info",
+          `Problema ${currentProblem.id}: ${currentProblem.title}`
+        );
+      }
+
+      function updateProgress() {
+        const progressPercentage =
+          (competitionData.currentProblem / competitionData.totalProblems) *
+          100;
+        const progressFill = document.getElementById("progressFill");
+        if (progressFill) {
+          progressFill.style.width = `${progressPercentage}%`;
+        }
+      }
+
+      function startCompetitionTimer() {
+        competitionTimer = setInterval(() => {
+          competitionData.timeRemaining--;
+          updateTimerDisplay();
+
+          if (competitionData.timeRemaining <= 0) {
+            clearInterval(competitionTimer);
+            handleTimeUp();
+          }
+
+          // Cambiar color del timer cuando queda poco tiempo
+          updateTimerWarning();
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(competitionData.timeRemaining / 60);
+        const seconds = competitionData.timeRemaining % 60;
+
+        document.getElementById("timerMinutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("timerSeconds").textContent = seconds
+          .toString()
+          .padStart(2, "0");
+      }
+
+      function updateTimerWarning() {
+        const timerContainer = document.querySelector(".competition-timer");
+
+        if (competitionData.timeRemaining <= 60) {
+          timerContainer.style.background =
+            "linear-gradient(135deg, var(--error), #c0392b)";
+          timerContainer.style.animation = "pulse 1s infinite";
+        } else if (competitionData.timeRemaining <= 300) {
+          timerContainer.style.background =
+            "linear-gradient(135deg, var(--warning), #e67e22)";
+        }
+      }
+
+      function handleTimeUp() {
+        showNotification(
+          "¡Tiempo agotado! La competencia ha terminado.",
+          "warning"
+        );
+
+        // Deshabilitar IDE
+        const editorTextarea = document.getElementById("editorTextarea");
+        const runBtn = document.getElementById("runCodeBtn");
+        const submitBtn = document.getElementById("submitCodeBtn");
+
+        if (editorTextarea) editorTextarea.disabled = true;
+        if (runBtn) runBtn.disabled = true;
+        if (submitBtn) submitBtn.disabled = true;
+
+        console.log("⏰ Tiempo agotado en la competencia");
+      }
+
+      function handleCodeChange(event) {
+        codeContent = event.target.value;
+        updateLineNumbers();
+        lastActivity = Date.now();
+
+        // Actualizar estado a "coding" si no estaba ya
+        updateUserActivity("coding");
+      }
+
+      function handleEditorKeydown(event) {
+        // Manejar Tab para indentación
+        if (event.key === "Tab") {
+          event.preventDefault();
+          const start = event.target.selectionStart;
+          const end = event.target.selectionEnd;
+
+          event.target.value =
+            event.target.value.substring(0, start) +
+            "    " +
+            event.target.value.substring(end);
+          event.target.selectionStart = event.target.selectionEnd = start + 4;
+
+          handleCodeChange(event);
+        }
+
+        // Ctrl+Enter para ejecutar
+        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+          event.preventDefault();
+          handleRunCode();
+        }
+      }
+
+      function updateLineNumbers() {
+        const lines = codeContent.split("\n").length;
+        const lineNumbersContainer = document.querySelector(".editor-lines");
+
+        if (lineNumbersContainer) {
+          const currentLines = lineNumbersContainer.children.length;
+
+          if (lines !== currentLines) {
+            lineNumbersContainer.innerHTML = "";
+            for (let i = 1; i <= Math.max(lines, 12); i++) {
+              const lineNumber = document.createElement("span");
+              lineNumber.className = "line-number";
+              lineNumber.textContent = i;
+              lineNumbersContainer.appendChild(lineNumber);
+            }
+          }
+        }
+      }
+
+      function handleRunCode() {
+        if (!codeContent.trim()) {
+          showNotification("Escribe algo de código primero", "warning");
+          return;
+        }
+
+        addConsoleMessage("info", "Ejecutando código...");
+
+        // Simular ejecución
+        setTimeout(() => {
+          executeCodeTests();
+        }, 1500);
+
+        showNotification("Ejecutando código...", "info");
+        console.log("▶️ Ejecutando código Java");
+      }
+
+      function executeCodeTests() {
+        const testResults = [];
+
+        // Simular ejecución de casos de prueba
+        currentProblem.testCases.forEach((testCase, index) => {
+          const result = simulateCodeExecution(testCase.input, codeContent);
+          testCase.output = result.output;
+          testCase.status = result.success ? "passed" : "failed";
+
+          testResults.push(result);
+          updateTestCaseDisplay(
+            document.getElementById(`testCase${index + 1}`),
+            testCase
+          );
+
+          // Agregar resultado a la consola
+          const status = result.success ? "success" : "error";
+          addConsoleMessage(
+            status,
+            `Caso ${index + 1}: ${result.output} (Esperado: ${
+              testCase.expected
+            })`
+          );
+        });
+
+        updateTestCounter();
+
+        const allPassed = testResults.every((r) => r.success);
+        if (allPassed) {
+          showNotification("¡Todos los casos de prueba pasaron!", "success");
+          addConsoleMessage(
+            "success",
+            "✅ Todos los casos de prueba pasaron. ¡Listo para enviar!"
+          );
+        } else {
+          const passedCount = testResults.filter((r) => r.success).length;
+          showNotification(
+            `${passedCount}/${testResults.length} casos pasaron`,
+            "warning"
+          );
+        }
+      }
+
+      function simulateCodeExecution(input, code) {
+        // Simulación simple de ejecución para el problema de números primos
+        const n = parseInt(input);
+
+        // Verificar si el código tiene la lógica básica
+        const hasLogic =
+          code.includes("for") ||
+          code.includes("while") ||
+          code.includes("isPrime");
+        const hasOutput = code.includes("println") || code.includes("print");
+
+        if (!hasLogic || !hasOutput) {
+          return {
+            success: false,
+            output: "Error de compilación",
+            error: "Código incompleto",
+          };
+        }
+
+        // Simular lógica de números primos
+        const isPrime = (num) => {
+          if (num < 2) return false;
+          for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+          }
+          return true;
+        };
+
+        const expectedOutput = isPrime(n) ? "PRIMO" : "NO PRIMO";
+
+        // Simular posibles errores o aciertos basados en el código
+        const accuracy = Math.random();
+
+        if (accuracy > 0.3) {
+          // 70% probabilidad de éxito si el código tiene lógica
+          return {
+            success: true,
+            output: expectedOutput,
+          };
+        } else {
+          return {
+            success: false,
+            output: "Output incorrecto",
+            error: "Lógica incorrecta",
+          };
+        }
+      }
+
+      function updateTestCaseDisplay(element, testCase) {
+        if (!element) return;
+
+        const testResult = element.querySelector(".test-result");
+        const testOutput = element.querySelector(".test-output");
+
+        // Actualizar estado visual
+        element.className = `test-case ${testCase.status}`;
+
+        // Actualizar icono de resultado
+        if (testResult) {
+          testResult.className = `test-result ${testCase.status}`;
+
+          if (testCase.status === "passed") {
+            testResult.innerHTML = '<i class="fas fa-check-circle"></i>';
+          } else if (testCase.status === "failed") {
+            testResult.innerHTML = '<i class="fas fa-times-circle"></i>';
+          } else {
+            testResult.innerHTML = '<i class="fas fa-clock"></i>';
+          }
+        }
+
+        // Actualizar salida
+        if (testOutput) {
+          testOutput.textContent = `Salida: ${testCase.output}`;
+        }
+      }
+
+      function updateTestCounter() {
+        const passedTests = currentProblem.testCases.filter(
+          (tc) => tc.status === "passed"
+        ).length;
+        const totalTests = currentProblem.testCases.length;
+
+        document.getElementById("passedTests").textContent = passedTests;
+
+        // Actualizar color del contador
+        const passedElement = document.getElementById("passedTests");
+        if (passedTests === totalTests) {
+          passedElement.style.color = "var(--success)";
+        } else if (passedTests > 0) {
+          passedElement.style.color = "var(--warning)";
+        }
+      }
+
+      function handleSubmitCode() {
+        if (currentUser.isSubmitted) {
+          showNotification(
+            "Ya enviaste tu solución para este problema",
+            "warning"
+          );
+          return;
+        }
+
+        if (!codeContent.trim()) {
+          showNotification("No puedes enviar código vacío", "error");
+          return;
+        }
+
+        // Actualizar preview de resultados en el modal
+        updateSubmissionPreview();
+
+        // Mostrar modal de confirmación
+        showSubmissionModal();
+      }
+
+      function updateSubmissionPreview() {
+        const previewContainer = document.getElementById("resultsPreview");
+        if (!previewContainer) return;
+
+        previewContainer.innerHTML = "";
+
+        currentProblem.testCases.forEach((testCase, index) => {
+          const resultItem = document.createElement("div");
+          resultItem.className = `result-item ${
+            testCase.status === "waiting" ? "unknown" : testCase.status
+          }`;
+
+          let statusText = "No probado";
+          if (testCase.status === "passed") statusText = "PASÓ";
+          if (testCase.status === "failed") statusText = "FALLÓ";
+
+          resultItem.innerHTML = `
+            <span>Caso ${index + 1}:</span>
+            <span>${statusText}</span>
+        `;
+
+          previewContainer.appendChild(resultItem);
+        });
+      }
+
+      function showSubmissionModal() {
+        const modal = document.getElementById("submissionModal");
+        if (modal) {
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+      }
+
+      function closeSubmissionModal() {
+        const modal = document.getElementById("submissionModal");
+        if (modal) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      }
+
+      function confirmSubmission() {
+        closeSubmissionModal();
+
+        // Simular envío
+        showNotification("Enviando solución...", "info");
+
+        setTimeout(() => {
+          processSubmission();
+        }, 2000);
+
+        console.log("📤 Solución enviada para evaluación");
+      }
+
+      function processSubmission() {
+        currentUser.isSubmitted = true;
+
+        // Calcular puntuación
+        const passedTests = currentProblem.testCases.filter(
+          (tc) => tc.status === "passed"
+        ).length;
+        const totalTests = currentProblem.testCases.length;
+
+        let score = 0;
+
+        if (passedTests === totalTests) {
+          score = currentProblem.basePoints;
+
+          // Bonus de velocidad (simulado)
+          const timeSpent = 300 - (competitionData.timeRemaining % 300); // Tiempo en este problema
+          if (timeSpent < 180) {
+            // Menos de 3 minutos
+            score += currentProblem.bonusPoints;
+          } else if (timeSpent < 240) {
+            // Menos de 4 minutos
+            score += Math.floor(currentProblem.bonusPoints * 0.6);
+          }
+        } else {
+          // Puntuación parcial
+          score = Math.floor(
+            (passedTests / totalTests) * currentProblem.basePoints * 0.5
+          );
+        }
+
+        currentUser.currentProblemScore = score;
+        currentUser.score += score;
+        currentUser.problemsCompleted++;
+
+        // Actualizar leaderboard
+        updateUserInLeaderboard();
+
+        // Mostrar resultados
+        showResultsModal(score, passedTests === totalTests);
+
+        updateUserActivity("submitted");
+      }
+
+      function showResultsModal(score, allPassed) {
+        const modal = document.getElementById("resultsModal");
+        const finalScore = document.getElementById("finalScore");
+        const finalResults = document.getElementById("finalResults");
+
+        // Actualizar puntuación
+        if (finalScore) {
+          finalScore.textContent = score;
+        }
+
+        // Actualizar resultados finales
+        if (finalResults) {
+          finalResults.innerHTML = "";
+
+          currentProblem.testCases.forEach((testCase, index) => {
+            const resultEl = document.createElement("div");
+            resultEl.className = `result-final ${testCase.status}`;
+
+            const icon =
+              testCase.status === "passed"
+                ? "fa-check-circle"
+                : "fa-times-circle";
+            const text = testCase.status === "passed" ? "PASÓ" : "FALLÓ";
+
+            resultEl.innerHTML = `
+                <i class="fas ${icon}"></i>
+                <span>Caso ${index + 1}: ${text}</span>
+            `;
+
+            finalResults.appendChild(resultEl);
+          });
+        }
+
+        // Mostrar modal
+        if (modal) {
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        const message = allPassed
+          ? `¡Excelente! Ganaste ${score} puntos`
+          : `Solución parcial. Ganaste ${score} puntos`;
+
+        showNotification(message, allPassed ? "success" : "warning");
+      }
+
+      function continueToNextProblem() {
+        const modal = document.getElementById("resultsModal");
+        if (modal) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        if (competitionData.currentProblem < competitionData.totalProblems) {
+          showNotification("Cargando siguiente problema...", "info");
+
+          setTimeout(() => {
+            // Simular carga del siguiente problema
+            showNotification("Problema 4 cargado", "success");
+            console.log("➡️ Continuando al siguiente problema");
+          }, 1500);
+        } else {
+          showNotification("¡Competencia completada!", "success");
+          console.log("🏁 Competencia finalizada");
+        }
+      }
+
+      function updateLeaderboard() {
+        const leaderboardList = document.querySelector(".leaderboard-list");
+        if (!leaderboardList) return;
+
+        // Limpiar lista actual (excepto botón show more)
+        const showMoreBtn = leaderboardList.querySelector(
+          ".show-more-participants"
+        );
+        leaderboardList.innerHTML = "";
+
+        // Mostrar primeros 5 participantes
+        leaderboardData.slice(0, 5).forEach((participant) => {
+          const item = createLeaderboardItem(participant);
+          leaderboardList.appendChild(item);
+        });
+
+        // Reagregar botón show more
+        if (showMoreBtn && leaderboardData.length > 5) {
+          leaderboardList.appendChild(showMoreBtn);
+        }
+      }
+
+      function createLeaderboardItem(participant) {
+        const item = document.createElement("div");
+        item.className = `leaderboard-item rank-${participant.rank}`;
+
+        if (participant.isCurrentUser) {
+          item.classList.add("current-user");
+        }
+
+        const statusMap = {
+          submitted: {
+            icon: "fas fa-paper-plane",
+            text: "Enviado",
+            class: "submitted",
+          },
+          coding: {
+            icon: "fas fa-laptop-code",
+            text: "Programando",
+            class: "coding",
+          },
+          thinking: {
+            icon: "fas fa-brain",
+            text: "Pensando",
+            class: "thinking",
+          },
+        };
+
+        const status = statusMap[participant.status];
+        const userLabel = participant.isCurrentUser ? " (Tú)" : "";
+
+        item.innerHTML = `
+        <div class="rank-position">
+            <div class="rank-number">${participant.rank}</div>
+        </div>
+        <div class="participant-info">
+            <div class="participant-avatar">
+                <img src="https://ui-avatars.com/api/?name=${participant.avatar}&background=${participant.background}&color=fff&size=40" alt="${participant.name}">
+            </div>
+            <div class="participant-details">
+                <span class="participant-name">${participant.name}${userLabel}</span>
+                <span class="participant-status progress">
+                    <i class="fas fa-code"></i>
+                    ${participant.completed}/${competitionData.totalProblems} completados
+                </span>
+            </div>
+        </div>
+        <div class="participant-score">
+            <span class="score-points">${participant.score}</span>
+            <span class="score-label">pts</span>
+        </div>
+        <div class="participant-activity">
+            <span class="activity-status ${status.class}">
+                <i class="${status.icon}"></i>
+                <span>${status.text}</span>
+            </span>
+        </div>
+    `;
+
+        return item;
+      }
+
+      function updateUserInLeaderboard() {
+        // Actualizar datos del usuario actual
+        const userIndex = leaderboardData.findIndex((p) => p.isCurrentUser);
+        if (userIndex !== -1) {
+          leaderboardData[userIndex].score = currentUser.score;
+          leaderboardData[userIndex].completed = currentUser.problemsCompleted;
+        }
+
+        // Reordenar leaderboard por puntuación
+        leaderboardData.sort((a, b) => b.score - a.score);
+
+        // Actualizar rankings
+        leaderboardData.forEach((participant, index) => {
+          participant.rank = index + 1;
+          if (participant.isCurrentUser) {
+            currentUser.rank = index + 1;
+          }
+        });
+
+        updateLeaderboard();
+      }
+
+      function updateUserActivity(activity) {
+        const userIndex = leaderboardData.findIndex((p) => p.isCurrentUser);
+        if (userIndex !== -1) {
+          leaderboardData[userIndex].status = activity;
+          updateLeaderboard();
+        }
+      }
+
+      function simulateLeaderboardUpdates() {
+        // Simular actividad de otros participantes
+        setInterval(() => {
+          if (Math.random() > 0.7) {
+            const randomParticipant =
+              leaderboardData[
+                Math.floor(Math.random() * leaderboardData.length)
+              ];
+
+            if (!randomParticipant.isCurrentUser) {
+              // Cambiar estado aleatoriamente
+              const statuses = ["coding", "thinking", "submitted"];
+              const newStatus =
+                statuses[Math.floor(Math.random() * statuses.length)];
+
+              if (newStatus === "submitted" && Math.random() > 0.5) {
+                // Simular que completó un problema
+                randomParticipant.score += Math.floor(Math.random() * 100) + 50;
+                randomParticipant.completed = Math.min(
+                  randomParticipant.completed + 1,
+                  competitionData.totalProblems
+                );
+
+                showNotification(
+                  `${randomParticipant.name} envió su solución`,
+                  "info"
+                );
+              }
+
+              randomParticipant.status = newStatus;
+              updateLeaderboard();
+            }
+          }
+        }, 8000);
+      }
+
+      function toggleLeaderboardView() {
+        const btn = document.getElementById("showMoreLeaderboard");
+        const leaderboardList = document.querySelector(".leaderboard-list");
+
+        const isExpanded = btn.textContent.includes("menos");
+
+        if (isExpanded) {
+          // Mostrar menos
+          updateLeaderboard();
+          btn.innerHTML =
+            '<i class="fas fa-chevron-down"></i><span>Ver 7 participantes más</span>';
+        } else {
+          // Mostrar todos
+          leaderboardList.innerHTML = "";
+          leaderboardData.forEach((participant) => {
+            const item = createLeaderboardItem(participant);
+            leaderboardList.appendChild(item);
+          });
+          btn.innerHTML =
+            '<i class="fas fa-chevron-up"></i><span>Ver menos</span>';
+        }
+      }
+
+      function addConsoleMessage(type, message) {
+        const consoleContent = document.getElementById("consoleContent");
+        if (!consoleContent) return;
+
+        const timestamp = new Date().toLocaleTimeString("es-ES", {
+          hour12: false,
+        });
+
+        const messageEl = document.createElement("div");
+        messageEl.className = `console-message ${type}`;
+        messageEl.innerHTML = `
+        <span class="timestamp">[${timestamp}]</span>
+        <span class="message">${message}</span>
+    `;
+
+        consoleContent.appendChild(messageEl);
+        consoleContent.scrollTop = consoleContent.scrollHeight;
+      }
+
+      function clearConsole() {
+        const consoleContent = document.getElementById("consoleContent");
+        if (consoleContent) {
+          consoleContent.innerHTML = "";
+          addConsoleMessage("info", "Consola limpiada");
+        }
+      }
+
+      // Sistema de Notificaciones
+      function showNotification(message, type = "success") {
+        const toast = document.getElementById("toastNotification");
+        const toastMessage = toast.querySelector(".toast-message");
+        const toastIcon = toast.querySelector(".toast-icon");
+
+        toastMessage.textContent = message;
+
+        toastIcon.className = "toast-icon fas";
+        toast.style.borderLeftColor = "";
+
+        switch (type) {
+          case "success":
+            toastIcon.classList.add("fa-check-circle");
+            toast.style.borderLeftColor = "var(--success)";
+            break;
+          case "error":
+            toastIcon.classList.add("fa-exclamation-circle");
+            toast.style.borderLeftColor = "var(--error)";
+            break;
+          case "warning":
+            toastIcon.classList.add("fa-exclamation-triangle");
+            toast.style.borderLeftColor = "var(--warning)";
+            break;
+          case "info":
+            toastIcon.classList.add("fa-info-circle");
+            toast.style.borderLeftColor = "var(--primary-blue)";
+            break;
+        }
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+
+        const closeBtn = toast.querySelector(".toast-close");
+        closeBtn.onclick = () => {
+          toast.classList.remove("show");
+        };
+      }
+
+      // Manejo de eventos de teclado
+      document.addEventListener("keydown", function (event) {
+        // Ctrl+R para ejecutar código
+        if ((event.ctrlKey || event.metaKey) && event.key === "r") {
+          event.preventDefault();
+          handleRunCode();
+        }
+
+        // Ctrl+S para enviar código
+        if ((event.ctrlKey || event.metaKey) && event.key === "s") {
+          event.preventDefault();
+          handleSubmitCode();
+        }
+
+        // Escape para cerrar modales
+        if (event.key === "Escape") {
+          const activeModal = document.querySelector(".modal-overlay.active");
+          if (activeModal) {
+            activeModal.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        }
+      });
+
+      // Cleanup al salir
+      window.addEventListener("beforeunload", function () {
+        if (competitionTimer) {
+          clearInterval(competitionTimer);
+        }
+      });
+
+      // Auto-save del código
+      setInterval(() => {
+        if (codeContent !== document.getElementById("editorTextarea")?.value) {
+          console.log("💾 Código guardado automáticamente");
+        }
+      }, 30000);
+
+      // Exportar funciones para uso global
+      window.LiveCompetition = {
+        competitionData,
+        currentUser,
+        currentProblem,
+        leaderboardData,
+        showNotification,
+        handleRunCode,
+        handleSubmitCode,
+        updateLeaderboard,
+      };
+
+      console.log("🔴 Competencia en vivo cargada completamente");
+      console.log("👩‍💻 Ana García compitiendo en:", competitionData.name);
+      console.log(
+        "⏰ Tiempo restante:",
+        Math.floor(competitionData.timeRemaining / 60),
+        "minutos"
+      ); //COMP425',
+    </script>
+  </body>
+</html>

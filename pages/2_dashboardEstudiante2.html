@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Dashboard - Código para Todos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="#" class="nav-link " data-page="dashboard">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="#" class="nav-link" data-page="courses">
+            <i class="fas fa-book"></i>
+            Mis Cursos
+          </a>
+          <a
+            href="activities.html"
+            class="nav-link "
+            data-page="activities"
+          >
+            <i class="fas fa-pencil-alt"></i>
+            Actividades
+          </a>
+
+          <a href="#" class="nav-link" data-page="competitions">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+          <a href="#" class="nav-link" data-page="progress">
+            <i class="fas fa-chart-line"></i>
+            Mi Progreso
+          </a>
+        </div>
+
+        <div class="nav-profile">
+          <div class="profile-info">
+            <span class="user-name">Ana García</span>
+            <span class="user-level">Estudiante Activa</span>
+          </div>
+          <div class="profile-avatar" id="userAvatar">
+            <img
+              src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+              alt="Ana García"
+            />
+          </div>
+          <div class="profile-dropdown">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <div class="dashboard-container">
+        <!-- Welcome Header -->
+        <header class="welcome-header">
+          <div class="welcome-content">
+            <h1>¡Bienvenida de vuelta, Ana! 👋</h1>
+            <p>
+              Continúa tu aprendizaje. Tienes cursos activos y nuevas
+              oportunidades esperándote.
+            </p>
+          </div>
+          <div class="welcome-stats">
+            <div class="stat-item">
+              <div class="stat-icon global">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="totalStars">284</span>
+                <span class="stat-label">Estrellas Totales</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon global">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="activeCourses">2</span>
+                <span class="stat-label">Cursos Activos</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon global">
+                <i class="fas fa-fire"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-number" id="streakDays">7</span>
+                <span class="stat-label">Días seguidos</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Course Selection Section -->
+        <section class="course-selection-section">
+          <div class="section-header">
+            <h2>¿Qué quieres aprender hoy?</h2>
+            <p>
+              Selecciona un curso para continuar o explorar nuevas tecnologías
+            </p>
+          </div>
+
+          <div class="courses-grid">
+            <!-- Current Courses -->
+            <div class="course-category">
+              <h3 class="category-title">
+                <i class="fas fa-play-circle"></i>
+                Mis Cursos Activos
+              </h3>
+              <div class="courses-list">
+                <div class="course-card active" data-course="java-fundamentals">
+                  <div class="course-status">
+                    <div class="status-badge in-progress">En progreso</div>
+                    <div class="course-progress">
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                      </div>
+                      <span class="progress-text">60%</span>
+                    </div>
+                  </div>
+                  <div class="course-icon java">
+                    <i class="fab fa-java"></i>
+                  </div>
+                  <div class="course-info">
+                    <h4>Java Fundamentos</h4>
+                    <p>
+                      Aprende los conceptos básicos de programación con Java
+                    </p>
+                    <div class="course-meta">
+                      <span class="topics-count">
+                        <i class="fas fa-list"></i>
+                        6 temas
+                      </span>
+                      <span class="stars-earned">
+                        <i class="fas fa-star"></i>
+                        127 estrellas
+                      </span>
+                    </div>
+                  </div>
+                  <!-- <a href="course-overview.html"> -->
+                    <button class="continue-course-btn">
+                      <i class="fas fa-play"></i>
+                      Continuar
+                    </button>
+                  <!-- </a> -->
+                </div>
+
+                <div class="course-card active" data-course="web-development">
+                  <div class="course-status">
+                    <div class="status-badge in-progress">En progreso</div>
+                    <div class="course-progress">
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%"></div>
+                      </div>
+                      <span class="progress-text">25%</span>
+                    </div>
+                  </div>
+                  <div class="course-icon web">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="course-info">
+                    <h4>Desarrollo Web</h4>
+                    <p>HTML, CSS y JavaScript para crear sitios web modernos</p>
+                    <div class="course-meta">
+                      <span class="topics-count">
+                        <i class="fas fa-list"></i>
+                        8 temas
+                      </span>
+                      <span class="stars-earned">
+                        <i class="fas fa-star"></i>
+                        43 estrellas
+                      </span>
+                    </div>
+                  </div>
+                  <button class="continue-course-btn">
+                    <i class="fas fa-play"></i>
+                    Continuar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Available Courses -->
+            <div class="course-category">
+              <h3 class="category-title">
+                <i class="fas fa-plus-circle"></i>
+                Cursos Disponibles
+              </h3>
+              <div class="courses-list">
+                <div class="course-card available" data-course="oop">
+                  <div class="course-status">
+                    <div class="status-badge available">Disponible</div>
+                    <div class="prerequisite">
+                      <i class="fas fa-lock"></i>
+                      Completa Java Fundamentos
+                    </div>
+                  </div>
+                  <div class="course-icon oop">
+                    <i class="fas fa-cube"></i>
+                  </div>
+                  <div class="course-info">
+                    <h4>Programación Orientada a Objetos</h4>
+                    <p>
+                      Aprende POO con Java: clases, objetos, herencia y
+                      polimorfismo
+                    </p>
+                    <div class="course-meta">
+                      <span class="topics-count">
+                        <i class="fas fa-list"></i>
+                        7 temas
+                      </span>
+                      <span class="difficulty">
+                        <i class="fas fa-signal"></i>
+                        Intermedio
+                      </span>
+                    </div>
+                  </div>
+                  <button class="start-course-btn" disabled>
+                    <i class="fas fa-lock"></i>
+                    Bloqueado
+                  </button>
+                </div>
+
+                <div
+                  class="course-card available"
+                  data-course="data-structures"
+                >
+                  <div class="course-status">
+                    <div class="status-badge available">Disponible</div>
+                    <div class="prerequisite">
+                      <i class="fas fa-lock"></i>
+                      Completa POO
+                    </div>
+                  </div>
+                  <div class="course-icon data">
+                    <i class="fas fa-project-diagram"></i>
+                  </div>
+                  <div class="course-info">
+                    <h4>Estructuras de Datos</h4>
+                    <p>
+                      Arrays, listas, pilas, colas y algoritmos fundamentales
+                    </p>
+                    <div class="course-meta">
+                      <span class="topics-count">
+                        <i class="fas fa-list"></i>
+                        9 temas
+                      </span>
+                      <span class="difficulty">
+                        <i class="fas fa-signal"></i>
+                        Avanzado
+                      </span>
+                    </div>
+                  </div>
+                  <button class="start-course-btn" disabled>
+                    <i class="fas fa-lock"></i>
+                    Bloqueado
+                  </button>
+                </div>
+
+                <div class="course-card available" data-course="databases">
+                  <div class="course-status">
+                    <div class="status-badge available">Disponible</div>
+                    <div class="prerequisite">
+                      <i class="fas fa-info-circle"></i>
+                      Independiente
+                    </div>
+                  </div>
+                  <div class="course-icon database">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <div class="course-info">
+                    <h4>Bases de Datos</h4>
+                    <p>MySQL, consultas SQL y diseño de bases de datos</p>
+                    <div class="course-meta">
+                      <span class="topics-count">
+                        <i class="fas fa-list"></i>
+                        6 temas
+                      </span>
+                      <span class="difficulty">
+                        <i class="fas fa-signal"></i>
+                        Intermedio
+                      </span>
+                    </div>
+                  </div>
+                  <button class="start-course-btn">
+                    <i class="fas fa-plus"></i>
+                    Comenzar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coming Soon -->
+            <div class="course-category">
+              <h3 class="category-title">
+                <i class="fas fa-clock"></i>
+                Próximamente
+              </h3>
+              <div class="courses-list">
+                <div class="course-card coming-soon" data-course="python">
+                  <div class="course-status">
+                    <div class="status-badge coming-soon">Próximamente</div>
+                    <div class="release-date">
+                      <i class="fas fa-calendar"></i>
+                      Q2 2026
+                    </div>
+                  </div>
+                  <div class="course-icon python">
+                    <i class="fab fa-python"></i>
+                  </div>
+                  <div class="course-info">
+                    <h4>Python Fundamentos</h4>
+                    <p>Aprende Python desde cero hasta conceptos avanzados</p>
+                    <div class="course-meta">
+                      <span class="topics-count">
+                        <i class="fas fa-list"></i>
+                        8 temas
+                      </span>
+                      <span class="difficulty">
+                        <i class="fas fa-signal"></i>
+                        Principiante
+                      </span>
+                    </div>
+                  </div>
+                  <button class="notify-btn">
+                    <i class="fas fa-bell"></i>
+                    Notificarme
+                  </button>
+                </div>
+
+                <div class="course-card coming-soon" data-course="mobile">
+                  <div class="course-status">
+                    <div class="status-badge coming-soon">Próximamente</div>
+                    <div class="release-date">
+                      <i class="fas fa-calendar"></i>
+                      Q3 2026
+                    </div>
+                  </div>
+                  <div class="course-icon mobile">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <div class="course-info">
+                    <h4>Desarrollo Mobile</h4>
+                    <p>Crea apps móviles con Android Studio y Java</p>
+                    <div class="course-meta">
+                      <span class="topics-count">
+                        <i class="fas fa-list"></i>
+                        10 temas
+                      </span>
+                      <span class="difficulty">
+                        <i class="fas fa-signal"></i>
+                        Avanzado
+                      </span>
+                    </div>
+                  </div>
+                  <button class="notify-btn">
+                    <i class="fas fa-bell"></i>
+                    Notificarme
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Actions & Recent Activity -->
+        <div class="dashboard-bottom">
+          <div class="dashboard-left">
+            <!-- Recent Activity -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Actividad Reciente</h2>
+                <a
+                  href="activities.html"
+                  class="section-link"
+                  data-page="activities"
+                  >Ver todas las actividades</a
+                >
+              </div>
+              <div class="recent-activities">
+                <div class="activity-item java">
+                  <div class="activity-icon">
+                    <i class="fab fa-java"></i>
+                  </div>
+                  <div class="activity-info">
+                    <h4>Ejercicio: Calculadora Básica</h4>
+                    <p>Java Fundamentos • Operaciones con if/else</p>
+                    <span class="activity-time">Hace 2 horas</span>
+                  </div>
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">4/5</span>
+                  </div>
+                </div>
+
+                <div class="activity-item web">
+                  <div class="activity-icon">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="activity-info">
+                    <h4>Práctica: Primera Página Web</h4>
+                    <p>Desarrollo Web • HTML básico</p>
+                    <span class="activity-time">Ayer</span>
+                  </div>
+                  <div class="activity-rating">
+                    <div class="stars">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-text">3/5</span>
+                  </div>
+                </div>
+
+                <div class="activity-item java">
+                  <div class="activity-icon">
+                    <i class="fab fa-java"></i>
+                  </div>
+                  <div class="activity-info">
+                    <h4>Competencia: Lógica Básica</h4>
+                    <p>Java Fundamentos • Competencia grupal</p>
+                    <span class="activity-time">Hace 3 días</span>
+                  </div>
+                  <div class="activity-rating">
+                    <div class="position-badge second">
+                      <i class="fas fa-medal"></i>
+                      2° lugar
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="dashboard-right">
+            <!-- Quick Actions -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Acciones Rápidas</h2>
+              </div>
+              <div class="quick-actions">
+                <div class="action-card" data-action="continue-java">
+                  <div class="action-icon java">
+                    <i class="fab fa-java"></i>
+                  </div>
+                  <div class="action-info">
+                    <h4>Continuar Java</h4>
+                    <p>Siguiente: Ciclos For</p>
+                  </div>
+                  <button class="action-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+
+                <div class="action-card" data-action="continue-web">
+                  <div class="action-icon web">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="action-info">
+                    <h4>Continuar Web</h4>
+                    <p>Siguiente: CSS Básico</p>
+                  </div>
+                  <button class="action-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+
+                <div class="action-card" data-action="competition">
+                  <div class="action-icon competition">
+                    <i class="fas fa-trophy"></i>
+                  </div>
+                  <div class="action-info">
+                    <h4>Próxima Competencia</h4>
+                    <p>Viernes 2:00 PM</p>
+                  </div>
+                  <button class="action-btn">
+                    <i class="fas fa-bell"></i>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Achievements Summary -->
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Logros Recientes</h2>
+                <a href="#" class="section-link">Ver todos</a>
+              </div>
+              <div class="achievements-summary">
+                <div class="achievement-item unlocked java">
+                  <div class="achievement-icon">
+                    <i class="fas fa-code-branch"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name"
+                      >Master de Condicionales</span
+                    >
+                    <span class="achievement-course">Java Fundamentos</span>
+                  </div>
+                  <div class="achievement-date">Hace 1 día</div>
+                </div>
+
+                <div class="achievement-item unlocked web">
+                  <div class="achievement-icon">
+                    <i class="fas fa-palette"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">Primera Página</span>
+                    <span class="achievement-course">Desarrollo Web</span>
+                  </div>
+                  <div class="achievement-date">Hace 2 días</div>
+                </div>
+
+                <div class="achievement-item progress java">
+                  <div class="achievement-icon">
+                    <i class="fas fa-sync-alt"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <span class="achievement-name">Maestro de Ciclos</span>
+                    <span class="achievement-course">Java Fundamentos</span>
+                  </div>
+                  <div class="achievement-progress">2/3</div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <style>
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --java-color: #ed8b00;
+        --web-color: #e34f26;
+        --oop-color: #6f42c1;
+        --data-color: #20c997;
+        --database-color: #0d6efd;
+        --python-color: #3776ab;
+        --mobile-color: #32d74b;
+        --neutral-light: #f8f9fa;
+        --neutral-dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --border-light: #e5e5e5;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+        --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.2);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+      }
+
+      /* Reset y Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: white;
+        box-shadow: var(--shadow-light);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        border-radius: 8px;
+        transition: var(--transition);
+        font-weight: 500;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .nav-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .nav-profile:hover {
+        background: var(--neutral-light);
+      }
+
+      .profile-info {
+        text-align: right;
+      }
+
+      .user-name {
+        display: block;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .user-level {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .profile-avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-blue);
+      }
+
+      .profile-dropdown {
+        color: var(--text-secondary);
+      }
+
+      /* Main Dashboard */
+      .dashboard-main {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+
+      .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Welcome Header */
+      .welcome-header {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .welcome-content h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .welcome-content p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .welcome-stats {
+        display: flex;
+        gap: 30px;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: white;
+      }
+
+      .stat-icon.global {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+      }
+
+      .stat-info {
+        text-align: center;
+      }
+
+      .stat-number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Course Selection Section */
+      .course-selection-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .course-selection-section .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .course-selection-section .section-header h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .course-selection-section .section-header p {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+      }
+
+      .courses-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .course-category {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .category-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--border-light);
+      }
+
+      .category-title i {
+        color: var(--primary-blue);
+      }
+
+      .courses-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+      }
+
+      /* Course Cards */
+      .course-card {
+        background: var(--neutral-light);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        border: 2px solid transparent;
+        transition: var(--transition);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .course-card.active {
+        border-color: var(--primary-blue);
+        background: linear-gradient(
+          135deg,
+          rgba(74, 144, 226, 0.05),
+          rgba(126, 211, 33, 0.03)
+        );
+      }
+
+      .course-card.available {
+        border-color: var(--border-light);
+      }
+
+      .course-card.coming-soon {
+        opacity: 0.7;
+        border-color: var(--text-secondary);
+        background: linear-gradient(
+          135deg,
+          rgba(127, 140, 141, 0.1),
+          rgba(149, 165, 166, 0.05)
+        );
+      }
+
+      .course-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .status-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status-badge.in-progress {
+        background: rgba(74, 144, 226, 0.2);
+        color: var(--primary-blue);
+      }
+
+      .status-badge.available {
+        background: rgba(126, 211, 33, 0.2);
+        color: var(--primary-green);
+      }
+
+      .status-badge.coming-soon {
+        background: rgba(127, 140, 141, 0.2);
+        color: var(--text-secondary);
+      }
+
+      .course-progress {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .progress-bar {
+        width: 60px;
+        height: 4px;
+        background: var(--border-light);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 2px;
+        transition: width 1s ease;
+      }
+
+      .progress-text {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .prerequisite,
+      .release-date {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .course-card .course-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: white;
+      }
+
+      .course-icon.java {
+        background: linear-gradient(135deg, var(--java-color), #ff9500);
+      }
+
+      .course-icon.web {
+        background: linear-gradient(135deg, var(--web-color), #f56565);
+      }
+
+      .course-icon.oop {
+        background: linear-gradient(135deg, var(--oop-color), #805ad5);
+      }
+
+      .course-icon.data {
+        background: linear-gradient(135deg, var(--data-color), #38b2ac);
+      }
+
+      .course-icon.database {
+        background: linear-gradient(135deg, var(--database-color), #3182ce);
+      }
+
+      .course-icon.python {
+        background: linear-gradient(135deg, var(--python-color), #4299e1);
+      }
+
+      .course-icon.mobile {
+        background: linear-gradient(135deg, var(--mobile-color), #48bb78);
+      }
+
+      .course-info h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+      }
+
+      .course-info p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .course-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+
+      .topics-count,
+      .stars-earned,
+      .difficulty {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .continue-course-btn,
+      .start-course-btn,
+      .notify-btn {
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .continue-course-btn {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        color: white;
+      }
+
+      .continue-course-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .start-course-btn {
+        background: var(--success);
+        color: white;
+      }
+
+      .start-course-btn:hover {
+        background: #219a52;
+        transform: translateY(-2px);
+      }
+
+      .start-course-btn:disabled {
+        background: var(--text-secondary);
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .notify-btn {
+        background: var(--warning);
+        color: white;
+      }
+
+      .notify-btn:hover {
+        background: #e67e22;
+        transform: translateY(-2px);
+      }
+
+      /* Dashboard Bottom */
+      .dashboard-bottom {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+      }
+
+      .dashboard-left,
+      .dashboard-right {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Section Styling */
+      .dashboard-section {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow-light);
+        transition: var(--transition);
+      }
+
+      .dashboard-section:hover {
+        box-shadow: var(--shadow-medium);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--neutral-light);
+      }
+
+      .section-header h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .section-link {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .section-link:hover {
+        color: var(--primary-green);
+      }
+
+      /* Recent Activities */
+      .recent-activities {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        transition: var(--transition);
+        border: 1px solid var(--border-light);
+      }
+
+      .activity-item:hover {
+        background: var(--neutral-light);
+        transform: translateX(5px);
+      }
+
+      .activity-item.java {
+        border-left: 4px solid var(--java-color);
+      }
+
+      .activity-item.web {
+        border-left: 4px solid var(--web-color);
+      }
+
+      .activity-item .activity-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: white;
+      }
+
+      .activity-item.java .activity-icon {
+        background: var(--java-color);
+      }
+
+      .activity-item.web .activity-icon {
+        background: var(--web-color);
+      }
+
+      .activity-info {
+        flex: 1;
+      }
+
+      .activity-info h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--text-primary);
+      }
+
+      .activity-info p {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+      }
+
+      .activity-time {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-style: italic;
+      }
+
+      /* Activity Rating */
+      .activity-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .stars {
+        display: flex;
+        gap: 2px;
+      }
+
+      .stars i {
+        font-size: 1rem;
+        color: var(--border-light);
+      }
+
+      .stars i.filled {
+        color: var(--accent-yellow);
+      }
+
+      .rating-text {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.9rem;
+      }
+
+      .position-badge {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .position-badge.second {
+        background: rgba(192, 192, 192, 0.2);
+        color: #6c757d;
+      }
+
+      /* Quick Actions */
+      .quick-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .action-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid var(--border-light);
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .action-card:hover {
+        background: var(--neutral-light);
+        transform: translateY(-2px);
+      }
+
+      .action-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: white;
+      }
+
+      .action-icon.java {
+        background: var(--java-color);
+      }
+
+      .action-icon.web {
+        background: var(--web-color);
+      }
+
+      .action-icon.competition {
+        background: var(--accent-yellow);
+      }
+
+      .action-info {
+        flex: 1;
+      }
+
+      .action-info h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--text-primary);
+      }
+
+      .action-info p {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .action-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: var(--primary-blue);
+        color: white;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .action-btn:hover {
+        background: var(--primary-green);
+        transform: scale(1.1);
+      }
+
+      /* Achievements Summary */
+      .achievements-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .achievement-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid var(--border-light);
+        transition: var(--transition);
+      }
+
+      .achievement-item:hover {
+        background: var(--neutral-light);
+      }
+
+      .achievement-item.unlocked {
+        border-left: 4px solid var(--success);
+      }
+
+      .achievement-item.progress {
+        border-left: 4px solid var(--warning);
+      }
+
+      .achievement-item.java {
+        background: rgba(237, 139, 0, 0.05);
+      }
+
+      .achievement-item.web {
+        background: rgba(227, 79, 38, 0.05);
+      }
+
+      .achievement-item .achievement-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: white;
+        background: var(--success);
+      }
+
+      .achievement-item.progress .achievement-icon {
+        background: var(--warning);
+      }
+
+      .achievement-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .achievement-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 2px;
+      }
+
+      .achievement-course {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .achievement-date,
+      .achievement-progress {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .dashboard-bottom {
+          grid-template-columns: 1fr;
+        }
+
+        .welcome-header {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .welcome-stats {
+          justify-content: center;
+        }
+
+        .courses-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          padding: 0 15px;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .dashboard-main {
+          padding: 20px 15px;
+        }
+
+        .welcome-header {
+          padding: 20px;
+        }
+
+        .welcome-stats {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .course-selection-section {
+          padding: 20px;
+        }
+
+        .courses-list {
+          grid-template-columns: 1fr;
+        }
+
+        .course-card {
+          padding: 15px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .course-selection-section {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .course-card {
+        animation: slideInRight 0.6s ease forwards;
+      }
+
+      .course-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .course-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .course-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .course-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .dashboard-section {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .dashboard-section:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .dashboard-section:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .dashboard-section:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+    </style>
+    <script>
+      // Variables globales del nuevo dashboard
+      let studentData = {
+        name: "Ana García",
+        totalStars: 284,
+        activeCourses: 2,
+        streakDays: 7,
+        courses: {
+          "java-fundamentals": {
+            name: "Java Fundamentos",
+            progress: 60,
+            stars: 127,
+            currentTopic: "for",
+            topics: {
+              if: { completed: true, progress: 100 },
+              switch: { completed: true, progress: 100 },
+              for: { completed: false, progress: 50 },
+              arrays: { completed: false, progress: 0, locked: true },
+              methods: { completed: false, progress: 0, locked: true },
+              "oop-basic": { completed: false, progress: 0, locked: true },
+            },
+            achievements: ["first_program", "conditional_master"],
+            scoreboard: [
+              { rank: 1, name: "Carlos Ruiz", stars: 145 },
+              { rank: 2, name: "Ana García", stars: 127, isCurrentUser: true },
+              { rank: 3, name: "María López", stars: 98 },
+            ],
+          },
+          "web-development": {
+            name: "Desarrollo Web",
+            progress: 25,
+            stars: 43,
+            currentTopic: "css-basic",
+            topics: {
+              "html-basic": { completed: true, progress: 100 },
+              "css-basic": { completed: false, progress: 50 },
+              "css-advanced": { completed: false, progress: 0, locked: true },
+              "js-basic": { completed: false, progress: 0, locked: true },
+              dom: { completed: false, progress: 0, locked: true },
+              apis: { completed: false, progress: 0, locked: true },
+            },
+            achievements: ["first_page"],
+            scoreboard: [
+              { rank: 1, name: "Diego Morales", stars: 87 },
+              { rank: 2, name: "Ana García", stars: 43, isCurrentUser: true },
+              { rank: 3, name: "Sofía Martínez", stars: 39 },
+            ],
+          },
+        },
+        availableCourses: ["databases"],
+        lockedCourses: ["oop", "data-structures"],
+        comingSoonCourses: ["python", "mobile"],
+      };
+
+      // Datos de cursos disponibles
+      const courseData = {
+        "java-fundamentals": {
+          name: "Java Fundamentos",
+          description: "Aprende los conceptos básicos de programación con Java",
+          icon: "fab fa-java",
+          color: "java",
+          topics: 6,
+          difficulty: "Principiante",
+          prerequisite: null,
+        },
+        "web-development": {
+          name: "Desarrollo Web",
+          description: "HTML, CSS y JavaScript para crear sitios web modernos",
+          icon: "fas fa-code",
+          color: "web",
+          topics: 8,
+          difficulty: "Principiante",
+          prerequisite: null,
+        },
+        oop: {
+          name: "Programación Orientada a Objetos",
+          description:
+            "Aprende POO con Java: clases, objetos, herencia y polimorfismo",
+          icon: "fas fa-cube",
+          color: "oop",
+          topics: 7,
+          difficulty: "Intermedio",
+          prerequisite: "java-fundamentals",
+        },
+        "data-structures": {
+          name: "Estructuras de Datos",
+          description:
+            "Arrays, listas, pilas, colas y algoritmos fundamentales",
+          icon: "fas fa-project-diagram",
+          color: "data",
+          topics: 9,
+          difficulty: "Avanzado",
+          prerequisite: "oop",
+        },
+        databases: {
+          name: "Bases de Datos",
+          description: "MySQL, consultas SQL y diseño de bases de datos",
+          icon: "fas fa-database",
+          color: "database",
+          topics: 6,
+          difficulty: "Intermedio",
+          prerequisite: null,
+        },
+        python: {
+          name: "Python Fundamentos",
+          description: "Aprende Python desde cero hasta conceptos avanzados",
+          icon: "fab fa-python",
+          color: "python",
+          topics: 8,
+          difficulty: "Principiante",
+          prerequisite: null,
+        },
+        mobile: {
+          name: "Desarrollo Mobile",
+          description: "Crea apps móviles con Android Studio y Java",
+          icon: "fas fa-mobile-alt",
+          color: "mobile",
+          topics: 10,
+          difficulty: "Avanzado",
+          prerequisite: "oop",
+        },
+      };
+
+      // Estado actual de la vista
+      let currentView = "dashboard";
+      let selectedCourse = null;
+
+      // Inicialización
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeDashboard();
+        setupEventListeners();
+        updateCourseAvailability();
+        startRealTimeUpdates();
+      });
+
+      function initializeDashboard() {
+        updateUserStats();
+        updateRecentActivities();
+        updateQuickActions();
+        updateAchievementsSummary();
+        console.log("🎯 Nuevo Dashboard Multi-Curso inicializado");
+      }
+
+      function setupEventListeners() {
+        // Navigation links
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", handleNavigation);
+        });
+
+        // Course cards
+        document.querySelectorAll(".course-card").forEach((card) => {
+          card.addEventListener("click", handleCourseClick);
+        });
+
+        // Course action buttons
+        document
+          .querySelectorAll(".continue-course-btn, .start-course-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", handleCourseAction);
+          });
+
+        // Notify buttons
+        document.querySelectorAll(".notify-btn").forEach((btn) => {
+          btn.addEventListener("click", handleNotifyRequest);
+        });
+
+        // Quick action cards
+        document.querySelectorAll(".action-card").forEach((card) => {
+          card.addEventListener("click", handleQuickAction);
+        });
+
+        // Activity links
+        document.querySelectorAll(".section-link").forEach((link) => {
+          link.addEventListener("click", handleSectionLink);
+        });
+
+        // Profile dropdown
+        const profileDropdown = document.querySelector(".nav-profile");
+        if (profileDropdown) {
+          profileDropdown.addEventListener("click", toggleProfileMenu);
+        }
+      }
+
+      function updateUserStats() {
+        // Actualizar estadísticas globales
+        const totalStarsEl = document.getElementById("totalStars");
+        const activeCoursesEl = document.getElementById("activeCourses");
+        const streakDaysEl = document.getElementById("streakDays");
+
+        if (totalStarsEl) {
+          animateNumber(totalStarsEl, studentData.totalStars);
+        }
+
+        if (activeCoursesEl) {
+          animateNumber(activeCoursesEl, studentData.activeCourses);
+        }
+
+        if (streakDaysEl) {
+          animateNumber(streakDaysEl, studentData.streakDays);
+        }
+      }
+
+      function updateCourseAvailability() {
+        document.querySelectorAll(".course-card").forEach((card) => {
+          const courseId = card.getAttribute("data-course");
+          const course = courseData[courseId];
+
+          if (!course) return;
+
+          // Verificar disponibilidad
+          const isAvailable = checkCourseAvailability(courseId);
+          const button = card.querySelector(".start-course-btn");
+
+          if (button && !isAvailable) {
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-lock"></i> Bloqueado';
+          } else if (button && isAvailable) {
+            button.disabled = false;
+            button.innerHTML = '<i class="fas fa-plus"></i> Comenzar';
+          }
+        });
+      }
+
+      function checkCourseAvailability(courseId) {
+        const course = courseData[courseId];
+        if (!course || !course.prerequisite) return true;
+
+        // Verificar si el prerequisito está completado
+        const prerequisiteCourse = studentData.courses[course.prerequisite];
+        return prerequisiteCourse && prerequisiteCourse.progress >= 100;
+      }
+
+      function updateRecentActivities() {
+        // Las actividades ya están en el HTML con datos mock
+        // En una implementación real, esto se cargaría dinámicamente
+        console.log("Actividades recientes actualizadas");
+      }
+
+      function updateQuickActions() {
+        // Actualizar acciones rápidas basadas en cursos activos
+        const javaProgress = studentData.courses["java-fundamentals"];
+        const webProgress = studentData.courses["web-development"];
+
+        // Actualizar próximo tema de Java
+        if (javaProgress) {
+          const nextTopic = getNextTopic("java-fundamentals");
+          const javaAction = document.querySelector(
+            '[data-action="continue-java"] .action-info p'
+          );
+          if (javaAction && nextTopic) {
+            javaAction.textContent = `Siguiente: ${getTopicDisplayName(
+              nextTopic
+            )}`;
+          }
+        }
+
+        // Actualizar próximo tema de Web
+        if (webProgress) {
+          const nextTopic = getNextTopic("web-development");
+          const webAction = document.querySelector(
+            '[data-action="continue-web"] .action-info p'
+          );
+          if (webAction && nextTopic) {
+            webAction.textContent = `Siguiente: ${getTopicDisplayName(
+              nextTopic
+            )}`;
+          }
+        }
+      }
+
+      function getNextTopic(courseId) {
+        const course = studentData.courses[courseId];
+        if (!course) return null;
+
+        // Encontrar el primer tema no completado
+        for (const [topicId, topic] of Object.entries(course.topics)) {
+          if (!topic.completed && !topic.locked) {
+            return topicId;
+          }
+        }
+
+        return null;
+      }
+
+      function getTopicDisplayName(topicId) {
+        const topicNames = {
+          if: "Condicionales if/else",
+          switch: "Switch Case",
+          for: "Ciclos For",
+          arrays: "Arrays",
+          methods: "Métodos",
+          "oop-basic": "POO Básico",
+          "html-basic": "HTML Básico",
+          "css-basic": "CSS Básico",
+          "css-advanced": "CSS Avanzado",
+          "js-basic": "JavaScript Básico",
+          dom: "Manipulación DOM",
+          apis: "APIs y Fetch",
+        };
+
+        return topicNames[topicId] || topicId;
+      }
+
+      function updateAchievementsSummary() {
+        // Los logros ya están en el HTML
+        // En implementación real, se actualizaría dinámicamente
+        console.log("Resumen de logros actualizado");
+      }
+
+      function handleNavigation(event) {
+        //event.preventDefault();
+        const link = event.currentTarget;
+        const page = link.getAttribute("data-page");
+
+        // Si el enlace NO es para la página única, déjalo navegar normalmente.
+        if (link.getAttribute("href") !== "#") {
+          // No hacemos nada y permitimos que el navegador vaya a activities.html
+          return;
+        }
+
+        // Si el enlace SÍ es '#', entonces prevenimos el salto y manejamos la vista.
+        event.preventDefault();
+
+        // Remover clase active de todos los links
+        document
+          .querySelectorAll(".nav-menu .nav-link")
+          .forEach((l) => l.classList.remove("active"));
+
+        // Agregar clase active al link clickeado
+        link.classList.add("active");
+
+        currentView = page;
+
+        switch (page) {
+          case "dashboard":
+            showNotification("Dashboard principal", "info");
+            page = "dashboardEstudiante2.html";
+            break;
+          case "courses":
+            showNotification("Navegando a Mis Cursos", "info");
+            break;
+          case "activities":
+            showNotification("Navegando a Actividades", "info");
+            page = "activities.html";
+            break;
+          case "competitions":
+            showNotification("Navegando a Competencias", "info");
+            break;
+          case "progress":
+            showNotification("Navegando a Mi Progreso", "info");
+            break;
+        }
+
+        // Simular navegación
+        setTimeout(() => {
+          console.log(`Navegando a: ${page}`);
+          window.location.href = page;
+          // Aquí iría la navegación real
+        }, 500);
+      }
+
+      function handleCourseClick(event) {
+        // Solo manejar click si no es en un botón
+        if (event.target.closest("button")) return;
+
+        const card = event.currentTarget;
+        const courseId = card.getAttribute("data-course");
+
+        if (card.classList.contains("active")) {
+          selectedCourse = courseId;
+          showNotification(`Abriendo ${courseData[courseId].name}`, "info");
+
+          // Simular navegación al curso específico
+          setTimeout(() => {
+            console.log(`Navegando al curso: ${courseId}`);
+            window.location.href = `course-overview.html`;
+          }, 1000);
+        } else if (card.classList.contains("coming-soon")) {
+          showNotification("Este curso estará disponible pronto", "info");
+        } else {
+          showNotification("Curso no disponible aún", "warning");
+        }
+      }
+
+      function handleCourseAction(event) {
+        event.stopPropagation();
+        const button = event.currentTarget;
+        const card = button.closest(".course-card");
+        const courseId = card.getAttribute("data-course");
+        const course = courseData[courseId];
+
+        if (button.disabled) {
+          showNotification("Completa el curso prerequisito primero", "warning");
+          return;
+        }
+
+        if (button.classList.contains("continue-course-btn")) {
+          const nextTopic = getNextTopic(courseId);
+          showNotification(`Continuando con ${course.name}`, "success");
+
+          setTimeout(() => {
+            console.log(
+              `Navegando a tema: ${nextTopic} del curso: ${courseId}`
+            );
+            window.location.href = `course-overview.html`;
+          }, 1000);
+        } else if (button.classList.contains("start-course-btn")) {
+          showNotification(`Comenzando ${course.name}`, "success");
+
+          // Agregar curso a cursos activos
+          studentData.courses[courseId] = {
+            name: course.name,
+            progress: 0,
+            stars: 0,
+            currentTopic: getFirstTopic(courseId),
+            topics: generateInitialTopics(courseId),
+            achievements: [],
+            scoreboard: generateInitialScoreboard(),
+          };
+
+          studentData.activeCourses++;
+          updateUserStats();
+
+          setTimeout(() => {
+            console.log(`Iniciando curso: ${courseId}`);
+            // window.location.href = `course.html?id=${courseId}&intro=true`;
+          }, 1500);
+        }
+      }
+
+      function getFirstTopic(courseId) {
+        // Retornar el primer tema según el curso
+        const firstTopics = {
+          databases: "sql-intro",
+          oop: "classes",
+          "data-structures": "arrays-advanced",
+          python: "variables",
+          mobile: "android-studio",
+        };
+
+        return firstTopics[courseId] || "intro";
+      }
+
+      function generateInitialTopics(courseId) {
+        // Generar estructura inicial de temas según el curso
+        const topicStructures = {
+          databases: {
+            "sql-intro": { completed: false, progress: 0 },
+            tables: { completed: false, progress: 0, locked: true },
+            queries: { completed: false, progress: 0, locked: true },
+            joins: { completed: false, progress: 0, locked: true },
+            indexes: { completed: false, progress: 0, locked: true },
+            procedures: { completed: false, progress: 0, locked: true },
+          },
+          oop: {
+            classes: { completed: false, progress: 0 },
+            objects: { completed: false, progress: 0, locked: true },
+            inheritance: { completed: false, progress: 0, locked: true },
+            polymorphism: { completed: false, progress: 0, locked: true },
+            encapsulation: { completed: false, progress: 0, locked: true },
+            abstraction: { completed: false, progress: 0, locked: true },
+            interfaces: { completed: false, progress: 0, locked: true },
+          },
+        };
+
+        return topicStructures[courseId] || {};
+      }
+
+      function generateInitialScoreboard() {
+        return [{ rank: 1, name: "Ana García", stars: 0, isCurrentUser: true }];
+      }
+
+      function handleNotifyRequest(event) {
+        event.stopPropagation();
+        const button = event.currentTarget;
+        const card = button.closest(".course-card");
+        const courseId = card.getAttribute("data-course");
+        const course = courseData[courseId];
+
+        showNotification(
+          `Te notificaremos cuando ${course.name} esté disponible`,
+          "success"
+        );
+
+        // Cambiar botón a estado "notificado"
+        button.innerHTML = '<i class="fas fa-check"></i> Notificado';
+        button.style.background = "var(--success)";
+        button.disabled = true;
+      }
+
+      function handleQuickAction(event) {
+        const card = event.currentTarget;
+        const action = card.getAttribute("data-action");
+
+        switch (action) {
+          case "continue-java":
+            const javaNextTopic = getNextTopic("java-fundamentals");
+            showNotification(
+              `Continuando Java: ${getTopicDisplayName(javaNextTopic)}`,
+              "info"
+            );
+            setTimeout(() => {
+              console.log("Navegando a Java Fundamentos");
+            }, 1000);
+            window.location.href = `course-overview.html`;
+
+            break;
+
+          case "continue-web":
+            const webNextTopic = getNextTopic("web-development");
+            showNotification(
+              `Continuando Web: ${getTopicDisplayName(webNextTopic)}`,
+              "info"
+            );
+            setTimeout(() => {
+              console.log("Navegando a Desarrollo Web");
+            }, 1000);
+            break;
+
+          case "competition":
+            showNotification(
+              "¡Te recordaremos antes de la competencia!",
+              "success"
+            );
+            break;
+        }
+      }
+
+      function handleSectionLink(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const text = link.textContent.trim();
+
+        if (text.includes("actividades")) {
+          // Cambiar navegación activa
+          document
+            .querySelectorAll(".nav-link")
+            .forEach((l) => l.classList.remove("active"));
+          document
+            .querySelector('[data-page="activities"]')
+            .classList.add("active");
+          showNotification("Navegando a todas las actividades", "info");
+        } else {
+          showNotification(`Navegando a: ${text}`, "info");
+        }
+      }
+
+      function toggleProfileMenu() {
+        showNotification("Menú de perfil", "info");
+        // Implementar dropdown del perfil
+        console.log("Toggle profile menu");
+      }
+
+      function animateNumber(element, targetNumber) {
+        const startNumber = parseInt(element.textContent) || 0;
+        const duration = 2000;
+        const startTime = Date.now();
+
+        function updateNumber() {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Función de easing
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+          const currentNumber = Math.floor(
+            startNumber + (targetNumber - startNumber) * easedProgress
+          );
+          element.textContent = currentNumber;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+          }
+        }
+
+        updateNumber();
+      }
+
+      function showNotification(message, type = "info") {
+        // Crear elemento de notificación
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+
+        const icons = {
+          success: "fa-check-circle",
+          warning: "fa-exclamation-triangle",
+          error: "fa-times-circle",
+          info: "fa-info-circle",
+        };
+
+        notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${icons[type] || icons.info}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+
+        // Agregar estilos si no existen
+        if (!document.querySelector("#notification-styles")) {
+          const styles = document.createElement("style");
+          styles.id = "notification-styles";
+          styles.textContent = `
+            .notification {
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                background: white;
+                border-radius: 10px;
+                padding: 15px 20px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                z-index: 1000;
+                min-width: 300px;
+                max-width: 400px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                border-left: 4px solid var(--primary-blue);
+            }
+            
+            .notification.success {
+                border-left-color: var(--success);
+            }
+            
+            .notification.warning {
+                border-left-color: var(--warning);
+            }
+            
+            .notification.error {
+                border-left-color: var(--error);
+            }
+            
+            .notification.show {
+                transform: translateX(0);
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex: 1;
+            }
+            
+            .notification-content i {
+                font-size: 1.2rem;
+                color: var(--primary-blue);
+            }
+            
+            .notification.success .notification-content i {
+                color: var(--success);
+            }
+            
+            .notification.warning .notification-content i {
+                color: var(--warning);
+            }
+            
+            .notification.error .notification-content i {
+                color: var(--error);
+            }
+            
+            .notification-content span {
+                font-weight: 500;
+                color: var(--text-primary);
+            }
+            
+            .notification-close {
+                background: none;
+                border: none;
+                color: var(--text-secondary);
+                cursor: pointer;
+                padding: 5px;
+                border-radius: 5px;
+                transition: background 0.2s ease;
+            }
+            
+            .notification-close:hover {
+                background: var(--neutral-light);
+            }
+        `;
+          document.head.appendChild(styles);
+        }
+
+        // Agregar al DOM
+        document.body.appendChild(notification);
+
+        // Mostrar con animación
+        setTimeout(() => {
+          notification.classList.add("show");
+        }, 100);
+
+        // Configurar cierre
+        const closeBtn = notification.querySelector(".notification-close");
+        closeBtn.addEventListener("click", () => {
+          hideNotification(notification);
+        });
+
+        // Auto-hide después de 4 segundos
+        setTimeout(() => {
+          if (notification.parentNode) {
+            hideNotification(notification);
+          }
+        }, 4000);
+      }
+
+      function hideNotification(notification) {
+        notification.classList.remove("show");
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }
+
+      function startRealTimeUpdates() {
+        // Simular actualizaciones periódicas
+        setInterval(() => {
+          simulateProgressUpdate();
+        }, 45000);
+
+        // Notificaciones periódicas
+        setTimeout(() => {
+          showNotification("¡Carlos completó un ejercicio de Java!", "info");
+        }, 15000);
+
+        setTimeout(() => {
+          showNotification("Nueva competencia disponible mañana", "warning");
+        }, 30000);
+      }
+
+      function simulateProgressUpdate() {
+        // Simular progreso en curso activo
+        const activeCourseIds = Object.keys(studentData.courses);
+        if (activeCourseIds.length > 0) {
+          const randomCourseId =
+            activeCourseIds[Math.floor(Math.random() * activeCourseIds.length)];
+          const course = studentData.courses[randomCourseId];
+
+          // Incrementar estrellas aleatoriamente
+          const starsGained = Math.floor(Math.random() * 5) + 1;
+          course.stars += starsGained;
+          studentData.totalStars += starsGained;
+
+          updateUserStats();
+          showNotification(
+            `¡Ganaste ${starsGained} estrellas en ${course.name}!`,
+            "success"
+          );
+        }
+      }
+
+      function simulateCourseCompletion(courseId) {
+        const course = studentData.courses[courseId];
+        if (course && course.progress < 100) {
+          course.progress = 100;
+
+          // Desbloquear curso siguiente si existe
+          unlockNextCourse(courseId);
+
+          showNotification(
+            `¡Felicidades! Completaste ${course.name}`,
+            "success"
+          );
+          updateCourseAvailability();
+        }
+      }
+
+      function unlockNextCourse(completedCourseId) {
+        // Buscar cursos que tengan este como prerequisito
+        for (const [courseId, course] of Object.entries(courseData)) {
+          if (course.prerequisite === completedCourseId) {
+            // Mover de locked a available
+            const lockedIndex = studentData.lockedCourses.indexOf(courseId);
+            if (lockedIndex > -1) {
+              studentData.lockedCourses.splice(lockedIndex, 1);
+              studentData.availableCourses.push(courseId);
+
+              showNotification(
+                `¡Nuevo curso desbloqueado: ${course.name}!`,
+                "success"
+              );
+            }
+          }
+        }
+      }
+
+      // Funciones de utilidad para desarrollo/testing
+      document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.shiftKey) {
+          switch (event.key) {
+            case "J":
+              // Simular completar Java Fundamentos
+              event.preventDefault();
+              simulateCourseCompletion("java-fundamentals");
+              break;
+            case "W":
+              // Simular completar Desarrollo Web
+              event.preventDefault();
+              simulateCourseCompletion("web-development");
+              break;
+            case "S":
+              // Simular ganancia de estrellas
+              event.preventDefault();
+              simulateProgressUpdate();
+              break;
+            case "N":
+              // Mostrar notificación de prueba
+              event.preventDefault();
+              showNotification("Notificación de prueba del sistema", "info");
+              break;
+          }
+        }
+      });
+
+      // Funciones para guardar/cargar progreso (simulado)
+      function saveProgress() {
+        try {
+          localStorage.setItem(
+            "codigoParaTodosProgress",
+            JSON.stringify(studentData)
+          );
+          console.log("Progreso guardado");
+        } catch (e) {
+          console.log("Error guardando progreso:", e);
+        }
+      }
+
+      function loadProgress() {
+        try {
+          const saved = localStorage.getItem("codigoParaTodosProgress");
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            studentData = { ...studentData, ...parsed };
+            console.log("Progreso cargado");
+          }
+        } catch (e) {
+          console.log("Error cargando progreso:", e);
+        }
+      }
+
+      // Guardar progreso periódicamente
+      setInterval(saveProgress, 30000);
+
+      // Funciones de análisis para dashboards
+      function getCourseCompletionRate(courseId) {
+        const course = studentData.courses[courseId];
+        if (!course) return 0;
+
+        const topics = Object.values(course.topics);
+        const completedTopics = topics.filter(
+          (topic) => topic.completed
+        ).length;
+        return topics.length > 0 ? (completedTopics / topics.length) * 100 : 0;
+      }
+
+      function getTotalStudyTime() {
+        // Simular tiempo de estudio basado en progreso
+        let totalMinutes = 0;
+
+        for (const course of Object.values(studentData.courses)) {
+          totalMinutes += course.progress * 2; // 2 minutos por % de progreso
+        }
+
+        return Math.round(totalMinutes);
+      }
+
+      function getWeeklyProgress() {
+        // Simular progreso semanal
+        const baseProgress = studentData.totalStars / 10;
+        return Math.min(100, baseProgress);
+      }
+
+      // Exportar funciones para uso en otras páginas
+      window.CodigoParaTodos = {
+        studentData,
+        courseData,
+        showNotification,
+        getCourseCompletionRate,
+        getTotalStudyTime,
+        getWeeklyProgress,
+        saveProgress,
+        loadProgress,
+      };
+
+      console.log(
+        "🚀 Dashboard Multi-Curso de Código para Todos cargado completamente"
+      );
+    </script>
+  </body>
+</html>

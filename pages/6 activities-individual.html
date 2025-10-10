@@ -1,0 +1,2838 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad - Código para Todos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="#" class="nav-link" data-page="dashboard">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="#" class="nav-link" data-page="courses">
+            <i class="fas fa-book"></i>
+            Mis Cursos
+          </a>
+          <a href="#" class="nav-link active" data-page="activities">
+            <i class="fas fa-tasks"></i>
+            Actividades
+          </a>
+          <a href="#" class="nav-link" data-page="competitions">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+          <a href="#" class="nav-link" data-page="progress">
+            <i class="fas fa-chart-line"></i>
+            Mi Progreso
+          </a>
+        </div>
+
+        <div class="nav-profile">
+          <div class="profile-info">
+            <span class="user-name">Ana García</span>
+            <span class="user-level">Estudiante Activa</span>
+          </div>
+          <div class="profile-avatar">
+            <img
+              src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+              alt="Ana García"
+            />
+          </div>
+          <div class="profile-dropdown">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="activity-main">
+      <div class="activity-container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="#" id="dashboardLink">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="breadcrumb-separator">
+              <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#" id="courseLink">
+                <i class="fab fa-java"></i>
+                Java Fundamentos
+              </a>
+            </li>
+            <li class="breadcrumb-separator">
+              <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#" id="activitiesLink">
+                <i class="fas fa-tasks"></i>
+                Actividades
+              </a>
+            </li>
+            <li class="breadcrumb-separator">
+              <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="breadcrumb-item active">
+              <i class="fas fa-file-code"></i>
+              <span id="activityBreadcrumb">Números Primos</span>
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Activity Header -->
+        <header class="activity-header">
+          <div class="header-left">
+            <button class="back-button" id="backToActivities">
+              <i class="fas fa-arrow-left"></i>
+              Volver a Actividades
+            </button>
+
+            <div class="activity-title-section">
+              <h1 id="activityTitle">Números Primos</h1>
+              <p id="activityTopic">Ciclos For • Java Fundamentos</p>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="activity-meta">
+              <div class="meta-item">
+                <div class="difficulty-badge hard" id="difficultyBadge">
+                  <i class="fas fa-circle"></i>
+                  <span>Difícil</span>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <div class="type-badge upload" id="typeBadge">
+                  <i class="fas fa-upload"></i>
+                  <span>Subir Archivo</span>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <div class="due-badge urgent" id="dueBadge">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <span>Vence mañana</span>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <div class="status-badge pending" id="statusBadge">
+                  <i class="fas fa-clock"></i>
+                  <span>Pendiente</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Activity Type Selector -->
+        <div class="activity-type-selector">
+          <button class="type-selector-btn active" data-type="upload">
+            <i class="fas fa-upload"></i>
+            Números Primos (Subida)
+          </button>
+          <button class="type-selector-btn" data-type="ide">
+            <i class="fas fa-code"></i>
+            Tabla de Multiplicar (IDE)
+          </button>
+        </div>
+
+        <!-- Variante A: Upload Activity -->
+        <div
+          class="activity-content upload-activity active"
+          id="uploadActivity"
+        >
+          <div class="activity-tabs">
+            <div class="tab-nav">
+              <button class="tab-btn active" data-tab="description">
+                <i class="fas fa-file-text"></i>
+                Descripción
+              </button>
+              <button class="tab-btn" data-tab="submission">
+                <i class="fas fa-upload"></i>
+                Entrega
+              </button>
+            </div>
+
+            <!-- Tab 1: Description -->
+            <div class="tab-content active" id="descriptionTab">
+              <div class="description-container">
+                <div class="problem-statement">
+                  <h2>Problema: Números Primos</h2>
+                  <div class="problem-content">
+                    <h3>Descripción</h3>
+                    <p>
+                      Crea un programa en Java que determine si un número dado
+                      es primo o no. Un número primo es aquel que solo es
+                      divisible por 1 y por sí mismo.
+                    </p>
+
+                    <h3>Objetivos de Aprendizaje</h3>
+                    <ul>
+                      <li>Implementar ciclos for para iteración controlada</li>
+                      <li>Usar condicionales para validar condiciones</li>
+                      <li>Aplicar lógica matemática en programación</li>
+                      <li>Optimizar algoritmos básicos</li>
+                    </ul>
+
+                    <h3>Especificaciones</h3>
+                    <div class="specifications">
+                      <div class="spec-item">
+                        <strong>Entrada:</strong> Un número entero positivo
+                        mayor que 1
+                      </div>
+                      <div class="spec-item">
+                        <strong>Salida:</strong> Mensaje indicando si el número
+                        es primo o no
+                      </div>
+                      <div class="spec-item">
+                        <strong>Restricciones:</strong> El número debe estar
+                        entre 2 y 1000
+                      </div>
+                    </div>
+
+                    <h3>Ejemplos</h3>
+                    <div class="examples">
+                      <div class="example">
+                        <h4>Ejemplo 1:</h4>
+                        <div class="example-content">
+                          <div class="input-output">
+                            <div class="input"><strong>Entrada:</strong> 7</div>
+                            <div class="output">
+                              <strong>Salida:</strong> "7 es un número primo"
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="example">
+                        <h4>Ejemplo 2:</h4>
+                        <div class="example-content">
+                          <div class="input-output">
+                            <div class="input">
+                              <strong>Entrada:</strong> 12
+                            </div>
+                            <div class="output">
+                              <strong>Salida:</strong> "12 no es un número
+                              primo"
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="example">
+                        <h4>Ejemplo 3:</h4>
+                        <div class="example-content">
+                          <div class="input-output">
+                            <div class="input"><strong>Entrada:</strong> 2</div>
+                            <div class="output">
+                              <strong>Salida:</strong> "2 es un número primo"
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <h3>Criterios de Evaluación</h3>
+                    <div class="evaluation-criteria">
+                      <div class="criteria-item">
+                        <i class="fas fa-star"></i>
+                        <strong>Funcionalidad (40%):</strong> El programa
+                        funciona correctamente para todos los casos de prueba
+                      </div>
+                      <div class="criteria-item">
+                        <i class="fas fa-star"></i>
+                        <strong>Eficiencia (25%):</strong> Implementación
+                        optimizada del algoritmo
+                      </div>
+                      <div class="criteria-item">
+                        <i class="fas fa-star"></i>
+                        <strong>Código Limpio (20%):</strong> Código bien
+                        estructurado y comentado
+                      </div>
+                      <div class="criteria-item">
+                        <i class="fas fa-star"></i>
+                        <strong>Manejo de Errores (15%):</strong> Validación de
+                        entrada y manejo de casos especiales
+                      </div>
+                    </div>
+
+                    <div class="tip-section">
+                      <h3><i class="fas fa-lightbulb"></i> Sugerencias</h3>
+                      <div class="tips">
+                        <div class="tip">
+                          <strong>Optimización:</strong> Solo necesitas
+                          verificar divisores hasta la raíz cuadrada del número
+                        </div>
+                        <div class="tip">
+                          <strong>Casos especiales:</strong> Recuerda que 2 es
+                          el único número primo par
+                        </div>
+                        <div class="tip">
+                          <strong>Estructura:</strong> Usa un ciclo for para
+                          verificar divisores desde 2 hasta √n
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Submission -->
+            <div class="tab-content" id="submissionTab">
+              <div class="submission-container">
+                <div class="submission-area">
+                  <h2>Entrega de Archivo</h2>
+
+                  <div class="upload-section">
+                    <div class="upload-area" id="uploadArea">
+                      <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                      </div>
+                      <div class="upload-text">
+                        <h3>Arrastra tu archivo .java aquí</h3>
+                        <p>
+                          o
+                          <span class="browse-link"
+                            >busca en tu computadora</span
+                          >
+                        </p>
+                      </div>
+                      <div class="upload-requirements">
+                        <small
+                          >Formato aceptado: .java • Tamaño máximo: 5MB</small
+                        >
+                      </div>
+                      <input
+                        type="file"
+                        id="fileInput"
+                        accept=".java"
+                        style="display: none"
+                      />
+                    </div>
+
+                    <div class="uploaded-files" id="uploadedFiles">
+                      <!-- Archivos subidos aparecerán aquí -->
+                    </div>
+                  </div>
+
+                  <div class="submission-actions">
+                    <button class="btn-secondary" id="saveDraftBtn">
+                      <i class="fas fa-save"></i>
+                      Guardar Borrador
+                    </button>
+                    <button class="btn-primary" id="submitBtn" disabled>
+                      <i class="fas fa-paper-plane"></i>
+                      Entregar Actividad
+                    </button>
+                  </div>
+
+                  <div class="submission-info">
+                    <div class="info-item">
+                      <i class="fas fa-clock"></i>
+                      <span
+                        >Tiempo restante:
+                        <strong class="urgent"
+                          >23 horas 45 minutos</strong
+                        ></span
+                      >
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-redo"></i>
+                      <span>Intentos disponibles: <strong>3</strong></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="submission-history">
+                  <h3>Historial de Entregas</h3>
+                  <div class="history-empty">
+                    <i class="fas fa-history"></i>
+                    <p>No hay entregas anteriores</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variante B: IDE Activity -->
+        <div class="activity-content ide-activity" id="ideActivity">
+          <div class="ide-header">
+            <h2>Tabla de Multiplicar</h2>
+            <div class="ide-status">
+              <div class="progress-indicator">
+                <span class="progress-text">Progreso: 65%</span>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 65%"></div>
+                </div>
+              </div>
+              <div class="save-status">
+                <i class="fas fa-save"></i>
+                <span>Guardado hace 2 minutos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="problem-section">
+            <div class="problem-header">
+              <h3>Problema</h3>
+              <div class="problem-actions">
+                <button class="btn-icon" title="Minimizar">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="problem-content">
+              <p>
+                <strong>Descripción:</strong> Crea un programa que genere y
+                muestre la tabla de multiplicar de un número dado del 1 al 10.
+              </p>
+              <p><strong>Entrada:</strong> Un número entero entre 1 y 20</p>
+              <p>
+                <strong>Salida:</strong> La tabla de multiplicar formateada
+                correctamente
+              </p>
+
+              <div class="problem-example">
+                <strong>Ejemplo para el número 5:</strong>
+                <pre>
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+...
+5 x 10 = 50</pre
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="ide-workspace">
+            <div class="workspace-left">
+              <div class="test-cases-section">
+                <div class="section-header">
+                  <h3>Casos de Prueba</h3>
+                  <button class="btn-icon" id="runTests">
+                    <i class="fas fa-play"></i>
+                    Ejecutar
+                  </button>
+                </div>
+
+                <div class="test-cases">
+                  <div class="test-case">
+                    <div class="test-header">
+                      <span class="test-title">Caso 1</span>
+                      <span class="test-status pending">
+                        <i class="fas fa-clock"></i>
+                        Pendiente
+                      </span>
+                    </div>
+                    <div class="test-content">
+                      <div class="test-input"><strong>Entrada:</strong> 3</div>
+                      <div class="test-expected">
+                        <strong>Salida esperada:</strong>
+                        <pre>
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+3 x 4 = 12
+3 x 5 = 15
+3 x 6 = 18
+3 x 7 = 21
+3 x 8 = 24
+3 x 9 = 27
+3 x 10 = 30</pre
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="test-case">
+                    <div class="test-header">
+                      <span class="test-title">Caso 2</span>
+                      <span class="test-status pending">
+                        <i class="fas fa-clock"></i>
+                        Pendiente
+                      </span>
+                    </div>
+                    <div class="test-content">
+                      <div class="test-input"><strong>Entrada:</strong> 7</div>
+                      <div class="test-expected">
+                        <strong>Salida esperada:</strong>
+                        <pre>
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+...</pre
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="console-section">
+                <div class="section-header">
+                  <h3>Consola</h3>
+                  <button class="btn-icon" id="clearConsole">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="console-output" id="consoleOutput">
+                  <div class="console-line info">
+                    <span class="timestamp">[12:34:56]</span>
+                    <span class="message">Compilación exitosa ✓</span>
+                  </div>
+                  <div class="console-line">
+                    <span class="timestamp">[12:35:01]</span>
+                    <span class="message">Listo para ejecutar</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="workspace-right">
+              <div class="code-editor-section">
+                <div class="editor-header">
+                  <div class="editor-title">
+                    <i class="fab fa-java"></i>
+                    <span>TablaMultiplicar.java</span>
+                  </div>
+                  <div class="editor-actions">
+                    <button
+                      class="btn-icon"
+                      id="formatCode"
+                      title="Formatear código"
+                    >
+                      <i class="fas fa-indent"></i>
+                    </button>
+                    <button
+                      class="btn-icon"
+                      id="resetCode"
+                      title="Restablecer código"
+                    >
+                      <i class="fas fa-undo"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="code-editor">
+                  <div class="line-numbers" id="lineNumbers">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span>12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                  </div>
+                  <textarea
+                    class="code-input"
+                    id="codeInput"
+                    placeholder="Escribe tu código aquí..."
+                  >
+import java.util.Scanner;
+
+public class TablaMultiplicar {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Ingresa un número: ");
+        int numero = scanner.nextInt();
+        
+        // TODO: Implementa la tabla de multiplicar aquí
+        for (int i = 1; i <= 10; i++) {
+            // Tu código aquí
+        }
+        
+        scanner.close();
+    }
+}</textarea
+                  >
+                </div>
+
+                <div class="editor-footer">
+                  <div class="editor-info">
+                    <span>Línea 8, Columna 12</span>
+                    <span>UTF-8</span>
+                    <span>Java</span>
+                  </div>
+                  <div class="editor-actions-bottom">
+                    <button class="btn-secondary" id="saveDraft">
+                      <i class="fas fa-save"></i>
+                      Guardar
+                    </button>
+                    <button class="btn-primary" id="submitCode">
+                      <i class="fas fa-paper-plane"></i>
+                      Entregar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <style>
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --java-color: #ed8b00;
+        --neutral-light: #f8f9fa;
+        --neutral-dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --border-light: #e5e5e5;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+        --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.2);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+      }
+
+      /* Reset y Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: white;
+        box-shadow: var(--shadow-light);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        border-radius: 8px;
+        transition: var(--transition);
+        font-weight: 500;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .nav-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .nav-profile:hover {
+        background: var(--neutral-light);
+      }
+
+      .profile-info {
+        text-align: right;
+      }
+
+      .user-name {
+        display: block;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .user-level {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .profile-avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-blue);
+      }
+
+      .profile-dropdown {
+        color: var(--text-secondary);
+      }
+
+      /* Main Content */
+      .activity-main {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+
+      .activity-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 15px 20px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .breadcrumb-item a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .breadcrumb-item a:hover {
+        color: var(--primary-blue);
+      }
+
+      .breadcrumb-item.active {
+        color: var(--text-primary);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .breadcrumb-separator {
+        margin: 0 12px;
+        color: var(--text-secondary);
+      }
+
+      /* Activity Header */
+      .activity-header {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .back-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--neutral-light);
+        border: none;
+        border-radius: 8px;
+        color: var(--text-secondary);
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .back-button:hover {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .activity-title-section h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .activity-title-section p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .activity-meta {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+      }
+
+      /* Badges */
+      .difficulty-badge,
+      .type-badge,
+      .due-badge,
+      .status-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .difficulty-badge.easy {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .difficulty-badge.medium {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .difficulty-badge.hard {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+      }
+
+      .type-badge.upload {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      .type-badge.ide {
+        background: rgba(126, 211, 33, 0.1);
+        color: var(--primary-green);
+      }
+
+      .due-badge.urgent {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+        animation: pulse 2s infinite;
+      }
+
+      .due-badge.normal {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .status-badge.pending {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .status-badge.progress {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      .status-badge.completed {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      /* Activity Type Selector */
+      .activity-type-selector {
+        display: flex;
+        gap: 10px;
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 15px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .type-selector-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        border: 2px solid var(--border-light);
+        background: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        color: var(--text-secondary);
+      }
+
+      .type-selector-btn:hover {
+        border-color: var(--primary-blue);
+        color: var(--primary-blue);
+      }
+
+      .type-selector-btn.active {
+        background: var(--primary-blue);
+        color: white;
+        border-color: var(--primary-blue);
+      }
+
+      /* Activity Content */
+      .activity-content {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        overflow: hidden;
+        display: none;
+      }
+
+      .activity-content.active {
+        display: block;
+      }
+
+      /* Upload Activity Styles */
+      .activity-tabs {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tab-nav {
+        display: flex;
+        background: var(--neutral-light);
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .tab-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 15px 25px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        color: var(--text-secondary);
+        border-bottom: 3px solid transparent;
+      }
+
+      .tab-btn:hover {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-blue);
+      }
+
+      .tab-btn.active {
+        background: white;
+        color: var(--primary-blue);
+        border-bottom-color: var(--primary-blue);
+      }
+
+      .tab-content {
+        padding: 30px;
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Description Tab */
+      .description-container {
+        max-width: 800px;
+      }
+
+      .problem-statement h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--border-light);
+      }
+
+      .problem-content h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 25px 0 15px 0;
+      }
+
+      .problem-content p {
+        margin-bottom: 15px;
+        line-height: 1.7;
+      }
+
+      .problem-content ul {
+        margin: 15px 0;
+        padding-left: 20px;
+      }
+
+      .problem-content li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+
+      .specifications {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .spec-item {
+        padding: 12px 15px;
+        background: var(--neutral-light);
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-blue);
+      }
+
+      .examples {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .example {
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .example h4 {
+        background: var(--neutral-light);
+        padding: 10px 15px;
+        margin: 0;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .example-content {
+        padding: 15px;
+      }
+
+      .input-output {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .input,
+      .output {
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      .input {
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .output {
+        background: rgba(39, 174, 96, 0.1);
+      }
+
+      .evaluation-criteria {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 20px 0;
+      }
+
+      .criteria-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px;
+        background: var(--neutral-light);
+        border-radius: 8px;
+      }
+
+      .criteria-item i {
+        color: var(--accent-yellow);
+        margin-top: 2px;
+      }
+
+      .tip-section {
+        margin-top: 30px;
+        padding: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(126, 211, 33, 0.1),
+          rgba(74, 144, 226, 0.05)
+        );
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-green);
+      }
+
+      .tip-section h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary-green);
+        margin-bottom: 15px;
+      }
+
+      .tips {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .tip {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 6px;
+      }
+
+      /* Submission Tab */
+      .submission-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+      }
+
+      .submission-area h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 25px;
+      }
+
+      .upload-area {
+        border: 2px dashed var(--border-light);
+        border-radius: var(--border-radius);
+        padding: 40px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+        background: var(--neutral-light);
+      }
+
+      .upload-area:hover {
+        border-color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.05);
+      }
+
+      .upload-area.dragover {
+        border-color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .upload-icon {
+        font-size: 3rem;
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+      }
+
+      .upload-text h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .upload-text p {
+        color: var(--text-secondary);
+        margin-bottom: 15px;
+      }
+
+      .browse-link {
+        color: var(--primary-blue);
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .upload-requirements {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+      }
+
+      .uploaded-files {
+        margin-top: 20px;
+      }
+
+      .file-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 15px;
+        background: var(--neutral-light);
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .file-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .file-icon {
+        color: var(--java-color);
+        font-size: 1.2rem;
+      }
+
+      .file-details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .file-name {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .file-size {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .file-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-icon {
+        padding: 6px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: var(--transition);
+        color: var(--text-secondary);
+      }
+
+      .btn-icon:hover {
+        background: var(--border-light);
+      }
+
+      .btn-icon.danger:hover {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+      }
+
+      .submission-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.95rem;
+      }
+
+      .btn-primary {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        background: #3a7bd5;
+        transform: translateY(-2px);
+      }
+
+      .btn-primary:disabled {
+        background: var(--text-secondary);
+        cursor: not-allowed;
+      }
+
+      .btn-secondary {
+        background: var(--neutral-light);
+        color: var(--text-secondary);
+        border: 1px solid var(--border-light);
+      }
+
+      .btn-secondary:hover {
+        background: var(--border-light);
+      }
+
+      .submission-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        padding: 15px;
+        background: var(--neutral-light);
+        border-radius: 8px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .info-item .urgent {
+        color: var(--error);
+        font-weight: 600;
+      }
+
+      .submission-history {
+        padding: 20px;
+        background: var(--neutral-light);
+        border-radius: var(--border-radius);
+        height: fit-content;
+      }
+
+      .submission-history h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 15px;
+      }
+
+      .history-empty {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--text-secondary);
+      }
+
+      .history-empty i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        opacity: 0.5;
+      }
+
+      /* IDE Activity Styles */
+      .ide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 25px;
+        border-bottom: 1px solid var(--border-light);
+        background: var(--neutral-light);
+      }
+
+      .ide-header h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .ide-status {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .progress-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+      }
+
+      .progress-text {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .progress-bar {
+        width: 120px;
+        height: 6px;
+        background: var(--border-light);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 3px;
+        transition: width 1s ease;
+      }
+
+      .save-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .problem-section {
+        padding: 20px 25px;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .problem-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .problem-header h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .problem-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .problem-content p {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .problem-example {
+        margin-top: 15px;
+        padding: 15px;
+        background: var(--neutral-light);
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-blue);
+      }
+
+      .problem-example pre {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.9rem;
+        margin-top: 10px;
+        line-height: 1.4;
+      }
+
+      .ide-workspace {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 600px;
+      }
+
+      .workspace-left {
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--border-light);
+      }
+
+      .workspace-right {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: var(--neutral-light);
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .section-header h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .test-cases-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .test-cases {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+      }
+
+      .test-case {
+        background: var(--neutral-light);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        overflow: hidden;
+      }
+
+      .test-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        background: white;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .test-title {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .test-status {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        border-radius: 12px;
+      }
+
+      .test-status.pending {
+        background: rgba(243, 156, 18, 0.1);
+        color: var(--warning);
+      }
+
+      .test-status.passed {
+        background: rgba(39, 174, 96, 0.1);
+        color: var(--success);
+      }
+
+      .test-status.failed {
+        background: rgba(231, 76, 60, 0.1);
+        color: var(--error);
+      }
+
+      .test-content {
+        padding: 15px;
+      }
+
+      .test-input,
+      .test-expected {
+        margin-bottom: 10px;
+      }
+
+      .test-expected pre {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        margin-top: 8px;
+        padding: 10px;
+        background: rgba(74, 144, 226, 0.1);
+        border-radius: 4px;
+        line-height: 1.3;
+      }
+
+      .console-section {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .console-output {
+        flex: 1;
+        padding: 15px;
+        background: #1e1e1e;
+        color: #ffffff;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        overflow-y: auto;
+        line-height: 1.4;
+      }
+
+      .console-line {
+        margin-bottom: 5px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .timestamp {
+        color: #666;
+      }
+
+      .console-line.info .message {
+        color: #4caf50;
+      }
+
+      .console-line.error .message {
+        color: #f44336;
+      }
+
+      .console-line.warning .message {
+        color: #ff9800;
+      }
+
+      .code-editor-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .editor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        background: var(--neutral-light);
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .editor-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .editor-title i {
+        color: var(--java-color);
+      }
+
+      .editor-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .code-editor {
+        flex: 1;
+        display: flex;
+        position: relative;
+      }
+
+      .line-numbers {
+        background: #f8f9fa;
+        padding: 15px 10px;
+        border-right: 1px solid var(--border-light);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        user-select: none;
+        min-width: 50px;
+        text-align: right;
+      }
+
+      .line-numbers span {
+        display: block;
+        height: 1.6em;
+      }
+
+      .code-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 15px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        resize: none;
+        background: white;
+      }
+
+      .editor-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: var(--neutral-light);
+        border-top: 1px solid var(--border-light);
+      }
+
+      .editor-info {
+        display: flex;
+        gap: 20px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .editor-actions-bottom {
+        display: flex;
+        gap: 10px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .activity-header {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .submission-container {
+          grid-template-columns: 1fr;
+        }
+
+        .ide-workspace {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+
+        .workspace-left {
+          border-right: none;
+          border-bottom: 1px solid var(--border-light);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          padding: 0 15px;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .activity-main {
+          padding: 20px 15px;
+        }
+
+        .activity-header {
+          padding: 20px;
+        }
+
+        .header-left {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .activity-meta {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .tab-content {
+          padding: 20px;
+        }
+
+        .submission-actions {
+          flex-direction: column;
+        }
+
+        .test-cases-section,
+        .console-section {
+          height: auto;
+          min-height: 200px;
+        }
+
+        .code-editor {
+          min-height: 300px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      .activity-content {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .tab-content {
+        animation: fadeInUp 0.4s ease forwards;
+      }
+    </style>
+    <script>
+      // Variables globales para la vista de actividad
+      let currentActivity = {
+        type: "upload", // 'upload' o 'ide'
+        id: "numeros-primos",
+        title: "Números Primos",
+        topic: "Ciclos For",
+        difficulty: "hard",
+        status: "pending",
+        dueDate: "2024-11-29",
+        progress: 0,
+      };
+
+      let uploadedFiles = [];
+      let codeContent = "";
+      let isDirty = false; // Para detectar cambios no guardados
+
+      // Inicialización
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeActivityView();
+        setupEventListeners();
+        loadActivityContent();
+      });
+
+      function initializeActivityView() {
+        updateActivityHeader();
+        setupFileUpload();
+        setupCodeEditor();
+        console.log("🎯 Vista individual de actividad inicializada");
+      }
+
+      function setupEventListeners() {
+        // Navigation
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", handleNavigation);
+        });
+
+        // Breadcrumb navigation
+        document
+          .getElementById("dashboardLink")
+          .addEventListener("click", () => {
+            showNotification("Navegando al Dashboard", "info");
+          });
+
+        document.getElementById("courseLink").addEventListener("click", () => {
+          showNotification("Navegando al curso Java Fundamentos", "info");
+        });
+
+        document
+          .getElementById("activitiesLink")
+          .addEventListener("click", () => {
+            showNotification("Navegando a Actividades", "info");
+          });
+
+        // Back button
+        document
+          .getElementById("backToActivities")
+          .addEventListener("click", () => {
+            if (isDirty) {
+              if (
+                confirm(
+                  "Tienes cambios sin guardar. ¿Estás seguro de que quieres salir?"
+                )
+              ) {
+                navigateToActivities();
+              }
+            } else {
+              navigateToActivities();
+            }
+          });
+
+        // Activity type selector
+        document.querySelectorAll(".type-selector-btn").forEach((btn) => {
+          btn.addEventListener("click", handleActivityTypeChange);
+        });
+
+        // Tab navigation
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.addEventListener("click", handleTabChange);
+        });
+
+        // Upload activity buttons
+        document
+          .getElementById("saveDraftBtn")
+          ?.addEventListener("click", saveDraft);
+        document
+          .getElementById("submitBtn")
+          ?.addEventListener("click", submitActivity);
+
+        // IDE activity buttons
+        document
+          .getElementById("runTests")
+          ?.addEventListener("click", runTests);
+        document
+          .getElementById("clearConsole")
+          ?.addEventListener("click", clearConsole);
+        document
+          .getElementById("formatCode")
+          ?.addEventListener("click", formatCode);
+        document
+          .getElementById("resetCode")
+          ?.addEventListener("click", resetCode);
+        document
+          .getElementById("saveDraft")
+          ?.addEventListener("click", saveDraft);
+        document
+          .getElementById("submitCode")
+          ?.addEventListener("click", submitCode);
+
+        // Code editor
+        const codeInput = document.getElementById("codeInput");
+        if (codeInput) {
+          codeInput.addEventListener("input", handleCodeChange);
+          codeInput.addEventListener("scroll", syncLineNumbers);
+        }
+
+        // Prevent page unload with unsaved changes
+        window.addEventListener("beforeunload", (e) => {
+          if (isDirty) {
+            e.preventDefault();
+            e.returnValue = "";
+          }
+        });
+      }
+
+      function updateActivityHeader() {
+        // Actualizar información en el header según el tipo de actividad
+        const activityData = getActivityData(currentActivity.type);
+
+        document.getElementById("activityBreadcrumb").textContent =
+          activityData.title;
+        document.getElementById("activityTitle").textContent =
+          activityData.title;
+        document.getElementById(
+          "activityTopic"
+        ).textContent = `${activityData.topic} • Java Fundamentos`;
+
+        // Update badges
+        updateBadge("difficultyBadge", activityData.difficulty, "difficulty");
+        updateBadge("typeBadge", activityData.type, "type");
+        updateBadge("dueBadge", activityData.dueStatus, "due");
+        updateBadge("statusBadge", activityData.status, "status");
+      }
+
+      function getActivityData(type) {
+        const activities = {
+          upload: {
+            title: "Números Primos",
+            topic: "Ciclos For",
+            difficulty: "hard",
+            type: "upload",
+            status: "pending",
+            dueStatus: "urgent",
+            dueText: "Vence mañana",
+          },
+          ide: {
+            title: "Tabla de Multiplicar",
+            topic: "Ciclos For",
+            difficulty: "medium",
+            type: "ide",
+            status: "progress",
+            dueStatus: "normal",
+            dueText: "Vence en 3 días",
+          },
+        };
+
+        return activities[type] || activities.upload;
+      }
+
+      function updateBadge(badgeId, value, type) {
+        const badge = document.getElementById(badgeId);
+        if (!badge) return;
+
+        // Remove existing classes
+        badge.className = badge.className.split(" ")[0];
+
+        // Add new class and update content
+        switch (type) {
+          case "difficulty":
+            badge.classList.add(value);
+            badge.querySelector("span").textContent =
+              value === "hard"
+                ? "Difícil"
+                : value === "medium"
+                ? "Intermedio"
+                : "Fácil";
+            break;
+          case "type":
+            badge.classList.add(value);
+            badge.querySelector("i").className =
+              value === "upload" ? "fas fa-upload" : "fas fa-code";
+            badge.querySelector("span").textContent =
+              value === "upload" ? "Subir Archivo" : "IDE Integrado";
+            break;
+          case "due":
+            badge.classList.add(value);
+            const activityData = getActivityData(currentActivity.type);
+            badge.querySelector("span").textContent = activityData.dueText;
+            break;
+          case "status":
+            badge.classList.add(value);
+            const statusText = {
+              pending: "Pendiente",
+              progress: "En Progreso",
+              completed: "Completada",
+            };
+            badge.querySelector("span").textContent =
+              statusText[value] || "Pendiente";
+            break;
+        }
+      }
+
+      function handleActivityTypeChange(event) {
+        const btn = event.currentTarget;
+        const type = btn.getAttribute("data-type");
+
+        // Update active button
+        document
+          .querySelectorAll(".type-selector-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // Switch activity content
+        document.querySelectorAll(".activity-content").forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        if (type === "upload") {
+          document.getElementById("uploadActivity").classList.add("active");
+          currentActivity.type = "upload";
+        } else {
+          document.getElementById("ideActivity").classList.add("active");
+          currentActivity.type = "ide";
+        }
+
+        updateActivityHeader();
+        showNotification(`Cambiando a: ${getActivityData(type).title}`, "info");
+      }
+
+      function handleTabChange(event) {
+        const btn = event.currentTarget;
+        const tabName = btn.getAttribute("data-tab");
+
+        // Update active tab button
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // Update active tab content
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        document.getElementById(tabName + "Tab").classList.add("active");
+      }
+
+      function setupFileUpload() {
+        const uploadArea = document.getElementById("uploadArea");
+        const fileInput = document.getElementById("fileInput");
+        const browseLink = document.querySelector(".browse-link");
+
+        if (!uploadArea || !fileInput) return;
+
+        // Click to browse
+        uploadArea.addEventListener("click", () => fileInput.click());
+        browseLink.addEventListener("click", (e) => {
+          e.stopPropagation();
+          fileInput.click();
+        });
+
+        // Drag and drop
+        uploadArea.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          uploadArea.classList.add("dragover");
+        });
+
+        uploadArea.addEventListener("dragleave", () => {
+          uploadArea.classList.remove("dragover");
+        });
+
+        uploadArea.addEventListener("drop", (e) => {
+          e.preventDefault();
+          uploadArea.classList.remove("dragover");
+
+          const files = Array.from(e.dataTransfer.files);
+          handleFileUpload(files);
+        });
+
+        // File input change
+        fileInput.addEventListener("change", (e) => {
+          const files = Array.from(e.target.files);
+          handleFileUpload(files);
+        });
+      }
+
+      function handleFileUpload(files) {
+        const validFiles = files.filter((file) => {
+          // Validar tipo de archivo
+          if (!file.name.endsWith(".java")) {
+            showNotification(
+              `${file.name}: Solo se aceptan archivos .java`,
+              "error"
+            );
+            return false;
+          }
+
+          // Validar tamaño (5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            showNotification(
+              `${file.name}: El archivo es muy grande (máximo 5MB)`,
+              "error"
+            );
+            return false;
+          }
+
+          return true;
+        });
+
+        validFiles.forEach((file) => {
+          // Verificar si ya existe
+          if (uploadedFiles.find((f) => f.name === file.name)) {
+            showNotification(
+              `${file.name}: El archivo ya fue subido`,
+              "warning"
+            );
+            return;
+          }
+
+          // Agregar archivo
+          const fileObj = {
+            name: file.name,
+            size: formatFileSize(file.size),
+            uploadDate: new Date(),
+            file: file,
+          };
+
+          uploadedFiles.push(fileObj);
+          addFileToUI(fileObj);
+          isDirty = true;
+        });
+
+        updateSubmitButton();
+      }
+
+      function addFileToUI(fileObj) {
+        const uploadedFilesContainer = document.getElementById("uploadedFiles");
+        if (!uploadedFilesContainer) return;
+
+        const fileElement = document.createElement("div");
+        fileElement.className = "file-item";
+        fileElement.innerHTML = `
+        <div class="file-info">
+            <div class="file-icon">
+                <i class="fab fa-java"></i>
+            </div>
+            <div class="file-details">
+                <div class="file-name">${fileObj.name}</div>
+                <div class="file-size">${fileObj.size}</div>
+            </div>
+        </div>
+        <div class="file-actions">
+            <button class="btn-icon" onclick="previewFile('${fileObj.name}')" title="Vista previa">
+                <i class="fas fa-eye"></i>
+            </button>
+            <button class="btn-icon danger" onclick="removeFile('${fileObj.name}')" title="Eliminar">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    `;
+
+        uploadedFilesContainer.appendChild(fileElement);
+        showNotification(`Archivo agregado: ${fileObj.name}`, "success");
+      }
+
+      function removeFile(fileName) {
+        uploadedFiles = uploadedFiles.filter((f) => f.name !== fileName);
+
+        // Remove from UI
+        const fileElements = document.querySelectorAll(".file-item");
+        fileElements.forEach((element) => {
+          if (element.querySelector(".file-name").textContent === fileName) {
+            element.remove();
+          }
+        });
+
+        updateSubmitButton();
+        isDirty = true;
+        showNotification(`Archivo eliminado: ${fileName}`, "info");
+      }
+
+      function previewFile(fileName) {
+        const file = uploadedFiles.find((f) => f.name === fileName);
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          // Crear modal de vista previa
+          showFilePreview(fileName, e.target.result);
+        };
+        reader.readAsText(file.file);
+      }
+
+      function showFilePreview(fileName, content) {
+        // Crear modal simple de vista previa
+        const modal = document.createElement("div");
+        modal.className = "preview-modal";
+        modal.innerHTML = `
+        <div class="modal-overlay" onclick="closePreview()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h3><i class="fab fa-java"></i> ${fileName}</h3>
+                    <button onclick="closePreview()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <pre><code>${content}</code></pre>
+                </div>
+            </div>
+        </div>
+    `;
+
+        // Agregar estilos del modal
+        if (!document.querySelector("#preview-modal-styles")) {
+          const styles = document.createElement("style");
+          styles.id = "preview-modal-styles";
+          styles.textContent = `
+            .preview-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1000;
+            }
+            .modal-overlay {
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+            .modal-content {
+                background: white;
+                border-radius: 12px;
+                max-width: 800px;
+                max-height: 80vh;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                border-bottom: 1px solid var(--border-light);
+            }
+            .modal-header button {
+                background: none;
+                border: none;
+                font-size: 1.2rem;
+                cursor: pointer;
+                color: var(--text-secondary);
+                padding: 5px;
+            }
+            .modal-body {
+                padding: 20px;
+                overflow: auto;
+                flex: 1;
+            }
+            .modal-body pre {
+                background: #f8f9fa;
+                padding: 15px;
+                border-radius: 8px;
+                overflow: auto;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+        `;
+          document.head.appendChild(styles);
+        }
+
+        document.body.appendChild(modal);
+        window.closePreview = () => modal.remove();
+      }
+
+      function updateSubmitButton() {
+        const submitBtn = document.getElementById("submitBtn");
+        if (!submitBtn) return;
+
+        if (uploadedFiles.length > 0) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML =
+            '<i class="fas fa-paper-plane"></i> Entregar Actividad';
+        } else {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<i class="fas fa-paper-plane"></i> Entregar Actividad';
+        }
+      }
+
+      function setupCodeEditor() {
+        const codeInput = document.getElementById("codeInput");
+        if (!codeInput) return;
+
+        // Simular syntax highlighting básico
+        codeInput.addEventListener("input", updateLineNumbers);
+
+        // Configurar contenido inicial
+        codeContent = codeInput.value;
+        updateLineNumbers();
+      }
+
+      function handleCodeChange(event) {
+        codeContent = event.target.value;
+        isDirty = true;
+        updateLineNumbers();
+
+        // Simular auto-save cada 30 segundos
+        clearTimeout(window.autoSaveTimer);
+        window.autoSaveTimer = setTimeout(() => {
+          autoSave();
+        }, 30000);
+      }
+
+      function updateLineNumbers() {
+        const codeInput = document.getElementById("codeInput");
+        const lineNumbers = document.getElementById("lineNumbers");
+
+        if (!codeInput || !lineNumbers) return;
+
+        const lines = codeInput.value.split("\n").length;
+        const numbersHtml = Array.from(
+          { length: Math.max(lines, 15) },
+          (_, i) => `<span>${i + 1}</span>`
+        ).join("");
+
+        lineNumbers.innerHTML = numbersHtml;
+      }
+
+      function syncLineNumbers() {
+        const codeInput = document.getElementById("codeInput");
+        const lineNumbers = document.getElementById("lineNumbers");
+
+        if (!codeInput || !lineNumbers) return;
+
+        lineNumbers.scrollTop = codeInput.scrollTop;
+      }
+
+      function runTests() {
+        showNotification("Ejecutando casos de prueba...", "info");
+
+        // Simular ejecución de tests
+        setTimeout(() => {
+          const testCases = document.querySelectorAll(".test-case");
+          testCases.forEach((testCase, index) => {
+            const status = testCase.querySelector(".test-status");
+
+            setTimeout(() => {
+              // Simular resultados aleatorios
+              const passed = Math.random() > 0.3;
+
+              status.className = `test-status ${passed ? "passed" : "failed"}`;
+              status.innerHTML = passed
+                ? '<i class="fas fa-check"></i> Aprobado'
+                : '<i class="fas fa-times"></i> Falló';
+            }, index * 500);
+          });
+
+          // Agregar resultados a la consola
+          addConsoleMessage("Ejecutando casos de prueba...", "info");
+
+          setTimeout(() => {
+            addConsoleMessage("Caso 1: APROBADO ✓", "success");
+            addConsoleMessage("Caso 2: APROBADO ✓", "success");
+            addConsoleMessage("Todos los casos de prueba pasaron!", "success");
+          }, 1000);
+        }, 500);
+      }
+
+      function addConsoleMessage(message, type = "info") {
+        const console = document.getElementById("consoleOutput");
+        if (!console) return;
+
+        const timestamp = new Date().toLocaleTimeString();
+        const line = document.createElement("div");
+        line.className = `console-line ${type}`;
+        line.innerHTML = `
+        <span class="timestamp">[${timestamp}]</span>
+        <span class="message">${message}</span>
+    `;
+
+        console.appendChild(line);
+        console.scrollTop = console.scrollHeight;
+      }
+
+      function clearConsole() {
+        const console = document.getElementById("consoleOutput");
+        if (console) {
+          console.innerHTML = `
+            <div class="console-line info">
+                <span class="timestamp">[${new Date().toLocaleTimeString()}]</span>
+                <span class="message">Consola limpiada</span>
+            </div>
+        `;
+        }
+      }
+
+      function formatCode() {
+        const codeInput = document.getElementById("codeInput");
+        if (!codeInput) return;
+
+        // Simulación simple de formateo
+        showNotification("Código formateado", "success");
+        addConsoleMessage("Código formateado automáticamente", "info");
+      }
+
+      function resetCode() {
+        if (
+          confirm(
+            "¿Estás seguro de que quieres restablecer el código al estado inicial?"
+          )
+        ) {
+          const codeInput = document.getElementById("codeInput");
+          if (codeInput) {
+            codeInput.value = getInitialCode();
+            codeContent = codeInput.value;
+            updateLineNumbers();
+            isDirty = true;
+            showNotification("Código restablecido", "info");
+          }
+        }
+      }
+
+      function getInitialCode() {
+        return `import java.util.Scanner;
+
+public class TablaMultiplicar {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Ingresa un número: ");
+        int numero = scanner.nextInt();
+        
+        // TODO: Implementa la tabla de multiplicar aquí
+        for (int i = 1; i <= 10; i++) {
+            // Tu código aquí
+        }
+        
+        scanner.close();
+    }
+}`;
+      }
+
+      function saveDraft() {
+        // Simular guardado
+        showNotification("Borrador guardado", "success");
+        isDirty = false;
+
+        // Actualizar estado de guardado
+        const saveStatus = document.querySelector(".save-status span");
+        if (saveStatus) {
+          saveStatus.textContent = "Guardado ahora";
+        }
+      }
+
+      function autoSave() {
+        if (isDirty) {
+          saveDraft();
+          addConsoleMessage("Auto-guardado realizado", "info");
+        }
+      }
+
+      function submitActivity() {
+        if (uploadedFiles.length === 0) {
+          showNotification(
+            "Debes subir al menos un archivo para entregar",
+            "warning"
+          );
+          return;
+        }
+
+        if (
+          confirm(
+            "¿Estás seguro de que quieres entregar esta actividad? No podrás hacer cambios después."
+          )
+        ) {
+          showNotification("Entregando actividad...", "info");
+
+          // Simular envío
+          setTimeout(() => {
+            showNotification("¡Actividad entregada exitosamente!", "success");
+            isDirty = false;
+
+            // Deshabilitar controles
+            document.getElementById("submitBtn").disabled = true;
+            document.getElementById("submitBtn").innerHTML =
+              '<i class="fas fa-check"></i> Entregada';
+
+            setTimeout(() => {
+              navigateToActivities();
+            }, 2000);
+          }, 2000);
+        }
+      }
+
+      function submitCode() {
+        if (
+          confirm(
+            "¿Estás seguro de que quieres entregar tu código? Será evaluado automáticamente."
+          )
+        ) {
+          showNotification("Entregando código para evaluación...", "info");
+          addConsoleMessage("Iniciando evaluación automática...", "info");
+
+          // Simular evaluación
+          setTimeout(() => {
+            addConsoleMessage("Compilando código...", "info");
+
+            setTimeout(() => {
+              addConsoleMessage("Ejecutando casos de prueba...", "info");
+              runTests();
+
+              setTimeout(() => {
+                addConsoleMessage("Evaluación completada!", "success");
+                addConsoleMessage(
+                  "Calificación: 4/5 estrellas ⭐⭐⭐⭐",
+                  "success"
+                );
+                showNotification(
+                  "¡Código evaluado! Calificación: 4/5 estrellas",
+                  "success"
+                );
+                isDirty = false;
+              }, 3000);
+            }, 1500);
+          }, 1000);
+        }
+      }
+
+      function navigateToActivities() {
+        showNotification("Regresando a actividades...", "info");
+        setTimeout(() => {
+          console.log("Navegando de vuelta a la página de actividades");
+          // window.location.href = 'course-activities.html';
+        }, 1000);
+      }
+
+      function handleNavigation(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const page = link.getAttribute("data-page");
+
+        if (isDirty) {
+          if (
+            confirm(
+              "Tienes cambios sin guardar. ¿Estás seguro de que quieres salir?"
+            )
+          ) {
+            proceedNavigation(page);
+          }
+        } else {
+          proceedNavigation(page);
+        }
+      }
+
+      function proceedNavigation(page) {
+        document
+          .querySelectorAll(".nav-link")
+          .forEach((l) => l.classList.remove("active"));
+        document.querySelector(`[data-page="${page}"]`).classList.add("active");
+
+        showNotification(`Navegando a ${page}`, "info");
+
+        setTimeout(() => {
+          console.log(`Navegando a: ${page}`);
+        }, 500);
+      }
+
+      function loadActivityContent() {
+        // Simular carga de contenido guardado
+        setTimeout(() => {
+          if (currentActivity.type === "ide") {
+            addConsoleMessage("Sesión restaurada", "info");
+            addConsoleMessage("Listo para continuar programando", "info");
+          }
+        }, 1000);
+      }
+
+      // Utility functions
+      function formatFileSize(bytes) {
+        if (bytes === 0) return "0 Bytes";
+        const k = 1024;
+        const sizes = ["Bytes", "KB", "MB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+      }
+
+      function showNotification(message, type = "info") {
+        // Crear elemento de notificación
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+
+        const icons = {
+          success: "fa-check-circle",
+          warning: "fa-exclamation-triangle",
+          error: "fa-times-circle",
+          info: "fa-info-circle",
+        };
+
+        notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${icons[type] || icons.info}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+
+        // Agregar estilos si no existen
+        if (!document.querySelector("#notification-styles")) {
+          const styles = document.createElement("style");
+          styles.id = "notification-styles";
+          styles.textContent = `
+            .notification {
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                background: white;
+                border-radius: 10px;
+                padding: 15px 20px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                z-index: 1000;
+                min-width: 300px;
+                max-width: 400px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                border-left: 4px solid var(--primary-blue);
+            }
+            
+            .notification.success {
+                border-left-color: var(--success);
+            }
+            
+            .notification.warning {
+                border-left-color: var(--warning);
+            }
+            
+            .notification.error {
+                border-left-color: var(--error);
+            }
+            
+            .notification.show {
+                transform: translateX(0);
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex: 1;
+            }
+            
+            .notification-content i {
+                font-size: 1.2rem;
+                color: var(--primary-blue);
+            }
+            
+            .notification.success .notification-content i {
+                color: var(--success);
+            }
+            
+            .notification.warning .notification-content i {
+                color: var(--warning);
+            }
+            
+            .notification.error .notification-content i {
+                color: var(--error);
+            }
+            
+            .notification-content span {
+                font-weight: 500;
+                color: var(--text-primary);
+            }
+            
+            .notification-close {
+                background: none;
+                border: none;
+                color: var(--text-secondary);
+                cursor: pointer;
+                padding: 5px;
+                border-radius: 5px;
+                transition: background 0.2s ease;
+            }
+            
+            .notification-close:hover {
+                background: var(--neutral-light);
+            }
+        `;
+          document.head.appendChild(styles);
+        }
+
+        // Agregar al DOM
+        document.body.appendChild(notification);
+
+        // Mostrar con animación
+        setTimeout(() => {
+          notification.classList.add("show");
+        }, 100);
+
+        // Configurar cierre
+        const closeBtn = notification.querySelector(".notification-close");
+        closeBtn.addEventListener("click", () => {
+          hideNotification(notification);
+        });
+
+        // Auto-hide después de 4 segundos
+        setTimeout(() => {
+          if (notification.parentNode) {
+            hideNotification(notification);
+          }
+        }, 4000);
+      }
+
+      function hideNotification(notification) {
+        notification.classList.remove("show");
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }
+
+      // Eventos de teclado para desarrollo
+      document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.shiftKey) {
+          switch (event.key) {
+            case "S":
+              // Guardar rápido
+              event.preventDefault();
+              saveDraft();
+              break;
+            case "R":
+              // Ejecutar tests
+              event.preventDefault();
+              if (currentActivity.type === "ide") {
+                runTests();
+              }
+              break;
+            case "T":
+              // Cambiar tipo de actividad
+              event.preventDefault();
+              const otherType =
+                currentActivity.type === "upload" ? "ide" : "upload";
+              document.querySelector(`[data-type="${otherType}"]`).click();
+              break;
+          }
+        }
+      });
+
+      // Exportar para uso global
+      window.ActivityView = {
+        currentActivity,
+        uploadedFiles,
+        showNotification,
+        removeFile,
+        previewFile,
+      };
+
+      console.log("🚀 Vista Individual de Actividad cargada completamente");
+    </script>
+  </body>
+</html>
