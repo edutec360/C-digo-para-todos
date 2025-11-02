@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unirse a Competencia | Código para Todos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS será copiado aquí */
         /* Variables CSS */
 :root {
     --primary-blue: #4A90E2;
@@ -36,14 +36,14 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
 }
 
-/* Navigation Bar */
+/* Navigation Bar - Unified */
 .navbar {
     background: white;
     box-shadow: var(--shadow-light);
@@ -65,61 +65,58 @@ body {
     justify-content: space-between;
 }
 
-.nav-left {
+.nav-logo {
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-
-.back-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-weight: 500;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: var(--transition);
-}
-
-.back-btn:hover {
-    color: var(--primary-blue);
-    background: rgba(74, 144, 226, 0.1);
-}
-
-.nav-divider {
-    width: 1px;
-    height: 30px;
-    background: var(--border-light);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-weight: 700;
     font-size: 1.2rem;
     color: var(--primary-blue);
 }
 
-.logo i {
-    font-size: 1.5rem;
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
 }
 
-.nav-subtitle {
+.nav-menu {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 8px;
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    padding-left: 20px;
-    border-left: 2px solid var(--border-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    background: var(--neutral-light);
+    color: var(--primary-blue);
+}
+
+.nav-link.active {
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--primary-blue);
 }
 
 .nav-profile {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 12px;
@@ -136,21 +133,33 @@ body {
     align-items: flex-end;
 }
 
-.profile-name {
+.user-name {
     font-weight: 600;
     font-size: 0.9rem;
     color: var(--text-primary);
 }
 
-.profile-role {
+.user-level {
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
-.profile-avatar img {
+.profile-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-dropdown i {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
 }
 
 /* Main Content */
@@ -185,7 +194,7 @@ body {
 .trophy-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--accent-yellow), var(--warning));
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -212,7 +221,7 @@ body {
 
 /* Code Form */
 .code-form {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .code-input-group {
@@ -284,71 +293,7 @@ body {
     color: var(--text-secondary);
     font-size: 0.85rem;
     text-align: center;
-}
-
-/* Recent Competitions */
-.recent-competitions {
-    text-align: left;
-}
-
-.recent-competitions h3 {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: 15px;
-}
-
-.recent-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.recent-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background: var(--neutral-light);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.recent-item:hover {
-    background: var(--border-light);
-    transform: translateX(5px);
-}
-
-.recent-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: white;
-    background: var(--primary-blue);
-}
-
-.recent-info {
-    flex: 1;
-}
-
-.recent-info h4 {
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-}
-
-.recent-info span {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.recent-score {
-    font-weight: 600;
-    color: var(--accent-yellow);
+    margin-top: 12px;
 }
 
 /* Competition Details Section */
@@ -368,22 +313,24 @@ body {
 .competition-info-card {
     background: white;
     border-radius: var(--border-radius);
-    padding: 30px;
+    padding: 35px;
     box-shadow: var(--shadow-medium);
 }
 
 .info-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-light);
 }
 
-.competition-type-badge {
+.competition-badge {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, var(--accent-yellow), var(--warning));
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
@@ -392,6 +339,13 @@ body {
 }
 
 .competition-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.status-indicator-container {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -414,8 +368,21 @@ body {
     background: var(--success);
 }
 
-.status-indicator.starting {
-    background: var(--error);
+.created-by {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.created-by i {
+    color: var(--primary-blue);
+}
+
+.creator-name {
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 .info-content h2 {
@@ -426,8 +393,9 @@ body {
 
 .info-content p {
     color: var(--text-secondary);
-    margin-bottom: 25px;
-    font-size: 1.1rem;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 /* Competition Details Grid */
@@ -441,16 +409,27 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 15px;
+    padding: 18px;
     background: var(--neutral-light);
     border-radius: 10px;
+    transition: var(--transition);
 }
 
-.detail-item i {
-    font-size: 1.2rem;
+.detail-item:hover {
+    background: #e9ecef;
+}
+
+.detail-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(126, 211, 33, 0.1));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--primary-blue);
-    width: 20px;
-    text-align: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .detail-content {
@@ -467,18 +446,24 @@ body {
 .detail-value {
     font-weight: 600;
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 1rem;
+}
+
+/* Right Sidebar */
+.sidebar-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Countdown Card */
 .countdown-card {
-    background: linear-gradient(135deg, var(--primary-blue), #5a67d8);
-    color: white;
+    background: white;
     border-radius: var(--border-radius);
     padding: 30px;
     text-align: center;
     box-shadow: var(--shadow-medium);
-    margin-bottom: 20px;
+    border: 2px solid var(--border-light);
 }
 
 .countdown-header {
@@ -486,16 +471,18 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .countdown-header i {
     font-size: 1.5rem;
+    color: var(--primary-blue);
 }
 
 .countdown-header h3 {
     font-size: 1.2rem;
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .countdown-display {
@@ -510,30 +497,36 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: var(--neutral-light);
+    padding: 15px 20px;
+    border-radius: 10px;
+    min-width: 70px;
 }
 
 .time-value {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 1;
+    color: var(--primary-blue);
 }
 
 .time-label {
-    font-size: 0.8rem;
-    opacity: 0.9;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
     margin-top: 5px;
+    text-transform: uppercase;
 }
 
 .time-separator {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
-    opacity: 0.7;
+    color: var(--text-secondary);
     animation: blink 1s infinite;
 }
 
 .countdown-message {
     font-size: 0.9rem;
-    opacity: 0.9;
+    color: var(--text-secondary);
 }
 
 /* Participants Card */
@@ -541,8 +534,7 @@ body {
     background: white;
     border-radius: var(--border-radius);
     padding: 25px;
-    box-shadow: var(--shadow-light);
-    margin-bottom: 20px;
+    box-shadow: var(--shadow-medium);
 }
 
 .participants-header {
@@ -550,6 +542,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-light);
 }
 
 .participants-header h3 {
@@ -560,12 +554,16 @@ body {
     color: var(--text-primary);
 }
 
+.participants-header i {
+    color: var(--primary-blue);
+}
+
 .participants-counter {
     background: var(--primary-blue);
     color: white;
-    padding: 4px 12px;
+    padding: 5px 14px;
     border-radius: 12px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
 }
 
@@ -573,7 +571,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-height: 300px;
+    max-height: 350px;
     overflow-y: auto;
 }
 
@@ -584,528 +582,152 @@ body {
     padding: 12px;
     border-radius: 10px;
     transition: var(--transition);
+    border: 1px solid transparent;
 }
 
 .participant-item.ready {
     background: rgba(39, 174, 96, 0.05);
-    border-left: 3px solid var(--success);
+    border-color: var(--success);
 }
 
-.participant-item.connecting {
-    background: rgba(74, 144, 226, 0.05);
-    border-left: 3px solid var(--primary-blue);
+.participant-item.waiting {
+    background: rgba(243, 156, 18, 0.05);
+    border-color: var(--warning);
+}
+
+.participant-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 .participant-avatar img {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .participant-info {
     flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 .participant-name {
     font-weight: 600;
     color: var(--text-primary);
     font-size: 0.9rem;
-}
-
-.participant-level {
-    font-size: 0.75rem;
-    padding: 2px 6px;
-    border-radius: 8px;
-    width: fit-content;
-    margin-top: 2px;
-}
-
-.participant-level.advanced {
-    background: rgba(255, 215, 0, 0.2);
-    color: #B8860B;
-}
-
-.participant-level.intermediate {
-    background: rgba(74, 144, 226, 0.2);
-    color: var(--primary-blue);
-}
-
-.participant-level.beginner {
-    background: rgba(126, 211, 33, 0.2);
-    color: var(--primary-green);
+    margin-bottom: 2px;
 }
 
 .participant-status {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.participant-status.ready {
-    color: var(--success);
-}
-
-.participant-status.connecting {
-    color: var(--primary-blue);
-}
-
-.show-more-participants {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.show-more-btn {
-    background: none;
-    border: none;
-    color: var(--primary-blue);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin: 0 auto;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-.show-more-btn:hover {
-    color: #3a7bd5;
-}
-
-/* Quick Chat Card */
-.quick-chat-card {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-light);
-    overflow: hidden;
-}
-
-.chat-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 25px;
-    border-bottom: 1px solid var(--border-light);
-    cursor: pointer;
-}
-
-.chat-header h3 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-}
-
-.toggle-chat-btn {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.toggle-chat-btn:hover {
-    color: var(--text-primary);
-}
-
-.chat-content {
-    padding: 20px 25px;
-    transition: var(--transition);
-}
-
-.chat-content.collapsed {
-    display: none;
-}
-
-.chat-messages {
-    max-height: 150px;
-    overflow-y: auto;
-    margin-bottom: 15px;
-}
-
-.chat-message {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 12px;
-    padding: 8px 12px;
-    background: var(--neutral-light);
-    border-radius: 8px;
-}
-
-.message-author {
-    font-weight: 600;
-    color: var(--text-primary);
-    font-size: 0.85rem;
-}
-
-.message-text {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.message-time {
     font-size: 0.75rem;
     color: var(--text-secondary);
-    align-self: flex-end;
 }
 
-.quick-reactions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+.participant-ready-icon {
+    color: var(--success);
+    font-size: 1.1rem;
 }
 
-.reaction-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    background: var(--neutral-light);
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 0.8rem;
-}
-
-.reaction-btn:hover {
-    background: var(--primary-blue);
-    color: white;
-}
-
-.reaction-btn.active {
-    background: var(--primary-blue);
-    color: white;
+.participant-waiting-icon {
+    color: var(--warning);
+    font-size: 1.1rem;
 }
 
 /* Action Buttons */
 .action-buttons {
-    grid-column: 1 / -1;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow-medium);
     display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.action-btn {
-    padding: 15px 25px;
+.btn {
+    padding: 14px 24px;
     border: none;
     border-radius: 10px;
     font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
+    justify-content: center;
+    gap: 10px;
 }
 
-.action-btn.secondary {
-    background: var(--neutral-light);
-    color: var(--text-secondary);
-    border: 2px solid var(--border-light);
-}
-
-.action-btn.secondary:hover {
-    background: var(--border-light);
-    color: var(--text-primary);
-}
-
-.action-btn.primary {
-    background: var(--success);
+.btn-primary {
+    background: var(--primary-blue);
     color: white;
 }
 
-.action-btn.primary:hover {
-    background: #219a52;
+.btn-primary:hover {
+    background: #3a7bc8;
     transform: translateY(-2px);
     box-shadow: var(--shadow-medium);
 }
 
-.action-btn.ready {
-    animation: pulse 2s infinite;
+.btn-success {
+    background: var(--success);
+    color: white;
 }
 
-/* Competition Starting Section */
-.competition-starting-section {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    animation: zoomIn 0.8s ease forwards;
-}
-
-.starting-container {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 50px;
+.btn-success:hover {
+    background: #229954;
+    transform: translateY(-2px);
     box-shadow: var(--shadow-medium);
 }
 
-.starting-animation {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 30px;
-}
-
-.pulse-circle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-yellow), var(--warning));
-    animation: pulse 1.5s infinite;
-}
-
-.trophy-icon-large {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--accent-yellow), var(--warning));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.trophy-icon-large i {
-    font-size: 2.5rem;
-    color: white;
-}
-
-.starting-container h2 {
-    font-size: 2rem;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-}
-
-.starting-container p {
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.starting-countdown {
-    margin-bottom: 30px;
-}
-
-.starting-number {
-    font-size: 4rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-    animation: countdownBounce 1s ease infinite;
-}
-
-.starting-instructions {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: left;
-}
-
-.instruction-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
+.btn-secondary {
     background: var(--neutral-light);
-    border-radius: 10px;
-}
-
-.instruction-item i {
-    font-size: 1.2rem;
-    color: var(--primary-blue);
-    width: 20px;
-    text-align: center;
-}
-
-/* Modal Styles */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal {
-    background: white;
-    border-radius: var(--border-radius);
-    width: 90%;
-    max-width: 500px;
-    transform: translateY(-20px);
-    transition: var(--transition);
-}
-
-.modal-overlay.active .modal {
-    transform: translateY(0);
-}
-
-.modal-content {
-    padding: 40px;
-    text-align: center;
-}
-
-.error-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--error);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-}
-
-.error-icon i {
-    font-size: 2rem;
-    color: white;
-}
-
-.modal-content h2 {
-    font-size: 1.5rem;
     color: var(--text-primary);
-    margin-bottom: 10px;
 }
 
-.modal-content p {
-    color: var(--text-secondary);
-    margin-bottom: 25px;
+.btn-secondary:hover {
+    background: #dee2e6;
 }
 
-.error-suggestions {
-    background: var(--neutral-light);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    text-align: left;
-}
-
-.error-suggestions h4 {
-    color: var(--text-primary);
-    margin-bottom: 10px;
-}
-
-.error-suggestions ul {
-    list-style: none;
-    padding: 0;
-}
-
-.error-suggestions li {
-    padding: 5px 0;
-    padding-left: 20px;
-    position: relative;
-    color: var(--text-secondary);
-}
-
-.error-suggestions li::before {
-    content: '•';
-    color: var(--primary-blue);
-    position: absolute;
-    left: 0;
-}
-
-.modal-actions {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-/* Loading Overlay */
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3000;
-    backdrop-filter: blur(5px);
-}
-
-.loading-content {
-    text-align: center;
-}
-
-.loading-spinner {
-    width: 60px;
-    height: 60px;
-    border: 6px solid var(--border-light);
-    border-top: 6px solid var(--primary-blue);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
-}
-
-.loading-content h3 {
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-}
-
-.loading-content p {
-    color: var(--text-secondary);
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
 }
 
 /* Toast Notification */
 .toast-notification {
     position: fixed;
-    top: 100px;
+    bottom: 30px;
     right: 30px;
     background: white;
-    border-radius: 12px;
-    padding: 15px 20px;
+    border-radius: 10px;
+    padding: 16px 20px;
     box-shadow: var(--shadow-medium);
-    border-left: 4px solid var(--success);
     display: flex;
     align-items: center;
-    gap: 15px;
-    z-index: 3000;
+    gap: 12px;
+    min-width: 300px;
     transform: translateX(400px);
-    opacity: 0;
     transition: var(--transition);
+    z-index: 3000;
+    border-left: 4px solid var(--primary-blue);
 }
 
 .toast-notification.show {
     transform: translateX(0);
-    opacity: 1;
 }
 
 .toast-icon {
-    color: var(--success);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .toast-message {
+    flex: 1;
+    font-size: 0.95rem;
     color: var(--text-primary);
-    font-weight: 500;
 }
 
 .toast-close {
@@ -1113,68 +735,20 @@ body {
     border: none;
     color: var(--text-secondary);
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: var(--transition);
 }
 
 .toast-close:hover {
+    background: var(--neutral-light);
     color: var(--text-primary);
-}
-
-/* Utility Classes */
-.hidden {
-    display: none !important;
-}
-
-.visible {
-    display: block !important;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .details-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-container {
-        padding: 0 15px;
-    }
-    
-    .join-competition-main {
-        padding: 20px 15px;
-    }
-    
-    .input-container,
-    .competition-info-card,
-    .starting-container {
-        padding: 25px;
-    }
-    
-    .competition-details-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .countdown-display .time-value {
-        font-size: 2.5rem;
-    }
-    
-    .action-buttons {
-        flex-direction: column;
-    }
-    
-    .quick-reactions {
-        grid-template-columns: 1fr;
-    }
-    
-    .modal-content {
-        padding: 30px 20px;
-    }
-    
-    .modal-actions {
-        flex-direction: column;
-    }
 }
 
 /* Animations */
@@ -1200,92 +774,102 @@ body {
     }
 }
 
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
         opacity: 1;
     }
     50% {
-        transform: scale(1.05);
-        opacity: 0.8;
+        transform: scale(1.1);
+        opacity: 0.7;
     }
 }
 
 @keyframes blink {
-    0%, 50% {
+    0%, 100% {
         opacity: 1;
     }
-    51%, 100% {
+    50% {
         opacity: 0.3;
     }
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
+/* Responsive Design */
+@media (max-width: 968px) {
+    .details-container {
+        grid-template-columns: 1fr;
     }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes countdownBounce {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
+    
+    .nav-menu {
+        display: none;
     }
 }
 
-/* Focus states para accesibilidad */
-.join-btn:focus,
-.action-btn:focus,
-.reaction-btn:focus,
-.recent-item:focus {
-    outline: 3px solid rgba(74, 144, 226, 0.3);
-    outline-offset: 2px;
+@media (max-width: 768px) {
+    .competition-details-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .countdown-display {
+        gap: 5px;
+    }
+    
+    .time-unit {
+        padding: 12px 15px;
+        min-width: 60px;
+    }
+    
+    .time-value {
+        font-size: 2rem;
+    }
 }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <button class="back-btn" id="backToDashboard">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Volver al Dashboard</span>
-                </button>
-                <div class="nav-divider"></div>
-                <div class="logo">
-                    <i class="fas fa-code"></i>
-                    <span>Código para Todos</span>
-                </div>
-                <span class="nav-subtitle">Unirse a Competencia</span>
-            </div>
-            
-            <div class="nav-profile">
-                <div class="profile-info">
-                    <span class="profile-name">Ana García</span>
-                    <span class="profile-role">Estudiante</span>
-                </div>
-                <div class="profile-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40" alt="Ana García">
-                </div>
-            </div>
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
         </div>
+
+        <div class="nav-menu">
+          <a href="2_dashboardEstudiante2.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="course_general.html" class="nav-link">
+            <i class="fas fa-book"></i>
+            Mis Cursos
+          </a>
+          <a href="activities_general.html" class="nav-link">
+            <i class="fas fa-pencil-alt"></i>
+            Actividades
+          </a>
+          <a href="#" class="nav-link active">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+        </div>
+
+        <a href="11_profile.html" class="nav-profile-link">
+          <div class="nav-profile">
+            <div class="profile-info">
+              <span class="user-name">Ana García</span>
+              <span class="user-level">Mi Perfil</span>
+            </div>
+            <div class="profile-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+                alt="Ana García"
+              />
+            </div>
+          </div>
+        </a>
+      </div>
     </nav>
 
     <!-- Main Content -->
@@ -1297,10 +881,10 @@ body {
                     <div class="trophy-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
-                    <h1>Únete a una Competencia</h1>
-                    <p>Ingresa el código que te proporcionó tu docente</p>
+                    <h1>Unirse a Competencia</h1>
+                    <p>Ingresa el código para participar</p>
                 </div>
-                
+
                 <form class="code-form" id="codeForm">
                     <div class="code-input-group">
                         <label for="competitionCode">Código de Competencia</label>
@@ -1308,1108 +892,385 @@ body {
                             <input 
                                 type="text" 
                                 id="competitionCode" 
-                                placeholder="Ej: COMP425" 
-                                maxlength="8"
-                                autocomplete="off"
+                                placeholder="ABC123" 
+                                maxlength="6"
                                 required
+                                autocomplete="off"
                             >
                             <button type="submit" class="join-btn" id="joinBtn">
                                 <i class="fas fa-sign-in-alt"></i>
                                 Unirse
                             </button>
                         </div>
-                        <small class="input-hint">El código tiene 7-8 caracteres (letras y números)</small>
+                        <p class="input-hint">Los códigos tienen 6 caracteres (letras y números)</p>
                     </div>
                 </form>
-
-                <div class="recent-competitions">
-                    <h3>Competencias Recientes</h3>
-                    <div class="recent-list">
-                        <div class="recent-item" data-code="JAVA304">
-                            <div class="recent-icon">
-                                <i class="fab fa-java"></i>
-                            </div>
-                            <div class="recent-info">
-                                <h4>Arrays y Métodos</h4>
-                                <span>Dr. Fernando Castillo • Hace 2 días</span>
-                            </div>
-                            <div class="recent-score">
-                                <span class="score">4/5 ⭐</span>
-                            </div>
-                        </div>
-                        
-                        <div class="recent-item" data-code="WEB201">
-                            <div class="recent-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="recent-info">
-                                <h4>CSS Selectores</h4>
-                                <span>Prof. María Sánchez • Hace 1 semana</span>
-                            </div>
-                            <div class="recent-score">
-                                <span class="score">3/5 ⭐</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Competition Details Section -->
-        <section class="competition-details-section hidden" id="competitionDetailsSection">
+        <!-- Competition Details Section (Hidden initially) -->
+        <section class="competition-details-section" id="competitionDetailsSection" style="display: none;">
             <div class="details-container">
-                <!-- Competition Info -->
+                <!-- Left Column: Competition Info -->
                 <div class="competition-info-card">
                     <div class="info-header">
-                        <div class="competition-type-badge" id="competitionTypeBadge">
-                            <i class="fas fa-bolt"></i>
-                            <span>Velocidad</span>
+                        <div class="competition-badge">
+                            <i class="fas fa-trophy"></i>
+                            <span>Competencia Activa</span>
                         </div>
-                        <div class="competition-status" id="competitionStatus">
-                            <span class="status-indicator waiting"></span>
-                            <span>Esperando participantes</span>
+                        <div class="competition-status">
+                            <div class="status-indicator-container">
+                                <div class="status-indicator waiting"></div>
+                                <span id="statusText">Esperando participantes</span>
+                            </div>
+                            <div class="created-by">
+                                <i class="fas fa-user"></i>
+                                <span>Creado por: <span class="creator-name" id="creatorName">Carlos Mendoza</span></span>
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="info-content">
-                        <h2 id="competitionName">Lógica Básica Java</h2>
-                        <p id="competitionDescription">Pon a prueba tus conocimientos de programación básica en Java</p>
-                        
+                        <h2 id="competitionTitle">Desafío de Variables - Marzo</h2>
+                        <p id="competitionDescription">Competencia sobre variables y tipos de datos en Java. Demuestra tu conocimiento y compite con tus compañeros.</p>
+
                         <div class="competition-details-grid">
                             <div class="detail-item">
-                                <i class="fas fa-user-tie"></i>
+                                <div class="detail-icon">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
                                 <div class="detail-content">
-                                    <span class="detail-label">Docente</span>
-                                    <span class="detail-value" id="teacherName">Dr. Fernando Castillo</span>
+                                    <span class="detail-label">Curso</span>
+                                    <span class="detail-value" id="courseInfo">Programación I</span>
                                 </div>
                             </div>
-                            
+
                             <div class="detail-item">
-                                <i class="fas fa-clock"></i>
+                                <div class="detail-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
                                 <div class="detail-content">
-                                    <span class="detail-label">Duración</span>
-                                    <span class="detail-value" id="duration">10 minutos</span>
+                                    <span class="detail-label">Tema</span>
+                                    <span class="detail-value" id="topicInfo">Variables y Tipos de Datos</span>
                                 </div>
                             </div>
-                            
+
                             <div class="detail-item">
-                                <i class="fas fa-question-circle"></i>
-                                <div class="detail-content">
-                                    <span class="detail-label">Preguntas</span>
-                                    <span class="detail-value" id="questionCount">10 preguntas</span>
+                                <div class="detail-icon">
+                                    <i class="fas fa-layer-group"></i>
                                 </div>
-                            </div>
-                            
-                            <div class="detail-item">
-                                <i class="fas fa-signal"></i>
                                 <div class="detail-content">
                                     <span class="detail-label">Dificultad</span>
-                                    <span class="detail-value" id="difficulty">Intermedio</span>
+                                    <span class="detail-value" id="difficultyInfo">🟡 Intermedio</span>
                                 </div>
                             </div>
-                            
+
                             <div class="detail-item">
-                                <i class="fas fa-star"></i>
+                                <div class="detail-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
                                 <div class="detail-content">
-                                    <span class="detail-label">Puntos por respuesta</span>
-                                    <span class="detail-value" id="pointsPerQuestion">15 puntos</span>
+                                    <span class="detail-label">Duración</span>
+                                    <span class="detail-value" id="durationInfo">30 minutos</span>
                                 </div>
                             </div>
-                            
+
                             <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-list-ol"></i>
+                                </div>
+                                <div class="detail-content">
+                                    <span class="detail-label">Preguntas</span>
+                                    <span class="detail-value" id="questionsInfo">15 preguntas</span>
+                                </div>
+                            </div>
+
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-hashtag"></i>
+                                </div>
+                                <div class="detail-content">
+                                    <span class="detail-label">Código</span>
+                                    <span class="detail-value" id="codeDisplay">ABC123</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Countdown & Participants -->
+                <div class="sidebar-right">
+                    <!-- Countdown Card -->
+                    <div class="countdown-card">
+                        <div class="countdown-header">
+                            <i class="fas fa-hourglass-half"></i>
+                            <h3>Iniciando en</h3>
+                        </div>
+                        <div class="countdown-display">
+                            <div class="time-unit">
+                                <span class="time-value" id="minutes">00</span>
+                                <span class="time-label">min</span>
+                            </div>
+                            <span class="time-separator">:</span>
+                            <div class="time-unit">
+                                <span class="time-value" id="seconds">30</span>
+                                <span class="time-label">seg</span>
+                            </div>
+                        </div>
+                        <p class="countdown-message">Prepárate para comenzar</p>
+                    </div>
+
+                    <!-- Participants Card -->
+                    <div class="participants-card">
+                        <div class="participants-header">
+                            <h3>
                                 <i class="fas fa-users"></i>
-                                <div class="detail-content">
-                                    <span class="detail-label">Participantes</span>
-                                    <span class="detail-value" id="participantCount">12/32 conectados</span>
+                                Participantes
+                            </h3>
+                            <span class="participants-counter" id="participantsCount">3</span>
+                        </div>
+
+                        <div class="participants-list" id="participantsList">
+                            <div class="participant-item ready">
+                                <div class="participant-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Carlos+Mendoza&background=4A90E2&color=fff" alt="Carlos Mendoza">
                                 </div>
+                                <div class="participant-info">
+                                    <div class="participant-name">Carlos Mendoza</div>
+                                    <div class="participant-status">Creador • Listo</div>
+                                </div>
+                                <i class="fas fa-check-circle participant-ready-icon"></i>
+                            </div>
+
+                            <div class="participant-item ready">
+                                <div class="participant-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=7ED321&color=fff" alt="Ana García">
+                                </div>
+                                <div class="participant-info">
+                                    <div class="participant-name">Ana García (Tú)</div>
+                                    <div class="participant-status">Conectado • Listo</div>
+                                </div>
+                                <i class="fas fa-check-circle participant-ready-icon"></i>
+                            </div>
+
+                            <div class="participant-item waiting">
+                                <div class="participant-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Luis+Torres&background=F5A623&color=fff" alt="Luis Torres">
+                                </div>
+                                <div class="participant-info">
+                                    <div class="participant-name">Luis Torres</div>
+                                    <div class="participant-status">Conectando...</div>
+                                </div>
+                                <i class="fas fa-clock participant-waiting-icon"></i>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Countdown Timer -->
-                <div class="countdown-card" id="countdownCard">
-                    <div class="countdown-header">
-                        <i class="fas fa-stopwatch"></i>
-                        <h3>La competencia iniciará en:</h3>
-                    </div>
-                    <div class="countdown-display">
-                        <div class="time-unit">
-                            <span class="time-value" id="minutesValue">02</span>
-                            <span class="time-label">min</span>
-                        </div>
-                        <div class="time-separator">:</div>
-                        <div class="time-unit">
-                            <span class="time-value" id="secondsValue">00</span>
-                            <span class="time-label">seg</span>
-                        </div>
-                    </div>
-                    <div class="countdown-message">
-                        <span id="countdownMessage">El docente iniciará la competencia pronto</span>
-                    </div>
-                </div>
-
-                <!-- Participants List -->
-                <div class="participants-card">
-                    <div class="participants-header">
-                        <h3>
-                            <i class="fas fa-users"></i>
-                            Participantes Conectados
-                        </h3>
-                        <span class="participants-counter" id="participantsCounter">12/32</span>
-                    </div>
-                    
-                    <div class="participants-list" id="participantsList">
-                        <div class="participant-item ready">
-                            <div class="participant-avatar">
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Ruiz&background=FFD700&color=fff&size=40" alt="Carlos Ruiz">
-                            </div>
-                            <div class="participant-info">
-                                <span class="participant-name">Carlos Ruiz</span>
-                                <span class="participant-level advanced">Avanzado</span>
-                            </div>
-                            <div class="participant-status">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Listo</span>
-                            </div>
-                        </div>
-
-                        <div class="participant-item connecting">
-                            <div class="participant-avatar">
-                                <img src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40" alt="Ana García">
-                            </div>
-                            <div class="participant-info">
-                                <span class="participant-name">Ana García (Tú)</span>
-                                <span class="participant-level intermediate">Intermedio</span>
-                            </div>
-                            <div class="participant-status">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <span>Conectando...</span>
-                            </div>
-                        </div>
-
-                        <div class="participant-item ready">
-                            <div class="participant-avatar">
-                                <img src="https://ui-avatars.com/api/?name=Maria+Lopez&background=7ED321&color=fff&size=40" alt="María López">
-                            </div>
-                            <div class="participant-info">
-                                <span class="participant-name">María López</span>
-                                <span class="participant-level intermediate">Intermedio</span>
-                            </div>
-                            <div class="participant-status">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Listo</span>
-                            </div>
-                        </div>
-
-                        <div class="participant-item ready">
-                            <div class="participant-avatar">
-                                <img src="https://ui-avatars.com/api/?name=Diego+Morales&background=E74C3C&color=fff&size=40" alt="Diego Morales">
-                            </div>
-                            <div class="participant-info">
-                                <span class="participant-name">Diego Morales</span>
-                                <span class="participant-level beginner">Principiante</span>
-                            </div>
-                            <div class="participant-status">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Listo</span>
-                            </div>
-                        </div>
-
-                        <div class="participant-item ready">
-                            <div class="participant-avatar">
-                                <img src="https://ui-avatars.com/api/?name=Roberto+Silva&background=4A90E2&color=fff&size=40" alt="Roberto Silva">
-                            </div>
-                            <div class="participant-info">
-                                <span class="participant-name">Roberto Silva</span>
-                                <span class="participant-level intermediate">Intermedio</span>
-                            </div>
-                            <div class="participant-status">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Listo</span>
-                            </div>
-                        </div>
-
-                        <div class="show-more-participants">
-                            <button class="show-more-btn" id="showMoreBtn">
-                                <i class="fas fa-chevron-down"></i>
-                                <span>Ver 7 participantes más</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Chat -->
-                <div class="quick-chat-card">
-                    <div class="chat-header">
-                        <h3>
-                            <i class="fas fa-comments"></i>
-                            Chat Rápido
-                        </h3>
-                        <button class="toggle-chat-btn" id="toggleChatBtn">
-                            <i class="fas fa-chevron-up"></i>
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="btn btn-success" id="readyBtn" onclick="toggleReady()">
+                            <i class="fas fa-check"></i>
+                            Estoy Listo
                         </button>
-                    </div>
-                    
-                    <div class="chat-content" id="chatContent">
-                        <div class="chat-messages" id="chatMessages">
-                            <div class="chat-message">
-                                <span class="message-author">Carlos Ruiz:</span>
-                                <span class="message-text">¡Listos para la competencia! 🚀</span>
-                                <span class="message-time">hace 1 min</span>
-                            </div>
-                            
-                            <div class="chat-message">
-                                <span class="message-author">María López:</span>
-                                <span class="message-text">¡Que gane el mejor! 💪</span>
-                                <span class="message-time">hace 30 seg</span>
-                            </div>
-                        </div>
-                        
-                        <div class="quick-reactions">
-                            <button class="reaction-btn" data-reaction="ready">
-                                <i class="fas fa-thumbs-up"></i>
-                                <span>Listo</span>
-                            </button>
-                            <button class="reaction-btn" data-reaction="excited">
-                                <i class="fas fa-fire"></i>
-                                <span>Emocionado</span>
-                            </button>
-                            <button class="reaction-btn" data-reaction="nervous">
-                                <i class="fas fa-sweat-drops"></i>
-                                <span>Nervioso</span>
-                            </button>
-                            <button class="reaction-btn" data-reaction="thinking">
-                                <i class="fas fa-brain"></i>
-                                <span>Pensando</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button class="action-btn secondary" id="leaveCompetitionBtn">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Salir de la Competencia
-                    </button>
-                    <button class="action-btn primary ready" id="readyBtn">
-                        <i class="fas fa-check"></i>
-                        ¡Estoy Listo!
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Competition Starting Section -->
-        <section class="competition-starting-section hidden" id="competitionStartingSection">
-            <div class="starting-container">
-                <div class="starting-animation">
-                    <div class="pulse-circle"></div>
-                    <div class="trophy-icon-large">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                </div>
-                
-                <h2>¡La Competencia Está Comenzando!</h2>
-                <p>Prepárate para <strong id="startingCompetitionName">Lógica Básica Java</strong></p>
-                
-                <div class="starting-countdown">
-                    <span class="starting-number" id="startingCountdown">3</span>
-                </div>
-                
-                <div class="starting-instructions">
-                    <div class="instruction-item">
-                        <i class="fas fa-bolt"></i>
-                        <span>Responde lo más rápido posible para ganar puntos bonus</span>
-                    </div>
-                    <div class="instruction-item">
-                        <i class="fas fa-target"></i>
-                        <span>Lee cuidadosamente cada pregunta antes de responder</span>
-                    </div>
-                    <div class="instruction-item">
-                        <i class="fas fa-trophy"></i>
-                        <span>¡Que gane el mejor programador!</span>
+                        <button class="btn btn-secondary" onclick="leaveCompetition()">
+                            <i class="fas fa-times"></i>
+                            Salir
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Error Modal -->
-    <div class="modal-overlay" id="errorModal">
-        <div class="modal">
-            <div class="modal-content">
-                <div class="error-icon">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <h2>Código no válido</h2>
-                <p id="errorMessage">El código de competencia ingresado no existe o ya ha expirado.</p>
-                
-                <div class="error-suggestions">
-                    <h4>Verifica que:</h4>
-                    <ul>
-                        <li>El código esté escrito correctamente</li>
-                        <li>La competencia no haya comenzado ya</li>
-                        <li>Tengas acceso al grupo de la competencia</li>
-                    </ul>
-                </div>
-
-                <div class="modal-actions">
-                    <button class="action-btn secondary" id="closeErrorModal">
-                        Intentar de Nuevo
-                    </button>
-                    <button class="action-btn primary" id="contactTeacherBtn">
-                        Contactar Docente
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Loading Overlay -->
-    <div class="loading-overlay hidden" id="loadingOverlay">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <h3>Conectando a la competencia...</h3>
-            <p>Verificando código y preparando tu lugar</p>
-        </div>
-    </div>
-
     <!-- Toast Notification -->
     <div class="toast-notification" id="toastNotification">
-        <div class="toast-content">
-            <i class="toast-icon fas fa-check-circle"></i>
-            <span class="toast-message">Acción completada exitosamente</span>
-        </div>
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message">Operación exitosa</span>
         <button class="toast-close">
             <i class="fas fa-times"></i>
         </button>
     </div>
 
     <script>
-        /* JavaScript será copiado aquí */
-        // Variables globales para unirse a competencia
-let currentUser = {
-    name: 'Ana García Hernández',
-    level: 'Intermedio',
-    stars: 127,
-    avatar: 'Ana+Garcia'
+// Global Variables
+let isReady = false;
+let countdownInterval = null;
+let timeLeft = 30; // seconds
+
+// Competition Data (Simulated)
+const competitionData = {
+    code: 'ABC123',
+    title: 'Desafío de Variables - Marzo',
+    description: 'Competencia sobre variables y tipos de datos en Java. Demuestra tu conocimiento y compite con tus compañeros.',
+    creator: 'Carlos Mendoza',
+    course: 'Programación I',
+    topic: 'Variables y Tipos de Datos',
+    difficulty: 'Intermedio',
+    duration: 30,
+    questions: 15,
+    participants: [
+        { name: 'Carlos Mendoza', status: 'ready', isCreator: true },
+        { name: 'Ana García', status: 'ready', isYou: true },
+        { name: 'Luis Torres', status: 'connecting' }
+    ]
 };
 
-let currentCompetition = null;
-let participantsData = [];
-let countdownTimer = null;
-let startingCountdownTimer = null;
-let connectionStatus = 'disconnected'; // disconnected, connecting, connected, ready
-
-// Estados de la aplicación
-let currentSection = 'code-input'; // code-input, competition-details, competition-starting
-
-// Datos mock de competencias
-const competitionsDatabase = {
-    'COMP425': {
-        id: 'COMP425',
-        name: 'Lógica Básica Java',
-        description: 'Pon a prueba tus conocimientos de programación básica en Java',
-        type: 'speed',
-        teacher: 'Dr. Fernando Castillo',
-        duration: 10,
-        questions: 10,
-        difficulty: 'intermediate',
-        pointsPerQuestion: 15,
-        status: 'waiting',
-        maxParticipants: 32,
-        currentParticipants: 12,
-        timeToStart: 120, // segundos
-        group: 'Programación Java - ITESM'
-    },
-    'JAVA304': {
-        id: 'JAVA304',
-        name: 'Arrays y Métodos',
-        description: 'Competencia finalizada sobre arrays y métodos en Java',
-        type: 'precision',
-        teacher: 'Dr. Fernando Castillo',
-        status: 'finished',
-        userScore: 4
-    },
-    'WEB201': {
-        id: 'WEB201',
-        name: 'CSS Selectores',
-        description: 'Competencia finalizada sobre selectores CSS',
-        type: 'knowledge',
-        teacher: 'Prof. María Sánchez',
-        status: 'finished',
-        userScore: 3
-    }
-};
-
-// Participantes mock
-const mockParticipants = [
-    { name: 'Carlos Ruiz', level: 'advanced', avatar: 'Carlos+Ruiz', status: 'ready', background: 'FFD700' },
-    { name: 'Ana García', level: 'intermediate', avatar: 'Ana+Garcia', status: 'connecting', background: '4A90E2', isCurrentUser: true },
-    { name: 'María López', level: 'intermediate', avatar: 'Maria+Lopez', status: 'ready', background: '7ED321' },
-    { name: 'Diego Morales', level: 'beginner', avatar: 'Diego+Morales', status: 'ready', background: 'E74C3C' },
-    { name: 'Roberto Silva', level: 'intermediate', avatar: 'Roberto+Silva', status: 'ready', background: '4A90E2' },
-    { name: 'Carmen Vega', level: 'intermediate', avatar: 'Carmen+Vega', status: 'ready', background: '7ED321' },
-    { name: 'Luis Hernández', level: 'intermediate', avatar: 'Luis+Hernandez', status: 'connecting', background: 'F39C12' },
-    { name: 'Patricia Ramos', level: 'beginner', avatar: 'Patricia+Ramos', status: 'ready', background: '7ED321' }
-];
-
-// Inicialización
+// Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    initializeJoinCompetition();
+    console.log('🏆 Join Competition loaded');
+    
     setupEventListeners();
-    focusCodeInput();
-    console.log('📱 Unirse a Competencia inicializado');
 });
 
-function initializeJoinCompetition() {
-    showSection('code-input');
-    setupFormValidation();
-    loadRecentCompetitions();
-    console.log('🎯 Ana García lista para unirse a competencia');
-}
-
 function setupEventListeners() {
-    // Back button
-    const backBtn = document.getElementById('backToDashboard');
-    if (backBtn) {
-        backBtn.addEventListener('click', handleBackToDashboard);
+    // Code form submission
+    document.getElementById('codeForm').addEventListener('submit', handleCodeSubmit);
+    
+    // Toast close button
+    const closeBtn = document.querySelector('.toast-close');
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            document.getElementById('toastNotification').classList.remove('show');
+        };
     }
-
-    // Code form
-    const codeForm = document.getElementById('codeForm');
-    if (codeForm) {
-        codeForm.addEventListener('submit', handleCodeSubmit);
-    }
-
-    // Code input
+    
+    // Auto-uppercase input
     const codeInput = document.getElementById('competitionCode');
-    if (codeInput) {
-        codeInput.addEventListener('input', handleCodeInput);
-        codeInput.addEventListener('paste', handleCodePaste);
-    }
-
-    // Recent competitions
-    document.querySelectorAll('.recent-item').forEach(item => {
-        item.addEventListener('click', handleRecentCompetitionClick);
+    codeInput.addEventListener('input', function(e) {
+        e.target.value = e.target.value.toUpperCase();
     });
-
-    // Action buttons
-    const readyBtn = document.getElementById('readyBtn');
-    const leaveBtn = document.getElementById('leaveCompetitionBtn');
-    
-    if (readyBtn) readyBtn.addEventListener('click', handleReadyToggle);
-    if (leaveBtn) leaveBtn.addEventListener('click', handleLeaveCompetition);
-
-    // Chat functionality
-    const toggleChatBtn = document.getElementById('toggleChatBtn');
-    if (toggleChatBtn) {
-        toggleChatBtn.addEventListener('click', toggleChat);
-    }
-
-    // Reaction buttons
-    document.querySelectorAll('.reaction-btn').forEach(btn => {
-        btn.addEventListener('click', handleReaction);
-    });
-
-    // Show more participants
-    const showMoreBtn = document.getElementById('showMoreBtn');
-    if (showMoreBtn) {
-        showMoreBtn.addEventListener('click', handleShowMoreParticipants);
-    }
-
-    // Modal buttons
-    const closeErrorBtn = document.getElementById('closeErrorModal');
-    const contactTeacherBtn = document.getElementById('contactTeacherBtn');
-    
-    if (closeErrorBtn) closeErrorBtn.addEventListener('click', closeErrorModal);
-    if (contactTeacherBtn) contactTeacherBtn.addEventListener('click', handleContactTeacher);
-}
-
-function handleBackToDashboard() {
-    showNotification('Regresando al dashboard...', 'info');
-    console.log('🔙 Volviendo al dashboard estudiantil');
-    
-    // Limpiar timers si existen
-    if (countdownTimer) {
-        clearInterval(countdownTimer);
-    }
-    if (startingCountdownTimer) {
-        clearInterval(startingCountdownTimer);
-    }
-    
-    setTimeout(() => {
-        console.log('Navegando a: student-dashboard.html');
-        showNotification('Navegación completada', 'success');
-    }, 500);
 }
 
 function handleCodeSubmit(event) {
     event.preventDefault();
     
-    const code = document.getElementById('competitionCode').value.trim().toUpperCase();
+    const code = document.getElementById('competitionCode').value.trim();
     
-    if (!code) {
-        showNotification('Ingresa un código de competencia', 'error');
+    if (code.length !== 6) {
+        showNotification('El código debe tener 6 caracteres', 'warning');
         return;
     }
-
-    if (code.length < 6) {
-        showNotification('El código debe tener al menos 6 caracteres', 'error');
-        return;
-    }
-
-    joinCompetition(code);
-}
-
-function handleCodeInput(event) {
-    let value = event.target.value.toUpperCase();
     
-    // Remover caracteres no válidos
-    value = value.replace(/[^A-Z0-9]/g, '');
+    // Simulate checking code
+    showNotification('Verificando código...', 'info');
     
-    event.target.value = value;
-    
-    // Auto-submit si tiene 7-8 caracteres
-    if (value.length >= 7 && value.length <= 8) {
-        // Pequeño delay para mejor UX
-        setTimeout(() => {
-            if (event.target.value === value) {
-                joinCompetition(value);
-            }
-        }, 500);
-    }
-}
-
-function handleCodePaste(event) {
     setTimeout(() => {
-        const value = event.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-        event.target.value = value;
-        
-        if (value.length >= 6) {
-            joinCompetition(value);
-        }
-    }, 10);
-}
-
-function handleRecentCompetitionClick(event) {
-    const code = event.currentTarget.dataset.code;
-    const competition = competitionsDatabase[code];
-    
-    if (competition && competition.status === 'finished') {
-        showNotification(`Competencia "${competition.name}" ya finalizó. Tu puntuación: ${competition.userScore}/5 ⭐`, 'info');
-    } else {
-        document.getElementById('competitionCode').value = code;
+        // Simulate successful join
         joinCompetition(code);
-    }
+    }, 1000);
 }
 
 function joinCompetition(code) {
-    const competition = competitionsDatabase[code];
+    console.log('✅ Joining competition:', code);
     
-    if (!competition) {
-        showErrorModal('El código de competencia no existe o ha expirado.');
-        return;
-    }
-
-    if (competition.status === 'finished') {
-        showErrorModal('Esta competencia ya ha finalizado.');
-        return;
-    }
-
-    if (competition.status === 'in-progress') {
-        showErrorModal('Esta competencia ya está en progreso y no acepta nuevos participantes.');
-        return;
-    }
-
-    // Mostrar loading
-    showLoading('Conectando a la competencia...');
+    // Hide input section
+    document.getElementById('codeInputSection').style.display = 'none';
     
-    // Simular proceso de conexión
-    setTimeout(() => {
-        hideLoading();
-        currentCompetition = competition;
-        connectionStatus = 'connecting';
-        
-        showCompetitionDetails();
-        startConnectionProcess();
-        
-        showNotification(`¡Te has unido a "${competition.name}"!`, 'success');
-        console.log('🏆 Conectado a competencia:', competition.name);
-    }, 2000);
-}
-
-function showCompetitionDetails() {
-    const competition = currentCompetition;
+    // Show competition details
+    document.getElementById('competitionDetailsSection').style.display = 'block';
     
-    // Actualizar información de la competencia
-    document.getElementById('competitionName').textContent = competition.name;
-    document.getElementById('competitionDescription').textContent = competition.description;
-    document.getElementById('teacherName').textContent = competition.teacher;
-    document.getElementById('duration').textContent = `${competition.duration} minutos`;
-    document.getElementById('questionCount').textContent = `${competition.questions} preguntas`;
-    document.getElementById('pointsPerQuestion').textContent = `${competition.pointsPerQuestion} puntos`;
+    // Load competition data
+    loadCompetitionData();
     
-    // Configurar badge de tipo
-    const typeBadge = document.getElementById('competitionTypeBadge');
-    const typeMap = {
-        'speed': { icon: 'fas fa-bolt', text: 'Velocidad' },
-        'precision': { icon: 'fas fa-target', text: 'Precisión' },
-        'knowledge': { icon: 'fas fa-brain', text: 'Conocimiento' }
-    };
-    
-    const typeInfo = typeMap[competition.type];
-    typeBadge.innerHTML = `<i class="${typeInfo.icon}"></i><span>${typeInfo.text}</span>`;
-    
-    // Configurar dificultad
-    const difficultyMap = {
-        'beginner': 'Principiante',
-        'intermediate': 'Intermedio',
-        'advanced': 'Avanzado'
-    };
-    document.getElementById('difficulty').textContent = difficultyMap[competition.difficulty];
-    
-    // Mostrar sección de detalles
-    showSection('competition-details');
-    
-    // Cargar participantes y iniciar countdown
-    loadParticipants();
+    // Start countdown
     startCountdown();
+    
+    showNotification('¡Te has unido a la competencia!', 'success');
 }
 
-function startConnectionProcess() {
-    // Simular proceso de conexión
-    setTimeout(() => {
-        connectionStatus = 'connected';
-        updateUserStatus();
-        showNotification('Conectado exitosamente', 'success');
-        
-        // Después de 3 segundos, marcar como listo automáticamente
-        setTimeout(() => {
-            if (connectionStatus === 'connected') {
-                connectionStatus = 'ready';
-                updateUserStatus();
-                showNotification('¡Estás listo para la competencia!', 'success');
-            }
-        }, 3000);
-    }, 2000);
-}
-
-function loadParticipants() {
-    participantsData = [...mockParticipants];
-    updateParticipantsList();
-    updateParticipantsCounter();
+function loadCompetitionData() {
+    // Update competition details
+    document.getElementById('competitionTitle').textContent = competitionData.title;
+    document.getElementById('competitionDescription').textContent = competitionData.description;
+    document.getElementById('creatorName').textContent = competitionData.creator;
+    document.getElementById('courseInfo').textContent = competitionData.course;
+    document.getElementById('topicInfo').textContent = competitionData.topic;
     
-    // Simular participantes conectándose
-    setTimeout(() => {
-        simulateParticipantActivity();
-    }, 3000);
-}
-
-function updateParticipantsList() {
-    const container = document.getElementById('participantsList');
-    if (!container) return;
+    const difficultyIcons = {
+        'Fácil': '🟢',
+        'Intermedio': '🟡',
+        'Difícil': '🔴'
+    };
+    document.getElementById('difficultyInfo').textContent = 
+        `${difficultyIcons[competitionData.difficulty] || '🟡'} ${competitionData.difficulty}`;
     
-    // Mantener el botón "ver más" al final
-    const showMoreBtn = container.querySelector('.show-more-participants');
+    document.getElementById('durationInfo').textContent = `${competitionData.duration} minutos`;
+    document.getElementById('questionsInfo').textContent = `${competitionData.questions} preguntas`;
+    document.getElementById('codeDisplay').textContent = competitionData.code;
     
-    // Limpiar contenido excepto el botón
-    const items = container.querySelectorAll('.participant-item');
-    items.forEach(item => item.remove());
-    
-    // Mostrar primeros 5 participantes
-    participantsData.slice(0, 5).forEach(participant => {
-        const item = createParticipantItem(participant);
-        if (showMoreBtn) {
-            container.insertBefore(item, showMoreBtn);
-        } else {
-            container.appendChild(item);
-        }
-    });
-}
-
-function createParticipantItem(participant) {
-    const item = document.createElement('div');
-    item.className = `participant-item ${participant.status}`;
-    
-    const statusIcon = participant.status === 'ready' ? 'fas fa-check-circle' : 'fas fa-spinner fa-spin';
-    const statusText = participant.status === 'ready' ? 'Listo' : 'Conectando...';
-    const userLabel = participant.isCurrentUser ? ' (Tú)' : '';
-    
-    item.innerHTML = `
-        <div class="participant-avatar">
-            <img src="https://ui-avatars.com/api/?name=${participant.avatar}&background=${participant.background}&color=fff&size=40" alt="${participant.name}">
-        </div>
-        <div class="participant-info">
-            <span class="participant-name">${participant.name}${userLabel}</span>
-            <span class="participant-level ${participant.level}">${participant.level === 'advanced' ? 'Avanzado' : participant.level === 'intermediate' ? 'Intermedio' : 'Principiante'}</span>
-        </div>
-        <div class="participant-status ${participant.status}">
-            <i class="${statusIcon}"></i>
-            <span>${statusText}</span>
-        </div>
-    `;
-    
-    return item;
-}
-
-function updateUserStatus() {
-    // Actualizar estado del usuario actual en la lista
-    const currentUserIndex = participantsData.findIndex(p => p.isCurrentUser);
-    if (currentUserIndex !== -1) {
-        participantsData[currentUserIndex].status = connectionStatus === 'ready' ? 'ready' : 'connecting';
-        updateParticipantsList();
-    }
-    
-    // Actualizar botón de ready
-    const readyBtn = document.getElementById('readyBtn');
-    if (readyBtn) {
-        if (connectionStatus === 'ready') {
-            readyBtn.innerHTML = '<i class="fas fa-check"></i>¡Estoy Listo!';
-            readyBtn.classList.add('ready');
-        } else {
-            readyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>Conectando...';
-            readyBtn.classList.remove('ready');
-        }
-    }
-}
-
-function updateParticipantsCounter() {
-    const readyCount = participantsData.filter(p => p.status === 'ready').length;
-    const totalCount = currentCompetition ? currentCompetition.maxParticipants : 32;
-    
-    document.getElementById('participantsCounter').textContent = `${readyCount}/${totalCount}`;
-    document.getElementById('participantCount').textContent = `${participantsData.length}/${totalCount} conectados`;
+    // Update participants count
+    document.getElementById('participantsCount').textContent = competitionData.participants.length;
 }
 
 function startCountdown() {
-    if (!currentCompetition) return;
+    updateCountdownDisplay();
     
-    let timeLeft = currentCompetition.timeToStart; // segundos
-    
-    countdownTimer = setInterval(() => {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        
-        document.getElementById('minutesValue').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('secondsValue').textContent = seconds.toString().padStart(2, '0');
+    countdownInterval = setInterval(() => {
+        timeLeft--;
+        updateCountdownDisplay();
         
         if (timeLeft <= 0) {
-            clearInterval(countdownTimer);
+            clearInterval(countdownInterval);
             startCompetition();
-            return;
         }
-        
-        // Actualizar mensaje según el tiempo restante
-        const messageEl = document.getElementById('countdownMessage');
-        if (timeLeft <= 10) {
-            messageEl.textContent = '¡La competencia está a punto de comenzar!';
-            messageEl.style.color = 'var(--error)';
-        } else if (timeLeft <= 30) {
-            messageEl.textContent = 'Prepárate, la competencia inicia pronto';
-            messageEl.style.color = 'var(--warning)';
-        }
-        
-        timeLeft--;
     }, 1000);
+}
+
+function updateCountdownDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+function toggleReady() {
+    isReady = !isReady;
+    
+    const readyBtn = document.getElementById('readyBtn');
+    
+    if (isReady) {
+        readyBtn.innerHTML = '<i class="fas fa-check-circle"></i> ¡Listo!';
+        readyBtn.classList.remove('btn-success');
+        readyBtn.classList.add('btn-primary');
+        showNotification('Marcado como listo', 'success');
+    } else {
+        readyBtn.innerHTML = '<i class="fas fa-check"></i> Estoy Listo';
+        readyBtn.classList.remove('btn-primary');
+        readyBtn.classList.add('btn-success');
+        showNotification('Esperando...', 'info');
+    }
+    
+    console.log('Ready status:', isReady);
+}
+
+function leaveCompetition() {
+    if (confirm('¿Estás seguro de que deseas salir de la competencia?')) {
+        clearInterval(countdownInterval);
+        
+        // Show input section
+        document.getElementById('codeInputSection').style.display = 'block';
+        document.getElementById('competitionDetailsSection').style.display = 'none';
+        
+        // Reset form
+        document.getElementById('competitionCode').value = '';
+        isReady = false;
+        timeLeft = 30;
+        
+        showNotification('Has salido de la competencia', 'info');
+        console.log('❌ Left competition');
+    }
 }
 
 function startCompetition() {
     showNotification('¡La competencia está comenzando!', 'success');
-    console.log('🚀 Iniciando competencia:', currentCompetition.name);
-    
-    showSection('competition-starting');
-    startFinalCountdown();
-}
-
-function startFinalCountdown() {
-    let count = 3;
-    const countdownEl = document.getElementById('startingCountdown');
-    const nameEl = document.getElementById('startingCompetitionName');
-    
-    if (nameEl) {
-        nameEl.textContent = currentCompetition.name;
-    }
-    
-    startingCountdownTimer = setInterval(() => {
-        countdownEl.textContent = count;
-        
-        if (count === 0) {
-            clearInterval(startingCountdownTimer);
-            // Aquí se redirigiría a la competencia en vivo
-            setTimeout(() => {
-                console.log(`Redirigiendo a: live-competition.html?code=${currentCompetition.id}`);
-                showNotification('¡Comenzando competencia en vivo!', 'success');
-            }, 1000);
-        }
-        
-        count--;
-    }, 1000);
-}
-
-function simulateParticipantActivity() {
-    // Simular que más participantes se conectan
-    setInterval(() => {
-        if (Math.random() > 0.7 && participantsData.length < 15) {
-            const names = ['José Mendoza', 'Laura Díaz', 'Miguel Torres', 'Isabel Vargas', 'Eduardo Luna'];
-            const newParticipant = {
-                name: names[Math.floor(Math.random() * names.length)],
-                level: ['beginner', 'intermediate', 'advanced'][Math.floor(Math.random() * 3)],
-                avatar: 'New+User',
-                status: 'connecting',
-                background: '4A90E2'
-            };
-            
-            participantsData.push(newParticipant);
-            
-            // Después de 2 segundos, marcar como listo
-            setTimeout(() => {
-                newParticipant.status = 'ready';
-                updateParticipantsList();
-                updateParticipantsCounter();
-                showNotification(`${newParticipant.name} se unió a la competencia`, 'info');
-            }, 2000);
-            
-            updateParticipantsList();
-            updateParticipantsCounter();
-        }
-    }, 8000);
-    
-    // Simular mensajes de chat
-    setTimeout(() => {
-        addChatMessage('Diego Morales', '¡Vamos a ganar! 💪');
-    }, 5000);
     
     setTimeout(() => {
-        addChatMessage('Roberto Silva', 'Estudiando hasta el último momento 📚');
-    }, 12000);
+        console.log('🎮 Redirecting to live competition...');
+        window.location.href = `8 live-competition.html`;
+    }, 2000);
 }
 
-function handleReadyToggle() {
-    if (connectionStatus === 'connected') {
-        connectionStatus = 'ready';
-        showNotification('¡Marcado como listo!', 'success');
-    } else if (connectionStatus === 'ready') {
-        connectionStatus = 'connected';
-        showNotification('Ya no estás listo', 'warning');
-    }
-    
-    updateUserStatus();
-    updateParticipantsCounter();
-}
-
-function handleLeaveCompetition() {
-    if (confirm('¿Estás seguro de que quieres salir de la competencia?')) {
-        // Limpiar timers
-        if (countdownTimer) clearInterval(countdownTimer);
-        if (startingCountdownTimer) clearInterval(startingCountdownTimer);
-        
-        currentCompetition = null;
-        connectionStatus = 'disconnected';
-        
-        showSection('code-input');
-        document.getElementById('competitionCode').value = '';
-        
-        showNotification('Has salido de la competencia', 'info');
-        console.log('👋 Salido de la competencia');
-    }
-}
-
-function toggleChat() {
-    const chatContent = document.getElementById('chatContent');
-    const toggleBtn = document.getElementById('toggleChatBtn');
-    const icon = toggleBtn.querySelector('i');
-    
-    if (chatContent.classList.contains('collapsed')) {
-        chatContent.classList.remove('collapsed');
-        icon.className = 'fas fa-chevron-up';
-    } else {
-        chatContent.classList.add('collapsed');
-        icon.className = 'fas fa-chevron-down';
-    }
-}
-
-function handleReaction(event) {
-    const reaction = event.currentTarget.dataset.reaction;
-    const reactionMap = {
-        'ready': '👍 ¡Listo!',
-        'excited': '🔥 ¡Emocionado!',
-        'nervous': '😅 Nervioso',
-        'thinking': '🧠 Pensando...'
-    };
-    
-    // Desactivar todas las reacciones
-    document.querySelectorAll('.reaction-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // Activar la seleccionada
-    event.currentTarget.classList.add('active');
-    
-    // Agregar al chat
-    addChatMessage(currentUser.name, reactionMap[reaction]);
-    
-    showNotification(`Reacción enviada: ${reactionMap[reaction]}`, 'success');
-}
-
-function addChatMessage(author, message) {
-    const messagesContainer = document.getElementById('chatMessages');
-    
-    const messageEl = document.createElement('div');
-    messageEl.className = 'chat-message';
-    messageEl.innerHTML = `
-        <span class="message-author">${author}:</span>
-        <span class="message-text">${message}</span>
-        <span class="message-time">ahora</span>
-    `;
-    
-    messagesContainer.appendChild(messageEl);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-function handleShowMoreParticipants() {
-    const btn = document.getElementById('showMoreBtn');
-    const remainingCount = participantsData.length - 5;
-    
-    if (remainingCount > 0) {
-        // Mostrar todos los participantes
-        updateParticipantsListFull();
-        btn.innerHTML = '<i class="fas fa-chevron-up"></i><span>Ver menos</span>';
-        btn.onclick = handleShowLessParticipants;
-    }
-}
-
-function handleShowLessParticipants() {
-    updateParticipantsList();
-    const btn = document.getElementById('showMoreBtn');
-    const remainingCount = participantsData.length - 5;
-    btn.innerHTML = `<i class="fas fa-chevron-down"></i><span>Ver ${remainingCount} participantes más</span>`;
-    btn.onclick = handleShowMoreParticipants;
-}
-
-function updateParticipantsListFull() {
-    const container = document.getElementById('participantsList');
-    const showMoreBtn = container.querySelector('.show-more-participants');
-    
-    // Limpiar items existentes
-    const items = container.querySelectorAll('.participant-item');
-    items.forEach(item => item.remove());
-    
-    // Mostrar todos los participantes
-    participantsData.forEach(participant => {
-        const item = createParticipantItem(participant);
-        if (showMoreBtn) {
-            container.insertBefore(item, showMoreBtn);
-        } else {
-            container.appendChild(item);
-        }
-    });
-}
-
-function showSection(sectionName) {
-    // Ocultar todas las secciones
-    document.querySelectorAll('.code-input-section, .competition-details-section, .competition-starting-section').forEach(section => {
-        section.classList.add('hidden');
-    });
-    
-    // Mostrar la sección solicitada
-    const sectionMap = {
-        'code-input': 'codeInputSection',
-        'competition-details': 'competitionDetailsSection',
-        'competition-starting': 'competitionStartingSection'
-    };
-    
-    const sectionEl = document.getElementById(sectionMap[sectionName]);
-    if (sectionEl) {
-        sectionEl.classList.remove('hidden');
-    }
-    
-    currentSection = sectionName;
-}
-
-function showErrorModal(message) {
-    const modal = document.getElementById('errorModal');
-    const messageEl = document.getElementById('errorMessage');
-    
-    if (messageEl) {
-        messageEl.textContent = message;
-    }
-    
-    if (modal) {
-        modal.classList.add('active');
-    }
-}
-
-function closeErrorModal() {
-    const modal = document.getElementById('errorModal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
-    
-    // Limpiar y enfocar el input
-    const codeInput = document.getElementById('competitionCode');
-    if (codeInput) {
-        codeInput.value = '';
-        codeInput.focus();
-    }
-}
-
-function handleContactTeacher() {
-    closeErrorModal();
-    showNotification('Función de contacto no implementada en el prototipo', 'info');
-    console.log('📧 Contactar al docente (funcionalidad futura)');
-}
-
-function showLoading(message = 'Cargando...') {
-    const overlay = document.getElementById('loadingOverlay');
-    const messageEl = overlay.querySelector('.loading-content h3');
-    
-    if (messageEl) {
-        messageEl.textContent = message;
-    }
-    
-    overlay.classList.remove('hidden');
-}
-
-function hideLoading() {
-    const overlay = document.getElementById('loadingOverlay');
-    overlay.classList.add('hidden');
-}
-
-function focusCodeInput() {
-    const codeInput = document.getElementById('competitionCode');
-    if (codeInput) {
-        setTimeout(() => codeInput.focus(), 100);
-    }
-}
-
-function setupFormValidation() {
-    const codeInput = document.getElementById('competitionCode');
-    
-    if (codeInput) {
-        codeInput.addEventListener('input', function() {
-            const value = this.value;
-            const isValid = value.length >= 6 && /^[A-Z0-9]+$/.test(value);
-            
-            if (isValid) {
-                this.style.borderColor = 'var(--success)';
-            } else if (value.length > 0) {
-                this.style.borderColor = 'var(--error)';
-            } else {
-                this.style.borderColor = '';
-            }
-        });
-    }
-}
-
-function loadRecentCompetitions() {
-    // Las competencias recientes ya están en el HTML como mock data
-    console.log('📋 Competencias recientes cargadas');
-}
-
-// Sistema de Notificaciones
 function showNotification(message, type = 'success') {
     const toast = document.getElementById('toastNotification');
     const toastMessage = toast.querySelector('.toast-message');
@@ -2417,7 +1278,6 @@ function showNotification(message, type = 'success') {
     
     toastMessage.textContent = message;
     
-    // Configurar icono según el tipo
     toastIcon.className = 'toast-icon fas';
     toast.style.borderLeftColor = '';
     
@@ -2445,73 +1305,37 @@ function showNotification(message, type = 'success') {
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
-    
-    const closeBtn = toast.querySelector('.toast-close');
-    closeBtn.onclick = () => {
-        toast.classList.remove('show');
-    };
 }
 
-// Manejo de eventos de teclado
-document.addEventListener('keydown', function(event) {
-    // Enter para unirse
-    if (event.key === 'Enter' && currentSection === 'code-input') {
-        const form = document.getElementById('codeForm');
-        if (form) {
-            form.dispatchEvent(new Event('submit'));
-        }
+// Simulate real-time updates
+setTimeout(() => {
+    // Simulate a new participant joining
+    const participantsList = document.getElementById('participantsList');
+    if (participantsList && document.getElementById('competitionDetailsSection').style.display !== 'none') {
+        const newParticipant = document.createElement('div');
+        newParticipant.className = 'participant-item waiting';
+        newParticipant.innerHTML = `
+            <div class="participant-avatar">
+                <img src="https://ui-avatars.com/api/?name=Maria+Lopez&background=FF6B9D&color=fff" alt="María López">
+            </div>
+            <div class="participant-info">
+                <div class="participant-name">María López</div>
+                <div class="participant-status">Conectando...</div>
+            </div>
+            <i class="fas fa-clock participant-waiting-icon"></i>
+        `;
+        
+        // Update counter
+        const currentCount = parseInt(document.getElementById('participantsCount').textContent);
+        document.getElementById('participantsCount').textContent = currentCount + 1;
+        
+        participantsList.appendChild(newParticipant);
+        
+        showNotification('María López se ha unido', 'info');
     }
-    
-    // Escape para volver o cerrar modal
-    if (event.key === 'Escape') {
-        const modal = document.getElementById('errorModal');
-        if (modal && modal.classList.contains('active')) {
-            closeErrorModal();
-        } else if (currentSection === 'competition-details') {
-            handleLeaveCompetition();
-        }
-    }
-    
-    // Atajos de teclado
-    if (event.ctrlKey) {
-        switch (event.key) {
-            case 'r':
-                event.preventDefault();
-                if (currentSection === 'competition-details') {
-                    handleReadyToggle();
-                }
-                break;
-            case 'l':
-                event.preventDefault();
-                if (currentSection === 'competition-details') {
-                    handleLeaveCompetition();
-                }
-                break;
-        }
-    }
-});
+}, 5000);
 
-// Cleanup al salir de la página
-window.addEventListener('beforeunload', function() {
-    if (countdownTimer) clearInterval(countdownTimer);
-    if (startingCountdownTimer) clearInterval(startingCountdownTimer);
-});
-
-// Exportar funciones para uso global
-window.JoinCompetition = {
-    currentUser,
-    currentCompetition,
-    participantsData,
-    connectionStatus,
-    showNotification,
-    joinCompetition,
-    showSection,
-    handleBackToDashboard
-};
-
-console.log('📱 Unirse a Competencia cargado completamente');
-console.log('👩‍🎓 Ana García lista para competir');
-console.log('🏆 Competencias disponibles:', Object.keys(competitionsDatabase).length);
+console.log('🎯 Join Competition System Ready');
     </script>
 </body>
 </html>

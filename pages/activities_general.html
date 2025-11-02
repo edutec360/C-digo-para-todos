@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seleccionar Curso - Actividades | Código para Todos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="2_dashboardEstudiante2.html" class="nav-link" data-page="dashboard">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="course_general.html" class="nav-link" data-page="courses">
+            <i class="fas fa-book"></i>
+            Mis Cursos
+          </a>
+          <a href="activities_general.html" class="nav-link active" data-page="activities">
+            <i class="fas fa-pencil-alt"></i>
+            Actividades
+          </a>
+          <a href="competition_home.html" class="nav-link" data-page="competitions">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+        </div>
+
+        <a href="11_profile.html" class="nav-profile-link">
+          <div class="nav-profile">
+            <div class="profile-info">
+              <span class="user-name">Ana García</span>
+              <span class="user-level">Mi Perfil</span>
+            </div>
+            <div class="profile-avatar" id="userAvatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+                alt="Ana García"
+              />
+            </div>
+          </div>
+        </a>
+      </div>
+    </nav>
+
+    <main class="course-main">
+      <div class="course-container">
+        <section class="page-header">
+          <div class="page-title-section">
+            <div class="page-icon">
+              <i class="fas fa-pencil-alt"></i>
+            </div>
+            <div class="page-info">
+              <h1>Actividades de Cursos</h1>
+              <p>Selecciona el curso del cual deseas ver las actividades disponibles.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="courses-list">
+          <a href="5_activities.html" class="course-card-link">
+            <div class="course-card java">
+              <div class="course-icon-wrapper">
+                <div class="course-icon java">
+                  <i class="fab fa-java"></i>
+                </div>
+              </div>
+              
+              <div class="course-info-section">
+                <h3>Java Fundamentos</h3>
+                <p>Actividades del curso de introducción a Java.</p>
+                
+                <div class="course-stats">
+                  <div class="stat-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>12 Actividades</span>
+                  </div>
+                  <div class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>8 Completadas</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="course-right-section">
+                <div class="course-status">
+                  <span class="status-badge in-progress">
+                    <i class="fas fa-play"></i>
+                    En Progreso
+                  </span>
+                  <div class="progress-section">
+                    <div class="progress-info">
+                      <span class="progress-label">Progreso</span>
+                      <span class="progress-value">67%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 67%"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="course-action">
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="course-card-link">
+            <div class="course-card web">
+              <div class="course-icon-wrapper">
+                <div class="course-icon web">
+                  <i class="fas fa-code"></i>
+                </div>
+              </div>
+              
+              <div class="course-info-section">
+                <h3>Desarrollo Web</h3>
+                <p>Actividades de HTML, CSS y JavaScript.</p>
+                
+                <div class="course-stats">
+                  <div class="stat-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>15 Actividades</span>
+                  </div>
+                  <div class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>6 Completadas</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="course-right-section">
+                <div class="course-status">
+                  <span class="status-badge in-progress">
+                    <i class="fas fa-play"></i>
+                    En Progreso
+                  </span>
+                  <div class="progress-section">
+                    <div class="progress-info">
+                      <span class="progress-label">Progreso</span>
+                      <span class="progress-value">40%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="course-action">
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <style>
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --java-color: #ed8b00;
+        --web-color: #e34f26;
+        --neutral-light: #f8f9fa;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --border-light: #e5e5e5;
+        --success: #27ae60;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+        --nav-height: 70px;
+      }
+
+      /* Reset y Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: white;
+        box-shadow: var(--shadow-light);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: var(--nav-height);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+        flex-shrink: 0;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+        justify-content: center;
+        min-width: 0;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        border-radius: 8px;
+        transition: var(--transition);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .nav-profile-link {
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      .nav-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .nav-profile:hover {
+        background: var(--neutral-light);
+      }
+
+      .profile-info {
+        text-align: right;
+      }
+
+      .user-name {
+        display: block;
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.9rem;
+      }
+
+      .user-level {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      .profile-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .profile-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Main Content */
+      .course-main {
+        padding: 40px 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .course-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 35px 40px;
+        box-shadow: var(--shadow-light);
+        margin-bottom: 10px;
+      }
+
+      .page-title-section {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      .page-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2.2rem;
+        flex-shrink: 0;
+      }
+
+      .page-info h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .page-info p {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Courses List */
+      .courses-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .course-card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .course-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px 30px;
+        overflow: hidden;
+        transition: var(--transition);
+        border-left: 5px solid var(--border-light);
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      .course-card:hover {
+        transform: translateX(5px);
+        box-shadow: var(--shadow-medium);
+        border-left-color: var(--primary-blue);
+      }
+
+      .course-card.java {
+        border-left-color: var(--java-color);
+      }
+
+      .course-card.web {
+        border-left-color: var(--web-color);
+      }
+
+      .course-card.java:hover {
+        border-left-color: var(--java-color);
+        background: rgba(237, 139, 0, 0.02);
+      }
+
+      .course-card.web:hover {
+        border-left-color: var(--web-color);
+        background: rgba(227, 79, 38, 0.02);
+      }
+
+      /* Course Icon */
+      .course-icon-wrapper {
+        flex-shrink: 0;
+      }
+
+      .course-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .course-icon.java {
+        background: linear-gradient(135deg, var(--java-color), #f4a261);
+      }
+
+      .course-icon.web {
+        background: linear-gradient(135deg, var(--web-color), #f56565);
+      }
+
+      /* Course Info */
+      .course-info-section {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .course-info-section h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .course-info-section p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .course-stats {
+        display: flex;
+        gap: 25px;
+        margin-top: 5px;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .stat-item i {
+        color: var(--primary-blue);
+        font-size: 0.95rem;
+      }
+
+      /* Course Status and Progress */
+      .course-right-section {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        flex-shrink: 0;
+      }
+
+      .course-status {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+        min-width: 140px;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .status-badge.in-progress {
+        background: rgba(74, 144, 226, 0.15);
+        color: var(--primary-blue);
+      }
+
+      .status-badge.completed {
+        background: rgba(39, 174, 96, 0.15);
+        color: var(--success);
+      }
+
+      .progress-section {
+        width: 100%;
+      }
+
+      .progress-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+
+      .progress-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .progress-value {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+      }
+
+      .progress-bar {
+        height: 6px;
+        background: rgba(74, 144, 226, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+        border-radius: 10px;
+        transition: width 0.5s ease;
+      }
+
+      .course-action {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.3rem;
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+
+      .course-card:hover .course-action {
+        background: var(--primary-green);
+        transform: scale(1.1) translateX(3px);
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .course-stats {
+          gap: 15px;
+        }
+
+        .stat-item {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .course-main {
+          padding: 30px 15px;
+        }
+
+        .navbar {
+          position: static;
+        }
+
+        .page-header {
+          padding: 25px 20px;
+        }
+
+        .page-title-section {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+        }
+
+        .page-info h1 {
+          font-size: 1.8rem;
+        }
+
+        .page-info p {
+          font-size: 0.95rem;
+        }
+
+        .course-card {
+          padding: 20px;
+          gap: 20px;
+        }
+
+        .course-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 2rem;
+        }
+
+        .course-info-section h3 {
+          font-size: 1.2rem;
+        }
+
+        .course-right-section {
+          gap: 20px;
+        }
+
+        .course-status {
+          min-width: 120px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .course-card {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .course-icon-wrapper {
+          order: 1;
+        }
+
+        .course-info-section {
+          order: 2;
+          flex: 1;
+          min-width: calc(100% - 90px);
+        }
+
+        .course-right-section {
+          order: 3;
+          width: 100%;
+          justify-content: space-between;
+          gap: 15px;
+          margin-top: 10px;
+          padding-top: 15px;
+          border-top: 1px solid var(--border-light);
+        }
+
+        .course-status {
+          min-width: auto;
+          flex: 1;
+          align-items: flex-start;
+        }
+
+        .course-stats {
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 1.8rem;
+        }
+
+        .page-info h1 {
+          font-size: 1.5rem;
+        }
+
+        .page-info p {
+          font-size: 0.9rem;
+        }
+
+        .page-header {
+          padding: 20px;
+        }
+
+        .course-card {
+          padding: 15px;
+        }
+
+        .course-icon {
+          width: 55px;
+          height: 55px;
+          font-size: 1.8rem;
+        }
+
+        .course-info-section h3 {
+          font-size: 1.1rem;
+        }
+
+        .course-info-section p {
+          font-size: 0.85rem;
+        }
+
+        .course-action {
+          width: 45px;
+          height: 45px;
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('✅ Página de actividades cargada - Diseño horizontal.');
+
+        document.querySelectorAll('.course-card-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            const card = link.querySelector('.course-card');
+            const courseName = card.querySelector('.course-info-section h3').textContent;
+
+            // Si el enlace es '#', previene la navegación y muestra mensaje
+            if (link.getAttribute('href') === '#') {
+              e.preventDefault();
+              showNotification(`Actividades para "${courseName}" no disponibles en este prototipo.`, 'info');
+            } else {
+              showNotification(`Cargando actividades de ${courseName}...`, 'info');
+            }
+          });
+        });
+      });
+
+      // Función de notificación
+      function showNotification(message, type = "info") {
+        document.querySelectorAll(".notification.show").forEach(hideNotification);
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        const icons = {
+          success: "fa-check-circle",
+          warning: "fa-exclamation-triangle",
+          error: "fa-times-circle",
+          info: "fa-info-circle"
+        };
+        notification.innerHTML = `
+          <div class="notification-content">
+            <i class="fas ${icons[type] || icons.info}"></i>
+            <span>${message}</span>
+          </div>
+          <button class="notification-close">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+
+        if (!document.querySelector("#notification-styles")) {
+          const styles = document.createElement("style");
+          styles.id = "notification-styles";
+          styles.textContent = `
+            .notification {
+              position: fixed;
+              top: ${70 + 20}px;
+              right: 20px;
+              background: white;
+              border-radius: 8px;
+              padding: 12px 18px;
+              box-shadow: var(--shadow-medium);
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 15px;
+              z-index: 1001;
+              min-width: 280px;
+              max-width: 350px;
+              transform: translateX(110%);
+              opacity: 0;
+              transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+              border-left: 5px solid var(--primary-blue);
+            }
+            .notification.success { border-left-color: var(--success); }
+            .notification.warning { border-left-color: #f39c12; }
+            .notification.error { border-left-color: #e74c3c; }
+            .notification.show {
+              transform: translateX(0);
+              opacity: 1;
+            }
+            .notification-content {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              flex: 1;
+              min-width: 0;
+            }
+            .notification-content i {
+              font-size: 1.1rem;
+              color: var(--primary-blue);
+              flex-shrink: 0;
+            }
+            .notification.success .notification-content i { color: var(--success); }
+            .notification.warning .notification-content i { color: #f39c12; }
+            .notification.error .notification-content i { color: #e74c3c; }
+            .notification-content span {
+              font-weight: 500;
+              color: var(--text-primary);
+              font-size: 0.9rem;
+              white-space: normal;
+              word-break: break-word;
+            }
+            .notification-close {
+              background: transparent;
+              border: none;
+              color: var(--text-secondary);
+              cursor: pointer;
+              padding: 5px;
+              margin-left: 10px;
+              border-radius: 5px;
+              transition: background 0.2s ease;
+              flex-shrink: 0;
+            }
+            .notification-close:hover {
+              background: var(--neutral-light);
+              color: var(--text-primary);
+            }
+          `;
+          document.head.appendChild(styles);
+        }
+
+        document.body.appendChild(notification);
+        requestAnimationFrame(() => notification.classList.add("show"));
+
+        const closeBtn = notification.querySelector(".notification-close");
+        let autoHideTimeout = setTimeout(() => hideNotification(notification), 4000);
+        closeBtn.addEventListener("click", () => {
+          clearTimeout(autoHideTimeout);
+          hideNotification(notification);
+        });
+      }
+
+      function hideNotification(notification) {
+        if (!notification) return;
+        notification.classList.remove("show");
+        notification.addEventListener('transitionend', () => {
+          if (notification.parentNode) notification.parentNode.removeChild(notification);
+        }, { once: true });
+      }
+    </script>
+  </body>
+</html>

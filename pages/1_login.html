@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -17,23 +16,20 @@
                 </div>
                 <span class="logo-text">Código para Todos</span>
             </div>
-            <a href="index.html" class="back-link">
+            <a href="../index.html" class="back-link">
                 <i class="fas fa-arrow-left"></i>
                 Volver al inicio
             </a>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="auth-container">
-        <!-- Left Panel - Forms -->
         <div class="auth-panel">
             <div class="auth-header">
                 <h1 class="auth-title">¡Bienvenido de vuelta!</h1>
                 <p class="auth-subtitle">Inicia sesión para continuar tu aventura de programación</p>
             </div>
 
-            <!-- Tab Navigation -->
             <div class="tab-navigation">
                 <button class="tab-btn active" data-tab="login">
                     <i class="fas fa-sign-in-alt"></i>
@@ -45,7 +41,6 @@
                 </button>
             </div>
 
-            <!-- Login Form -->
             <div class="tab-content active" id="login">
                 <form class="auth-form" id="loginForm">
                     <div class="social-login">
@@ -95,7 +90,6 @@
                 </form>
             </div>
 
-            <!-- Register Form -->
             <div class="tab-content" id="register">
                 <form class="auth-form" id="registerForm">
                     <div class="social-login">
@@ -108,7 +102,6 @@
                         </div>
                     </div>
 
-                    <!-- Role Selection -->
                     <div class="role-selection">
                         <label>Soy:</label>
                         <div class="role-buttons">
@@ -123,7 +116,6 @@
                         </div>
                     </div>
 
-                    <!-- Common Fields -->
                     <div class="form-group">
                         <label for="fullName">Nombre completo</label>
                         <div class="input-wrapper">
@@ -142,7 +134,6 @@
                         <span class="error-message" id="registerEmailError"></span>
                     </div>
 
-                    <!-- Student-specific fields -->
                     <div class="student-fields">
                         <div class="form-row">
                             <div class="form-group">
@@ -239,7 +230,6 @@
                         </div>
                     </div>
 
-                    <!-- Teacher-specific fields -->
                     <div class="teacher-fields" style="display: none;">
                         <div class="form-group">
                             <label for="teacherArea">Área universitaria</label>
@@ -304,7 +294,6 @@
                         </div>
                     </div>
 
-                    <!-- Password Fields -->
                     <div class="form-row">
                         <div class="form-group">
                             <label for="registerPassword">Contraseña</label>
@@ -337,7 +326,6 @@
                         </div>
                     </div>
 
-                    <!-- Terms and Conditions -->
                     <div class="form-group">
                         <label class="checkbox-wrapper">
                             <input type="checkbox" id="terms" name="terms" required>
@@ -355,78 +343,8 @@
             </div>
         </div>
 
-        <!-- Right Panel - Visual -->
-        <div class="visual-panel">
-            <div class="visual-content">
-                <div class="visual-header">
-                    <h2>Únete a la revolución del aprendizaje</h2>
-                    <p>Miles de estudiantes ya están dominando Java con nuestra plataforma inteligente</p>
-                </div>
+        </main>
 
-                <div class="feature-showcase">
-                    <div class="showcase-item active" data-feature="1">
-                        <div class="showcase-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h4>Diagnóstico Inteligente</h4>
-                        <p>Descubre tu nivel y recibe contenido personalizado en minutos</p>
-                    </div>
-
-                    <div class="showcase-item" data-feature="2">
-                        <div class="showcase-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h4>IDE Integrado</h4>
-                        <p>Programa directamente en tu navegador con asistente de IA</p>
-                    </div>
-
-                    <div class="showcase-item" data-feature="3">
-                        <div class="showcase-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <h4>Gamificación</h4>
-                        <p>Gana logros, compite y personaliza tu perfil mientras aprendes</p>
-                    </div>
-                </div>
-
-                <div class="stats-mini">
-                    <div class="stat-mini">
-                        <span class="stat-number">95%</span>
-                        <span class="stat-label">Mejora comprensión</span>
-                    </div>
-                    <div class="stat-mini">
-                        <span class="stat-number">80%</span>
-                        <span class="stat-label">Supera dificultades</span>
-                    </div>
-                    <div class="stat-mini">
-                        <span class="stat-number">71%</span>
-                        <span class="stat-label">Uso frecuente</span>
-                    </div>
-                </div>
-
-                <div class="testimonial" id="testimonial">
-                    <div class="testimonial-content">
-                        <blockquote>"La IA me ayudó a entender conceptos que nunca había logrado dominar. ¡Ahora programar es divertido!"</blockquote>
-                        <cite>
-                            <span class="name">María G.</span>
-                            <span class="title">Estudiante de Ingeniería - UNAM</span>
-                        </cite>
-                    </div>
-                </div>
-            </div>
-
-            <div class="visual-decoration">
-                <div class="floating-code">
-                    <div class="code-snippet">public class Estudiante {</div>
-                    <div class="code-snippet">    private String nombre;</div>
-                    <div class="code-snippet">    private int nivel;</div>
-                    <div class="code-snippet">}</div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Success Modal -->
     <div class="modal" id="successModal">
         <div class="modal-overlay">
             <div class="modal-content success">
@@ -442,46 +360,45 @@
             </div>
         </div>
     </div>
-
     <style>
-        /* CSS se copiará aquí */
-        /* Reset y Variables */
-* {
+  /* CSS se copiará aquí */
+  /* Reset y Variables */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+  }
 
-:root {
-    --primary-blue: #4A90E2;
-    --primary-green: #7ED321;
-    --accent-pink: #FF6B9D;
-    --accent-yellow: #F5A623;
-    --neutral-light: #F8F9FA;
-    --neutral-dark: #2C3E50;
-    --success: #27AE60;
-    --warning: #F39C12;
-    --error: #E74C3C;
-    --text-dark: #2C3E50;
-    --text-light: #7F8C8D;
-    --white: #FFFFFF;
-    --border: #E1E8ED;
-    --shadow: 0 4px 20px rgba(0,0,0,0.1);
-    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+  :root {
+    --primary-blue: #4a90e2;
+    --primary-green: #7ed321;
+    --accent-pink: #ff6b9d;
+    --accent-yellow: #f5a623;
+    --neutral-light: #f8f9fa;
+    --neutral-dark: #2c3e50;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --error: #e74c3c;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --white: #ffffff;
+    --border: #e1e8ed;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
     --border-radius: 12px;
     --transition: all 0.3s ease;
-}
+  }
 
-body {
-    font-family: 'Inter', sans-serif;
+  body {
+    font-family: "Inter", sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     min-height: 100vh;
-}
+  }
 
-/* Navigation */
-.navbar {
+  /* Navigation */
+  .navbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -489,38 +406,38 @@ body {
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
+  }
 
-.nav-container {
+  .nav-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+  }
 
-.nav-logo {
+  .nav-logo {
     display: flex;
     align-items: center;
     gap: 10px;
     font-weight: 600;
     font-size: 1.2rem;
     color: var(--text-dark);
-}
+  }
 
-.logo-icon {
+  .logo-icon {
     width: 40px;
     height: 40px;
     background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: white;
-}
+  }
 
-.back-link {
+  .back-link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -528,23 +445,28 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
-}
+  }
 
-.back-link:hover {
+  .back-link:hover {
     color: var(--primary-blue);
     transform: translateX(-3px);
-}
+  }
 
-/* Main Layout */
-.auth-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  /* Main Layout */
+  /* CAMBIO: Modificado para centrar el formulario */
+  .auth-container {
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
     padding-top: 80px;
-}
+    padding-bottom: 4rem; /* Añadido para dar espacio */
+  }
 
-.auth-panel {
-    padding: 2rem;
+  .auth-panel {
+    padding: 1rem 2rem;
     background: white;
     display: flex;
     flex-direction: column;
@@ -552,46 +474,40 @@ body {
     max-width: 500px;
     margin: 0 auto;
     width: 100%;
-}
+    border-radius: var(--border-radius); /* Añadido para que se vea bien centrado */
+    box-shadow: var(--shadow); /* Añadido para que se vea bien centrado */
+  }
 
-.visual-panel {
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
+  /* CAMBIO: ELIMINADO .visual-panel y todos sus estilos relacionados */
 
-/* Auth Header */
-.auth-header {
+  /* Auth Header */
+  .auth-header {
     text-align: center;
-    margin-bottom: 2rem;
-}
+    margin-bottom: 1rem;
+  }
 
-.auth-title {
+  .auth-title {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--text-dark);
-}
+  }
 
-.auth-subtitle {
+  .auth-subtitle {
     color: var(--text-light);
     font-size: 1.1rem;
-}
+  }
 
-/* Tab Navigation */
-.tab-navigation {
+  /* Tab Navigation */
+  .tab-navigation {
     display: flex;
     background: var(--neutral-light);
     border-radius: var(--border-radius);
     padding: 4px;
     margin-bottom: 2rem;
-}
+  }
 
-.tab-btn {
+  .tab-btn {
     flex: 1;
     border: none;
     background: transparent;
@@ -605,72 +521,79 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-}
+  }
 
-.tab-btn.active {
+  .tab-btn.active {
     background: white;
     color: var(--primary-blue);
     box-shadow: var(--shadow);
-}
+  }
 
-.tab-btn:hover:not(.active) {
+  .tab-btn:hover:not(.active) {
     color: var(--text-dark);
-}
+  }
 
-/* Tab Content */
-.tab-content {
+  /* Tab Content */
+  .tab-content {
     display: none;
-}
+  }
 
-.tab-content.active {
+  .tab-content.active {
     display: block;
     animation: fadeIn 0.3s ease;
-}
+  }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-/* Forms */
-.auth-form {
+  /* Forms */
+  .auth-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-}
+  }
 
-.form-group {
+  .form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-}
+  }
 
-.form-row {
+  .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-}
+  }
 
-label {
+  label {
     font-weight: 500;
     color: var(--text-dark);
     font-size: 0.9rem;
-}
+  }
 
-.input-wrapper {
+  .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-}
+  }
 
-.input-wrapper i {
+  .input-wrapper i {
     position: absolute;
     left: 1rem;
     color: var(--text-light);
     z-index: 2;
-}
+  }
 
-input, select {
+  input,
+  select {
     width: 100%;
     padding: 0.9rem 1rem 0.9rem 2.8rem;
     border: 2px solid var(--border);
@@ -679,23 +602,26 @@ input, select {
     transition: var(--transition);
     background: white;
     color: var(--text-dark);
-}
+  }
 
-input:focus, select:focus {
+  input:focus,
+  select:focus {
     outline: none;
     border-color: var(--primary-blue);
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
-}
+  }
 
-input.error, select.error {
+  input.error,
+  select.error {
     border-color: var(--error);
-}
+  }
 
-input.success, select.success {
+  input.success,
+  select.success {
     border-color: var(--success);
-}
+  }
 
-.toggle-password {
+  .toggle-password {
     position: absolute;
     right: 1rem;
     background: none;
@@ -705,15 +631,15 @@ input.success, select.success {
     padding: 0.2rem;
     border-radius: 4px;
     transition: var(--transition);
-}
+  }
 
-.toggle-password:hover {
+  .toggle-password:hover {
     color: var(--primary-blue);
     background: rgba(74, 144, 226, 0.1);
-}
+  }
 
-/* Error Messages */
-.error-message {
+  /* Error Messages */
+  .error-message {
     color: var(--error);
     font-size: 0.85rem;
     margin-top: 0.25rem;
@@ -723,24 +649,24 @@ input.success, select.success {
     opacity: 0;
     transform: translateY(-5px);
     transition: var(--transition);
-}
+  }
 
-.error-message.show {
+  .error-message.show {
     opacity: 1;
     transform: translateY(0);
-}
+  }
 
-.error-message::before {
+  .error-message::before {
     content: "⚠";
     font-size: 0.8rem;
-}
+  }
 
-/* Social Login */
-.social-login {
+  /* Social Login */
+  .social-login {
     margin-bottom: 1rem;
-}
+  }
 
-.btn-google {
+  .btn-google {
     width: 100%;
     padding: 0.9rem;
     border: 2px solid var(--border);
@@ -755,59 +681,59 @@ input.success, select.success {
     justify-content: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
-}
+  }
 
-.btn-google:hover {
+  .btn-google:hover {
     border-color: var(--primary-blue);
     box-shadow: var(--shadow);
-}
+  }
 
-.btn-google i {
+  .btn-google i {
     color: #4285f4;
-}
+  }
 
-.divider {
+  .divider {
     text-align: center;
     position: relative;
     margin: 1rem 0;
-}
+  }
 
-.divider::before {
-    content: '';
+  .divider::before {
+    content: "";
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
     height: 1px;
     background: var(--border);
-}
+  }
 
-.divider span {
+  .divider span {
     background: white;
     padding: 0 1rem;
     color: var(--text-light);
     font-size: 0.9rem;
     position: relative;
     z-index: 1;
-}
+  }
 
-/* Role Selection */
-.role-selection {
+  /* Role Selection */
+  .role-selection {
     margin-bottom: 1rem;
-}
+  }
 
-.role-selection label {
+  .role-selection label {
     margin-bottom: 0.8rem;
     display: block;
-}
+  }
 
-.role-buttons {
+  .role-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
-}
+  }
 
-.role-btn {
+  .role-btn {
     padding: 1rem;
     border: 2px solid var(--border);
     border-radius: var(--border-radius);
@@ -820,51 +746,51 @@ input.success, select.success {
     gap: 0.5rem;
     font-weight: 500;
     color: var(--text-dark);
-}
+  }
 
-.role-btn i {
+  .role-btn i {
     font-size: 1.5rem;
     color: var(--text-light);
     transition: var(--transition);
-}
+  }
 
-.role-btn.active {
+  .role-btn.active {
     border-color: var(--primary-blue);
     background: rgba(74, 144, 226, 0.05);
     color: var(--primary-blue);
-}
+  }
 
-.role-btn.active i {
+  .role-btn.active i {
     color: var(--primary-blue);
-}
+  }
 
-.role-btn:hover:not(.active) {
+  .role-btn:hover:not(.active) {
     border-color: var(--text-light);
     transform: translateY(-2px);
-}
+  }
 
-/* Form Options */
-.form-options {
+  /* Form Options */
+  .form-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0.5rem 0;
-}
+  }
 
-.checkbox-wrapper {
+  .checkbox-wrapper {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
     font-size: 0.9rem;
     line-height: 1.4;
-}
+  }
 
-.checkbox-wrapper input {
+  .checkbox-wrapper input {
     display: none;
-}
+  }
 
-.checkmark {
+  .checkmark {
     width: 18px;
     height: 18px;
     border: 2px solid var(--border);
@@ -874,88 +800,88 @@ input.success, select.success {
     justify-content: center;
     transition: var(--transition);
     flex-shrink: 0;
-}
+  }
 
-.checkbox-wrapper input:checked + .checkmark {
+  .checkbox-wrapper input:checked + .checkmark {
     background: var(--primary-blue);
     border-color: var(--primary-blue);
-}
+  }
 
-.checkbox-wrapper input:checked + .checkmark::after {
+  .checkbox-wrapper input:checked + .checkmark::after {
     content: "✓";
     color: white;
     font-size: 0.8rem;
     font-weight: bold;
-}
+  }
 
-.forgot-password {
+  .forgot-password {
     color: var(--primary-blue);
     text-decoration: none;
     font-size: 0.9rem;
     transition: var(--transition);
-}
+  }
 
-.forgot-password:hover {
+  .forgot-password:hover {
     text-decoration: underline;
-}
+  }
 
-.terms-link {
+  .terms-link {
     color: var(--primary-blue);
     text-decoration: none;
-}
+  }
 
-.terms-link:hover {
+  .terms-link:hover {
     text-decoration: underline;
-}
+  }
 
-/* Password Strength */
-.password-strength {
+  /* Password Strength */
+  .password-strength {
     margin-top: 0.5rem;
-}
+  }
 
-.strength-bar {
+  .strength-bar {
     width: 100%;
     height: 4px;
     background: var(--border);
     border-radius: 2px;
     overflow: hidden;
     margin-bottom: 0.3rem;
-}
+  }
 
-.strength-fill {
+  .strength-fill {
     height: 100%;
     width: 0%;
     transition: var(--transition);
     border-radius: 2px;
-}
+  }
 
-.strength-text {
+  .strength-text {
     font-size: 0.8rem;
     color: var(--text-light);
-}
+  }
 
-.strength-weak .strength-fill {
+  .strength-weak .strength-fill {
     width: 25%;
     background: var(--error);
-}
+  }
 
-.strength-fair .strength-fill {
+  .strength-fair .strength-fill {
     width: 50%;
     background: var(--warning);
-}
+  }
 
-.strength-good .strength-fill {
+  .strength-good .strength-fill {
     width: 75%;
     background: var(--primary-blue);
-}
+  }
 
-.strength-strong .strength-fill {
+  .strength-strong .strength-fill {
     width: 100%;
     background: var(--success);
-}
+  }
 
-/* Buttons */
-.btn-primary {
+  /* Buttons */
+  .btn-primary {
     background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
     color: white;
     border: none;
@@ -969,23 +895,23 @@ input.success, select.success {
     justify-content: center;
     gap: 0.5rem;
     font-size: 1rem;
-}
+  }
 
-.btn-primary:hover {
+  .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
-}
+  }
 
-.btn-primary:active {
+  .btn-primary:active {
     transform: translateY(0);
-}
+  }
 
-.btn-primary.loading {
+  .btn-primary.loading {
     opacity: 0.7;
     cursor: not-allowed;
-}
+  }
 
-.btn-primary.loading::before {
+  .btn-primary.loading::before {
     content: "";
     width: 16px;
     height: 16px;
@@ -994,177 +920,26 @@ input.success, select.success {
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-right: 0.5rem;
-}
+  }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-.btn-full {
+  .btn-full {
     width: 100%;
-}
+  }
 
-/* Visual Panel */
-.visual-content {
-    max-width: 400px;
-    text-align: center;
-    z-index: 2;
-    position: relative;
-}
+  /* CAMBIO: ELIMINADOS TODOS LOS ESTILOS DE .visual-panel y sus hijos */
+  /* ( .visual-content, .feature-showcase, .showcase-item, .stats-mini, .testimonial, .visual-decoration, .floating-code ) */
 
-.visual-header h2 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.visual-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    margin-bottom: 3rem;
-    line-height: 1.6;
-}
-
-/* Feature Showcase */
-.feature-showcase {
-    margin-bottom: 3rem;
-}
-
-.showcase-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    transition: var(--transition);
-    cursor: pointer;
-    opacity: 0.7;
-    transform: scale(0.95);
-}
-
-.showcase-item.active {
-    opacity: 1;
-    transform: scale(1);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.showcase-item:hover {
-    opacity: 1;
-    transform: scale(1.02);
-}
-
-.showcase-icon {
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
-    font-size: 1.5rem;
-}
-
-.showcase-item h4 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.showcase-item p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    line-height: 1.5;
-}
-
-/* Stats Mini */
-.stats-mini {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.stat-mini {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: var(--border-radius);
-    padding: 1rem;
-}
-
-.stat-number {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    opacity: 0.8;
-}
-
-/* Testimonial */
-.testimonial {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-}
-
-.testimonial blockquote {
-    font-size: 1rem;
-    font-style: italic;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-.testimonial cite {
-    display: block;
-    text-align: right;
-}
-
-.testimonial .name {
-    font-weight: 600;
-    display: block;
-}
-
-.testimonial .title {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-/* Visual Decoration */
-.visual-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.floating-code {
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    opacity: 0.3;
-    transform: rotate(-15deg);
-}
-
-.code-snippet {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Modal */
-.modal {
+  /* Modal */
+  .modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -1178,23 +953,23 @@ input.success, select.success {
     opacity: 0;
     pointer-events: none;
     transition: var(--transition);
-}
+  }
 
-.modal.active {
+  .modal.active {
     opacity: 1;
     pointer-events: all;
-}
+  }
 
-.modal-overlay {
+  .modal-overlay {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-}
+  }
 
-.modal-content {
+  .modal-content {
     background: white;
     border-radius: var(--border-radius);
     padding: 2rem;
@@ -1203,999 +978,960 @@ input.success, select.success {
     text-align: center;
     transform: scale(0.8);
     transition: var(--transition);
-}
+  }
 
-.modal.active .modal-content {
+  .modal.active .modal-content {
     transform: scale(1);
-}
+  }
 
-.modal-content.success {
+  .modal-content.success {
     border-top: 4px solid var(--success);
-}
+  }
 
-.modal-icon {
+  .modal-icon {
     font-size: 3rem;
     color: var(--success);
     margin-bottom: 1rem;
-}
+  }
 
-.modal-content h3 {
+  .modal-content h3 {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text-dark);
-}
+  }
 
-.modal-content p {
+  .modal-content p {
     color: var(--text-light);
     margin-bottom: 2rem;
     line-height: 1.6;
-}
+  }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .auth-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .visual-panel {
-        order: -1;
-        min-height: 300px;
-    }
-    
-    .auth-panel {
-        padding: 2rem 1rem;
-    }
-    
-    .visual-content {
-        max-width: none;
-        padding: 2rem;
-    }
-    
-    .feature-showcase {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .showcase-item {
-        margin-bottom: 0;
-        padding: 1rem;
-    }
-    
-    .visual-header h2 {
-        font-size: 1.8rem;
-    }
-    
-    .visual-header p {
-        margin-bottom: 2rem;
-    }
-}
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    /* CAMBIO: .auth-container ya no es grid, no se necesita cambiar */
 
-@media (max-width: 768px) {
+    /* CAMBIO: ELIMINADAS las reglas para .visual-panel, .visual-content y .feature-showcase */
+
     .auth-panel {
-        padding: 1.5rem;
+      padding: 2rem 1rem;
     }
-    
+  }
+
+  @media (max-width: 768px) {
+    .auth-panel {
+      padding: 1.5rem;
+      margin: 0 1rem; /* Añadido para que no pegue a los bordes */
+    }
+
     .auth-title {
-        font-size: 1.8rem;
+      font-size: 1.8rem;
     }
-    
+
     .form-row {
-        grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
     }
-    
+
     .role-buttons {
-        grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
     }
-    
+
     .form-options {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
     }
-    
-    .feature-showcase {
-        grid-template-columns: 1fr;
-    }
-    
-    .stats-mini {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-    
-    .visual-panel {
-        min-height: 250px;
-    }
-    
-    .floating-code {
-        display: none;
-    }
-}
 
-@media (max-width: 480px) {
+    /* CAMBIO: ELIMINADAS las reglas para .stats-mini y .visual-panel */
+  }
+
+  @media (max-width: 480px) {
     .auth-panel {
-        padding: 1rem;
+      padding: 1rem;
+      margin: 0 0.5rem; /* Reducido para pantallas pequeñas */
     }
-    
+
     .nav-container {
-        padding: 1rem;
+      padding: 1rem;
     }
-    
+
     .auth-title {
-        font-size: 1.5rem;
+      font-size: 1.5rem;
     }
-    
+
     .auth-subtitle {
-        font-size: 1rem;
+      font-size: 1rem;
     }
-    
+
     .tab-btn {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.9rem;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
     }
-    
-    input, select {
-        padding: 0.8rem 1rem 0.8rem 2.5rem;
-    }
-    
-    .showcase-item {
-        padding: 1rem;
-    }
-    
-    .showcase-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-}
-    </style>
 
-    <script>
-        /* JavaScript se copiará aquí */
-        // DOM Elements
-const tabBtns = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-const roleBtns = document.querySelectorAll('.role-btn');
-const studentFields = document.querySelector('.student-fields');
-const teacherFields = document.querySelector('.teacher-fields');
-const educationLevelSelect = document.getElementById('educationLevel');
-const areaSelect = document.getElementById('area');
-const passwordInput = document.getElementById('registerPassword');
-const confirmPasswordInput = document.getElementById('confirmPassword');
-const passwordStrength = document.getElementById('passwordStrength');
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-const successModal = document.getElementById('successModal');
-const continueBtn = document.getElementById('continueBtn');
+    input,
+    select {
+      padding: 0.8rem 1rem 0.8rem 2.5rem;
+    }
+  }
+</style>
+<script>
+  /* JavaScript se copiará aquí */
+  // DOM Elements
+  const tabBtns = document.querySelectorAll(".tab-btn");
+  const tabContents = document.querySelectorAll(".tab-content");
+  const roleBtns = document.querySelectorAll(".role-btn");
+  const studentFields = document.querySelector(".student-fields");
+  const teacherFields = document.querySelector(".teacher-fields");
+  const educationLevelSelect = document.getElementById("educationLevel");
+  const areaSelect = document.getElementById("area");
+  const passwordInput = document.getElementById("registerPassword");
+  const confirmPasswordInput = document.getElementById("confirmPassword");
+  const passwordStrength = document.getElementById("passwordStrength");
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+  const successModal = document.getElementById("successModal");
+  const continueBtn = document.getElementById("continueBtn");
 
-// Area options based on education level
-const areaOptions = {
+  // Area options based on education level
+  const areaOptions = {
     preparatoria: [
-        { value: 'fisico-matematicas', text: 'Ciencias Físico-Matemáticas' },
-        { value: 'quimico-biologicas', text: 'Químico-Biológicas' },
-        { value: 'humanidades-sociales', text: 'Humanidades y Ciencias Sociales' },
-        { value: 'economico-administrativas', text: 'Económico-Administrativas' }
+      { value: "fisico-matematicas", text: "Ciencias Físico-Matemáticas" },
+      { value: "quimico-biologicas", text: "Químico-Biológicas" },
+      {
+        value: "humanidades-sociales",
+        text: "Humanidades y Ciencias Sociales",
+      },
+      {
+        value: "economico-administrativas",
+        text: "Económico-Administrativas",
+      },
     ],
     universidad: [
-        { value: 'artes', text: 'Artes' },
-        { value: 'biologicas', text: 'Ciencias Biológicas y Agropecuarias' },
-        { value: 'salud', text: 'Ciencias de la Salud' },
-        { value: 'economico', text: 'Económico-Administrativas' },
-        { value: 'humanidades', text: 'Humanidades' },
-        { value: 'tecnica', text: 'Técnica' }
-    ]
-};
+      { value: "artes", text: "Artes" },
+      { value: "biologicas", text: "Ciencias Biológicas y Agropecuarias" },
+      { value: "salud", text: "Ciencias de la Salud" },
+      { value: "economico", text: "Económico-Administrativas" },
+      { value: "humanidades", text: "Humanidades" },
+      { value: "tecnica", text: "Técnica" },
+    ],
+  };
 
-// Current selected role
-let currentRole = 'student';
+  // Current selected role
+  let currentRole = "student";
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
+  // Initialize
+  document.addEventListener("DOMContentLoaded", function () {
     initializeApp();
-});
+  });
 
-function initializeApp() {
+  function initializeApp() {
     setupTabNavigation();
     setupRoleSelection();
     setupFormValidation();
     setupPasswordToggle();
     setupPasswordStrength();
     setupEducationLevelChange();
-    setupShowcaseRotation();
     setupFormSubmissions();
-    
-    console.log('🎯 Login/Registro page loaded successfully!');
-}
 
-// Tab Navigation
-function setupTabNavigation() {
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetTab = btn.getAttribute('data-tab');
-            
-            // Update active tab button
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Update active tab content
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === targetTab) {
-                    content.classList.add('active');
-                }
-            });
-            
-            // Update header text based on active tab
-            const authTitle = document.querySelector('.auth-title');
-            const authSubtitle = document.querySelector('.auth-subtitle');
-            
-            if (targetTab === 'login') {
-                authTitle.textContent = '¡Bienvenido de vuelta!';
-                authSubtitle.textContent = 'Inicia sesión para continuar tu aventura de programación';
-            } else {
-                authTitle.textContent = '¡Únete a nosotros!';
-                authSubtitle.textContent = 'Crea tu cuenta y comienza a aprender Java hoy mismo';
-            }
-        });
+    // CAMBIO: Se llama a la función corregida
+    handleURLNavigation();
+
+    console.log("🎯 Login/Registro page loaded successfully!");
+  }
+
+  // --- FUNCIONES HELPER ---
+
+  /**
+   * Muestra un Tab específico y oculta los demás
+   * @param {string} tabId - El ID del tab a mostrar ('login' o 'register')
+   */
+  function showTab(tabId) {
+    // Actualiza botones
+    tabBtns.forEach((b) => b.classList.remove("active"));
+    const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+    if (btn) btn.classList.add("active");
+
+    // Actualiza contenidos
+    tabContents.forEach((content) => {
+      content.classList.remove("active");
+      if (content.id === tabId) {
+        content.classList.add("active");
+      }
     });
-}
 
-// Role Selection
-function setupRoleSelection() {
-    roleBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const role = btn.getAttribute('data-role');
-            currentRole = role;
-            
-            // Update active role button
-            roleBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Show/hide role-specific fields
-            if (role === 'student') {
-                studentFields.style.display = 'block';
-                teacherFields.style.display = 'none';
-                
-                // Make student fields required
-                setFieldsRequired(studentFields, true);
-                setFieldsRequired(teacherFields, false);
-            } else {
-                studentFields.style.display = 'none';
-                teacherFields.style.display = 'block';
-                
-                // Make teacher fields required
-                setFieldsRequired(studentFields, false);
-                setFieldsRequired(teacherFields, true);
-            }
-        });
-    });
-}
+    // Actualiza el texto del encabezado
+    const authTitle = document.querySelector(".auth-title");
+    const authSubtitle = document.querySelector(".auth-subtitle");
 
-function setFieldsRequired(container, required) {
-    const inputs = container.querySelectorAll('input, select');
-    inputs.forEach(input => {
-        if (required) {
-            input.setAttribute('required', '');
-        } else {
-            input.removeAttribute('required');
-        }
-    });
-}
-
-// Education Level Change Handler
-function setupEducationLevelChange() {
-    if (educationLevelSelect) {
-        educationLevelSelect.addEventListener('change', function() {
-            const level = this.value;
-            updateAreaOptions(level);
-        });
+    if (tabId === "login") {
+      authTitle.textContent = "¡Bienvenido de vuelta!";
+      authSubtitle.textContent =
+        "Inicia sesión para continuar tu aventura de programación";
+    } else {
+      authTitle.textContent = "¡Únete a nosotros!";
+      authSubtitle.textContent =
+        "Crea tu cuenta y comienza a aprender Java hoy mismo";
     }
-}
+  }
 
-function updateAreaOptions(level) {
+  /**
+   * Selecciona un Rol específico y muestra/oculta campos
+   * @param {string} roleId - El rol a seleccionar ('student' o 'teacher')
+   */
+  function selectRole(roleId) {
+    currentRole = roleId;
+
+    // Actualiza botones de rol
+    roleBtns.forEach((b) => b.classList.remove("active"));
+    const btn = document.querySelector(`.role-btn[data-role="${roleId}"]`);
+    if (btn) btn.classList.add("active");
+
+    // Muestra/oculta campos
+    if (roleId === "student") {
+      studentFields.style.display = "block";
+      teacherFields.style.display = "none";
+      setFieldsRequired(studentFields, true);
+      setFieldsRequired(teacherFields, false);
+    } else {
+      studentFields.style.display = "none";
+      teacherFields.style.display = "block";
+      setFieldsRequired(studentFields, false);
+      setFieldsRequired(teacherFields, true);
+    }
+  }
+
+  // ================================================
+  // AQUÍ ESTÁ LA FUNCIÓN CORREGIDA
+  // ================================================
+  /**
+   * Lee la URL al cargar la página para mostrar el Tab y Rol correctos
+   */
+  function handleURLNavigation() {
+    const fullHash = window.location.hash; // Esto será algo como "#register?role=student"
+
+    if (!fullHash) {
+      // No hay hash, mostrar login por defecto
+      showTab("login");
+      return;
+    }
+
+    // 1. Separar el hash principal de los parámetros
+    const hashParts = fullHash.split("?");
+    const tabHash = hashParts[0]; // Será "#register" o "#login"
+    const paramString = hashParts[1]; // Será "role=student" o undefined
+
+    // 2. Parsear los parámetros
+    const params = new URLSearchParams(paramString);
+    const role = params.get("role"); // "student" o "teacher"
+
+    // 3. Decidir qué mostrar
+    if (tabHash === "#register") {
+      showTab("register");
+      if (role === "student" || role === "teacher") {
+        // Si la URL especifica un rol, selecciónalo
+        selectRole(role);
+      } else {
+        // Si es solo #register, mostrar estudiante por defecto
+        selectRole("student");
+      }
+    } else if (tabHash === "#login") {
+      showTab("login");
+    } else {
+      // Fallback por si acaso (ej. un hash vacío #)
+      showTab("login");
+    }
+  }
+  // ================================================
+  // FIN DE LA FUNCIÓN CORREGIDA
+  // ================================================
+
+  // Tab Navigation
+  function setupTabNavigation() {
+    tabBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetTab = btn.getAttribute("data-tab");
+        showTab(targetTab);
+      });
+    });
+  }
+
+  // Role Selection
+  function setupRoleSelection() {
+    roleBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const role = btn.getAttribute("data-role");
+        selectRole(role);
+      });
+    });
+  }
+
+  function setFieldsRequired(container, required) {
+    const inputs = container.querySelectorAll("input, select");
+    inputs.forEach((input) => {
+      if (required) {
+        input.setAttribute("required", "");
+      } else {
+        input.removeAttribute("required");
+      }
+    });
+  }
+
+  // Education Level Change Handler
+  function setupEducationLevelChange() {
+    if (educationLevelSelect) {
+      educationLevelSelect.addEventListener("change", function () {
+        const level = this.value;
+        updateAreaOptions(level);
+      });
+    }
+  }
+
+  function updateAreaOptions(level) {
     if (!areaSelect) return;
-    
+
     // Clear current options
     areaSelect.innerHTML = '<option value="">Selecciona tu área</option>';
-    
+
     if (level && areaOptions[level]) {
-        areaOptions[level].forEach(option => {
-            const optionElement = document.createElement('option');
-            optionElement.value = option.value;
-            optionElement.textContent = option.text;
-            areaSelect.appendChild(optionElement);
-        });
-        areaSelect.disabled = false;
+      areaOptions[level].forEach((option) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option.value;
+        optionElement.textContent = option.text;
+        areaSelect.appendChild(optionElement);
+      });
+      areaSelect.disabled = false;
     } else {
-        areaSelect.innerHTML = '<option value="">Primero selecciona tu nivel educativo</option>';
-        areaSelect.disabled = true;
+      areaSelect.innerHTML =
+        '<option value="">Primero selecciona tu nivel educativo</option>';
+      areaSelect.disabled = true;
     }
-}
+  }
 
-// Password Toggle
-function setupPasswordToggle() {
-    const toggleButtons = document.querySelectorAll('.toggle-password');
-    
-    toggleButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const targetInput = document.getElementById(targetId);
-            const icon = this.querySelector('i');
-            
-            if (targetInput.type === 'password') {
-                targetInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                targetInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
+  // Password Toggle
+  function setupPasswordToggle() {
+    const toggleButtons = document.querySelectorAll(".toggle-password");
+
+    toggleButtons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const targetId = this.getAttribute("data-target");
+        const targetInput = document.getElementById(targetId);
+        const icon = this.querySelector("i");
+
+        if (targetInput.type === "password") {
+          targetInput.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        } else {
+          targetInput.type = "password";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      });
     });
-}
+  }
 
-// Password Strength
-function setupPasswordStrength() {
+  // Password Strength
+  function setupPasswordStrength() {
     if (passwordInput) {
-        passwordInput.addEventListener('input', function() {
-            const password = this.value;
-            updatePasswordStrength(password);
-        });
+      passwordInput.addEventListener("input", function () {
+        const password = this.value;
+        updatePasswordStrength(password);
+      });
     }
-    
-    if (confirmPasswordInput) {
-        confirmPasswordInput.addEventListener('input', function() {
-            validatePasswordMatch();
-        });
-    }
-}
 
-function updatePasswordStrength(password) {
-    if (!passwordStrength) return;
-    
-    const strengthBar = passwordStrength.querySelector('.strength-fill');
-    const strengthText = passwordStrength.querySelector('.strength-text');
-    
-    if (password.length === 0) {
-        passwordStrength.className = 'password-strength';
-        strengthText.textContent = 'Introduce una contraseña';
-        return;
+    if (confirmPasswordInput) {
+      confirmPasswordInput.addEventListener("input", function () {
+        validatePasswordMatch();
+      });
     }
-    
+  }
+
+  function updatePasswordStrength(password) {
+    if (!passwordStrength) return;
+
+    const strengthBar = passwordStrength.querySelector(".strength-fill");
+    const strengthText = passwordStrength.querySelector(".strength-text");
+
+    if (password.length === 0) {
+      passwordStrength.className = "password-strength";
+      strengthText.textContent = "Introduce una contraseña";
+      return;
+    }
+
     let score = 0;
     let feedback = [];
-    
+
     // Length check
     if (password.length >= 8) score++;
-    else feedback.push('mínimo 8 caracteres');
-    
+    else feedback.push("mínimo 8 caracteres");
+
     // Lowercase check
     if (/[a-z]/.test(password)) score++;
-    else feedback.push('una minúscula');
-    
+    else feedback.push("una minúscula");
+
     // Uppercase check
     if (/[A-Z]/.test(password)) score++;
-    else feedback.push('una mayúscula');
-    
+    else feedback.push("una mayúscula");
+
     // Number check
     if (/\d/.test(password)) score++;
-    else feedback.push('un número');
-    
+    else feedback.push("un número");
+
     // Special character check
     if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) score++;
-    else feedback.push('un carácter especial');
-    
-    // Update UI based on score
-    passwordStrength.className = 'password-strength';
-    
-    if (score <= 2) {
-        passwordStrength.classList.add('strength-weak');
-        strengthText.textContent = `Débil - Necesita: ${feedback.slice(0, 2).join(', ')}`;
-    } else if (score === 3) {
-        passwordStrength.classList.add('strength-fair');
-        strengthText.textContent = `Regular - Necesita: ${feedback[0] || 'caracteres especiales'}`;
-    } else if (score === 4) {
-        passwordStrength.classList.add('strength-good');
-        strengthText.textContent = 'Buena - ¡Casi perfecta!';
-    } else {
-        passwordStrength.classList.add('strength-strong');
-        strengthText.textContent = '¡Excelente! - Contraseña muy segura';
-    }
-}
+    else feedback.push("un carácter especial");
 
-function validatePasswordMatch() {
+    // Update UI based on score
+    passwordStrength.className = "password-strength";
+
+    if (score <= 2) {
+      passwordStrength.classList.add("strength-weak");
+      strengthText.textContent = `Débil - Necesita: ${feedback
+        .slice(0, 2)
+        .join(", ")}`;
+    } else if (score === 3) {
+      passwordStrength.classList.add("strength-fair");
+      strengthText.textContent = `Regular - Necesita: ${
+        feedback[0] || "caracteres especiales"
+      }`;
+    } else if (score === 4) {
+      passwordStrength.classList.add("strength-good");
+      strengthText.textContent = "Buena - ¡Casi perfecta!";
+    } else {
+      passwordStrength.classList.add("strength-strong");
+      strengthText.textContent = "¡Excelente! - Contraseña muy segura";
+    }
+  }
+
+  function validatePasswordMatch() {
     const password = passwordInput.value;
     const confirmPassword = confirmPasswordInput.value;
-    const errorElement = document.getElementById('confirmPasswordError');
-    
+    const errorElement = document.getElementById("confirmPasswordError");
+
     if (confirmPassword.length === 0) {
-        hideError('confirmPasswordError');
-        confirmPasswordInput.classList.remove('error', 'success');
-        return;
+      hideError("confirmPasswordError");
+      confirmPasswordInput.classList.remove("error", "success");
+      return;
     }
-    
+
     if (password !== confirmPassword) {
-        showError('confirmPasswordError', 'Las contraseñas no coinciden');
-        confirmPasswordInput.classList.add('error');
-        confirmPasswordInput.classList.remove('success');
+      showError("confirmPasswordError", "Las contraseñas no coinciden");
+      confirmPasswordInput.classList.add("error");
+      confirmPasswordInput.classList.remove("success");
     } else {
-        hideError('confirmPasswordError');
-        confirmPasswordInput.classList.remove('error');
-        confirmPasswordInput.classList.add('success');
+      hideError("confirmPasswordError");
+      confirmPasswordInput.classList.remove("error");
+      confirmPasswordInput.classList.add("success");
     }
-}
+  }
 
-// Form Validation
-function setupFormValidation() {
+  // Form Validation
+  function setupFormValidation() {
     // Real-time validation for all inputs
-    const allInputs = document.querySelectorAll('input, select');
-    
-    allInputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validateField(this);
-        });
-        
-        input.addEventListener('input', function() {
-            if (this.classList.contains('error')) {
-                validateField(this);
-            }
-        });
-    });
-}
+    const allInputs = document.querySelectorAll("input, select");
 
-function validateField(field) {
+    allInputs.forEach((input) => {
+      input.addEventListener("blur", function () {
+        validateField(this);
+      });
+
+      input.addEventListener("input", function () {
+        if (this.classList.contains("error")) {
+          validateField(this);
+        }
+      });
+    });
+  }
+
+  function validateField(field) {
     const value = field.value.trim();
     const fieldName = field.name;
     const fieldId = field.id;
     let isValid = true;
-    let errorMessage = '';
-    
+    let errorMessage = "";
+
     // Required field check
-    if (field.hasAttribute('required') && !value) {
-        isValid = false;
-        errorMessage = 'Este campo es obligatorio';
+    if (field.hasAttribute("required") && !value) {
+      isValid = false;
+      errorMessage = "Este campo es obligatorio";
     }
-    
+
     // Specific validations
     switch (fieldName) {
-        case 'email':
-            if (value && !isValidEmail(value)) {
-                isValid = false;
-                errorMessage = 'Introduce un email válido';
-            }
-            break;
-            
-        case 'password':
-            if (value && value.length < 8) {
-                isValid = false;
-                errorMessage = 'La contraseña debe tener al menos 8 caracteres';
-            }
-            break;
-            
-        case 'fullName':
-            if (value && value.length < 2) {
-                isValid = false;
-                errorMessage = 'El nombre debe tener al menos 2 caracteres';
-            }
-            break;
-            
-        case 'age':
-            const age = parseInt(value);
-            const educationLevel = document.getElementById('educationLevel')?.value;
-            if (value && educationLevel === 'preparatoria' && (age < 15 || age > 20)) {
-                isValid = false;
-                errorMessage = 'Edad no coherente con nivel de preparatoria';
-            } else if (value && educationLevel === 'universidad' && (age < 17 || age > 35)) {
-                isValid = false;
-                errorMessage = 'Edad no coherente con nivel universitario';
-            }
-            break;
+      case "email":
+        if (value && !isValidEmail(value)) {
+          isValid = false;
+          errorMessage = "Introduce un email válido";
+        }
+        break;
+
+      case "password":
+        if (value && value.length < 8) {
+          isValid = false;
+          errorMessage = "La contraseña debe tener al menos 8 caracteres";
+        }
+        break;
+
+      case "fullName":
+        if (value && value.length < 2) {
+          isValid = false;
+          errorMessage = "El nombre debe tener al menos 2 caracteres";
+        }
+        break;
+
+      case "age":
+        const age = parseInt(value);
+        const educationLevel = document.getElementById("educationLevel")?.value;
+        if (value && educationLevel === "preparatoria" && (age < 15 || age > 20)) {
+          isValid = false;
+          errorMessage = "Edad no coherente con nivel de preparatoria";
+        } else if (
+          value &&
+          educationLevel === "universidad" &&
+          (age < 17 || age > 35)
+        ) {
+          isValid = false;
+          errorMessage = "Edad no coherente con nivel universitario";
+        }
+        break;
     }
-    
+
     // Update field appearance
     if (isValid) {
-        field.classList.remove('error');
-        field.classList.add('success');
-        hideError(fieldId + 'Error');
+      field.classList.remove("error");
+      field.classList.add("success");
+      hideError(fieldId + "Error");
     } else {
-        field.classList.add('error');
-        field.classList.remove('success');
-        showError(fieldId + 'Error', errorMessage);
+      field.classList.add("error");
+      field.classList.remove("success");
+      showError(fieldId + "Error", errorMessage);
     }
-    
-    return isValid;
-}
 
-function isValidEmail(email) {
+    return isValid;
+  }
+
+  function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-}
+  }
 
-function showError(elementId, message) {
+  function showError(elementId, message) {
     const errorElement = document.getElementById(elementId);
     if (errorElement) {
-        errorElement.textContent = message;
-        errorElement.classList.add('show');
+      errorElement.textContent = message;
+      errorElement.classList.add("show");
     }
-}
+  }
 
-function hideError(elementId) {
+  function hideError(elementId) {
     const errorElement = document.getElementById(elementId);
     if (errorElement) {
-        errorElement.classList.remove('show');
+      errorElement.classList.remove("show");
     }
-}
+  }
 
-// Showcase Rotation
-function setupShowcaseRotation() {
-    const showcaseItems = document.querySelectorAll('.showcase-item');
-    let currentIndex = 0;
-    
-    function rotateShowcase() {
-        showcaseItems.forEach((item, index) => {
-            item.classList.remove('active');
-            if (index === currentIndex) {
-                item.classList.add('active');
-            }
-        });
-        
-        currentIndex = (currentIndex + 1) % showcaseItems.length;
-    }
-    
-    // Initial setup
-    if (showcaseItems.length > 0) {
-        showcaseItems[0].classList.add('active');
-        
-        // Auto-rotate every 4 seconds
-        setInterval(rotateShowcase, 4000);
-    }
-    
-    // Manual click handlers
-    showcaseItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            currentIndex = index;
-            rotateShowcase();
-        });
-    });
-}
-
-// Form Submissions
-function setupFormSubmissions() {
+  // Form Submissions
+  function setupFormSubmissions() {
     // Login form
     if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleLogin();
-        });
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        handleLogin();
+      });
     }
-    
+
     // Register form
     if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleRegister();
-        });
+      registerForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        handleRegister();
+      });
     }
-    
+
     // Google login/register
-    document.getElementById('googleLogin')?.addEventListener('click', handleGoogleAuth);
-    document.getElementById('googleRegister')?.addEventListener('click', handleGoogleAuth);
-    
+    document
+      .getElementById("googleLogin")
+      ?.addEventListener("click", handleGoogleAuth);
+    document
+      .getElementById("googleRegister")
+      ?.addEventListener("click", handleGoogleAuth);
+
     // Continue button in success modal
     if (continueBtn) {
-        continueBtn.addEventListener('click', function() {
-            // Redirect to diagnostic page
-            console.log('Redirecting to diagnostic page...');
-            alert('¡Genial! Te llevaremos al examen diagnóstico 🧠');
-            // window.location.href = 'diagnostic.html';
-        });
+      continueBtn.addEventListener("click", function () {
+        // Redirect to diagnostic page
+        console.log("Redirecting to diagnostic page...");
+        alert("¡Genial! Te llevaremos al examen diagnóstico 🧠");
+        // window.location.href = 'diagnostic.html';
+      });
     }
-}
+  }
 
-function handleLogin() {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    const remember = document.getElementById('rememberMe').checked;
-    
+  function handleLogin() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    const remember = document.getElementById("rememberMe").checked;
+
     // Validate fields
     if (!email || !password) {
-        alert('Por favor completa todos los campos');
-        return;
+      alert("Por favor completa todos los campos");
+      return;
     }
-    
+
     if (!isValidEmail(email)) {
-        showError('loginEmailError', 'Email inválido');
-        return;
+      showError("loginEmailError", "Email inválido");
+      return;
     }
-    
+
     // Show loading state
     const submitBtn = loginForm.querySelector('button[type="submit"]');
-    submitBtn.classList.add('loading');
+    submitBtn.classList.add("loading");
     submitBtn.disabled = true;
-    
+
     // Simulate API call
     setTimeout(() => {
-        // Reset button state
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-        
-        // Mock successful login
-        console.log('Login successful:', { email, remember });
-        
-        // Redirect to appropriate dashboard
-        if (email.includes('profesor') || email.includes('teacher')) {
-            alert('¡Bienvenido profesor! 👩‍🏫 Te llevaremos al dashboard de docentes');
-            // window.location.href = 'teacher-dashboard.html';
-        } else {
-            alert('¡Bienvenido! 🎓 Te llevaremos al dashboard de estudiantes');
-            // window.location.href = 'student-dashboard.html';
-        }
-    }, 2000);
-}
+      // Reset button state
+      submitBtn.classList.remove("loading");
+      submitBtn.disabled = false;
 
-function handleRegister() {
+      // Mock successful login
+      console.log("Login successful:", { email, remember });
+
+      // Redirect to appropriate dashboard
+      if (email.includes("profesor") || email.includes("teacher")) {
+        alert("¡Bienvenido profesor! 👩‍🏫 Te llevaremos al dashboard de docentes");
+        // window.location.href = 'teacher-dashboard.html';
+      } else {
+        alert("¡Bienvenido! 🎓 Te llevaremos al dashboard de estudiantes");
+         window.location.href = '2_dashboardEstudiante2.html';
+      }
+    }, 2000);
+  }
+
+  function handleRegister() {
     // Validate all fields
     const form = registerForm;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    
+
     // Check if all required fields are filled
-    const requiredFields = form.querySelectorAll('[required]');
+    const requiredFields = form.querySelectorAll("[required]");
     let isValid = true;
-    
-    requiredFields.forEach(field => {
-        if (!validateField(field)) {
-            isValid = false;
-        }
+
+    requiredFields.forEach((field) => {
+      if (!validateField(field)) {
+        isValid = false;
+      }
     });
-    
+
     // Additional validations
     if (!data.terms) {
-        showError('termsError', 'Debes aceptar los términos y condiciones');
-        isValid = false;
+      showError("termsError", "Debes aceptar los términos y condiciones");
+      isValid = false;
     }
-    
+
     // Password confirmation
     if (data.password !== data.confirmPassword) {
-        showError('confirmPasswordError', 'Las contraseñas no coinciden');
-        isValid = false;
+      showError("confirmPasswordError", "Las contraseñas no coinciden");
+      isValid = false;
     }
-    
+
     if (!isValid) {
-        alert('Por favor corrige los errores en el formulario');
-        return;
+      alert("Por favor corrige los errores en el formulario");
+      return;
     }
-    
+
     // Show loading state
     const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.classList.add('loading');
+    submitBtn.classList.add("loading");
     submitBtn.disabled = true;
-    
+
     // Simulate API call
     setTimeout(() => {
-        // Reset button state
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-        
-        // Mock successful registration
-        console.log('Registration successful:', data);
-        console.log('User role:', currentRole);
-        
-        // Show success modal
-        showSuccessModal();
-        
+      // Reset button state
+      submitBtn.classList.remove("loading");
+      submitBtn.disabled = false;
+
+      // Mock successful registration
+      console.log("Registration successful:", data);
+      console.log("User role:", currentRole);
+
+      // Show success modal
+      showSuccessModal();
     }, 3000);
-}
+  }
 
-function handleGoogleAuth() {
-    console.log('Google authentication initiated...');
-    
+  function handleGoogleAuth() {
+    console.log("Google authentication initiated...");
+
     // Mock Google auth flow
-    const btn = event.target.closest('.btn-google');
-    btn.style.opacity = '0.7';
-    btn.style.cursor = 'not-allowed';
-    
+    const btn = event.target.closest(".btn-google");
+    btn.style.opacity = "0.7";
+    btn.style.cursor = "not-allowed";
+
     setTimeout(() => {
-        btn.style.opacity = '1';
-        btn.style.cursor = 'pointer';
-        
-        // Mock successful Google auth
-        const userData = {
-            name: 'Usuario Demo',
-            email: 'usuario@gmail.com',
-            picture: 'https://via.placeholder.com/150'
-        };
-        
-        console.log('Google auth successful:', userData);
-        
-        // If registering with Google, show role selection
-        if (btn.id === 'googleRegister') {
-            alert('¡Perfecto! Ahora necesitamos algunos datos adicionales para personalizar tu experiencia 📝');
-            // Here you would show a simplified form with just the missing fields
-        } else {
-            alert('¡Bienvenido de vuelta! 🎉 Te llevaremos a tu dashboard');
-        }
-        
+      btn.style.opacity = "1";
+      btn.style.cursor = "pointer";
+
+      // Mock successful Google auth
+      const userData = {
+        name: "Usuario Demo",
+        email: "usuario@gmail.com",
+        picture: "https://via.placeholder.com/150",
+      };
+
+      console.log("Google auth successful:", userData);
+
+      // If registering with Google, show role selection
+      if (btn.id === "googleRegister") {
+        alert(
+          "¡Perfecto! Ahora necesitamos algunos datos adicionales para personalizar tu experiencia 📝"
+        );
+        // Here you would show a simplified form with just the missing fields
+      } else {
+        alert("¡Bienvenido de vuelta! 🎉 Te llevaremos a tu dashboard");
+      }
     }, 2000);
-}
+  }
 
-function showSuccessModal() {
+  function showSuccessModal() {
     if (successModal) {
-        successModal.classList.add('active');
-        
-        // Add confetti effect (simple version)
-        createConfetti();
-        
-        // Auto-close after 10 seconds if user doesn't click
-        setTimeout(() => {
-            if (successModal.classList.contains('active')) {
-                successModal.classList.remove('active');
-                console.log('Auto-redirecting to diagnostic...');
-            }
-        }, 10000);
-    }
-}
+      successModal.classList.add("active");
 
-function createConfetti() {
-    const colors = ['#4A90E2', '#7ED321', '#FF6B9D', '#F5A623'];
+      // Add confetti effect (simple version)
+      createConfetti();
+
+      // Auto-close after 10 seconds if user doesn't click
+      setTimeout(() => {
+        if (successModal.classList.contains("active")) {
+          successModal.classList.remove("active");
+          console.log("Auto-redirecting to diagnostic...");
+        }
+      }, 10000);
+    }
+  }
+
+  function createConfetti() {
+    const colors = ["#4A90E2", "#7ED321", "#FF6B9D", "#F5A623"];
     const confettiCount = 50;
-    
+
     for (let i = 0; i < confettiCount; i++) {
-        const confetti = document.createElement('div');
-        confetti.style.position = 'fixed';
-        confetti.style.width = '10px';
-        confetti.style.height = '10px';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.top = '-10px';
-        confetti.style.zIndex = '10001';
-        confetti.style.pointerEvents = 'none';
-        confetti.style.borderRadius = '50%';
-        
-        document.body.appendChild(confetti);
-        
-        // Animate confetti
-        const animation = confetti.animate([
-            { transform: 'translateY(0px) rotate(0deg)', opacity: 1 },
-            { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-        ], {
-            duration: Math.random() * 2000 + 3000,
-            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-        });
-        
-        animation.onfinish = () => {
-            confetti.remove();
-        };
-    }
-}
+      const confetti = document.createElement("div");
+      confetti.style.position = "fixed";
+      confetti.style.width = "10px";
+      confetti.style.height = "10px";
+      confetti.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * 100 + "%";
+      confetti.style.top = "-10px";
+      confetti.style.zIndex = "10001";
+      confetti.style.pointerEvents = "none";
+      confetti.style.borderRadius = "50%";
 
-// Modal close functionality
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal-overlay')) {
-        const modal = e.target.closest('.modal');
-        if (modal) {
-            modal.classList.remove('active');
+      document.body.appendChild(confetti);
+
+      // Animate confetti
+      const animation = confetti.animate(
+        [
+          { transform: "translateY(0px) rotate(0deg)", opacity: 1 },
+          {
+            transform: `translateY(${window.innerHeight + 50}px) rotate(${
+              Math.random() * 360
+            }deg)`,
+            opacity: 0,
+          },
+        ],
+        {
+          duration: Math.random() * 2000 + 3000,
+          easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }
-    }
-});
+      );
 
-// Escape key to close modal
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        const activeModal = document.querySelector('.modal.active');
-        if (activeModal) {
-            activeModal.classList.remove('active');
-        }
+      animation.onfinish = () => {
+        confetti.remove();
+      };
     }
-});
+  }
 
-// Auto-focus on first input when tab changes
-function focusFirstInput() {
-    const activeTab = document.querySelector('.tab-content.active');
+  // Modal close functionality
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("modal-overlay")) {
+      const modal = e.target.closest(".modal");
+      if (modal) {
+        modal.classList.remove("active");
+      }
+    }
+  });
+
+  // Escape key to close modal
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      const activeModal = document.querySelector(".modal.active");
+      if (activeModal) {
+        activeModal.classList.remove("active");
+      }
+    }
+  });
+
+  // Auto-focus on first input when tab changes
+  function focusFirstInput() {
+    const activeTab = document.querySelector(".tab-content.active");
     if (activeTab) {
-        const firstInput = activeTab.querySelector('input:not([type="hidden"]):not([type="checkbox"])');
-        if (firstInput) {
-            setTimeout(() => firstInput.focus(), 100);
-        }
+      const firstInput = activeTab.querySelector(
+        'input:not([type="hidden"]):not([type="checkbox"])'
+      );
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 100);
+      }
     }
-}
+  }
 
-// Enhanced form experience
-function setupEnhancedExperience() {
+  // Enhanced form experience
+  function setupEnhancedExperience() {
     // Auto-advance on role selection
-    roleBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            setTimeout(() => {
-                const firstVisibleInput = document.querySelector('.form-group:not([style*="display: none"]) input:not([type="hidden"]):not([type="checkbox"])');
-                if (firstVisibleInput) {
-                    firstVisibleInput.focus();
-                }
-            }, 300);
-        });
+    roleBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setTimeout(() => {
+          const firstVisibleInput = document.querySelector(
+            '.form-group:not([style*="display: none"]) input:not([type="hidden"]):not([type="checkbox"])'
+          );
+          if (firstVisibleInput) {
+            firstVisibleInput.focus();
+          }
+        }, 300);
+      });
     });
-    
+
     // Smart field progression
-    const inputs = document.querySelectorAll('input, select');
+    const inputs = document.querySelectorAll("input, select");
     inputs.forEach((input, index) => {
-        input.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && input.tagName !== 'TEXTAREA') {
-                e.preventDefault();
-                const nextInput = inputs[index + 1];
-                if (nextInput && !nextInput.closest('[style*="display: none"]')) {
-                    nextInput.focus();
-                }
-            }
-        });
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && input.tagName !== "TEXTAREA") {
+          e.preventDefault();
+          const nextInput = inputs[index + 1];
+          if (nextInput && !nextInput.closest('[style*="display: none"]')) {
+            nextInput.focus();
+          }
+        }
+      });
     });
-}
+  }
 
-// Testimonial rotation
-function setupTestimonialRotation() {
-    const testimonials = [
-        {
-            quote: "La IA me ayudó a entender conceptos que nunca había logrado dominar. ¡Ahora programar es divertido!",
-            name: "María G.",
-            title: "Estudiante de Ingeniería - UNAM"
-        },
-        {
-            quote: "El diagnóstico personalizado cambió completamente mi forma de aprender. Cada ejercicio es perfecto para mi nivel.",
-            name: "Carlos R.",
-            title: "Estudiante de Sistemas - UV"
-        },
-        {
-            quote: "Las competencias en tiempo real hacen que estudiar Java sea súper emocionante. ¡Es como un videojuego!",
-            name: "Ana L.",
-            title: "Preparatoria - IPN"
-        },
-        {
-            quote: "Como docente, los dashboards me permiten entender exactamente dónde necesitan ayuda mis estudiantes.",
-            name: "Prof. David M.",
-            title: "Universidad Tecnológica de México"
-        }
-    ];
-    
-    let currentTestimonial = 0;
-    const testimonialElement = document.getElementById('testimonial');
-    
-    function updateTestimonial() {
-        if (!testimonialElement) return;
-        
-        const testimonial = testimonials[currentTestimonial];
-        const content = testimonialElement.querySelector('.testimonial-content');
-        
-        if (content) {
-            content.style.opacity = '0';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <blockquote>"${testimonial.quote}"</blockquote>
-                    <cite>
-                        <span class="name">${testimonial.name}</span>
-                        <span class="title">${testimonial.title}</span>
-                    </cite>
-                `;
-                content.style.opacity = '1';
-            }, 300);
-        }
-        
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-    }
-    
-    // Initial testimonial
-    updateTestimonial();
-    
-    // Rotate every 6 seconds
-    setInterval(updateTestimonial, 6000);
-}
-
-// Performance monitoring
-function trackFormInteraction() {
+  // Performance monitoring
+  function trackFormInteraction() {
     let startTime = Date.now();
     let interactions = 0;
-    
-    document.addEventListener('input', () => {
-        interactions++;
-    });
-    
-    window.addEventListener('beforeunload', () => {
-        const timeSpent = (Date.now() - startTime) / 1000;
-        console.log(`Form interaction summary:
-            Time spent: ${timeSpent.toFixed(1)}s
-            Interactions: ${interactions}
-            Page: Login/Register`);
-    });
-}
 
-// Initialize enhanced features
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("input", () => {
+      interactions++;
+    });
+
+    window.addEventListener("beforeunload", () => {
+      const timeSpent = (Date.now() - startTime) / 1000;
+      console.log(`Form interaction summary:
+        Time spent: ${timeSpent.toFixed(1)}s
+        Interactions: ${interactions}
+        Page: Login/Register`);
+    });
+  }
+
+  // Initialize enhanced features
+  document.addEventListener("DOMContentLoaded", function () {
     setupEnhancedExperience();
-    setupTestimonialRotation();
     trackFormInteraction();
-});
+  });
 
-// Add smooth scrolling for mobile
-if (window.innerWidth <= 768) {
-    const navbar = document.querySelector('.navbar');
+  // Add smooth scrolling for mobile
+  if (window.innerWidth <= 768) {
+    const navbar = document.querySelector(".navbar");
     let lastScroll = 0;
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScroll = currentScroll;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        navbar.style.transform = "translateY(-100%)";
+      } else {
+        navbar.style.transform = "translateY(0)";
+      }
+
+      lastScroll = currentScroll;
     });
-}
+  }
 
-// Easter egg - Konami code for dev mode
-let konamiCode = [];
-const konamiSequence = [
-    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-    'KeyB', 'KeyA'
-];
+  // Easter egg - Konami code for dev mode
+  let konamiCode = [];
+  const konamiSequence = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "KeyB",
+    "KeyA",
+  ];
 
-document.addEventListener('keydown', (e) => {
+  document.addEventListener("keydown", (e) => {
     konamiCode.push(e.code);
-    
-    if (konamiCode.length > konamiSequence.length) {
-        konamiCode.shift();
-    }
-    
-    if (konamiCode.join(',') === konamiSequence.join(',')) {
-        console.log('🎮 Developer mode activated!');
-        console.log('Auto-filling form with test data...');
-        
-        // Auto-fill form with test data
-        const testData = {
-            fullName: 'Estudiante Demo',
-            email: 'demo@estudiante.com',
-            age: '20',
-            educationLevel: 'universidad',
-            institution: 'uv',
-            semester: '3',
-            password: 'TestPassword123!',
-            confirmPassword: 'TestPassword123!'
-        };
-        
-        Object.keys(testData).forEach(key => {
-            const field = document.getElementById(key) || document.getElementById(`register${key.charAt(0).toUpperCase() + key.slice(1)}`);
-            if (field) {
-                field.value = testData[key];
-                validateField(field);
-                
-                if (key === 'educationLevel') {
-                    updateAreaOptions(testData[key]);
-                    setTimeout(() => {
-                        const areaField = document.getElementById('area');
-                        if (areaField) {
-                            areaField.value = 'tecnica';
-                            validateField(areaField);
-                        }
-                    }, 100);
-                }
-            }
-        });
-        
-        // Check terms
-        const termsCheckbox = document.getElementById('terms');
-        if (termsCheckbox) {
-            termsCheckbox.checked = true;
-        }
-        
-        konamiCode = [];
-    }
-});
 
-// Console welcome message
-console.log(`
+    if (konamiCode.length > konamiSequence.length) {
+      konamiCode.shift();
+    }
+
+    if (konamiCode.join(",") === konamiSequence.join(",")) {
+      console.log("🎮 Developer mode activated!");
+      console.log("Auto-filling form with test data...");
+
+      // Auto-fill form with test data
+      const testData = {
+        fullName: "Estudiante Demo",
+        email: "demo@estudiante.com",
+        age: "20",
+        educationLevel: "universidad",
+        institution: "uv",
+        semester: "3",
+        password: "TestPassword123!",
+        confirmPassword: "TestPassword123!",
+      };
+
+      Object.keys(testData).forEach((key) => {
+        const field =
+          document.getElementById(key) ||
+          document.getElementById(
+            `register${key.charAt(0).toUpperCase() + key.slice(1)}`
+          );
+        if (field) {
+          field.value = testData[key];
+          validateField(field);
+
+          if (key === "educationLevel") {
+            updateAreaOptions(testData[key]);
+            setTimeout(() => {
+              const areaField = document.getElementById("area");
+              if (areaField) {
+                areaField.value = "tecnica";
+                validateField(areaField);
+              }
+            }, 100);
+          }
+        }
+      });
+
+      // Check terms
+      const termsCheckbox = document.getElementById("terms");
+      if (termsCheckbox) {
+        termsCheckbox.checked = true;
+      }
+
+      konamiCode = [];
+    }
+  });
+
+  // Console welcome message
+  console.log(`
 🔐 ¡Bienvenido al sistema de autenticación!
 📝 Página: Login/Registro
 🚀 Desarrollado por EduTec360°
@@ -2206,37 +1942,44 @@ console.log(`
 - Prueba el código Konami para datos de prueba 😉
 `);
 
-// Additional accessibility improvements
-function setupAccessibility() {
+  // Additional accessibility improvements
+  function setupAccessibility() {
     // Add ARIA labels dynamically
-    const inputs = document.querySelectorAll('input, select');
-    inputs.forEach(input => {
-        const label = input.closest('.form-group')?.querySelector('label');
-        if (label && !input.getAttribute('aria-label')) {
-            input.setAttribute('aria-label', label.textContent);
-        }
+    const inputs = document.querySelectorAll("input, select");
+    inputs.forEach((input) => {
+      const label = input.closest(".form-group")?.querySelector("label");
+      if (label && !input.getAttribute("aria-label")) {
+        input.setAttribute("aria-label", label.textContent);
+      }
     });
-    
+
     // Announce form errors to screen readers
     const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                const element = mutation.target;
-                if (element.classList.contains('show') && element.classList.contains('error-message')) {
-                    element.setAttribute('aria-live', 'polite');
-                    element.setAttribute('role', 'alert');
-                }
-            }
-        });
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          const element = mutation.target;
+          if (
+            element.classList.contains("show") &&
+            element.classList.contains("error-message")
+          ) {
+            element.setAttribute("aria-live", "polite");
+            element.setAttribute("role", "alert");
+          }
+        }
+      });
     });
-    
-    document.querySelectorAll('.error-message').forEach(errorElement => {
-        observer.observe(errorElement, { attributes: true });
-    });
-}
 
-// Initialize accessibility features
-document.addEventListener('DOMContentLoaded', setupAccessibility);
-    </script>
-</body>
+    document.querySelectorAll(".error-message").forEach((errorElement) => {
+      observer.observe(errorElement, { attributes: true });
+    });
+  }
+
+  // Initialize accessibility features
+  document.addEventListener("DOMContentLoaded", setupAccessibility);
+</script>
+    </body>
+
 </html>

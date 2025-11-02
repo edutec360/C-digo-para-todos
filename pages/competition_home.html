@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Competencias - Código para Todos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
+        </div>
+
+        <div class="nav-menu">
+          <a href="2_dashboardEstudiante2.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="course_general.html" class="nav-link">
+            <i class="fas fa-book"></i>
+            Mis Cursos
+          </a>
+          <a href="activities_general.html" class="nav-link">
+            <i class="fas fa-pencil-alt"></i>
+            Actividades
+          </a>
+          <a href="#" class="nav-link active">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+        </div>
+
+        <a href="11_profile.html" class="nav-profile-link">
+          <div class="nav-profile">
+            <div class="profile-info">
+              <span class="user-name">Ana García</span>
+              <span class="user-level">Mi Perfil</span>
+            </div>
+            <div class="profile-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+                alt="Ana García"
+              />
+            </div>
+          </div>
+        </a>
+      </div>
+    </nav>
+
+    <main class="competitions-main">
+      <div class="competitions-container">
+        <!-- Header -->
+        <header class="page-header">
+          <div class="page-title-section">
+            <div class="page-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="page-info">
+              <h1>Competencias</h1>
+              <p>Pon a prueba tus conocimientos compitiendo con otros estudiantes en tiempo real</p>
+            </div>
+          </div>
+        </header>
+
+        <!-- Opciones Principales -->
+        <section class="main-options">
+          <a href="7 join-competition.html" class="option-card join">
+            <div class="option-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="option-content">
+              <h2>Unirse a Competencia</h2>
+              <p>Ingresa un código para unirte a una competencia existente</p>
+              <ul class="option-features">
+                <li><i class="fas fa-check"></i> Compite en tiempo real</li>
+                <li><i class="fas fa-check"></i> Gana puntos y estrellas</li>
+                <li><i class="fas fa-check"></i> Mejora tu ranking</li>
+              </ul>
+            </div>
+            <div class="option-action">
+              <span class="action-text">Ingresar código</span>
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <a href="create-competition-student.html" class="option-card create">
+            <div class="option-icon">
+              <i class="fas fa-plus-circle"></i>
+            </div>
+            <div class="option-content">
+              <h2>Crear Competencia</h2>
+              <p>Organiza tu propia competencia y desafía a tus compañeros</p>
+              <ul class="option-features">
+                <li><i class="fas fa-check"></i> Personaliza las reglas</li>
+                <li><i class="fas fa-check"></i> Elige los problemas</li>
+                <li><i class="fas fa-check"></i> Invita participantes</li>
+              </ul>
+            </div>
+            <div class="option-action">
+              <span class="action-text">Configurar competencia</span>
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+        </section>
+
+        <!-- Mis Competencias Recientes -->
+        <section class="recent-competitions">
+          <div class="section-header">
+            <h2><i class="fas fa-history"></i> Mis Competencias Recientes</h2>
+            <a href="#" class="view-all-link">
+              Ver todas <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+
+          <div class="competitions-list">
+            <div class="competition-item completed">
+              <div class="competition-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="competition-info">
+                <h3>Lógica Básica Java</h3>
+                <p>Finalizada hace 2 días</p>
+                <div class="competition-stats">
+                  <span class="stat"><i class="fas fa-users"></i> 24 participantes</span>
+                  <span class="stat"><i class="fas fa-medal"></i> 2do lugar</span>
+                  <span class="stat"><i class="fas fa-star"></i> +50 estrellas</span>
+                </div>
+              </div>
+              <div class="competition-status">
+                <span class="status-badge completed">
+                  <i class="fas fa-check-circle"></i>
+                  Completada
+                </span>
+              </div>
+            </div>
+
+            <div class="competition-item scheduled">
+              <div class="competition-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="competition-info">
+                <h3>Estructuras de Control</h3>
+                <p>Comienza mañana a las 10:00 AM</p>
+                <div class="competition-stats">
+                  <span class="stat"><i class="fas fa-users"></i> 18 confirmados</span>
+                  <span class="stat"><i class="fas fa-brain"></i> Dificultad: Media</span>
+                  <span class="stat"><i class="fas fa-clock"></i> 45 minutos</span>
+                </div>
+              </div>
+              <div class="competition-status">
+                <span class="status-badge scheduled">
+                  <i class="fas fa-calendar-check"></i>
+                  Programada
+                </span>
+              </div>
+            </div>
+
+            <div class="competition-item in-progress">
+              <div class="competition-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="competition-info">
+                <h3>Velocidad Java</h3>
+                <p>En curso • 12 minutos restantes</p>
+                <div class="competition-stats">
+                  <span class="stat"><i class="fas fa-users"></i> 15 activos</span>
+                  <span class="stat"><i class="fas fa-fire"></i> Alta actividad</span>
+                  <span class="stat"><i class="fas fa-trophy"></i> 3er lugar actual</span>
+                </div>
+              </div>
+              <div class="competition-status">
+                <button class="join-live-btn">
+                  <i class="fas fa-play"></i>
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Estadísticas Rápidas -->
+        <section class="quick-stats">
+          <div class="section-header">
+            <h2><i class="fas fa-chart-line"></i> Tus Estadísticas</h2>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Competencias</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon green">
+                <i class="fas fa-medal"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Victorias</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon yellow">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">287</span>
+                <span class="stat-label">Estrellas Ganadas</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon purple">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">Top 15%</span>
+                <span class="stat-label">Ranking Global</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <style>
+      /* Variables CSS */
+      :root {
+        --primary-blue: #4a90e2;
+        --primary-green: #7ed321;
+        --accent-pink: #ff6b9d;
+        --accent-yellow: #f5a623;
+        --accent-purple: #9b59b6;
+        --neutral-light: #f8f9fa;
+        --text-primary: #2c3e50;
+        --text-secondary: #7f8c8d;
+        --border-light: #e5e5e5;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --error: #e74c3c;
+        --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+        --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.12);
+        --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.15);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+        --nav-height: 70px;
+      }
+
+      /* Reset y Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: white;
+        box-shadow: var(--shadow-light);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: var(--nav-height);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        border-radius: 8px;
+        transition: var(--transition);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.1);
+      }
+
+      .nav-profile-link {
+        text-decoration: none;
+      }
+
+      .nav-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .nav-profile:hover {
+        background: var(--neutral-light);
+      }
+
+      .profile-info {
+        text-align: right;
+      }
+
+      .user-name {
+        display: block;
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 0.9rem;
+      }
+
+      .user-level {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .profile-avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-blue);
+      }
+
+      /* Main Content */
+      .competitions-main {
+        padding: 40px 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .competitions-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 35px 40px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .page-title-section {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      .page-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--accent-yellow), var(--accent-pink));
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2.2rem;
+        flex-shrink: 0;
+      }
+
+      .page-info h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .page-info p {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Main Options */
+      .main-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 25px;
+      }
+
+      .option-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: var(--shadow-light);
+        transition: var(--transition);
+        text-decoration: none;
+        color: inherit;
+        border: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .option-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        transition: var(--transition);
+      }
+
+      .option-card.join::before {
+        background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+      }
+
+      .option-card.create::before {
+        background: linear-gradient(90deg, var(--accent-yellow), var(--accent-pink));
+      }
+
+      .option-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-strong);
+      }
+
+      .option-card.join:hover {
+        border-color: var(--primary-blue);
+      }
+
+      .option-card.create:hover {
+        border-color: var(--accent-yellow);
+      }
+
+      .option-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .option-card.join .option-icon {
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+      }
+
+      .option-card.create .option-icon {
+        background: linear-gradient(135deg, var(--accent-yellow), var(--accent-pink));
+      }
+
+      .option-content h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .option-content p {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .option-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .option-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .option-features i {
+        color: var(--primary-green);
+        font-size: 0.9rem;
+      }
+
+      .option-action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 20px;
+        background: var(--neutral-light);
+        border-radius: 10px;
+        margin-top: auto;
+        transition: var(--transition);
+      }
+
+      .action-text {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .option-card.join .option-action {
+        color: var(--primary-blue);
+      }
+
+      .option-card.create .option-action {
+        color: var(--accent-yellow);
+      }
+
+      .option-card:hover .option-action {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .option-card.create:hover .option-action {
+        background: var(--accent-yellow);
+      }
+
+      .option-action i {
+        font-size: 1.2rem;
+        transition: var(--transition);
+      }
+
+      .option-card:hover .option-action i {
+        transform: translateX(5px);
+      }
+
+      /* Recent Competitions */
+      .recent-competitions {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--border-light);
+      }
+
+      .section-header h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .view-all-link {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: var(--transition);
+      }
+
+      .view-all-link:hover {
+        gap: 8px;
+      }
+
+      .competitions-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .competition-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        background: var(--neutral-light);
+        border-radius: 10px;
+        border-left: 5px solid var(--border-light);
+        transition: var(--transition);
+      }
+
+      .competition-item:hover {
+        transform: translateX(5px);
+        box-shadow: var(--shadow-light);
+      }
+
+      .competition-item.completed {
+        border-left-color: var(--success);
+      }
+
+      .competition-item.scheduled {
+        border-left-color: var(--warning);
+      }
+
+      .competition-item.in-progress {
+        border-left-color: var(--primary-blue);
+        background: rgba(74, 144, 226, 0.05);
+      }
+
+      .competition-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .competition-item.completed .competition-icon {
+        background: linear-gradient(135deg, var(--success), #2ecc71);
+      }
+
+      .competition-item.scheduled .competition-icon {
+        background: linear-gradient(135deg, var(--warning), #f39c12);
+      }
+
+      .competition-item.in-progress .competition-icon {
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      .competition-info {
+        flex: 1;
+      }
+
+      .competition-info h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .competition-info p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+
+      .competition-stats {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .stat i {
+        color: var(--primary-blue);
+      }
+
+      .competition-status {
+        flex-shrink: 0;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status-badge.completed {
+        background: rgba(39, 174, 96, 0.15);
+        color: var(--success);
+      }
+
+      .status-badge.scheduled {
+        background: rgba(243, 156, 18, 0.15);
+        color: var(--warning);
+      }
+
+      .join-live-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .join-live-btn:hover {
+        background: #3a7bd5;
+        transform: translateY(-2px);
+      }
+
+      /* Quick Stats */
+      .quick-stats {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow-light);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .stat-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        background: var(--neutral-light);
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-light);
+      }
+
+      .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .stat-icon.blue {
+        background: linear-gradient(135deg, var(--primary-blue), #5b9dd9);
+      }
+
+      .stat-icon.green {
+        background: linear-gradient(135deg, var(--primary-green), #a8e063);
+      }
+
+      .stat-icon.yellow {
+        background: linear-gradient(135deg, var(--accent-yellow), #feca57);
+      }
+
+      .stat-icon.purple {
+        background: linear-gradient(135deg, var(--accent-purple), #b19cd9);
+      }
+
+      .stat-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-top: 5px;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .main-options {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .competitions-main {
+          padding: 30px 15px;
+        }
+
+        .page-header {
+          padding: 25px 20px;
+        }
+
+        .page-title-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .page-info h1 {
+          font-size: 1.8rem;
+        }
+
+        .competition-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .competition-status {
+          width: 100%;
+        }
+
+        .join-live-btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 1.8rem;
+        }
+
+        .page-info h1 {
+          font-size: 1.5rem;
+        }
+
+        .option-card {
+          padding: 20px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('✅ Página de selección de competencias cargada');
+
+        // Animación de entrada para las cards
+        const cards = document.querySelectorAll('.option-card, .competition-item, .stat-card');
+        cards.forEach((card, index) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, index * 100);
+        });
+
+        // Click handlers para las opciones principales
+        const joinCard = document.querySelector('.option-card.join');
+        const createCard = document.querySelector('.option-card.create');
+
+        if (joinCard) {
+          joinCard.addEventListener('click', (e) => {
+            if (!e.target.closest('a')) return;
+            showNotification('Redirigiendo a unirse a competencia...', 'info');
+          });
+        }
+
+        if (createCard) {
+          createCard.addEventListener('click', (e) => {
+            if (!e.target.closest('a')) return;
+            showNotification('Abriendo creador de competencias...', 'info');
+          });
+        }
+
+        // Click en botón de continuar competencia en vivo
+        const joinLiveBtn = document.querySelector('.join-live-btn');
+        if (joinLiveBtn) {
+          joinLiveBtn.addEventListener('click', () => {
+            showNotification('Reconectando a competencia en vivo...', 'info');
+            setTimeout(() => {
+              console.log('Redirigiendo a: live-competition.html');
+            }, 1000);
+          });
+        }
+      });
+
+      // Sistema de notificaciones
+      function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        
+        const icons = {
+          success: 'fa-check-circle',
+          warning: 'fa-exclamation-triangle',
+          error: 'fa-times-circle',
+          info: 'fa-info-circle'
+        };
+        
+        notification.innerHTML = `
+          <div class="notification-content">
+            <i class="fas ${icons[type] || icons.info}"></i>
+            <span>${message}</span>
+          </div>
+        `;
+
+        if (!document.querySelector('#notification-styles')) {
+          const styles = document.createElement('style');
+          styles.id = 'notification-styles';
+          styles.textContent = `
+            .notification {
+              position: fixed;
+              top: ${70 + 20}px;
+              right: 20px;
+              background: white;
+              border-radius: 8px;
+              padding: 15px 20px;
+              box-shadow: var(--shadow-medium);
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              z-index: 1001;
+              min-width: 300px;
+              transform: translateX(110%);
+              opacity: 0;
+              transition: transform 0.4s ease, opacity 0.4s ease;
+              border-left: 5px solid var(--primary-blue);
+            }
+            .notification.success { border-left-color: var(--success); }
+            .notification.warning { border-left-color: var(--warning); }
+            .notification.error { border-left-color: var(--error); }
+            .notification.show {
+              transform: translateX(0);
+              opacity: 1;
+            }
+            .notification-content {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+            .notification-content i {
+              font-size: 1.3rem;
+              color: var(--primary-blue);
+            }
+            .notification.success .notification-content i { color: var(--success); }
+            .notification.warning .notification-content i { color: var(--warning); }
+            .notification.error .notification-content i { color: var(--error); }
+            .notification-content span {
+              font-weight: 500;
+              color: var(--text-primary);
+            }
+          `;
+          document.head.appendChild(styles);
+        }
+
+        document.body.appendChild(notification);
+        requestAnimationFrame(() => notification.classList.add('show'));
+
+        setTimeout(() => {
+          notification.classList.remove('show');
+          setTimeout(() => notification.remove(), 400);
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Competencia | Código para Todos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Variables CSS */
 :root {
@@ -35,14 +36,14 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
 }
 
-/* Navigation Bar */
+/* Navigation Bar - Unified with student dashboard */
 .navbar {
     background: white;
     box-shadow: var(--shadow-light);
@@ -64,61 +65,58 @@ body {
     justify-content: space-between;
 }
 
-.nav-left {
+.nav-logo {
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-
-.back-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-weight: 500;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: var(--transition);
-}
-
-.back-btn:hover {
-    color: var(--primary-blue);
-    background: rgba(74, 144, 226, 0.1);
-}
-
-.nav-divider {
-    width: 1px;
-    height: 30px;
-    background: var(--border-light);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-weight: 700;
     font-size: 1.2rem;
     color: var(--primary-blue);
 }
 
-.logo i {
-    font-size: 1.5rem;
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
 }
 
-.nav-subtitle {
+.nav-menu {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 8px;
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    padding-left: 20px;
-    border-left: 2px solid var(--border-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    background: var(--neutral-light);
+    color: var(--primary-blue);
+}
+
+.nav-link.active {
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--primary-blue);
 }
 
 .nav-profile {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 12px;
@@ -135,21 +133,33 @@ body {
     align-items: flex-end;
 }
 
-.profile-name {
+.user-name {
     font-weight: 600;
     font-size: 0.9rem;
     color: var(--text-primary);
 }
 
-.profile-role {
+.user-level {
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
-.profile-avatar img {
+.profile-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-dropdown i {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
 }
 
 /* Main Content */
@@ -162,6 +172,51 @@ body {
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+
+/* Page Header */
+.page-header {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content {
+    flex: 1;
+}
+
+.header-content h1 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.header-content p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--neutral-light);
+    border: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.1);
 }
 
 /* Progress Steps */
@@ -294,6 +349,10 @@ body {
     gap: 8px;
 }
 
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
 .form-group label {
     display: flex;
     align-items: center;
@@ -334,9 +393,94 @@ body {
     font-family: inherit;
 }
 
-.form-group input[type="date"],
-.form-group input[type="time"] {
+/* Course Cards */
+.course-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.course-card {
+    position: relative;
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius);
+    padding: 25px;
     cursor: pointer;
+    transition: var(--transition);
+}
+
+.course-card:hover {
+    border-color: var(--primary-blue);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+}
+
+.course-card.selected {
+    border-color: var(--primary-blue);
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.course-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.course-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.course-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.course-title {
+    flex: 1;
+}
+
+.course-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.course-code {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.course-stats {
+    display: flex;
+    gap: 15px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+}
+
+.course-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.course-stat i {
+    color: var(--primary-blue);
 }
 
 /* Difficulty Cards */
@@ -531,162 +675,6 @@ input[type="range"]::-moz-range-thumb:hover {
     box-shadow: 0 0 0 8px rgba(74, 144, 226, 0.2);
 }
 
-/* Toggle Switch */
-.toggle-group {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.toggle-option {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background: var(--neutral-light);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-}
-
-.toggle-option:hover {
-    background: #e9ecef;
-}
-
-.toggle-info {
-    flex: 1;
-}
-
-.toggle-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-}
-
-.toggle-title i {
-    color: var(--primary-blue);
-    font-size: 1.1rem;
-}
-
-.toggle-description {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-}
-
-.toggle-switch {
-    position: relative;
-    width: 56px;
-    height: 28px;
-    flex-shrink: 0;
-}
-
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.toggle-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .3s;
-    border-radius: 34px;
-}
-
-.toggle-slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .3s;
-    border-radius: 50%;
-}
-
-.toggle-switch input:checked + .toggle-slider {
-    background-color: var(--primary-blue);
-}
-
-.toggle-switch input:checked + .toggle-slider:before {
-    transform: translateX(28px);
-}
-
-/* Timing Cards */
-.timing-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.timing-card {
-    position: relative;
-    background: white;
-    border: 2px solid var(--border-light);
-    border-radius: var(--border-radius);
-    padding: 25px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.timing-card:hover {
-    border-color: var(--primary-blue);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-}
-
-.timing-card.selected {
-    border-color: var(--primary-blue);
-    background: rgba(74, 144, 226, 0.05);
-}
-
-.timing-card input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.timing-icon {
-    font-size: 2rem;
-    margin-bottom: 12px;
-    color: var(--primary-blue);
-}
-
-.timing-title {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-}
-
-.timing-description {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
-
-.schedule-fields {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 2px dashed var(--border-light);
-    display: none;
-}
-
-.schedule-fields.show {
-    display: block;
-    animation: fadeIn 0.3s ease;
-}
-
 /* Summary Card */
 .summary-container {
     display: grid;
@@ -788,54 +776,38 @@ input[type="range"]::-moz-range-thumb:hover {
     margin-left: 30px;
 }
 
-.summary-features {
-    background: white;
+.start-info {
+    background: linear-gradient(135deg, rgba(126, 211, 33, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%);
+    border-left: 4px solid var(--primary-green);
+    border-radius: 8px;
     padding: 20px;
-    border-radius: 10px;
-    border: 1px solid var(--border-light);
-}
-
-.features-title {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 15px;
+    gap: 15px;
 }
 
-.features-title i {
-    color: var(--primary-blue);
-}
-
-.features-list {
+.start-info-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-green);
+    color: white;
+    border-radius: 50%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.feature-badge {
-    display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: var(--neutral-light);
-    border-radius: 20px;
-    font-size: 0.85rem;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.start-info-content h4 {
     color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 6px;
 }
 
-.feature-badge i {
-    color: var(--primary-green);
-    font-size: 0.9rem;
-}
-
-.feature-badge.disabled {
-    opacity: 0.5;
-}
-
-.feature-badge.disabled i {
+.start-info-content p {
     color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
 /* Form Actions */
@@ -1146,7 +1118,7 @@ input[type="range"]::-moz-range-thumb:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-subtitle {
+    .nav-menu {
         display: none;
     }
     
@@ -1154,11 +1126,11 @@ input[type="range"]::-moz-range-thumb:hover {
         grid-template-columns: 1fr;
     }
     
-    .difficulty-cards {
+    .course-cards {
         grid-template-columns: 1fr;
     }
     
-    .timing-cards {
+    .difficulty-cards {
         grid-template-columns: 1fr;
     }
     
@@ -1175,45 +1147,81 @@ input[type="range"]::-moz-range-thumb:hover {
         width: 100%;
         justify-content: center;
     }
+    
+    .page-header {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <button class="back-btn" onclick="handleBackToDashboard()">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Volver</span>
-                </button>
-                <div class="nav-divider"></div>
-                <div class="logo">
-                    <i class="fas fa-code"></i>
-                    <span>Código para Todos</span>
-                </div>
-                <span class="nav-subtitle">Crear Nueva Competencia</span>
-            </div>
-            <div class="nav-profile">
-                <div class="profile-info">
-                    <span class="profile-name">Dr. Fernando Castillo</span>
-                    <span class="profile-role">Profesor</span>
-                </div>
-                <div class="profile-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Fernando+Castillo&background=4A90E2&color=fff" alt="Avatar">
-                </div>
-            </div>
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <span class="logo-text">Código para Todos</span>
         </div>
+
+        <div class="nav-menu">
+          <a href="2_dashboardEstudiante2.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            Dashboard
+          </a>
+          <a href="course_general.html" class="nav-link">
+            <i class="fas fa-book"></i>
+            Mis Cursos
+          </a>
+          <a href="activities_general.html" class="nav-link">
+            <i class="fas fa-pencil-alt"></i>
+            Actividades
+          </a>
+          <a href="#" class="nav-link active">
+            <i class="fas fa-trophy"></i>
+            Competencias
+          </a>
+        </div>
+
+        <a href="11_profile.html" class="nav-profile-link">
+          <div class="nav-profile">
+            <div class="profile-info">
+              <span class="user-name">Ana García</span>
+              <span class="user-level">Mi Perfil</span>
+            </div>
+            <div class="profile-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Ana+Garcia&background=4A90E2&color=fff&size=40"
+                alt="Ana García"
+              />
+            </div>
+          </div>
+        </a>
+      </div>
     </nav>
 
     <!-- Main Content -->
     <main class="create-competition-main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-content">
+                <h1>Crear Nueva Competencia</h1>
+                <p>Desafía a tus compañeros y demuestra tus habilidades</p>
+            </div>
+            <button class="back-btn" onclick="handleBackToDashboard()">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver</span>
+            </button>
+        </section>
+
         <!-- Progress Steps -->
         <section class="progress-section">
             <div class="progress-container">
                 <div class="step active" data-step="1">
                     <div class="step-number">1</div>
-                    <div class="step-label">Información Básica</div>
+                    <div class="step-label">Información</div>
                 </div>
                 <div class="step-line"></div>
                 <div class="step" data-step="2">
@@ -1223,11 +1231,6 @@ input[type="range"]::-moz-range-thumb:hover {
                 <div class="step-line"></div>
                 <div class="step" data-step="3">
                     <div class="step-number">3</div>
-                    <div class="step-label">Programación</div>
-                </div>
-                <div class="step-line"></div>
-                <div class="step" data-step="4">
-                    <div class="step-number">4</div>
                     <div class="step-label">Confirmación</div>
                 </div>
             </div>
@@ -1239,46 +1242,101 @@ input[type="range"]::-moz-range-thumb:hover {
                 <!-- Step 1: Información Básica -->
                 <div class="form-step active" data-step="1">
                     <div class="step-header">
-                        <h2>📋 Información Básica</h2>
+                        <h2>Información Básica</h2>
                         <p>Define los datos principales de tu competencia</p>
                     </div>
                     
                     <div class="form-content">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>
-                                    <i class="fas fa-trophy"></i>
-                                    Nombre de la Competencia
-                                </label>
-                                <input type="text" id="competitionName" required placeholder="Ej: Quiz Java Básico - Marzo">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>
-                                    <i class="fas fa-users"></i>
-                                    Grupo Participante
-                                </label>
-                                <select id="groupSelect" required>
-                                    <option value="">Selecciona un grupo</option>
-                                    <option value="group1">Programación I - Grupo A (25 estudiantes)</option>
-                                    <option value="group2">Programación I - Grupo B (22 estudiantes)</option>
-                                    <option value="group3">Java Avanzado (18 estudiantes)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
+                        <div class="form-group full-width">
                             <label>
-                                <i class="fas fa-align-left"></i>
-                                Descripción (Opcional)
+                                <i class="fas fa-trophy"></i>
+                                Nombre de la Competencia
                             </label>
-                            <textarea id="competitionDescription" placeholder="Describe brevemente el propósito de esta competencia..."></textarea>
+                            <input type="text" id="competitionName" required placeholder="Ej: Desafío de Variables - Marzo">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group full-width">
+                            <label>
+                                <i class="fas fa-book-open"></i>
+                                Curso
+                            </label>
+                        </div>
+                        
+                        <div class="course-cards">
+                            <label class="course-card" for="course1">
+                                <input type="radio" name="course" id="course1" value="course1" required>
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="course-title">
+                                        <div class="course-name">Programación I</div>
+                                        <div class="course-code">PROG-101 • Grupo A</div>
+                                    </div>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-users"></i>
+                                        <span>25 compañeros</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dr. Castillo</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="course-card" for="course2">
+                                <input type="radio" name="course" id="course2" value="course2">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="course-title">
+                                        <div class="course-name">Estructuras de Datos</div>
+                                        <div class="course-code">DATA-201 • Grupo B</div>
+                                    </div>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-users"></i>
+                                        <span>22 compañeros</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dra. Martínez</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="course-card" for="course3">
+                                <input type="radio" name="course" id="course3" value="course3">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <div class="course-title">
+                                        <div class="course-name">POO Avanzada</div>
+                                        <div class="course-code">OOP-301 • Único</div>
+                                    </div>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-users"></i>
+                                        <span>18 compañeros</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Dr. López</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="form-group full-width">
                             <label>
                                 <i class="fas fa-book"></i>
-                                Tema o Módulo
+                                Tema
                             </label>
                             <select id="topicSelect" required>
                                 <option value="">Selecciona un tema</option>
@@ -1292,6 +1350,14 @@ input[type="range"]::-moz-range-thumb:hover {
                                 <option value="mixed">Temas Mixtos</option>
                             </select>
                         </div>
+
+                        <div class="form-group full-width">
+                            <label>
+                                <i class="fas fa-align-left"></i>
+                                Descripción (Opcional)
+                            </label>
+                            <textarea id="competitionDescription" placeholder="Describe brevemente el propósito de esta competencia..."></textarea>
+                        </div>
                     </div>
                 </div>
 
@@ -1299,7 +1365,7 @@ input[type="range"]::-moz-range-thumb:hover {
                 <div class="form-step" data-step="2">
                     <div class="step-header">
                         <h2>⚙️ Configuración de la Competencia</h2>
-                        <p>Ajusta los parámetros según el nivel de tus estudiantes</p>
+                        <p>Ajusta los parámetros según tu nivel</p>
                     </div>
                     
                     <div class="form-content">
@@ -1384,77 +1450,13 @@ input[type="range"]::-moz-range-thumb:hover {
                                 <input type="range" id="questionCount" min="5" max="30" value="10" step="1">
                             </div>
                         </div>
-
-
                     </div>
                 </div>
 
-                <!-- Step 3: Programación -->
+                <!-- Step 3: Confirmación -->
                 <div class="form-step" data-step="3">
                     <div class="step-header">
-                        <h2>📅 Programación</h2>
-                        <p>¿Cuándo se llevará a cabo la competencia?</p>
-                    </div>
-                    
-                    <div class="form-content">
-                        <div class="timing-cards">
-                            <label class="timing-card" for="timingNow">
-                                <input type="radio" name="timing" id="timingNow" value="now" checked>
-                                <div class="timing-icon">⚡</div>
-                                <div class="timing-title">Iniciar Ahora</div>
-                                <div class="timing-description">La competencia estará disponible inmediatamente</div>
-                            </label>
-                            
-                            <label class="timing-card" for="timingSchedule">
-                                <input type="radio" name="timing" id="timingSchedule" value="schedule">
-                                <div class="timing-icon">📅</div>
-                                <div class="timing-title">Programar</div>
-                                <div class="timing-description">Establece fecha y hora específica</div>
-                            </label>
-                        </div>
-
-                        <div class="schedule-fields" id="scheduleFields">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>
-                                        <i class="fas fa-calendar"></i>
-                                        Fecha
-                                    </label>
-                                    <input type="date" id="scheduledDate">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>
-                                        <i class="fas fa-clock"></i>
-                                        Hora
-                                    </label>
-                                    <input type="time" id="scheduledTime">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="toggle-group">
-                            <div class="toggle-option">
-                                <div class="toggle-info">
-                                    <div class="toggle-title">
-                                        <i class="fas fa-paper-plane"></i>
-                                        Invitar Automáticamente
-                                    </div>
-                                    <div class="toggle-description">Enviar notificación al grupo seleccionado</div>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="autoInvite" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 4: Confirmación -->
-                <div class="form-step" data-step="4">
-                    <div class="step-header">
-                        <h2>✅ Confirmar y Crear</h2>
+                        <h2>Confirmar y Crear</h2>
                         <p>Revisa los detalles antes de crear tu competencia</p>
                     </div>
                     
@@ -1477,10 +1479,10 @@ input[type="range"]::-moz-range-thumb:hover {
                                 <div class="summary-grid">
                                     <div class="summary-item">
                                         <div class="summary-item-header">
-                                            <i class="fas fa-users summary-item-icon"></i>
-                                            <span class="summary-item-label">Grupo</span>
+                                            <i class="fas fa-book-open summary-item-icon"></i>
+                                            <span class="summary-item-label">Curso</span>
                                         </div>
-                                        <div class="summary-item-value" id="summaryGroup">Grupo A</div>
+                                        <div class="summary-item-value" id="summaryCourse">Programación I</div>
                                     </div>
 
                                     <div class="summary-item">
@@ -1517,20 +1519,20 @@ input[type="range"]::-moz-range-thumb:hover {
 
                                     <div class="summary-item">
                                         <div class="summary-item-header">
-                                            <i class="fas fa-calendar summary-item-icon"></i>
-                                            <span class="summary-item-label">Inicio</span>
+                                            <i class="fas fa-users summary-item-icon"></i>
+                                            <span class="summary-item-label">Participantes</span>
                                         </div>
-                                        <div class="summary-item-value" id="summaryTiming">Inmediato</div>
+                                        <div class="summary-item-value" id="summaryParticipants">25 compañeros</div>
                                     </div>
                                 </div>
 
-                                <div class="summary-features">
-                                    <div class="features-title">
-                                        <i class="fas fa-star"></i>
-                                        Características Activas
+                                <div class="start-info">
+                                    <div class="start-info-icon">
+                                        <i class="fas fa-bolt"></i>
                                     </div>
-                                    <div class="features-list" id="summaryFeatures">
-                                        <!-- Features will be added dynamically -->
+                                    <div class="start-info-content">
+                                        <h4>La competencia iniciará inmediatamente</h4>
+                                        <p>Tus compañeros podrán unirse usando el código de acceso</p>
                                     </div>
                                 </div>
                             </div>
@@ -1549,8 +1551,8 @@ input[type="range"]::-moz-range-thumb:hover {
                         <i class="fas fa-arrow-right"></i>
                     </button>
                     <button type="submit" class="btn btn-success" id="createBtn" style="display: none;">
-                        <i class="fas fa-check"></i>
-                        Crear Competencia
+                        <i class="fas fa-rocket"></i>
+                        Iniciar Competencia
                     </button>
                 </div>
             </form>
@@ -1565,7 +1567,7 @@ input[type="range"]::-moz-range-thumb:hover {
                     <i class="fas fa-check"></i>
                 </div>
                 <h2 class="modal-title">¡Competencia Creada!</h2>
-                <p class="modal-subtitle">Tu competencia está lista para comenzar</p>
+                <p class="modal-subtitle">Tu competencia está lista y activa</p>
             </div>
             
             <div class="modal-body">
@@ -1575,12 +1577,12 @@ input[type="range"]::-moz-range-thumb:hover {
                         <span class="modal-info-value" id="modalCompetitionName">-</span>
                     </div>
                     <div class="modal-info-row">
-                        <span class="modal-info-label">Participantes</span>
-                        <span class="modal-info-value" id="modalParticipantCount">-</span>
+                        <span class="modal-info-label">Curso</span>
+                        <span class="modal-info-value" id="modalCourse">-</span>
                     </div>
                     <div class="modal-info-row">
                         <span class="modal-info-label">Estado</span>
-                        <span class="modal-info-value" id="modalStatus">-</span>
+                        <span class="modal-info-value">Activa - Esperando participantes</span>
                     </div>
                 </div>
 
@@ -1595,13 +1597,13 @@ input[type="range"]::-moz-range-thumb:hover {
             </div>
 
             <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="handleViewCompetitions()">
-                    <i class="fas fa-list"></i>
-                    Ver Competencias
+                <button class="btn btn-secondary" onclick="handleCreateAnother()">
+                    <i class="fas fa-plus"></i>
+                    Crear Otra
                 </button>
-                <button class="btn btn-primary" onclick="handleMonitorCompetition()">
-                    <i class="fas fa-tv"></i>
-                    Monitorear en Vivo
+                <button class="btn btn-primary" onclick="handleJoinCompetition()">
+                    <i class="fas fa-play"></i>
+                    Unirme Ahora
                 </button>
             </div>
         </div>
@@ -1619,20 +1621,16 @@ input[type="range"]::-moz-range-thumb:hover {
     <script>
 // Global Variables
 let currentStep = 1;
-const totalSteps = 4;
+const totalSteps = 3;
 
 let competitionData = {
     name: '',
-    group: '',
+    course: '',
     topic: '',
     description: '',
     duration: 20,
     questions: 10,
     difficulty: '',
-    timing: 'now',
-    scheduledDate: '',
-    scheduledTime: '',
-    autoInvite: true,
     code: ''
 };
 
@@ -1658,11 +1656,11 @@ const difficultySettings = {
     }
 };
 
-// Datos de grupos (simulados)
-const groupsData = {
-    'group1': { name: 'Programación I - Grupo A', students: 25 },
-    'group2': { name: 'Programación I - Grupo B', students: 22 },
-    'group3': { name: 'Java Avanzado', students: 18 }
+// Datos de cursos (simulados)
+const coursesData = {
+    'course1': { name: 'Programación I', code: 'PROG-101 • Grupo A', students: 25, professor: 'Dr. Castillo' },
+    'course2': { name: 'Estructuras de Datos', code: 'DATA-201 • Grupo B', students: 22, professor: 'Dra. Martínez' },
+    'course3': { name: 'POO Avanzada', code: 'OOP-301 • Único', students: 18, professor: 'Dr. López' }
 };
 
 // Nombres de temas
@@ -1681,10 +1679,7 @@ const topicNames = {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🎯 Inicializando Creador de Competencias...');
     
-    // Generar código inicial
     generateCompetitionCode();
-    
-    // Event Listeners
     setupEventListeners();
     setupFormValidation();
     initializeSliders();
@@ -1698,6 +1693,11 @@ function setupEventListeners() {
     document.getElementById('prevBtn').addEventListener('click', handlePrevStep);
     document.getElementById('competitionForm').addEventListener('submit', handleCreateCompetition);
     
+    // Course selection
+    document.querySelectorAll('input[name="course"]').forEach(radio => {
+        radio.addEventListener('change', handleCourseChange);
+    });
+    
     // Difficulty selection
     document.querySelectorAll('input[name="difficulty"]').forEach(radio => {
         radio.addEventListener('change', handleDifficultyChange);
@@ -1706,11 +1706,6 @@ function setupEventListeners() {
     // Range sliders
     document.getElementById('durationRange').addEventListener('input', updateDuration);
     document.getElementById('questionCount').addEventListener('input', updateQuestionCount);
-    
-    // Timing selection
-    document.querySelectorAll('input[name="timing"]').forEach(radio => {
-        radio.addEventListener('change', handleTimingChange);
-    });
     
     // Step clicks
     document.querySelectorAll('.step').forEach(step => {
@@ -1723,11 +1718,17 @@ function setupEventListeners() {
     });
 }
 
+function handleCourseChange(event) {
+    document.querySelectorAll('.course-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+    event.target.closest('.course-card').classList.add('selected');
+}
+
 function handleDifficultyChange(event) {
     const difficulty = event.target.value;
     const settings = difficultySettings[difficulty];
     
-    // Mostrar sugerencias
     const suggestionBox = document.getElementById('suggestionBox');
     suggestionBox.classList.add('show');
     
@@ -1747,7 +1748,6 @@ function handleDifficultyChange(event) {
     document.getElementById('suggestionTime').textContent = 
         `Tiempo por pregunta: ${settings.timePerQuestion}`;
     
-    // Actualizar rangos
     const durationRange = document.getElementById('durationRange');
     const questionRange = document.getElementById('questionCount');
     
@@ -1759,17 +1759,14 @@ function handleDifficultyChange(event) {
     questionRange.max = settings.questions.max;
     questionRange.value = settings.questions.suggested;
     
-    // Actualizar displays
     document.getElementById('durationValue').textContent = settings.duration.suggested;
     document.getElementById('questionValue').textContent = settings.questions.suggested;
     
-    // Actualizar clase seleccionada
     document.querySelectorAll('.difficulty-card').forEach(card => {
         card.classList.remove('selected');
     });
     event.target.closest('.difficulty-card').classList.add('selected');
     
-    // Validar coherencia
     validateDurationQuestions();
 }
 
@@ -1790,28 +1787,9 @@ function validateDurationQuestions() {
     const questions = parseInt(document.getElementById('questionCount').value);
     const timePerQuestion = duration / questions;
     
-    // Si hay menos de 1 minuto por pregunta, mostrar advertencia
     if (timePerQuestion < 1) {
         showNotification('⚠️ Advertencia: Muy poco tiempo por pregunta', 'warning');
     }
-}
-
-function handleTimingChange(event) {
-    const scheduleFields = document.getElementById('scheduleFields');
-    if (event.target.value === 'schedule') {
-        scheduleFields.classList.add('show');
-        
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('scheduledDate').min = today;
-    } else {
-        scheduleFields.classList.remove('show');
-    }
-    
-    document.querySelectorAll('.timing-card').forEach(card => {
-        card.classList.remove('selected');
-    });
-    event.target.closest('.timing-card').classList.add('selected');
 }
 
 function handleNextStep() {
@@ -1850,13 +1828,11 @@ function goToStep(stepNum) {
 }
 
 function updateStep() {
-    // Update form steps
     document.querySelectorAll('.form-step').forEach(step => {
         step.classList.remove('active');
     });
     document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('active');
     
-    // Update progress indicators
     document.querySelectorAll('.step').forEach(step => {
         const stepNum = parseInt(step.dataset.step);
         step.classList.remove('active', 'completed');
@@ -1868,7 +1844,6 @@ function updateStep() {
         }
     });
     
-    // Update buttons
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const createBtn = document.getElementById('createBtn');
@@ -1877,7 +1852,6 @@ function updateStep() {
     nextBtn.style.display = currentStep === totalSteps ? 'none' : 'flex';
     createBtn.style.display = currentStep === totalSteps ? 'flex' : 'none';
     
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1888,14 +1862,14 @@ function validateCurrentStep() {
     switch (currentStep) {
         case 1:
             const name = document.getElementById('competitionName').value.trim();
-            const group = document.getElementById('groupSelect').value;
+            const course = document.querySelector('input[name="course"]:checked');
             const topic = document.getElementById('topicSelect').value;
             
             if (!name) {
                 message = 'Por favor ingresa el nombre de la competencia';
                 isValid = false;
-            } else if (!group) {
-                message = 'Por favor selecciona un grupo';
+            } else if (!course) {
+                message = 'Por favor selecciona un curso';
                 isValid = false;
             } else if (!topic) {
                 message = 'Por favor selecciona un tema';
@@ -1911,20 +1885,6 @@ function validateCurrentStep() {
                 isValid = false;
             }
             break;
-            
-        case 3:
-            const timing = document.querySelector('input[name="timing"]:checked').value;
-            
-            if (timing === 'schedule') {
-                const date = document.getElementById('scheduledDate').value;
-                const time = document.getElementById('scheduledTime').value;
-                
-                if (!date || !time) {
-                    message = 'Por favor completa la fecha y hora programada';
-                    isValid = false;
-                }
-            }
-            break;
     }
     
     if (!isValid) {
@@ -1936,7 +1896,12 @@ function validateCurrentStep() {
 
 function updateCompetitionData() {
     competitionData.name = document.getElementById('competitionName').value.trim();
-    competitionData.group = document.getElementById('groupSelect').value;
+    
+    const courseRadio = document.querySelector('input[name="course"]:checked');
+    if (courseRadio) {
+        competitionData.course = courseRadio.value;
+    }
+    
     competitionData.topic = document.getElementById('topicSelect').value;
     competitionData.description = document.getElementById('competitionDescription').value.trim();
     
@@ -1947,21 +1912,15 @@ function updateCompetitionData() {
     
     competitionData.duration = parseInt(document.getElementById('durationRange').value);
     competitionData.questions = parseInt(document.getElementById('questionCount').value);
-    
-    competitionData.timing = document.querySelector('input[name="timing"]:checked').value;
-    competitionData.scheduledDate = document.getElementById('scheduledDate').value;
-    competitionData.scheduledTime = document.getElementById('scheduledTime').value;
-    competitionData.autoInvite = document.getElementById('autoInvite').checked;
 }
 
 function updateSummary() {
-    // Update summary card
     document.getElementById('summaryName').textContent = competitionData.name;
     document.getElementById('summaryCode').textContent = competitionData.code;
     
-    const groupData = groupsData[competitionData.group];
-    document.getElementById('summaryGroup').textContent = 
-        groupData ? `${groupData.name} (${groupData.students} estudiantes)` : '-';
+    const courseData = coursesData[competitionData.course];
+    document.getElementById('summaryCourse').textContent = 
+        courseData ? `${courseData.name} (${courseData.code})` : '-';
     
     document.getElementById('summaryTopic').textContent = 
         topicNames[competitionData.topic] || '-';
@@ -1980,39 +1939,8 @@ function updateSummary() {
     document.getElementById('summaryQuestions').textContent = 
         `${competitionData.questions} preguntas`;
     
-    let timingText = 'Inmediato';
-    if (competitionData.timing === 'schedule' && competitionData.scheduledDate) {
-        const date = new Date(competitionData.scheduledDate + 'T' + competitionData.scheduledTime);
-        timingText = date.toLocaleString('es-ES', { 
-            day: 'numeric', 
-            month: 'long', 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        });
-    }
-    document.getElementById('summaryTiming').textContent = timingText;
-    
-    // Update features
-    const featuresContainer = document.getElementById('summaryFeatures');
-    featuresContainer.innerHTML = '';
-    
-    const features = [
-        { 
-            active: competitionData.autoInvite, 
-            icon: 'fas fa-paper-plane', 
-            text: 'Invitación Automática' 
-        }
-    ];
-    
-    features.forEach(feature => {
-        const badge = document.createElement('div');
-        badge.className = `feature-badge ${feature.active ? '' : 'disabled'}`;
-        badge.innerHTML = `
-            <i class="${feature.icon}"></i>
-            <span>${feature.text}</span>
-        `;
-        featuresContainer.appendChild(badge);
-    });
+    document.getElementById('summaryParticipants').textContent = 
+        courseData ? `${courseData.students} compañeros` : '-';
 }
 
 function generateCompetitionCode() {
@@ -2027,10 +1955,10 @@ function generateCompetitionCode() {
 
 function handleBackToDashboard() {
     if (confirm('¿Estás seguro de que deseas salir? Se perderán los cambios no guardados.')) {
-        showNotification('Volviendo al panel...', 'info');
+        showNotification('Volviendo al dashboard...', 'info');
         console.log('🔙 Regresando al dashboard');
         setTimeout(() => {
-            console.log('Redirigiendo a: teacher-dashboard.html');
+            console.log('Redirigiendo a: student-dashboard.html');
         }, 500);
     }
 }
@@ -2082,12 +2010,9 @@ function showSuccessModal() {
     document.getElementById('modalCompetitionName').textContent = competitionData.name;
     document.getElementById('modalCompetitionCode').textContent = competitionData.code;
     
-    const participantCount = competitionData.group ? 
-        groupsData[competitionData.group]?.students : 0;
-    document.getElementById('modalParticipantCount').textContent = `${participantCount} estudiantes`;
-    
-    const status = competitionData.timing === 'now' ? 'Esperando participantes' : 'Programada';
-    document.getElementById('modalStatus').textContent = status;
+    const courseData = coursesData[competitionData.course];
+    document.getElementById('modalCourse').textContent = 
+        courseData ? courseData.name : '-';
     
     if (modal) {
         modal.classList.add('active');
@@ -2097,24 +2022,20 @@ function showSuccessModal() {
     showNotification('¡Competencia creada exitosamente!', 'success');
 }
 
-function handleViewCompetitions() {
-    showNotification('Navegando a mis competencias...', 'info');
-    console.log('📋 Ver todas las competencias');
-    
+function handleCreateAnother() {
     const modal = document.getElementById('successModal');
     if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = '';
     }
     
-    setTimeout(() => {
-        console.log('Redirigiendo a: competitions.html');
-    }, 500);
+    resetForm();
+    showNotification('¡Listo para crear otra competencia!', 'info');
 }
 
-function handleMonitorCompetition() {
-    showNotification('Abriendo monitor en vivo...', 'info');
-    console.log('📺 Monitorear competencia en vivo');
+function handleJoinCompetition() {
+    showNotification('Uniéndote a la competencia...', 'info');
+    console.log('🎮 Unirse a competencia:', competitionData.code);
     
     const modal = document.getElementById('successModal');
     if (modal) {
@@ -2123,7 +2044,8 @@ function handleMonitorCompetition() {
     }
     
     setTimeout(() => {
-        console.log(`Redirigiendo a: live-competition.html?code=${competitionData.code}&mode=monitor`);
+        console.log(`Redirigiendo a: live-competition.html?code=${competitionData.code}`);
+        window.location.href = `8 live-competition.html?code=${competitionData.code}`;
     }, 500);
 }
 
@@ -2270,16 +2192,12 @@ function resetForm() {
     currentStep = 1;
     competitionData = {
         name: '',
-        group: '',
+        course: '',
         topic: '',
         description: '',
         duration: 20,
         questions: 10,
         difficulty: '',
-        timing: 'now',
-        scheduledDate: '',
-        scheduledTime: '',
-        autoInvite: true,
         code: ''
     };
     
@@ -2291,8 +2209,8 @@ function resetForm() {
 }
 
 console.log('🏆 Creador de Competencias cargado completamente');
-console.log('👨‍🏫 Dr. Fernando Castillo - Crear nueva competencia');
-console.log('📊 Grupos disponibles:', Object.keys(groupsData).length);
+console.log('👩‍🎓 Ana García - Crear nueva competencia');
+console.log('📚 Cursos disponibles:', Object.keys(coursesData).length);
     </script>
 </body>
 </html>
